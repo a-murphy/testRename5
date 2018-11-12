@@ -24,14 +24,6 @@ build:
     - echo $SHIPPABLE_AMI_VERSION
     - docker images
     - docker pull amurphy/test2:increment.1
-#    - echo $TEST_ONE
-#    - echo $TEST_TWO
-#    - echo $TEST_THREE
- #   - fail
- #   - if [ $ONE = true ]; then fail; fi
-  #  - if [ $TWO = true ]; then fail; fi
-  #  - if [ $NINE = true ]; then fail; fi
- #   - if [ $TWO = true ]; then shipctl post_resource_state 123-testing-123 versionName $BRANCH.$BUILD_NUMBER; fi
   on_failure:
     - echo "failed $SHIPPABLE_AMI_VERSION"
 
