@@ -29,61 +29,61 @@ resources:
       imageTag: v7.4.1
       test: test2
       
-  - name: bitbucketRepoResource
-    type: gitRepo
-    repoPath: a-murphy/sample_pipelines3_rename
-    configuration:
-      integrationName: bitbucket
-      buildOn:
-    #     commit: false
-    #     pullRequest: true
-         pullRequestClose: true
-         release: true
-         tagPush: true
-    initialVersion:
-      sha: master
+ # - name: bitbucketRepoResource
+ #   type: gitRepo
+ #   repoPath: a-murphy/sample_pipelines3_rename
+ #   configuration:
+ #     integrationName: bitbucket
+ #     buildOn:
+ #   #     commit: false
+ #   #     pullRequest: true
+ #        pullRequestClose: true
+ #        release: true
+ #        tagPush: true
+ #   initialVersion:
+ #     sha: master
       
-  - name: bitbucketRepoResource2
-    type: gitRepo
-    repoPath: a-murphy/sample_pipelines
-    configuration:
-      integrationName: bitbucket
-      buildOn:
+ # - name: bitbucketRepoResource2
+ #   type: gitRepo
+ #   repoPath: a-murphy/sample_pipelines
+ #   configuration:
+ #     integrationName: bitbucket
+ #     buildOn:
     #     commit: false
-         pullRequest: true
-         pullRequestClose: true
-         release: true
-         tagPush: true
-    initialVersion:
-      sha: master
+ #        pullRequest: true
+ #        pullRequestClose: true
+ #        release: true
+ #        tagPush: true
+ #   initialVersion:
+ #     sha: master
       
-  - name: bitbucketServerRepoResource
-    type: gitRepo
-    repoPath: ~aidan/test
-    configuration:
-      integrationName: bitbucketServer
-      buildOn:
+ # - name: bitbucketServerRepoResource
+ #   type: gitRepo
+ #   repoPath: ~aidan/test
+ #   configuration:
+ #     integrationName: bitbucketServer
+ #     buildOn:
     #     commit: false
-         pullRequest: true
-         pullRequestClose: false
-         release: true
-         tagPush: true
-    initialVersion:
-      sha: master
+ #        pullRequest: true
+ #        pullRequestClose: false
+ #        release: true
+ #        tagPush: true
+ #   initialVersion:
+ #     sha: master
       
-  - name: gheRepoResource
-    type: gitRepo
-    repoPath: a-murphy/5testRename5
-    configuration:
-      integrationName: githubEnterprise
-      buildOn:
-    #     commit: false
-         pullRequest: true
-         pullRequestClose: false
-         release: true
-         tagPush: true
-    initialVersion:
-      sha: master
+ # - name: gheRepoResource
+ #   type: gitRepo
+ #   repoPath: a-murphy/5testRename5
+ #   configuration:
+ #     integrationName: githubEnterprise
+ #     buildOn:
+ #   #     commit: false
+ #        pullRequest: true
+ #        pullRequestClose: false
+ #        release: true
+ #        tagPush: true
+ #   initialVersion:
+ #     sha: master
 
   - name: gitRepoResource
     type: gitRepo
@@ -226,7 +226,7 @@ pipelines:
         requires:
           resources:
             - nodeRepoResource
-            - bitbucketServerRepoResource
+         #   - bitbucketServerRepoResource
          #   - bitbucketRepoResource2
          #   - stateOne
          #   - myImage
@@ -238,8 +238,8 @@ pipelines:
         triggeredBy:
           steps:
             - in_trigger_step
-          resources:
-            - stateOne
+        #  resources:
+        #    - stateOne
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -260,30 +260,30 @@ pipelines:
             - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
             - cd .. && ls
             - save_tests testresults.xml
-            - cache_files shippable.yml myYml
-            - mkdir -p testing/test
-            - echo "testing" > testing/test/text.txt
-            - echo "test2" > testing/test/text2.txt
-            - cache_files testing/test myDirectory
-            - cp shippable.yml shippable2.yml
-            - cache_files *.yml myWildcard
-            - restore_cache test doesnotexist.txt
-            - restore_cache myYml testyml.yml
-            - ls
-            - restore_cache myDirectory testing2
-            - ls
-            - ls -R testing2
-            - restore_cache myWildcard wildcards
-            - add_run_variable testRunVariable="testing" testingAgain=2 testThree=three
-            - save_run_state testyml.yml myYml
-            - save_run_state *.yml myWildcard
-            - echo $STEP_ID > testid.txt
-            - restore_resource_state stateOne test oldtestid.txt
-            - cat oldtestid.txt || true
-            - save_resource_state stateOne testid.txt test
-            - save_resource_state stateOne testyml.yml myYml
-            - save_resource_state stateTwo *.yml myWildcard
-            - ls -R $RUN_DIR
+          #  - cache_files shippable.yml myYml
+          #  - mkdir -p testing/test
+          #  - echo "testing" > testing/test/text.txt
+          #  - echo "test2" > testing/test/text2.txt
+          #  - cache_files testing/test myDirectory
+          #  - cp shippable.yml shippable2.yml
+          #  - cache_files *.yml myWildcard
+          #  - restore_cache test doesnotexist.txt
+          #  - restore_cache myYml testyml.yml
+          #  - ls
+          #  - restore_cache myDirectory testing2
+          #  - ls
+          #  - ls -R testing2
+          #  - restore_cache myWildcard wildcards
+          #  - add_run_variable testRunVariable="testing" testingAgain=2 testThree=three
+          #  - save_run_state testyml.yml myYml
+          #  - save_run_state *.yml myWildcard
+          #  - echo $STEP_ID > testid.txt
+          #  - restore_resource_state stateOne test oldtestid.txt
+          #  - cat oldtestid.txt || true
+          #  - save_resource_state stateOne testid.txt test
+          #  - save_resource_state stateOne testyml.yml myYml
+          #  - save_resource_state stateTwo *.yml myWildcard
+          #  - ls -R $RUN_DIR
             
         #    - save_tests $(cat $STEP_JSON_PATH | jq -r .'resources.nodeRepoResource.resourcePath') #testresults.xml
           onSuccess:
