@@ -1,4 +1,6 @@
 resources:
+  - name: stateOne
+    type: state
   - name: gitRepoResource
     type: gitRepo
     repoPath: a-murphy/5testRename5
@@ -139,8 +141,9 @@ pipelines:
               custom: 
                 name: drydock/u16javall
                 tag:  v7.1.4
-        #requires:
-         # resources:
+        requires:
+          resources:
+            - stateOne
          #   - gitRepoResource
          #   - bitbucketServerRepoResource
         triggeredBy:
@@ -188,6 +191,7 @@ pipelines:
             - echo "Someone cancelled the job"
         outputResources:
           - gitRepoResource2
+          - stateOne
       - name: other_step
         type: bash
         configuration:
@@ -196,7 +200,8 @@ pipelines:
           runtime:            
             type: host
         requires:
-      #    resources:
+          resources:
+            - stateOne
       #      - sample_java_file_test
           integrations:
             - github
