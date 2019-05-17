@@ -160,7 +160,7 @@ pipelines:
          #   - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
             - echo "executing task command 1"
             - echo "executing task command 2"
-            - restore_files test lastrun.txt
+            - restore_cache test lastrun.txt
             - ls
             - echo "testing1234" > testing.txt
             - cache_files testing.txt test
