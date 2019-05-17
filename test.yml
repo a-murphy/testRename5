@@ -230,8 +230,8 @@ pipelines:
          #   - bitbucketRepoResource2
          #   - stateOne
          #   - myImage
-          integrations:
-            - test
+         # integrations:
+         #   - test
         outputResources:
           - stateOne
           - stateTwo
@@ -294,7 +294,7 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
-      - name: other-step
+      - name: other_step
         type: bash
      #   configuration:
      #     affinityGroup: test_group 
