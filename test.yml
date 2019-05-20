@@ -196,7 +196,7 @@ pipelines:
             - echo "Someone cancelled the job"
         outputResources:
           - gitRepoResource2
-          - stateOne
+        #  - stateOne
       - name: other_step
         type: bash
         configuration:
