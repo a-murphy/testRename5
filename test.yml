@@ -6,12 +6,12 @@ resources:
     repoPath: a-murphy/5testRename5
     configuration:
       integrationName: github
-      buildOn:
+     # buildOn:
      #    commit: false
      #    pullRequest: true
-         pullRequestClose: false
-         release: true
-         tagPush: true
+     #    pullRequestClose: false
+     #    release: true
+     #    tagPush: true
     initialVersion:
       sha: master
       
