@@ -122,7 +122,19 @@ pipelines:
             - encryptedstring=$(encrypt_string "encryptme" --key pub.pem)
             - echo "$encryptedstring"
             - decrypt_string "$encryptedstring" --key key.pem
+            - echo $testRunVariable
+            - echo $testPipelineVariable
+            - echo $testingAgain
             - add_run_variable testRunVariable="testing" testingAgain=2 testThree=three
+            - add_pipeline_variable testPipelineVariable="testing" testingAgain=three
+            - echo $testRunVariable
+            - echo $testPipelineVariable
+            - echo $testingAgain
+            - restore_pipeline_state testing testfile2.txt
+            - save_pipeline_state key.pem key2.pem
+            - ls
+            - save_pipeline_state testfile.txt testing
+            - save_pipeline_state key.pem key.pem
 
       - name: main_step
         type: bash
@@ -166,6 +178,9 @@ pipelines:
             - ls
             - echo "testing1234" > testing.txt
             - cache_files testing.txt test
+            - restore_pipeline_state testing testfile.txt
+            - restore_pipeline_state key.pem key.pem
+            - ls
         #    - update_commit_status bitbucketServerRepoResource --status processing --message "my message"
         #    - update_commit_status bitbucketServerRepoResource --status failure --context "failing-context"
         #    - update_commit_status bitbucketServerRepoResource --status success --message "my message" --context "succcess-context"
