@@ -122,6 +122,7 @@ pipelines:
             - encryptedstring=$(encrypt_string "encryptme" --key pub.pem)
             - echo "$encryptedstring"
             - decrypt_string "$encryptedstring" --key key.pem
+            - add_run_variable testRunVariable="testing" testingAgain=2 testThree=three
 
       - name: main_step
         type: bash
