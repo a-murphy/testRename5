@@ -140,13 +140,13 @@ pipelines:
             type: image
             image:
               custom: 
-                name: drydock/u16javall
-                tag:  v7.1.4
-        #requires:
-        #  resources:
+                name: drydock/u16node
+                tag:  master
+        requires:
+          resources:
         #    - stateOne
-         #   - gitRepoResource
-         #   - bitbucketServerRepoResource
+            - gitRepoResource
+            - bitbucketServerRepoResource
         triggeredBy:
           steps:
             - in_trigger_step
