@@ -228,6 +228,7 @@ pipelines:
             - echo "$testRunVariable"
             - echo "$testingAgain"
             - echo "$testThree"
+            - add_run_variable testRunVariable="testingAgain"
           onSuccess:
             - echo "Job well done!"
           onFailure:
