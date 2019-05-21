@@ -8,7 +8,7 @@ resources:
       integrationName: github
       buildOn:
      #    commit: false
-         pullRequest: true
+     #    pullRequest: true
          pullRequestClose: false
          release: true
          tagPush: true
