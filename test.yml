@@ -215,23 +215,26 @@ pipelines:
           runtime:            
             type: host
         requires:
-          resources:
-            - stateOne
+      #    resources:
+      #      - stateOne
       #      - sample_java_file_test
           integrations:
             - github
+            - slack
         triggeredBy:
       #    resources:
       #      - sample_java_file_test
           steps:
             - main_step
         execution:
-      #    onStart:
+          onStart:
+            - send_notification slack
       #      - echo "Prepping build environment"
       #      - echo "$testRunVariable"
       #      - echo "$testingAgain"
       #      - echo "$testThree"
           onExecute:
+            - send_notification slack
             - echo "executing task command 1"
             - echo "executing task command 2"
             - echo "$testRunVariable"
@@ -239,10 +242,13 @@ pipelines:
             - echo "$testThree"
             - add_run_variable testRunVariable="testingAgain"
           onSuccess:
+            - send_notification slack
             - echo "Job well done!"
           onFailure:
+            - send_notification slack
             - echo "uh oh, something went wrong"
           onComplete: #always
+            - send_notification slack
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
