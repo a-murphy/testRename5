@@ -235,7 +235,6 @@ pipelines:
       #      - echo "$testThree"
           onExecute:
             - send_notification slack
-            - cat lastrun.txt
             - echo "executing task command 1"
             - echo "executing task command 2"
             - echo "$testRunVariable"
