@@ -242,7 +242,7 @@ pipelines:
             - echo "$testThree"
             - add_run_variable testRunVariable="testingAgain"
             - base64 /dev/urandom | head -c 100000 > test.txt
-            - openssl genrsa -out key.pem 1024 
+            - openssl genrsa -out key.pem 2048
             - openssl rsa -in key.pem -text -noout
             - openssl rsa -in key.pem -pubout -out pub.pem 
             - openssl rsa -in pub.pem -pubin -text -noout 
