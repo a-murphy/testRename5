@@ -168,6 +168,7 @@ pipelines:
             - echo "executing task command 1"
             - echo "executing task command 2"
             - ls -R $STEP_WORKSPACE_DIR/download
+            - cat lastrun.txt
             - restore_cache test lastrun.txt
             - ls
             - echo "testing1234" > testing.txt
