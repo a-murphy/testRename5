@@ -242,6 +242,15 @@ pipelines:
             - echo "$testingAgain"
             - echo "$testThree"
             - add_run_variable testRunVariable="testingAgain"
+            - base64 /dev/urandom | head -c 100000 > test.txt
+            - openssl genrsa -out key.pem 1024 
+            - openssl rsa -in key.pem -text -noout
+            - openssl rsa -in key.pem -pubout -out pub.pem 
+            - openssl rsa -in pub.pem -pubin -text -noout 
+            - encrypt_file --output encrypted.txt test.txt --key pub.pem
+            - cat encrypted.txt
+            - decrypt_file encrypted.txt --output decrypted.txt --key key.pem
+            - cat decrypted.txt
           onSuccess:
             - send_notification slack
             - echo "Job well done!"
