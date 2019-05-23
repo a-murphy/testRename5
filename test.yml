@@ -252,7 +252,7 @@ pipelines:
             - cat decrypted.txt
             - string=$(encrypt_string "testing 123" --key pub.pem)
             - echo $string
-            - decrypt_string $string --key pub.pem
+            - decrypt_string $string --key key.pem
           onSuccess:
          #   - send_notification slack
             - echo "Job well done!"
