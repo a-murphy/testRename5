@@ -228,20 +228,20 @@ pipelines:
             - main_step
         execution:
           onStart:
-            - send_notification slack
+          #  - send_notification slack
       #      - echo "Prepping build environment"
       #      - echo "$testRunVariable"
       #      - echo "$testingAgain"
       #      - echo "$testThree"
           onExecute:
-            - send_notification slack
+          #  - send_notification slack
             - echo "executing task command 1"
             - echo "executing task command 2"
             - echo "$testRunVariable"
             - echo "$testingAgain"
             - echo "$testThree"
             - add_run_variable testRunVariable="testingAgain"
-            - base64 /dev/urandom | head -c 100000 > test.txt
+            - yes "testing 1234 " | head -c 100000 > test.txt
             - openssl genrsa -out key.pem 2048
             - openssl rsa -in key.pem -text -noout
             - openssl rsa -in key.pem -pubout -out pub.pem 
@@ -250,14 +250,17 @@ pipelines:
             - cat encrypted.txt
             - decrypt_file encrypted.txt --output decrypted.txt --key key.pem
             - cat decrypted.txt
+            - string=$(encrypt_string "testing 123" --key pub.pem)
+            - echo $string
+            - decrypt_string $string --key pub.pem
           onSuccess:
-            - send_notification slack
+         #   - send_notification slack
             - echo "Job well done!"
           onFailure:
-            - send_notification slack
+         #   - send_notification slack
             - echo "uh oh, something went wrong"
           onComplete: #always
-            - send_notification slack
+         #   - send_notification slack
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
