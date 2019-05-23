@@ -188,6 +188,8 @@ pipelines:
         #    - write_output gitRepoResource2 key1=value1 key2="value2" key3="value 3" "key4=value4" key5= key6="" key7=value7=7 key8
 
             - add_run_variable testRunVariable="testing" testingAgain=2 testThree=three
+            - rm $PIPELINE_WORKSPACE_DIR/**
+            - ls -al $PIPELINE_WORKSPACE_DIR
           #  - switch_env c --jdk openjdk11 4
           onSuccess:
             - echo "Job well done!"
