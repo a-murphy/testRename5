@@ -129,6 +129,9 @@ pipelines:
             - ls
             - save_pipeline_state testfile.txt testing
             - save_pipeline_state key.pem key.pem
+            - mkdir -p testdirectory
+            - echo "testing" > testdirectory/test1.txt
+            - echo "testing again" > testdirectory/test2.txt
 
       - name: main_step
         type: bash
@@ -248,9 +251,9 @@ pipelines:
             - openssl rsa -in key.pem -pubout -out pub.pem 
             - openssl rsa -in pub.pem -pubin -text -noout 
             - encrypt_file --output encrypted.txt test.txt --key pub.pem
-            - cat encrypted.txt
+        #    - cat encrypted.txt
             - decrypt_file encrypted.txt --output decrypted.txt --key key.pem
-            - cat decrypted.txt
+        #    - cat decrypted.txt
             - string=$(encrypt_string "testing 123" --key pub.pem)
             - echo $string
             - decrypt_string --key key.pem "$string"
