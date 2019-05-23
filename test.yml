@@ -242,6 +242,7 @@ pipelines:
             - echo "$testThree"
             - add_run_variable testRunVariable="testingAgain"
             - yes "testing 1234 " | head -c 100000 > test.txt
+            - echo "testing 1234 " > test2.txt
             - openssl genrsa -out key.pem 2048
             - openssl rsa -in key.pem -text -noout
             - openssl rsa -in key.pem -pubout -out pub.pem 
@@ -252,7 +253,11 @@ pipelines:
             - cat decrypted.txt
             - string=$(encrypt_string "testing 123" --key pub.pem)
             - echo $string
-            - decrypt_string $string --key key.pem
+            - decrypt_string --key key.pem "$string"
+            - encrypt_file --output encrypted2.txt test2.txt --key pub.pem
+            - cat encrypted2.txt
+            - decrypt_file encrypted2.txt --output decrypted2.txt --key key.pem
+            - cat decrypted2.txt
           onSuccess:
          #   - send_notification slack
             - echo "Job well done!"
