@@ -227,7 +227,7 @@ pipelines:
           steps:
             - main_step
         execution:
-          onStart:
+         # onStart:
           #  - send_notification slack
       #      - echo "Prepping build environment"
       #      - echo "$testRunVariable"
