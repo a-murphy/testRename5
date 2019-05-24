@@ -93,6 +93,10 @@ pipelines:
         configuration:
           affinityGroup: test_group 
         setup:
+          environmentVariables:
+            normal:
+              ENV1: value1
+              ENV2: value2
           runtime:            
             type: host
           #    options: test
@@ -136,6 +140,10 @@ pipelines:
         configuration:
           affinityGroup: test_group 
         setup:
+          environmentVariables:
+            normal:
+              ENV3: value3
+              ENV4: value4
         #  environmentVariables:
         #    normal:
         #      ENV1: value1
