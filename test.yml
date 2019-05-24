@@ -1,6 +1,4 @@
 resources:
-  - name: stateOne
-    type: state
   - name: gitRepoResource
     type: gitRepo
     repoPath: a-murphy/5testRename5
@@ -15,19 +13,19 @@ resources:
     initialVersion:
       sha: master
       
-  - name: bitbucketServerRepoResource
-    type: gitRepo
-    repoPath: ~aidan/test
-    configuration:
-      integrationName: bitbucketServer
-      buildOn:
+#  - name: bitbucketServerRepoResource
+#    type: gitRepo
+#    repoPath: ~aidan/test
+#    configuration:
+#      integrationName: bitbucketServer
+#      buildOn:
     #     commit: false
-         pullRequest: true
-         pullRequestClose: false
+#         pullRequest: true
+#         pullRequestClose: false
     #     release: true
-         tagPush: true
-    initialVersion:
-      sha: master
+#         tagPush: true
+#    initialVersion:
+#      sha: master
 
   - name: gitRepoResource2
     type: gitRepo
@@ -155,7 +153,7 @@ pipelines:
           resources:
         #    - stateOne
             - gitRepoResource
-            - bitbucketServerRepoResource
+      #      - bitbucketServerRepoResource
         triggeredBy:
           steps:
             - in_trigger_step
