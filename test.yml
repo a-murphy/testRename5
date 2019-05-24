@@ -223,7 +223,7 @@ pipelines:
       #      - sample_java_file_test
           integrations:
             - github
-            - slack
+     #       - slack
         triggeredBy:
       #    resources:
       #      - sample_java_file_test
