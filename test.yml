@@ -300,7 +300,7 @@ pipelines:
       #      - gitRepoResource2
         triggeredBy:
           resources:
-            - gitRepoResource2
+            - gitRepoResource
        #   steps:
        #     - main_step
         execution:
