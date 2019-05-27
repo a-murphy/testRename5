@@ -16,10 +16,10 @@ pipelines:
       #    resources:
       #      - gitRepoResource2
         triggeredBy:
-          resources:
-            - gitRepoResource2
-        #  steps:
-        #    - in_trigger_step
+       #   resources:
+       #     - gitRepoResource2
+          steps:
+            - main_step
         execution:
           onStart:
             - echo "Prepping build environment"
