@@ -12,10 +12,12 @@ pipelines:
         type: bash
         configuration:
           affinityGroup: test_group 
-        requires:
+      #  requires:
+      #    resources:
+      #      - gitRepoResource2
+        triggeredBy:
           resources:
             - gitRepoResource2
-        #triggeredBy:
         #  steps:
         #    - in_trigger_step
         execution:
