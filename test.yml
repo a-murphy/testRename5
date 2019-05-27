@@ -295,12 +295,12 @@ pipelines:
             - echo "Someone cancelled the job"
       - name: second_step
         type: bash
-        requires:
-          resources:
-            - gitRepoResource
+     #   requires:
+     #     resources:
+     #       - gitRepoResource
         triggeredBy:
           resources:
-            - gitRepoResource
+      #      - gitRepoResource
             - imageResource
        #   steps:
        #     - main_step
