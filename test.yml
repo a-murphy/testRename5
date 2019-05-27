@@ -295,9 +295,9 @@ pipelines:
             - echo "Someone cancelled the job"
       - name: second_step
         type: bash
-      #  requires:
-      #    resources:
-      #      - gitRepoResource2
+        requires:
+          resources:
+            - gitRepoResource
         triggeredBy:
           resources:
             - gitRepoResource
