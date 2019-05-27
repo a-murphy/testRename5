@@ -38,10 +38,10 @@ resources:
          pullRequestClose: false
          release: false
          tagPush: false
-      tags:
-        only: tag1|tag2
-      branches:
-        only: master|test
+  #    tags:
+  #      only: tag1|tag2
+  #    branches:
+  #      only: master|test
     initialVersion:
       sha: master
 
