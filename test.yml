@@ -13,6 +13,16 @@ resources:
     initialVersion:
       sha: master
       
+  - name: imageResource
+    type: image
+    imageName: amurphy/test
+    configuration:
+      integrationName: docker
+      autoPull: false
+    initialVersion:
+      imageTag: test
+
+      
 #  - name: bitbucketServerRepoResource
 #    type: gitRepo
 #    repoPath: ~aidan/test
@@ -174,6 +184,7 @@ pipelines:
           onExecute:
             - echo $CURRENT_SCRIPT_SECTION
             - replicate_resource gitRepoResource gitRepoResource2 #--match-settings
+            - write_output imageResource "imageTag=master"
          #   - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
             - echo "executing task command 1"
             - echo "executing task command 2"
@@ -218,6 +229,7 @@ pipelines:
             - echo "Someone cancelled the job"
         outputResources:
           - gitRepoResource2
+          - imageResource
         #  - stateOne
       - name: other_step
         type: bash
@@ -301,6 +313,7 @@ pipelines:
         triggeredBy:
           resources:
             - gitRepoResource
+            - imageResource
        #   steps:
        #     - main_step
         execution:
