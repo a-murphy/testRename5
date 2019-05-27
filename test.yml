@@ -173,7 +173,7 @@ pipelines:
          #   - update_commit_status gitRepoResource --status processing
           onExecute:
             - echo $CURRENT_SCRIPT_SECTION
-            - replicate_resource gitRepoResource gitRepoResource2 --match-settings
+            - replicate_resource gitRepoResource gitRepoResource2 #--match-settings
          #   - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
             - echo "executing task command 1"
             - echo "executing task command 2"
