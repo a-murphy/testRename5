@@ -301,7 +301,7 @@ pipelines:
         triggeredBy:
           resources:
             - gitRepoResource
- #           - imageResource
+            - imageResource
        #   steps:
        #     - main_step
         execution:
