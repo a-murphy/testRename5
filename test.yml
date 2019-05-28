@@ -226,6 +226,7 @@ pipelines:
               custom: 
                 name: drydock/notc7node
                 tag:  master
+                autoPull: false
         requires:
           resources:
         #    - stateOne
