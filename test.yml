@@ -223,9 +223,11 @@ pipelines:
           runtime:            
             type: image
             image:
-              custom: 
-                name: drydock/notc7node
-                tag:  master
+              auto:
+                language: python
+           #   custom: 
+           #     name: drydock/notc7node
+           #     tag:  master
    #             autoPull: true
         requires:
           resources:
