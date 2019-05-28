@@ -37,14 +37,14 @@ resources:
     configuration:
       integrationName: notgithub
       files:
-        except: [a-z+
-        only: [a-z+
+        except: "[a-z+"
+        only: "[a-z+"
       branches:
-        except: [a-z+
-        only: [a-z+
+        except: "[a-z+"
+        only: "[a-z+"
       tags:
-        except: [a-z+
-        only: [a-z+
+        except: "[a-z+"
+        only: "[a-z+"
       buildOn:
         commit: null
         pullRequest: "undefined"
