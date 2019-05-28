@@ -1,4 +1,63 @@
 resources:
+  - name: allGitRepo
+    type: gitRepo
+    repoPath: a-murphy/sample_node
+    configuration:
+      integrationName: github
+      files:
+        except: [a-z]+
+        only: [a-z]+
+      branches:
+        except: [a-z]+
+        only: [a-z]+
+      tags:
+        except: [a-z]+
+        only: [a-z]+
+      buildOn:
+         commit: false
+         pullRequest: false
+         pullRequestClose: false
+         release: false
+         tagPush: false
+
+      shallowDepth: 1
+      gitConfig:
+        - testing
+    version:
+      sha: master
+  - name: minimumGitRepo
+    type: gitRepo
+    repoPath: a-murphy/sample_node
+    configuration:
+      integrationName: github
+    version:
+      sha: master
+  - name: invalidGitRepo
+    type: gitRepo
+    repoPath: 123
+    configuration:
+      integrationName: notgithub
+      files:
+        except: [a-z+
+        only: [a-z+
+      branches:
+        except: [a-z+
+        only: [a-z+
+      tags:
+        except: [a-z+
+        only: [a-z+
+      buildOn:
+         commit: null
+         pullRequest: undefined
+         pullRequestClose: a
+         release: b
+         tagPush: c
+
+      shallowDepth: 0
+      gitConfig:
+        test: one
+    version:
+      notsha: master
   - name: gitRepoResource
     type: gitRepo
     repoPath: a-murphy/5testRename5
