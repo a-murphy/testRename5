@@ -224,7 +224,7 @@ pipelines:
             type: image
             image:
               custom: 
-                name: drydock/c7node
+                name: drydock/notc7node
                 tag:  master
         requires:
           resources:
