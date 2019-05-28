@@ -224,7 +224,7 @@ pipelines:
             type: image
             image:
               auto:
-                language: python
+                language: nodejs
            #   custom: 
            #     name: drydock/notc7node
            #     tag:  master
