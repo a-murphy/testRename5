@@ -11,7 +11,7 @@ resources:
         except: "[a-z]+"
         only: "[a-z]+"
       tags:
-        except: "[a-z]+"
+        except: [a-z]+
         only: [a-z]+
       buildOn:
         commit: false
@@ -19,7 +19,6 @@ resources:
         pullRequestClose: false
         release: false
         tagPush: false
-
       shallowDepth: 1
       gitConfig:
         - testing
@@ -48,11 +47,10 @@ resources:
         only: [a-z+
       buildOn:
         commit: null
-        pullRequest: undefined
+        pullRequest: "undefined"
         pullRequestClose: a
         release: b
         tagPush: c
-
       shallowDepth: 0
       gitConfig:
         test: one
