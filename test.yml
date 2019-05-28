@@ -242,10 +242,10 @@ pipelines:
         execution:
           onStart:
             - echo $CURRENT_SCRIPT_SECTION
-            - echo $test_int_key1
-            - echo $test_int_key2
-            - echo $test_int_key3
-            - echo $test_int_key4
+            - echo $int_test_key1
+            - echo $int_test_key2
+            - echo $int_test_key3
+            - echo $int_test_key4
          #   - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
             - echo "Prepping build environment"
             - echo "$testPipelineVariable"
