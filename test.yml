@@ -3,7 +3,7 @@ resources:
     type: gitRepo
     repoPath: a-murphy/sample_node
     configuration:
-      integrationName: github
+   #   integrationName: github
       files:
         except: "[a-z]+"
         only: "[a-z]+"
