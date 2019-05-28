@@ -226,7 +226,7 @@ pipelines:
            #   auto:
            #     language: nodejs
               custom: 
-                name: drydock/notc7node
+                name: drydock/u16node
                 tag:  master
                 autoPull: false
         requires:
