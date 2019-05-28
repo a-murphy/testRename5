@@ -4,6 +4,8 @@ resources:
     repoPath: a-murphy/5testRename5
     configuration:
       integrationName: github
+      branches:
+        only: test[
      # buildOn:
      #    commit: false
      #    pullRequest: true
