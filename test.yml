@@ -469,3 +469,116 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
+      - name: push_step
+        type: push
+        setup:
+          push:
+            targetRepo: test
+          environmentVariables:
+            normal:
+              TEST_ENV: value
+          runtime:            
+            type: host
+        requires:
+          integrations:
+            - artifactoryIntegration 
+        triggeredBy:
+          steps:
+            - post_second_pipeline
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete:
+            - echo "Cleaning up some stuff"
+          onCancel:
+            - echo "Someone cancelled the job"
+      - name: promote
+        type: promote
+        setup:
+          promote:
+            targetRepo: promoted-repo
+            includeDependencies: false
+            buildNumber: promoted-repo
+            buildName: promoted-repo
+          environmentVariables:
+            normal:
+              ENV1: key1
+              ENV2: key2
+          runtime:            
+            type: host
+        requires:
+          integrations:
+            - artifactoryIntegration
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete: #always
+            - echo "Cleaning up some stuff"
+          onCancel:
+            - echo "Someone cancelled the job"
+      - name: publish
+        type: publish
+        setup:
+          publish:
+            envInclude: test
+            envExclude: test
+          environmentVariables:
+            normal:
+              ENV1: key1
+          runtime:            
+            type: host
+        requires:
+          integrations:
+            - artifactoryIntegration
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete: #always
+            - echo "Cleaning up some stuff"
+          onCancel:
+            - echo "Someone cancelled the job"
+      - name: test_step_1
+        type: build
+        payloadType: docker
+        setup:
+          build:
+            dockerFileLocation: Dockerfile
+            dockerFileName: Dockerfile
+            imageName: a-murphy/test
+            imageTag: test
+          environmentVariables:
+            normal:
+              ENV1: value1
+              ENV2: value2
+          runtime:            
+            type: host
+        requires:
+          integrations:
+            - artifactoryIntegration
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete: #always
+            - echo "Cleaning up some stuff"
+          onCancel:
+            - echo "Someone cancelled the job"
+
+
+
+
