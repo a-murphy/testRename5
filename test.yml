@@ -1,29 +1,4 @@
 resources:
-  - name: invalidGitRepo
-    type: gitRepo
-    repoPath: 123
-    configuration:
-      integrationName: notgithub
-      files:
-        except: "[a-z+"
-        only: "[a-z+"
-      branches:
-        except: "[a-z+"
-        only: "[a-z+"
-      tags:
-        except: "[a-z+"
-        only: "[a-z+"
-      buildOn:
-        commit: null
-        pullRequest: "undefined"
-        pullRequestClose: a
-        release: b
-        tagPush: c
-      shallowDepth: 0
-      gitConfig:
-        test: one
-    version:
-      notsha: master
   - name: gitRepoResource
     type: gitRepo
     repoPath: a-murphy/5testRename5
@@ -365,8 +340,8 @@ pipelines:
         triggeredBy:
           resources:
             - imageResource
-          steps:
-            - main_step
+       #   steps:
+       #     - main_step
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -429,7 +404,7 @@ pipelines:
             - imageResource
           steps:
             - pre_second_pipeline
-            - main_step
+        #    - main_step
         execution:
           onStart:
             - echo "Prepping build environment"
