@@ -332,8 +332,8 @@ pipelines:
             - echo "Someone cancelled the job"
       - name: after_resource
         type: bash
-   #     configuration:
-   #       affinityGroup: test_group
+        configuration:
+          affinityGroup: test_group
      #   requires:
      #     resources:
      #       - gitRepoResource
@@ -393,8 +393,6 @@ pipelines:
             - echo "Someone cancelled the job"
       - name: second_pipeline
         type: bash
-        configuration:
-          affinityGroup: test_group 
       #  requires:
       #    resources:
       #      - gitRepoResource2
