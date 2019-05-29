@@ -69,7 +69,7 @@ resources:
      #    pullRequestClose: false
      #    release: true
      #    tagPush: true
-    initialVersion:
+    version:
       sha: master
       
   - name: imageResource
@@ -78,7 +78,7 @@ resources:
     configuration:
       integrationName: docker
       autoPull: false
-    initialVersion:
+    version:
       imageTag: test
 
       
@@ -93,7 +93,7 @@ resources:
 #         pullRequestClose: false
     #     release: true
 #         tagPush: true
-#    initialVersion:
+#    version:
 #      sha: master
 
   - name: gitRepoResource2
@@ -111,7 +111,7 @@ resources:
   #      only: tag1|tag2
   #    branches:
   #      only: master|test
-    initialVersion:
+    version:
       sha: master
 
 #  - name: fileIntegrationResource
@@ -122,14 +122,14 @@ resources:
 #        except:      file
 #        only:        file       
 #      integrationName: fileServerIntegration 
-#    initialVersion:
+#    version:
 #      fileName: file
 #      fileDtTm: test6
 #  - name: cluster
 #    type: cluster
 #    configuration:
 #      integrationName: sshKey 
-#    initialVersion:
+#    version:
 #      targetIPs:
    #     - 1
 #        - 1.2.3.5
@@ -139,7 +139,7 @@ resources:
 #    fileLocation: text.js
 #    configuration:
 #      integrationName: fileServerIntegration
-#    initialVersion:
+#    version:
 #      fileName: test4
 #  - name: file_test
 #    type: file
