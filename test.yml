@@ -337,7 +337,7 @@ pipelines:
      #   requires:
      #     resources:
      #       - gitRepoResource
-        triggeredBy:
+        requires:
           resources:
             - imageResource
        #   steps:
