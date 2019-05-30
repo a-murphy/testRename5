@@ -346,7 +346,11 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
+            - echo "testing" > test.txt
+            - cache_files test.txt my_file
             - ls -alR $STEP_WORKSPACE_DIR
+            - restore_cache my_file cachefile.txt
+            - ls
             - echo "executing task command 1"
             - echo "executing task command 2"
           onSuccess:
