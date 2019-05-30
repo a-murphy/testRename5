@@ -346,6 +346,7 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
+            - ls -alR $STEP_WORKSPACE_DIR
             - echo "executing task command 1"
             - echo "executing task command 2"
           onSuccess:
