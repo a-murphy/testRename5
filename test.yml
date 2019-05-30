@@ -258,10 +258,10 @@ pipelines:
             - github
      #       - slack
         triggeredBy:
-      #    resources:
-      #      - sample_java_file_test
-          steps:
-            - main_step
+          resources:
+            - sample_java_file_test
+      #    steps:
+      #      - main_step
         execution:
          # onStart:
           #  - send_notification slack
