@@ -441,7 +441,27 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
-   
+      - name: after_resource
+        type: bash
+     #   requires:
+     #     resources:
+     #       - gitRepoResource
+        triggeredBy:
+       #   resources:
+       #     - imageResource
+          steps:
+            - second_pipeline
+        execution:
+          onExecute:
+            - echo "testing" > test.txt
+            - cache_files test.txt my_file
+            - ls -alR $STEP_WORKSPACE_DIR
+            - restore_cache my_file cachefile.txt
+            - ls
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+
+
 
 
 
