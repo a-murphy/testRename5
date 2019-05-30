@@ -338,8 +338,8 @@ pipelines:
      #     resources:
      #       - gitRepoResource
         triggeredBy:
-       #   resources:
-       #     - imageResource
+          resources:
+            - imageResource
           steps:
             - main_step
         execution:
