@@ -340,8 +340,8 @@ pipelines:
         triggeredBy:
           resources:
             - imageResource
-          steps:
-            - main_step
+       #   steps:
+       #     - main_step
         execution:
           onStart:
             - echo "Prepping build environment"
