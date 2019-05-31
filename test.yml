@@ -340,8 +340,8 @@ pipelines:
         triggeredBy:
           resources:
             - imageResource
-    #      steps:
-    #        - main_step
+          steps:
+            - main_step
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -446,11 +446,11 @@ pipelines:
      #   requires:
      #     resources:
      #       - gitRepoResource
-       # triggeredBy:
+        triggeredBy:
        #   resources:
        #     - imageResource
-       #   steps:
-       #     - second_pipeline
+          steps:
+            - second_pipeline
         execution:
           onExecute:
             - echo "testing" > test.txt
