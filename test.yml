@@ -477,7 +477,7 @@ pipelines:
           resources:
             - imageResource
           steps:
-       #     - pre_second_pipeline
+            - pre_second_pipeline
         execution:
           onStart:
             - echo "Prepping build environment"
