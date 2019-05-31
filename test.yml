@@ -143,9 +143,9 @@ pipelines:
             - ls
             - save_pipeline_state testfile.txt testing
             - save_pipeline_state key.pem key.pem
-            - mkdir -p testdirectory
-            - echo "testing" > testdirectory/test1.txt
-            - echo "testing again" > testdirectory/test2.txt
+         #   - mkdir -p testdirectory
+         #   - echo "testing" > testdirectory/test1.txt
+         #   - echo "testing again" > testdirectory/test2.txt
 
       - name: main_step
         type: bash
@@ -446,11 +446,11 @@ pipelines:
      #   requires:
      #     resources:
      #       - gitRepoResource
-        triggeredBy:
+       # triggeredBy:
        #   resources:
        #     - imageResource
-          steps:
-            - second_pipeline
+       #   steps:
+       #     - second_pipeline
         execution:
           onExecute:
             - echo "testing" > test.txt
@@ -461,7 +461,53 @@ pipelines:
             - echo "executing task command 1"
             - echo "executing task command 2"
 
-
-
-
-
+ - name: test_pipeline_3
+    steps:
+      - name: pre_third_pipeline
+        type: bash
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+      - name: third_pipeline
+        type: bash
+        triggeredBy:
+          resources:
+            - imageResource
+          steps:
+       #     - pre_second_pipeline
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete:
+            - echo "Cleaning up some stuff"
+          onCancel:
+            - echo "Someone cancelled the job"
+      - name: post_third_pipeline
+        type: bash
+        triggeredBy:
+          steps:
+            - third_pipeline
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete:
+            - echo "Cleaning up some stuff"
+          onCancel:
+            - echo "Someone cancelled the job"
