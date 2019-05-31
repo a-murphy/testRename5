@@ -461,7 +461,7 @@ pipelines:
             - echo "executing task command 1"
             - echo "executing task command 2"
 
- - name: test_pipeline_3
+  - name: test_pipeline_3
     steps:
       - name: pre_third_pipeline
         type: bash
