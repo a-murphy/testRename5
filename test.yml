@@ -210,7 +210,7 @@ pipelines:
             - ls
             - write_output gitRepoResource2 key=value123
             - update_commit_status gitRepoResource --status processing --message "my message"
-        #    - update_commit_status bitbucketServerRepoResource --status failure --context "failing-context"
+            - update_commit_status bitbucketServerRepoResource --status failure --context "failing-context"
         #    - update_commit_status bitbucketServerRepoResource --status success --message "my message" --context "succcess-context"
           #  - update_commit_status gitRepoResource --status testing
         #    - update_commit_status gitRepoResource2
