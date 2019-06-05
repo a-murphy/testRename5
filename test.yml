@@ -16,7 +16,7 @@ resources:
       sha: master
       
   - name: imageResource
-    type: image
+    type: Image
     imageName: amurphy/test
     configuration:
       integrationName: docker
