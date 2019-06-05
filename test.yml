@@ -1,6 +1,6 @@
 resources:
   - name: gitRepoResource
-    type: gitRepo
+    type: GitRepo
     repoPath: a-murphy/5testRename5
     configuration:
       integrationName: github
@@ -40,7 +40,7 @@ resources:
 #      sha: master
 
   - name: gitRepoResource2
-    type: gitRepo
+    type: GitRepo
     repoPath: a-murphy/5testRename5
     configuration:
       integrationName: github
