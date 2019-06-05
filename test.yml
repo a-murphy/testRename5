@@ -1,18 +1,15 @@
 resources:
   - name: my_aql
-    type: artifactoryQuery
     type: Aql
     configuration:
       integrationName: artifactoryIntegration
 
   - name: myBuildInfo
-    type: artifactoryBuildInfo
     type: BuildInfo
     configuration:
       integrationName: artifactoryIntegration
 
   - name: myBuildInfo
-    type: artifactoryBuildInfo
     type: BuildInfo
     configuration:
       integrationName: artifactoryIntegration
