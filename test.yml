@@ -1,4 +1,30 @@
 resources:
+  - name: my_aql
+    type: artifactoryQuery
+    type: Aql
+    configuration:
+      integrationName: artifactoryIntegration
+
+  - name: myBuildInfo
+    type: artifactoryBuildInfo
+    type: BuildInfo
+    configuration:
+      integrationName: artifactoryIntegration
+
+  - name: myBuildInfo
+    type: artifactoryBuildInfo
+    type: BuildInfo
+    configuration:
+      integrationName: artifactoryIntegration
+
+  - name: kubeClusterIntegrationResource
+    type: KubeCluster
+    configuration:
+      integrationName: kubeIntegration
+      bastionHostIP: 1.2.3.4
+      bastionUser: sshUser
+      bastionIntegrationName: sshKeyIntegration
+
   - name: gitRepoResource
     type: GitRepo
     repoPath: a-murphy/5testRename5
@@ -57,14 +83,14 @@ resources:
     version:
       sha: master
 
-#  - name: fileIntegrationResource
-#    type: file
-#    fileLocation: location
-#    configuration:
-#      files:
-#        except:      file
-#        only:        file       
-#      integrationName: fileServerIntegration 
+  - name: fileIntegrationResource
+    type: RemoteFile
+    fileLocation: location
+    configuration:
+      files:
+        except:      file
+        only:        file       
+      integrationName: fileServerIntegration 
 #    version:
 #      fileName: file
 #      fileDtTm: test6
