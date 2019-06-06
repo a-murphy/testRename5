@@ -1,18 +1,4 @@
 resources:
-  - name: my_aql
-    type: Aql
-    configuration:
-      integrationName: artifactoryIntegration
-
-  - name: myBuildInfo
-    type: BuildInfo
-    configuration:
-      integrationName: artifactoryIntegration
-
-  - name: myBuildInfo
-    type: BuildInfo
-    configuration:
-      integrationName: artifactoryIntegration
 
   - name: kubeClusterIntegrationResource
     type: KubeCluster
@@ -207,6 +193,8 @@ pipelines:
             - test
           resources:
         #    - stateOne
+            - fileIntegrationResource
+            - fileSpecResource
             - gitRepoResource
       #      - bitbucketServerRepoResource
         triggeredBy:
