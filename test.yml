@@ -8,8 +8,8 @@ resources:
     #     commit: false
     #     pullRequest: false
     #     pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
+        releaseCreate: true
+        tagCreate: true
     initialVersion:
       sha: master
 
