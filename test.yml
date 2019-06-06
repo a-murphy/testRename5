@@ -15,12 +15,12 @@ resources:
       path: a-murphy/5testRename5
      # branches:
      #   only: test[
-     # buildOn:
+      buildOn:
      #    commit: false
      #    pullRequest: true
      #    pullRequestClose: false
-     #    release: true
-     #    tagPush: true
+         releaseCreate: true
+         tagCreate: true
     version:
       sha: master
       
