@@ -27,7 +27,7 @@ resources:
   - name: imageResource
     type: Image
     configuration:
-      integrationName: docker
+      registry: docker
       imageName: amurphy/test
       imageTag: test
       autoPull: false
