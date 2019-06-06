@@ -82,12 +82,19 @@ resources:
 
   - name: fileIntegrationResource
     type: RemoteFile
-    fileLocation: location
     configuration:
+      fileLocation: location
+      fileName: file
       files:
         except:      file
         only:        file       
-      integrationName: fileServerIntegration 
+      source: github 
+      
+  - name: fileSpecResource
+    type: FileSpec
+    configuration:
+      pattern: test  
+      integrationName: github 
 #    version:
 #      fileName: file
 #      fileDtTm: test6
