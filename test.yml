@@ -79,7 +79,6 @@ resources:
     configuration:
       sourceArtifactory: github
       pattern: test  
-      integrationName: github 
 #    version:
 #      fileName: file
 #      fileDtTm: test6
