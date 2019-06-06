@@ -1,12 +1,12 @@
 resources:
 
-  - name: kubeClusterIntegrationResource
-    type: KubeCluster
-    configuration:
-      integrationName: kubeIntegration
-      bastionHostIP: 1.2.3.4
-      bastionUser: sshUser
-      bastionIntegrationName: sshKeyIntegration
+  #- name: kubeClusterIntegrationResource
+  #  type: KubeCluster
+  #  configuration:
+  #    integrationName: kubeIntegration
+  #    bastionHostIP: 1.2.3.4
+  #    bastionUser: sshUser
+  #    bastionIntegrationName: sshKeyIntegration
 
   - name: gitRepoResource
     type: GitRepo
@@ -26,13 +26,11 @@ resources:
       
   - name: imageResource
     type: Image
-    imageName: amurphy/test
     configuration:
       integrationName: docker
-      autoPull: false
-    version:
+      imageName: amurphy/test
       imageTag: test
-
+      autoPull: false
       
 #  - name: bitbucketServerRepoResource
 #    type: gitRepo
