@@ -388,19 +388,19 @@ pipelines:
           #inherited from bash
      
      #affinityGroup: bldGroup 
-     #     priority: 10
+          priority: 10
      #     timeoutSeconds: 120
      #     nodePool: node_pool
      #     chronological: false
-          integrations:
+     #     integrations:
      #       - name: artifactory
-            - name: docker
+     #       - name: docker
      #     inputSteps:
      #       - name: main_step  
-          inputResources:
-            - name: imageResource
+     #     inputResources:
+     #       - name: imageResource
         #    - name: my_releaseBundle # one ReleaseBundle is mandatory
-              trigger: false 
+     #         trigger: false 
         #  outputResources:
         #    - name: my_signed_releaseBundle  
   - name: test_pipeline_2
