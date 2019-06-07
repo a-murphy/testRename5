@@ -271,7 +271,6 @@ pipelines:
           affinityGroup: test_group 
           runtime:            
             type: host
-        requires:
       #    resources:
       #      - stateOne
       #      - sample_java_file_test
