@@ -391,9 +391,8 @@ pipelines:
           timeoutSeconds: 120
           nodePool: node_pool
           chronological: false
-
-          dryRun: false
-
+          integrations:
+            - name: artifactory
           inputSteps:
             - name: main_step  
           inputResources:
