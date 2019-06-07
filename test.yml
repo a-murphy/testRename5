@@ -381,7 +381,7 @@ pipelines:
   #          - echo "Someone cancelled the job"
   - name: test_pipeline_release
     steps:
-      - name: my_release
+      - name: my_release2
         type: SignReleaseBundle
         # used to control steps that need to execute within a VM context
         configuration:
