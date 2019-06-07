@@ -107,7 +107,7 @@ resources:
 pipelines:
   - name: test_pipeline_1
     setup:
-      environmentVariables:   
+   #   environmentVariables:   
    #    readOnly:
     #      ENV1: value-pipe-1
     #      ENV2: value-pipe-2
@@ -119,9 +119,8 @@ pipelines:
         configuration:
           affinityGroup: test_group 
           environmentVariables:
-            normal:
-              ENV1: value1
-              ENV2: value2
+            ENV1: value1
+            ENV2: value2
           runtime:            
             type: host
           #    options: test
@@ -165,9 +164,8 @@ pipelines:
         configuration:
           affinityGroup: test_group 
           environmentVariables:
-            normal:
-              ENV3: value3
-              ENV4: value4
+            ENV3: value3
+            ENV4: value4
         #  environmentVariables:
         #    normal:
         #      ENV1: value1
@@ -184,19 +182,14 @@ pipelines:
                 name: drydock/u16node
                 tag:  master
                 autoPull: false
-        requires:
-          integrations:
-            - test
-          resources:
-        #    - stateOne
-            - imageResource
-            - fileIntegrationResource
-            - fileSpecResource
-            - gitRepoResource
+        inputResources:
+          - name: imageResource
+          - name: fileIntegrationResource
+          - name: fileSpecResource
+          - name: gitRepoResource
       #      - bitbucketServerRepoResource
-        triggeredBy:
-          steps:
-            - in_trigger_step
+        inputSteps:
+          - name: in_trigger_step
         execution:
           onStart:
             - echo $CURRENT_SCRIPT_SECTION
@@ -256,8 +249,8 @@ pipelines:
        #     - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
             - echo "Someone cancelled the job"
         outputResources:
-          - gitRepoResource2
-          - imageResource
+          - name: gitRepoResource2
+          - name: imageResource
         #  - stateOne
       - name: other_step
         type: Bash
@@ -325,10 +318,9 @@ pipelines:
      #   requires:
      #     resources:
      #       - gitRepoResource
-        triggeredBy:
-          resources:
-            - gitRepoResource
-            - imageResource
+        inputResources:
+          - name: gitRepoResource
+          - name: imageResource
        #   steps:
        #     - main_step
         execution:
