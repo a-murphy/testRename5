@@ -204,7 +204,7 @@ pipelines:
             - name: in_trigger_step
           outputResources:
             - name: gitRepoResource2
-            - name: imageResource
+       #     - name: imageResource
         execution:
           onStart:
             - echo $CURRENT_SCRIPT_SECTION
