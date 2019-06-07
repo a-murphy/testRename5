@@ -31,7 +31,7 @@ resources:
       imageName: amurphy/test
       imageTag: master.105
       autoPull: true
-  - name: my_releaseBundle
+  - name: my_releaseBundle2
     type: ReleaseBundle
     configuration:
       sourceArtifactory: artifactory
@@ -399,7 +399,7 @@ pipelines:
      #       - name: main_step  
           inputResources:
      #       - name: imageResource
-            - name: my_releaseBundle # one ReleaseBundle is mandatory
+            - name: my_releaseBundle2 # one ReleaseBundle is mandatory
      #         trigger: false 
           outputResources:
             - name: my_signed_releaseBundle  
