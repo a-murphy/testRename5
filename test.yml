@@ -34,17 +34,15 @@ resources:
   - name: my_releaseBundle
     type: ReleaseBundle
     configuration:
-      registry: docker
-      imageName: amurphy/test
-      imageTag: master.105
-      autoPull: true
+      sourceArtifactory: docker
+      name: amurphy/test
+      version: master.105
   - name: my_signed_releaseBundle
     type: ReleaseBundle
     configuration:
-      registry: docker
-      imageName: amurphy/test
-      imageTag: master.105
-      autoPull: true
+      sourceArtifactory: docker
+      name: amurphy/test
+      version: master.105
       
 #  - name: bitbucketServerRepoResource
 #    type: gitRepo
