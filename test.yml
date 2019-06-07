@@ -393,8 +393,8 @@ pipelines:
         type: SignReleaseBundle
         # used to control steps that need to execute within a VM context
         configuration:
-        environmentVariables:
-          ENV1: value1
+          environmentVariables:
+            ENV1: value1
      
      #affinityGroup: bldGroup 
           priority: 10
