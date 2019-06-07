@@ -194,14 +194,17 @@ pipelines:
                 name: drydock/u16node
                 tag:  master
                 autoPull: false
-        inputResources:
-          - name: imageResource
-          - name: fileIntegrationResource
-          - name: fileSpecResource
-          - name: gitRepoResource
+          inputResources:
+            - name: imageResource
+            - name: fileIntegrationResource
+            - name: fileSpecResource
+            - name: gitRepoResource
       #      - bitbucketServerRepoResource
-        inputSteps:
-          - name: in_trigger_step
+          inputSteps:
+            - name: in_trigger_step
+          outputResources:
+            - name: gitRepoResource2
+            - name: imageResource
         execution:
           onStart:
             - echo $CURRENT_SCRIPT_SECTION
@@ -260,9 +263,7 @@ pipelines:
             - echo $CURRENT_SCRIPT_SECTION
        #     - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
             - echo "Someone cancelled the job"
-        outputResources:
-          - name: gitRepoResource2
-          - name: imageResource
+
         #  - stateOne
       - name: other_step
         type: Bash
@@ -277,11 +278,10 @@ pipelines:
           integrations:
             - github
      #       - slack
-        triggeredBy:
+          inputSteps:
       #    resources:
       #      - sample_java_file_test
-          steps:
-            - main_step
+            - name: main_step
         execution:
          # onStart:
           #  - send_notification slack
@@ -330,9 +330,10 @@ pipelines:
      #   requires:
      #     resources:
      #       - gitRepoResource
-        inputResources:
-          - name: gitRepoResource
-          - name: imageResource
+        configuration:
+          inputResources:
+            - name: gitRepoResource
+            - name: imageResource
        #   steps:
        #     - main_step
         execution:
@@ -356,11 +357,10 @@ pipelines:
      #   requires:
      #     resources:
      #       - gitRepoResource
-        triggeredBy:
-          resources:
-            - imageResource
-          steps:
-            - main_step
+          inputResources:
+            - name: imageResource
+          inputSteps:
+            - name: main_step
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -439,12 +439,11 @@ pipelines:
       #  requires:
       #    resources:
       #      - gitRepoResource2
-        triggeredBy:
-          resources:
-            - gitRepoResource
-            - imageResource
-          steps:
-            - pre_second_pipeline
+        inputResources:
+          - name: gitRepoResource
+          - name: imageResource
+        inputSteps:
+          - name: pre_second_pipeline
         #    - main_step
         execution:
           onStart:
@@ -462,9 +461,8 @@ pipelines:
             - echo "Someone cancelled the job"
       - name: post_second_pipeline
         type: Bash
-        triggeredBy:
-          steps:
-            - second_pipeline
+        inputSteps:
+          - name: second_pipeline
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -484,9 +482,8 @@ pipelines:
      #   requires:
      #     resources:
      #       - gitRepoResource
-       # triggeredBy:
-       #   resources:
-       #     - imageResource
+        inputResources:
+          - name: imageResource
        #   steps:
        #     - second_pipeline
         execution:
@@ -511,11 +508,10 @@ pipelines:
             - echo "executing task command 2"
       - name: third_pipeline
         type: Bash
-        triggeredBy:
-          resources:
-            - imageResource
-          steps:
-            - pre_second_pipeline
+        inputResources:
+          - name: imageResource
+        inputSteps:
+          - name: pre_second_pipeline
         execution:
           onStart:
             - echo "Prepping build environment"
