@@ -129,7 +129,7 @@ pipelines:
       - name: in_trigger_step
         type: Bash
         configuration:
-      #    affinityGroup: test_group 
+          affinityGroup: test_group 
         #  environmentVariables:
         #    ENV1: value1
         #    ENV2: value2
@@ -393,7 +393,8 @@ pipelines:
         type: SignReleaseBundle
         # used to control steps that need to execute within a VM context
         configuration:
-          #inherited from bash
+        environmentVariables:
+         ENV1: value1
      
      #affinityGroup: bldGroup 
           priority: 10
