@@ -392,7 +392,7 @@ pipelines:
      #     timeoutSeconds: 120
      #     nodePool: node_pool
      #     chronological: false
-           integrations:
+          integrations:
      #       - name: artifactory
             - name: docker
      #     inputSteps:
