@@ -386,20 +386,23 @@ pipelines:
         # used to control steps that need to execute within a VM context
         configuration:
           #inherited from bash
-          affinityGroup: bldGroup 
-          priority: 10
-          timeoutSeconds: 120
-          nodePool: node_pool
-          chronological: false
-          integrations:
-            - name: artifactory
+     
+     #affinityGroup: bldGroup 
+     #     priority: 10
+     #     timeoutSeconds: 120
+     #     nodePool: node_pool
+     #     chronological: false
+           integrations:
+     #       - name: artifactory
+            - name: docker
      #     inputSteps:
      #       - name: main_step  
           inputResources:
-            - name: my_releaseBundle # one ReleaseBundle is mandatory
-              trigger: false    # default true
-          outputResources:
-            - name: my_signed_releaseBundle   # ReleaseBundle resource 
+            - name: imageResource
+        #    - name: my_releaseBundle # one ReleaseBundle is mandatory
+              trigger: false 
+        #  outputResources:
+        #    - name: my_signed_releaseBundle  
   - name: test_pipeline_2
     #setup:
     #  environmentVariables:
