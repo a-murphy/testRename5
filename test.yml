@@ -392,17 +392,17 @@ pipelines:
      #     timeoutSeconds: 120
      #     nodePool: node_pool
      #     chronological: false
-     #     integrations:
-     #       - name: artifactory
-     #       - name: docker
-     #     inputSteps:
+          integrations:
+            - name: artifactory
+            - name: docker
+     #inputSteps:
      #       - name: main_step  
-     #     inputResources:
+          inputResources:
      #       - name: imageResource
-        #    - name: my_releaseBundle # one ReleaseBundle is mandatory
+            - name: my_releaseBundle # one ReleaseBundle is mandatory
      #         trigger: false 
-        #  outputResources:
-        #    - name: my_signed_releaseBundle  
+          outputResources:
+            - name: my_signed_releaseBundle  
   - name: test_pipeline_2
     #setup:
     #  environmentVariables:
