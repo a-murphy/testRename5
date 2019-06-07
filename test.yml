@@ -414,6 +414,8 @@ pipelines:
     steps:
       - name: pre_second_pipeline
         type: bash
+        configuration:
+          priority: 10
       #  requires:
       #    resources:
       #      - gitRepoResource2
@@ -439,14 +441,15 @@ pipelines:
             - echo "Someone cancelled the job"
       - name: second_pipeline
         type: Bash
+        configuration:
       #  requires:
       #    resources:
       #      - gitRepoResource2
-        inputResources:
-          - name: gitRepoResource
-          - name: imageResource
-        inputSteps:
-          - name: pre_second_pipeline
+          inputResources:
+            - name: gitRepoResource
+            - name: imageResource
+          inputSteps:
+            - name: pre_second_pipeline
         #    - main_step
         execution:
           onStart:
@@ -464,8 +467,9 @@ pipelines:
             - echo "Someone cancelled the job"
       - name: post_second_pipeline
         type: Bash
-        inputSteps:
-          - name: second_pipeline
+        configuration:
+          inputSteps:
+            - name: second_pipeline
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -482,11 +486,12 @@ pipelines:
             - echo "Someone cancelled the job"
       - name: after_resource
         type: Bash
+        configuration:
      #   requires:
      #     resources:
      #       - gitRepoResource
-        inputResources:
-          - name: imageResource
+          inputResources:
+            - name: imageResource
        #   steps:
        #     - second_pipeline
         execution:
@@ -503,6 +508,8 @@ pipelines:
     steps:
       - name: pre_second_pipeline
         type: Bash
+        configuration:
+          priority: 10
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -511,10 +518,11 @@ pipelines:
             - echo "executing task command 2"
       - name: third_pipeline
         type: Bash
-        inputResources:
-          - name: imageResource
-        inputSteps:
-          - name: pre_second_pipeline
+        configuration:
+          inputResources:
+            - name: imageResource
+          inputSteps:
+            - name: pre_second_pipeline
         execution:
           onStart:
             - echo "Prepping build environment"
