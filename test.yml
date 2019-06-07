@@ -29,8 +29,8 @@ resources:
     configuration:
       registry: docker
       imageName: amurphy/test
-      imageTag: test
-      autoPull: false
+      imageTag: master.105
+      autoPull: true
       
 #  - name: bitbucketServerRepoResource
 #    type: gitRepo
@@ -191,6 +191,7 @@ pipelines:
             - test
           resources:
         #    - stateOne
+            - imageResource
             - fileIntegrationResource
             - fileSpecResource
             - gitRepoResource
