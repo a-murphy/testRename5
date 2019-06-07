@@ -115,10 +115,9 @@ pipelines:
         type: host
     steps:
       - name: in_trigger_step
-        type: bash
+        type: Bash
         configuration:
           affinityGroup: test_group 
-        setup:
           environmentVariables:
             normal:
               ENV1: value1
@@ -162,10 +161,9 @@ pipelines:
          #   - echo "testing again" > testdirectory/test2.txt
 
       - name: main_step
-        type: bash
+        type: Bash
         configuration:
           affinityGroup: test_group 
-        setup:
           environmentVariables:
             normal:
               ENV3: value3
@@ -262,10 +260,9 @@ pipelines:
           - imageResource
         #  - stateOne
       - name: other_step
-        type: bash
+        type: Bash
         configuration:
           affinityGroup: test_group 
-        setup:
           runtime:            
             type: host
         requires:
@@ -324,7 +321,7 @@ pipelines:
           onCancel:
             - echo "Someone cancelled the job"
       - name: second_step
-        type: bash
+        type: Bash
      #   requires:
      #     resources:
      #       - gitRepoResource
@@ -349,7 +346,7 @@ pipelines:
           onCancel:
             - echo "Someone cancelled the job"
       - name: after_resource2
-        type: bash
+        type: Bash
         configuration:
           affinityGroup: test_group
      #   requires:
@@ -415,7 +412,7 @@ pipelines:
           onCancel:
             - echo "Someone cancelled the job"
       - name: second_pipeline
-        type: bash
+        type: Bash
       #  requires:
       #    resources:
       #      - gitRepoResource2
@@ -441,7 +438,7 @@ pipelines:
           onCancel:
             - echo "Someone cancelled the job"
       - name: post_second_pipeline
-        type: bash
+        type: Bash
         triggeredBy:
           steps:
             - second_pipeline
@@ -460,7 +457,7 @@ pipelines:
           onCancel:
             - echo "Someone cancelled the job"
       - name: after_resource
-        type: bash
+        type: Bash
      #   requires:
      #     resources:
      #       - gitRepoResource
@@ -482,7 +479,7 @@ pipelines:
   - name: test_pipeline_3
     steps:
       - name: pre_second_pipeline
-        type: bash
+        type: Bash
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -490,7 +487,7 @@ pipelines:
             - echo "executing task command 1"
             - echo "executing task command 2"
       - name: third_pipeline
-        type: bash
+        type: Bash
         triggeredBy:
           resources:
             - imageResource
