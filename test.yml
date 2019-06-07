@@ -34,13 +34,13 @@ resources:
   - name: my_releaseBundle
     type: ReleaseBundle
     configuration:
-      sourceArtifactory: docker
+      sourceArtifactory: artifactory
       name: amurphy/test
       version: master.105
   - name: my_signed_releaseBundle
     type: ReleaseBundle
     configuration:
-      sourceArtifactory: docker
+      sourceArtifactory: artifactory
       name: amurphy/test
       version: master.105
       
