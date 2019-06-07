@@ -333,8 +333,8 @@ pipelines:
           inputResources:
             - name: gitRepoResource
             - name: imageResource
-       #   steps:
-       #     - main_step
+          inputSteps:
+            - name: main_step
         execution:
           onStart:
             - echo "Prepping build environment"
