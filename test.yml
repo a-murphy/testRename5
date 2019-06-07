@@ -265,120 +265,120 @@ pipelines:
             - echo "Someone cancelled the job"
 
         #  - stateOne
-      - name: other_step
-        type: Bash
-        configuration:
-          affinityGroup: test_group 
-          runtime:            
-            type: host
+  #    - name: other_step
+  #      type: Bash
+  #      configuration:
+  #        affinityGroup: test_group 
+  #        runtime:            
+  #          type: host
       #    resources:
       #      - stateOne
       #      - sample_java_file_test
-          integrations:
-            - github
+  #        integrations:
+  #          - github
      #       - slack
-          inputSteps:
+  #        inputSteps:
       #    resources:
       #      - sample_java_file_test
-            - name: main_step
-        execution:
+  #          - name: main_step
+  #      execution:
          # onStart:
           #  - send_notification slack
       #      - echo "Prepping build environment"
       #      - echo "$testRunVariable"
       #      - echo "$testingAgain"
       #      - echo "$testThree"
-          onExecute:
+  #        onExecute:
           #  - send_notification slack
-            - echo "executing task command 1"
-            - echo "executing task command 2"
-            - echo "$testRunVariable"
-            - echo "$testingAgain"
-            - echo "$testThree"
-            - add_run_variable testRunVariable="testingAgain"
-            - yes "testing 1234 " | head -c 100000 > test.txt
-            - echo "testing 1234 " > test2.txt
-            - openssl genrsa -out key.pem 2048
-            - openssl rsa -in key.pem -text -noout
-            - openssl rsa -in key.pem -pubout -out pub.pem 
-            - openssl rsa -in pub.pem -pubin -text -noout 
-            - encrypt_file --output encrypted.txt test.txt --key pub.pem
+  #          - echo "executing task command 1"
+  #          - echo "executing task command 2"
+  #          - echo "$testRunVariable"
+  #          - echo "$testingAgain"
+  #          - echo "$testThree"
+  #          - add_run_variable testRunVariable="testingAgain"
+  #          - yes "testing 1234 " | head -c 100000 > test.txt
+  #          - echo "testing 1234 " > test2.txt
+  #          - openssl genrsa -out key.pem 2048
+  #          - openssl rsa -in key.pem -text -noout
+  #          - openssl rsa -in key.pem -pubout -out pub.pem 
+  #          - openssl rsa -in pub.pem -pubin -text -noout 
+  #          - encrypt_file --output encrypted.txt test.txt --key pub.pem
         #    - cat encrypted.txt
-            - decrypt_file encrypted.txt --output decrypted.txt --key key.pem
+  #          - decrypt_file encrypted.txt --output decrypted.txt --key key.pem
         #    - cat decrypted.txt
-            - string=$(encrypt_string "testing 123" --key pub.pem)
-            - echo $string
-            - decrypt_string --key key.pem "$string"
-            - encrypt_file --output encrypted2.txt test2.txt --key pub.pem
-            - cat encrypted2.txt
-            - decrypt_file encrypted2.txt --output decrypted2.txt --key key.pem
-            - cat decrypted2.txt
-          onSuccess:
+  #          - string=$(encrypt_string "testing 123" --key pub.pem)
+  #          - echo $string
+  #          - decrypt_string --key key.pem "$string"
+  #          - encrypt_file --output encrypted2.txt test2.txt --key pub.pem
+  #          - cat encrypted2.txt
+  #          - decrypt_file encrypted2.txt --output decrypted2.txt --key key.pem
+  #          - cat decrypted2.txt
+  #        onSuccess:
          #   - send_notification slack
-            - echo "Job well done!"
-          onFailure:
+  #          - echo "Job well done!"
+  #        onFailure:
          #   - send_notification slack
-            - echo "uh oh, something went wrong"
-          onComplete: #always
+  #          - echo "uh oh, something went wrong"
+  #        onComplete: #always
          #   - send_notification slack
-            - echo "Cleaning up some stuff"
-          onCancel:
-            - echo "Someone cancelled the job"
-      - name: second_step
-        type: Bash
+  #          - echo "Cleaning up some stuff"
+  #        onCancel:
+  #          - echo "Someone cancelled the job"
+  #    - name: second_step
+  #      type: Bash
      #   requires:
      #     resources:
      #       - gitRepoResource
-        configuration:
-          inputResources:
-            - name: gitRepoResource
-            - name: imageResource
-          inputSteps:
-            - name: main_step
-        execution:
-          onStart:
-            - echo "Prepping build environment"
-          onExecute:
-            - echo "executing task command 1"
-            - echo "executing task command 2"
-          onSuccess:
-            - echo "Job well done!"
-          onFailure:
-            - echo "uh oh, something went wrong"
-          onComplete:
-            - echo "Cleaning up some stuff"
-          onCancel:
-            - echo "Someone cancelled the job"
-      - name: after_resource2
-        type: Bash
-        configuration:
-          affinityGroup: test_group
+  #      configuration:
+  #        inputResources:
+  #          - name: gitRepoResource
+  #          - name: imageResource
+  #        inputSteps:
+  #          - name: main_step
+  #      execution:
+  #        onStart:
+  #          - echo "Prepping build environment"
+  #        onExecute:
+  #          - echo "executing task command 1"
+  #          - echo "executing task command 2"
+  #        onSuccess:
+  #          - echo "Job well done!"
+  #        onFailure:
+  #          - echo "uh oh, something went wrong"
+  #        onComplete:
+  #          - echo "Cleaning up some stuff"
+  #        onCancel:
+  #          - echo "Someone cancelled the job"
+  #    - name: after_resource2
+  #      type: Bash
+  #      configuration:
+  #        affinityGroup: test_group
      #   requires:
      #     resources:
      #       - gitRepoResource
-          inputResources:
-            - name: imageResource
-          inputSteps:
-            - name: main_step
-        execution:
-          onStart:
-            - echo "Prepping build environment"
-          onExecute:
-            - echo "testing" > test.txt
-            - cache_files test.txt my_file
-            - ls -alR $STEP_WORKSPACE_DIR
-            - restore_cache my_file cachefile.txt
-            - ls
-            - echo "executing task command 1"
-            - echo "executing task command 2"
-          onSuccess:
-            - echo "Job well done!"
-          onFailure:
-            - echo "uh oh, something went wrong"
-          onComplete:
-            - echo "Cleaning up some stuff"
-          onCancel:
-            - echo "Someone cancelled the job"
+  #        inputResources:
+  #          - name: imageResource
+  #        inputSteps:
+  #          - name: main_step
+  #      execution:
+  #        onStart:
+  #          - echo "Prepping build environment"
+  #        onExecute:
+  #          - echo "testing" > test.txt
+  #          - cache_files test.txt my_file
+  #          - ls -alR $STEP_WORKSPACE_DIR
+  #          - restore_cache my_file cachefile.txt
+  #          - ls
+  #          - echo "executing task command 1"
+  #          - echo "executing task command 2"
+  #        onSuccess:
+  #          - echo "Job well done!"
+  #        onFailure:
+  #          - echo "uh oh, something went wrong"
+  #        onComplete:
+  #          - echo "Cleaning up some stuff"
+  #        onCancel:
+  #          - echo "Someone cancelled the job"
       - name: my_release
         type: SignReleaseBundle
         # used to control steps that need to execute within a VM context
