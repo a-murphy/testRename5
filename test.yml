@@ -205,7 +205,7 @@ pipelines:
                 tag:  master
                 autoPull: false
           inputResources:
-            - name: imageResource
+         #   - name: imageResource
             - name: fileIntegrationResource
             - name: fileSpecResource
             - name: gitRepoResource
@@ -214,7 +214,7 @@ pipelines:
             - name: in_trigger_step
           outputResources:
             - name: gitRepoResource2
-       #     - name: imageResource
+            - name: imageResource
           integrations:
             - name: github
             - name: bitbucket
@@ -431,6 +431,8 @@ pipelines:
         type: bash
         configuration:
           priority: 10
+          inputResources:
+            - name: imageResource
       #  requires:
       #    resources:
       #      - gitRepoResource2
@@ -462,7 +464,7 @@ pipelines:
       #      - gitRepoResource2
           inputResources:
             - name: gitRepoResource
-            - name: imageResource
+       #     - name: imageResource
           inputSteps:
             - name: pre_second_pipeline
         #    - main_step
