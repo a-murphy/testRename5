@@ -472,7 +472,7 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
-            - echo "executing task command 1"
+            - echo "$step_triggered_by_resource_name"
             - echo "executing task command 2"
           onSuccess:
             - echo "Job well done!"
@@ -491,7 +491,7 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
-            - echo "executing task command 1"
+            - echo "$step_triggered_by_resource_name"
             - echo "executing task command 2"
           onSuccess:
             - echo "Job well done!"
