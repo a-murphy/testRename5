@@ -428,7 +428,7 @@ pipelines:
     #    type: host
     steps:
       - name: pre_second_pipeline
-        type: bash
+        type: Bash
         configuration:
           priority: 10
           inputResources:
