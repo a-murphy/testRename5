@@ -220,6 +220,8 @@ pipelines:
             - name: bitbucket
             - name: bitbucketServer
             - name: test
+            - name: docker
+            - name: artifactory
         execution:
           onStart:
             - echo $CURRENT_SCRIPT_SECTION
