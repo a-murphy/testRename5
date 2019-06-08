@@ -173,10 +173,10 @@ pipelines:
             - echo $testPipelineVariable
             - echo $testingAgain
             - restore_pipeline_state testing testfile2.txt
-            - save_pipeline_state key.pem key2.pem
+         #   - save_pipeline_state key.pem key2.pem
             - ls
             - save_pipeline_state testfile.txt testing
-            - save_pipeline_state key.pem key.pem
+         #   - save_pipeline_state key.pem key.pem
          #   - mkdir -p testdirectory
          #   - echo "testing" > testdirectory/test1.txt
          #   - echo "testing again" > testdirectory/test2.txt
