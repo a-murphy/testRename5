@@ -216,10 +216,10 @@ pipelines:
             - name: gitRepoResource2
        #     - name: imageResource
           integrations:
-            - github
-            - bitbucket
-            - bitbucketServer
-            - test
+            - name: github
+            - name: bitbucket
+            - name: bitbucketServer
+            - name: test
         execution:
           onStart:
             - echo $CURRENT_SCRIPT_SECTION
