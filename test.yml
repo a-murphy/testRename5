@@ -172,10 +172,10 @@ pipelines:
             - echo $testRunVariable
             - echo $testPipelineVariable
             - echo $testingAgain
-            - restore_pipeline_state testing testfile2.txt
+         #   - restore_pipeline_state testing testfile2.txt
          #   - save_pipeline_state key.pem key2.pem
             - ls
-            - save_pipeline_state testfile.txt testing
+         #   - save_pipeline_state testfile.txt testing
          #   - save_pipeline_state key.pem key.pem
          #   - mkdir -p testdirectory
          #   - echo "testing" > testdirectory/test1.txt
@@ -243,7 +243,7 @@ pipelines:
             - ls
             - echo "testing1234" > testing.txt
             - cache_files testing.txt test
-            - restore_pipeline_state testing testfile.txt
+          #  - restore_pipeline_state testing testfile.txt
             - restore_pipeline_state key.pem key.pem
             - ls
             - write_output gitRepoResource2 key=value123
