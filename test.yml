@@ -396,6 +396,95 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
+            
+      - name: step_1
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: main_step
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+      - name: step_2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_1
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+      - name: step_3
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_2
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+      - name: step_4
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_3
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+      - name: step_5
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_4
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+      - name: step_6
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_5
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+      - name: step_7
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_6
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+      - name: step_8
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
   - name: test_pipeline_release
     steps:
       - name: my_release2
