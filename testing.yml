@@ -1,4 +1,726 @@
+
+resources:
+
+  - name: ns_aql
+    type: Aql
+    configuration:
+      sourceArtifactory: test
+      query: 'items.find({"$and":[{"artifact.module.build.name":{"$eq":"native_pipeline"}},{"artifact.module.build.number":{"$eq":"8"}}]})'     
+      #addedProperties:
+      #  FOO: "value1a value1b"
+      #  BAR: "value2a value2b"
+      mappings:
+        - name: "a"
+          input: "regex"
+          output: "$1/$2"
+        - name: "b"
+          input: "regex"
+          output: "$2/$1"
+          
+  - name: ns_image
+    type: Image
+    configuration:
+      imageName: shippabledocker/sample-node
+      registry: test
+      autoPull: true
+      imageTag: latest
+      
+  - name: ns_dockerbuild_gitRepo
+    type: GitRepo
+    configuration:
+      path: jpline/sample-script
+      gitProvider: github
+      
+  - name: ns_buildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: test
+      buildName: varsha_ns
+      buildNumber: 123
+  
+  - name: ns_promotedInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: test
+      buildName: promote_docker_test
+      buildNumber: 1
+      
+  - name: ns_distributionRule
+    type: DistributionRule
+    configuration:
+      sourceArtifactory: test
+      cityName: "*"
+      serviceName: "*"
+      siteName: "*"
+      countryCodes:
+        - "CN"
+        
+  - name: ns_releaseBundle
+    type: ReleaseBundle
+    configuration:
+      sourceArtifactory: test
+      name: test_2
+      version: v1.1.3
+
+  - name: ns_releaseBundle2
+    type: ReleaseBundle
+    configuration:
+      sourceArtifactory: test
+      name: test
+      version: foo
+      isSigned: false
+      
+  - name: ns_distributionRule2
+    type: DistributionRule
+    configuration:
+      sourceArtifactory: test
+      cityName: "Beng"
+      serviceName: "luru"
+      siteName: "test"
+      countryCodes:
+        - "3"
+        - "91"
+        - "141"
+        - "67"
+        
+  - name: ar_aql
+    type: Aql
+    configuration:
+      sourceArtifactory: test
+      query: test
+      addedProperties:
+        key1: val1
+        key2: val2
+      mappings: 
+        - name: ar_mapping1
+          input: echo "hello"   
+          output: echo "done"  
+        - name: ar_mapping2
+          input:  echo "hello2"   
+          output: echo "done2"  
+  
+  - name: ar_buildInfo 
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: test
+      buildName: arBuild
+      buildNumber: 123
+  
+  - name: ar_distributionRule
+    type: DistributionRule
+    configuration:
+      sourceArtifactory: test
+      serviceName: testservice
+      siteName: testsiteName
+      cityName: testCityName
+      countryCodes:
+        - test
+        - auto
+  
+  - name: ar_fileSpec
+    type: FileSpec
+    configuration:      
+      sourceArtifactory: test
+      pattern: docker
+      aql: ar_aql
+      target: ar_target
+      props: ar_props
+      recursive: false
+      flat: false
+      excludePatterns: virtual
+      archiveEntries: ar_archievEntries
+#       buildName: buildDocker
+#       buildNumber: 100
+      sortBy: name
+      sortOrder: ascending
+      limit: 120
+      offset: 12
+ 
+  - name: ar_gitRepo
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: jpline/sample-script
+      files:
+        include: tes*
+        exclude: ech*
+      branches:
+        include: mast*
+        exclude: pip*
+      tags:
+        include: tag*
+        exclude: relea*
+      buildOn:
+         commit: true
+         pullRequestCreate: true
+         pullRequestClose: true
+         releaseCreate: true
+         tagCreate: true
+      shallowDepth: 3
+  
+  - name: ar_image
+    type: Image
+    configuration:
+       registry: test
+       imageName: shippabledocker/sample-node
+       imageTag: latest
+       autoPull: true  # default false
+  
+  - name: ar_image_python
+    type: Image
+    configuration:
+       registry: test
+       imageName: shippabledocker/sample-python
+       imageTag: latest
+       autoPull: true  # default false
+       
+  - name: ar_kubeCluster
+    type: KubeCluster
+    configuration:
+      integrationName: test
+      kubernetesConfig: varsha_kube
+      bastionHostIP: 1.2.3.4
+      bastionUser: sshUser
+      bastionIntegrationName: varsha_sshKey
+  
+  - name: ar_releaseBundle
+    type: ReleaseBundle
+    configuration:
+      sourceArtifactory: test
+      name: docker
+      version: v1.2.3
+      isSigned: true
+      
+  - name: ar_remoteFile
+    type: RemoteFile
+    configuration:      
+      source: varsha_file
+      fileLocation: $HOME
+      fileName: steplet
+      fileDateTime: 06-Apr-2020
+  
+  - name: ar_vmCluster
+    type: VmCluster
+    configuration:
+      sshKey: test
+      targets:
+        - 1.2.3.4
+        - 1.2.3.5
+        - 1.2.3.6
+        
+  - name: ar_webhook
+    type: Webhook
+    configuration:
+      webhookName: test
+      payload: "testing from resource"
+
 pipelines:
+  - name: varsha_pipeline_ar
+    steps:
+      - name: utility_cmds_bash
+        type: Bash
+        configuration:
+          environmentVariables:
+            ENV1: value1
+            ENV2: value2
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_aql
+            - name: ar_buildInfo 
+            - name: ar_distributionRule
+           # - name: ar_fileSpec
+            - name: ar_gitRepo
+              trigger: false
+            - name: ar_image
+            - name: ar_kubeCluster
+            - name: ar_releaseBundle
+            - name: ar_remoteFile
+            - name: ar_vmCluster
+            - name: ar_webhook
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: nodejs
+                versions: 
+                  - 8.16.0
+                  - 10.15.3
+        execution:
+          onExecute:
+            - printenv
+            - docker images
+            - test "$ENV1" == "value1"
+            - test "$ENV2" == "value2"
+            - echo imageTag=$imageTag
+            
+            - echo "-------------------------------------------- IMAGE RESOURCE -------------------------------------------------"
+            - add_run_variable imageTag="firstTest"
+            - echo imageTag=$imageTag
+            - echo imageName=$imageName
+            - pushd $res_ar_image_resourcePath
+            - echo imageTag=$imageTag
+            - echo imageName=$imageName
+            - add_pipeline_variable imageName="shippabledocker/ship_plv2pyt" imageTag="tip"
+            - echo imageName=$imageName
+            - echo imageTag=$imageTag
+            - popd
+            - echo imageTag=$imageTag
+            - echo imageName=$imageName
+            - echo "------------------------------------------- DONE WITH IMAGE RESOURCE -----------------------------------------"
+            
+            - echo "-------------------------------------------- GITREPO RESOURCE ----------------------------------------------"
+            - pushd $res_ar_gitRepo_resourcePath
+            - source example.env
+            - echo $TEST
+            - ls -la
+            - save_run_state test.sh my_file
+            
+            - read_json packages.json "name"
+            
+            - openssl genrsa -out key.pem 1024 
+            - openssl rsa -in key.pem -text -noout
+            - openssl rsa -in key.pem -pubout -out pub.pem 
+            - openssl rsa -in pub.pem -pubin -text -noout 
+            
+            - encrypt_string "secretValue" --key pub.pem
+            - encrypted=$(encrypt_string "secretValue" --key pub.pem)
+            - echo "$encrypted"
+            - decrypt_string "$encrypted" --key key.pem
+            
+            - encrypt_file --output encrypted.txt crypt.txt --key pub.pem
+            - cat encrypted.txt
+            - decrypt_file encrypted.txt --output decrypted.txt --key key.pem
+            - cat decrypted.txt
+            
+            - echo "$STEP_URL"
+            - echo "$SAMPLE"
+            - echo "$TEST"
+            - echo "$res_ar_gitRepo_isPrerelease"
+            
+            - replace_envs example.json sample.json
+            - echo "$STEP_URL"
+            - echo "$TEST"
+            - echo "$BRANCH"
+            - echo "$res_ar_gitRepo_isPrerelease"
+            - echo "$SAMPLE"
+  
+            - cache_files echo.sh my_cache
+            - popd
+            
+            - echo "------------------------------------------ DONE WITH GITREPO RESOURCE --------------------------------------------------------------------------------"
+            
+            - bump_semver v1.0.1 major
+            - bump_semver v0.0.1 patch
+            
+            - compare_git --resource ar_gitRepo --commit-range HEAD~1..HEAD echo.sh
+            
+            - update_commit_status ar_gitRepo --status failure --message "updated in utility step" --context jfrog_pipelines
+            
+            - switch_env nodejs 8.16.0
+            
+            - execute_command echo $res_ar_gitRepo_resourcePath
+            
+            - printenv
+            - docker images
+            
+          onComplete: 
+            - echo "Ah! done"
+            - send_notification varsha_slack
+      
+      - name: as_bashAql
+        type: Bash
+        configuration:
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_aql
+          inputSteps:
+            - name: utility_cmds_bash
+        execution:
+          onExecute: 
+            - printenv
+          onComplete: 
+            - echo "Ah! done"
+            - send_notification varsha_slack
+
+      - name: as_bashBuildInfo
+        type: Bash
+        configuration:
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_buildInfo 
+          inputSteps:
+            - name: as_bashAql
+        execution:
+          onExecute: 
+            - printenv
+          onComplete: 
+            - send_notification varsha_slack
+            
+      - name: as_bashDistributionRule
+        type: Bash
+        configuration:
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_distributionRule
+          inputSteps:
+            - name: as_bashBuildInfo
+        execution:
+          onExecute: 
+            - printenv
+          onComplete: 
+            - echo "Ah! done"
+            - send_notification varsha_slack
+           
+      - name: as_bashFileSpec
+        type: Bash
+        configuration:
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_fileSpec
+          inputSteps:
+            - name: as_bashDistributionRule
+        execution:
+          onExecute: 
+            - printenv
+          onComplete: 
+            - echo "Ah! done"
+            - send_notification varsha_slack
+            
+      - name: as_bashGitRepo
+        type: Bash
+        configuration:
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_gitRepo
+          inputSteps:
+            - name: as_bashDistributionRule
+        execution:
+          onExecute: 
+            - printenv
+          onComplete: 
+            - echo "Ah! done"
+            - send_notification varsha_slack
+           
+      - name: as_bashImage
+        type: Bash
+        configuration:
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_image
+          inputSteps:
+            - name: as_bashGitRepo
+        execution:
+          onExecute: 
+            - printenv
+          onComplete: 
+            - echo "Ah! done"
+            - send_notification varsha_slack
+            
+      - name: as_bashKubeCluster
+        type: Bash
+        configuration:
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_kubeCluster
+          inputSteps:
+            - name: as_bashImage
+        execution:
+          onExecute: 
+            - printenv
+          onComplete: 
+            - echo "Ah! done"
+            - send_notification varsha_slack
+            
+      - name: as_bashReleaseBundle
+        type: Bash
+        configuration:
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_releaseBundle
+          inputSteps:
+            - name: as_bashKubeCluster
+        execution:
+          onExecute: 
+            - printenv
+          onComplete: 
+            - echo "Ah! done"
+            - send_notification varsha_slack
+            
+      - name: as_bashRemoteFile
+        type: Bash
+        configuration:
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_remoteFile
+          inputSteps:
+            - name: as_bashReleaseBundle
+        execution:
+          onExecute: 
+            - printenv
+          onComplete: 
+            - echo "Ah! done"
+            - send_notification varsha_slack
+            
+      - name: as_bashVmCluster
+        type: Bash
+        configuration:
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_vmCluster
+          inputSteps:
+            - name: as_bashRemoteFile
+        execution:
+          onExecute: 
+            - printenv
+          onComplete: 
+            - echo "Ah! done"
+            - send_notification varsha_slack
+            
+      - name: as_bashWebhook
+        type: Bash
+        configuration:
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_webhook
+          inputSteps:
+            - name: as_bashVmCluster
+        execution:
+          onExecute: 
+            - printenv
+            - send_notification varsha_slack
+          onComplete: 
+            - echo "Ah! done"
+            - send_notification varsha_slack
+
+  - name: varsha_ar_in_a_bash
+    steps:
+      - name: input_res_bash
+        type: Bash
+        configuration:
+          environmentVariables:
+            ENV1: value1
+            ENV2: value2
+          integrations:
+            - name: test
+          inputResources:
+            - name: ar_aql
+            - name: ar_buildInfo 
+            - name: ar_distributionRule
+           # - name: ar_fileSpec
+            - name: ar_gitRepo
+              trigger: false
+            - name: ar_image
+            - name: ar_kubeCluster
+            - name: ar_releaseBundle
+            - name: ar_remoteFile
+            - name: ar_vmCluster
+            - name: ar_webhook
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: nodejs
+                versions: 
+                  - 8.16.0
+                  - 10.15.3
+        execution:
+          onExecute:
+            - printenv
+            - docker images
+            - test "$ENV1" == "value1"
+            - test "$ENV2" == "value2"
+            - echo imageTag=$imageTag
+            
+            - echo "-------------------------------------------- IMAGE RESOURCE -------------------------------------------------"
+            - add_run_variable imageTag="firstTest"
+            - echo imageTag=$imageTag
+            - echo imageName=$imageName
+            - pushd $res_ar_image_resourcePath
+            - echo imageTag=$imageTag
+            - echo imageName=$imageName
+            - add_pipeline_variable imageName="shippabledocker/ship_plv2pyt" imageTag="tip"
+            - echo imageName=$imageName
+            - echo imageTag=$imageTag
+            - popd
+            - echo imageTag=$imageTag
+            - echo imageName=$imageName
+            - echo "------------------------------------------- DONE WITH IMAGE RESOURCE -----------------------------------------"
+            
+            - echo "-------------------------------------------- GITREPO RESOURCE ----------------------------------------------"
+            - pushd $res_ar_gitRepo_resourcePath
+            - source example.env
+            - echo $TEST
+            - ls -la
+            - save_run_state test.sh my_file
+            
+            - read_json packages.json "name"
+            
+            - openssl genrsa -out key.pem 1024 
+            - openssl rsa -in key.pem -text -noout
+            - openssl rsa -in key.pem -pubout -out pub.pem 
+            - openssl rsa -in pub.pem -pubin -text -noout 
+            
+            - encrypt_string "secretValue" --key pub.pem
+            - encrypted=$(encrypt_string "secretValue" --key pub.pem)
+            - echo "$encrypted"
+            - decrypt_string "$encrypted" --key key.pem
+            
+            - encrypt_file --output encrypted.txt crypt.txt --key pub.pem
+            - cat encrypted.txt
+            - decrypt_file encrypted.txt --output decrypted.txt --key key.pem
+            - cat decrypted.txt
+            
+            - echo "$STEP_URL"
+            - echo "$SAMPLE"
+            - echo "$TEST"
+            - echo "$res_ar_gitRepo_isPrerelease"
+            
+            - replace_envs example.json sample.json
+            - echo "$STEP_URL"
+            - echo "$TEST"
+            - echo "$BRANCH"
+            - echo "$res_ar_gitRepo_isPrerelease"
+            - echo "$SAMPLE"
+  
+            - cache_files echo.sh my_cache
+            - popd
+            
+            - echo "------------------------------------------ DONE WITH GITREPO RESOURCE --------------------------------------------------------------------------------"
+            
+            - bump_semver v1.0.1 major
+            - bump_semver v0.0.1 patch
+            
+            - compare_git --resource ar_gitRepo --commit-range HEAD~1..HEAD echo.sh
+            
+            - update_commit_status ar_gitRepo --status failure --message "updated in utility step" --context jfrog_pipelines
+            
+            - switch_env nodejs 8.16.0
+            - execute_command echo $res_ar_gitRepo_resourcePath
+            
+            - printenv
+            - docker images
+          onComplete: 
+            - echo "Ah! done"
+            - send_notification varsha_slack
+ 
+ ################################## ---------------------------------- NATIVE STEPS ---------------------------------- ##################################
+    
+  - name: varsha_ns
+    steps:        
+      - name: ns_bash
+        type: Bash
+        configuration:
+          environmentVariables:
+            foo: bar
+          integrations:
+            - name: test
+          outputResources:
+            - name: ns_aql
+          inputResources:
+            - name: ns_dockerbuild_gitRepo
+              trigger: false
+            - name: ns_image
+        execution:
+          onExecute:
+            - printenv
+           
+      - name: ns_build_image
+        type: DockerBuild
+        configuration:
+          dockerFileLocation: .
+          dockerFileName: Dockerfile
+          dockerImageName: 34.66.110.173:8081/varsha-test/node
+          dockerImageTag: $PIPELINE_NAME.$RUN_NUMBER
+          integrations:
+            - name: test
+          inputResources:
+            - name: ns_dockerbuild_gitRepo
+          inputSteps:
+            - name: ns_bash
+            
+      - name: ns_push_image
+        type: PushArtifactoryPackage
+        configuration:
+          targetRepo: varsha-test
+          integrations:
+            - name: test
+          inputSteps:
+            - name: ns_build_image
+
+      - name: ns_publish_build
+        type: PublishBuildInfo
+        configuration:
+          integrations:
+            - name: test
+          inputSteps:
+            - name: ns_push_image
+          outputResources:
+            - name: ns_buildInfo
+      
+      - name: ns_promote_build
+        type: PromoteBuild
+        configuration:
+          targetRepo: promote_docker_testvarsha
+          integrations:
+            - name: test
+          inputSteps:
+            - name: ns_publish_build
+          outputResources:
+            - name: ns_promotedInfo
+      
+      - name: ns_new_release_bundle
+        type: CreateReleaseBundle
+        configuration:
+          releaseBundleName: test_new_releaseb
+          releaseBundleVersion: v1.0.0
+          dryRun: false
+          sign: false
+          description: "test description"
+          integrations:
+            - name: test
+          inputResources:
+            - name: ns_promotedInfo
+          outputResources:
+            - name: ns_releaseBundle
+          releaseNotes:
+            syntax: markdown
+            content: |
+              ## Heading
+                * Bullet
+                * Points
+      
+      - name: ns_sign
+        type: SignReleaseBundle
+        configuration:
+          inputResources:
+            - name: ns_releaseBundle
+          integrations:
+            - name: test
+          outputResources:
+            - name: ns_releaseBundle2
+            
+      - name: ns_distribute
+        type: DistributeReleaseBundle
+        configuration:
+          dryRun: false
+          integrations:
+            - name: test
+          inputResources:
+            - name: ns_distributionRule
+            - name: ns_releaseBundle2
+
   - name: varsha_pipeline_ar
     steps:
       - name: utility_cmds_bash
