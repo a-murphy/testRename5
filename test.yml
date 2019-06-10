@@ -152,15 +152,17 @@ pipelines:
             - echo "executing task command 1"
             - echo "executing task command 2"
       #      - switch_env java openjdk7 || true
-            - switch_env java openjdk8 || true
+      #      - switch_env java openjdk8 || true
       #      - switch_env java openjdk9 || true
       #      - switch_env java openjdk10 || true
             - switch_env java openjdk11 || true
+            - java -version
       #      - switch_env java oraclejdk7 || true
-            - switch_env java oraclejdk8 || true
-            - switch_env java oraclejdk9 || true
-            - switch_env java oraclejdk10 || true
+      #      - switch_env java oraclejdk8 || true
+      #      - switch_env java oraclejdk9 || true
+      #      - switch_env java oraclejdk10 || true
             - switch_env java oraclejdk11 || true
+            - java -version
         #    - openssl genrsa -out key.pem 1024 
         #    - openssl rsa -in key.pem -text -noout 
         #    - openssl rsa -in key.pem -pubout -out pub.pem 
