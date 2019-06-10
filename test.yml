@@ -151,12 +151,12 @@ pipelines:
             - bump_semver v1.2.3 minor
             - echo "executing task command 1"
             - echo "executing task command 2"
-            - switch_env java openjdk7 || true
+      #      - switch_env java openjdk7 || true
             - switch_env java openjdk8 || true
             - switch_env java openjdk9 || true
             - switch_env java openjdk10 || true
             - switch_env java openjdk11 || true
-            - switch_env java oraclejdk7 || true
+      #      - switch_env java oraclejdk7 || true
             - switch_env java oraclejdk8 || true
             - switch_env java oraclejdk9 || true
             - switch_env java oraclejdk10 || true
