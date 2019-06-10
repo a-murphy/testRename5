@@ -141,7 +141,7 @@ pipelines:
            #   auto:
            #     language: nodejs
               custom: 
-                name: drydock/c7
+                name: drydock/u18java
                 tag:  master
       #          autoPull: false
           #    options: test
@@ -152,7 +152,7 @@ pipelines:
             - echo "executing task command 1"
             - echo "executing task command 2"
       #      - switch_env java openjdk7 || true
-      #      - switch_env java openjdk8 || true
+            - switch_env java openjdk8 || true
       #      - switch_env java openjdk9 || true
       #      - switch_env java openjdk10 || true
             - switch_env java openjdk11 || true
