@@ -141,7 +141,7 @@ pipelines:
            #   auto:
            #     language: nodejs
               custom: 
-                name: drydock/c7java
+                name: drydock/c7
                 tag:  master
       #          autoPull: false
           #    options: test
