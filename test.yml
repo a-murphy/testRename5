@@ -135,14 +135,14 @@ pipelines:
         #    ENV1: value1
         #    ENV2: value2
           runtime:            
-            type: host         
-      #      type: image
-      #      image:
+      #      type: host         
+            type: image
+            image:
            #   auto:
            #     language: nodejs
-      #        custom: 
-      #          name: drydock/u16node
-      #          tag:  master
+              custom: 
+                name: drydock/c7java
+                tag:  master
       #          autoPull: false
           #    options: test
         execution:
@@ -151,6 +151,16 @@ pipelines:
             - bump_semver v1.2.3 minor
             - echo "executing task command 1"
             - echo "executing task command 2"
+            - switch_env java openjdk7 || true
+            - switch_env java openjdk8 || true
+            - switch_env java openjdk9 || true
+            - switch_env java openjdk10 || true
+            - switch_env java openjdk11 || true
+            - switch_env java oraclejdk7 || true
+            - switch_env java oraclejdk8 || true
+            - switch_env java oraclejdk9 || true
+            - switch_env java oraclejdk10 || true
+            - switch_env java oraclejdk11 || true
         #    - openssl genrsa -out key.pem 1024 
         #    - openssl rsa -in key.pem -text -noout 
         #    - openssl rsa -in key.pem -pubout -out pub.pem 
