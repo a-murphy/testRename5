@@ -497,30 +497,6 @@ pipelines:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-  - name: test_pipeline_release
-    steps:
-      - name: my_release2
-        type: SignReleaseBundle
-        # used to control steps that need to execute within a VM context
-        configuration:
-       
-     
-     #affinityGroup: bldGroup 
-          priority: 10
-     #     timeoutSeconds: 120
-     #     nodePool: node_pool
-     #     chronological: false
-      #    integrations:
-      #      - name: artifactory
-      #      - name: docker
-     #inputSteps:
-     #       - name: main_step  
-          inputResources:
-     #       - name: imageResource
-            - name: my_releaseBundle2 # one ReleaseBundle is mandatory
-     #         trigger: false 
-          outputResources:
-            - name: my_signed_releaseBundle 
             
   - name: test_pipeline_release2
     steps:
