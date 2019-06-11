@@ -526,23 +526,41 @@ pipelines:
             
   - name: test_pipeline_release2
     steps:
-      - name: my_releaseCreate
-        type: CreateReleaseBundle
+        - name: my_xray
+          type: XrayScan
         configuration:
-          releaseBundleName: name
-          releaseBundleVersion: version
-      #    integrations:
-      #      - name: slack
-      #      - name: docker
-          inputResources:
-            - name: my_BuildInfo
-            - name: my_BuildInfo2
+          buildName: name
+          buildNumber: version
+          integrations:
+            - name: slack
+            - name: docker
+  #        inputResources:
+  #          - name: my_BuildInfo
+  #          - name: my_BuildInfo2
           #  - name: my_Aql
           #  - name: my_Aql2
        #     - name: gitRepoResource
       #      - name: gitRepoResource
-          outputResources:
-            - name: my_releaseBundle2
+  #        outputResources:
+  #          - name: my_releaseBundle2
+       #     - name: gitRepoResource
+  #    - name: my_releaseCreate
+  #      type: CreateReleaseBundle
+  #      configuration:
+  #        releaseBundleName: name
+  #        releaseBundleVersion: version
+      #    integrations:
+      #      - name: slack
+      #      - name: docker
+  #        inputResources:
+  #          - name: my_BuildInfo
+  #          - name: my_BuildInfo2
+          #  - name: my_Aql
+          #  - name: my_Aql2
+       #     - name: gitRepoResource
+      #      - name: gitRepoResource
+  #        outputResources:
+  #          - name: my_releaseBundle2
        #     - name: gitRepoResource
             
   - name: test_pipeline_2
