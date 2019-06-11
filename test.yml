@@ -47,14 +47,16 @@ resources:
     type: BuildInfo
     configuration:
       sourceArtifactory: artifactory
-      name: amurphy/test
-      version: master.105
+      buildName: myName
+      buildNumber: 101
   - name: my_Aql
     type: Aql
     configuration:
       sourceArtifactory: artifactory
       name: amurphy/test
       version: master.105
+      query:
+        test: test
       
 #  - name: bitbucketServerRepoResource
 #    type: gitRepo
@@ -515,6 +517,8 @@ pipelines:
       - name: my_releaseCreate
         type: CreateReleaseBundle
         configuration:
+          releaseBundleName: name
+          releaseBundleVersion: version
           integrations:
             - name: slack
             - name: docker
