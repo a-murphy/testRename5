@@ -55,8 +55,7 @@ resources:
       sourceArtifactory: artifactory
       name: amurphy/test
       version: master.105
-      query:
-        test: test
+      query: test
       
 #  - name: bitbucketServerRepoResource
 #    type: gitRepo
@@ -524,10 +523,11 @@ pipelines:
             - name: docker
           inputResources:
             - name: my_signed_releaseBundle
-      #      - name: gitRepoResource
-          outputResources:
-            - name: my_releaseBundle2
             - name: gitRepoResource
+      #      - name: gitRepoResource
+        #  outputResources:
+        #    - name: my_releaseBundle2
+        #    - name: gitRepoResource
             
   - name: test_pipeline_2
     #setup:
