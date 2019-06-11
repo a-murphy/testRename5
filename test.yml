@@ -532,7 +532,7 @@ pipelines:
           inputResources:
             - name: my_signed_releaseBundle
           outputResources:
-            - name: my_releaseBundle2
+         #   - name: my_releaseBundle2
             - name: gitRepoResource
             
   - name: test_pipeline_2
