@@ -529,12 +529,11 @@ pipelines:
         configuration:
           inputSteps:
             - name: my_release2
-          integrations:
-            - test
           inputResources:
-            - name: my_signed_releaseBundle 
+            - name: my_signed_releaseBundle
           outputResources:
             - name: my_releaseBundle2
+            - name: gitRepoResource
             
   - name: test_pipeline_2
     #setup:
