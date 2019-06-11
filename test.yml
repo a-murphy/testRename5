@@ -531,16 +531,16 @@ pipelines:
         configuration:
           integrations:
             - name: slack
-            - name: docker
+    #        - name: docker
           inputResources:
-  #          - name: my_BuildInfo
+            - name: my_BuildInfo
   #          - name: my_BuildInfo2
-            - name: my_Aql
+    #        - name: my_Aql
           #  - name: my_Aql2
        #     - name: gitRepoResource
       #      - name: gitRepoResource
           outputResources:
-            - name: my_releaseBundle2
+            - name: my_BuildInfo2
     #        - name: gitRepoResource
   #    - name: my_releaseCreate
   #      type: CreateReleaseBundle
