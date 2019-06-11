@@ -525,8 +525,8 @@ pipelines:
             - name: my_signed_releaseBundle
             - name: gitRepoResource
       #      - name: gitRepoResource
-        #  outputResources:
-        #    - name: my_releaseBundle2
+          outputResources:
+            - name: my_releaseBundle2
         #    - name: gitRepoResource
             
   - name: test_pipeline_2
