@@ -539,8 +539,8 @@ pipelines:
           #  - name: my_Aql2
        #     - name: gitRepoResource
       #      - name: gitRepoResource
-          outputResources:
-            - name: my_BuildInfo2
+     #     outputResources:
+     #       - name: my_BuildInfo2
     #        - name: gitRepoResource
   #    - name: my_releaseCreate
   #      type: CreateReleaseBundle
