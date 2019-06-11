@@ -305,14 +305,14 @@ pipelines:
       #      - sample_java_file_test
           integrations:
             - name: github
-     #       - slack
+            - name: slack
           inputSteps:
       #    resources:
       #      - sample_java_file_test
             - name: main_step
         execution:
-         # onStart:
-          #  - send_notification slack
+          onStart:
+            - send_notification slack
       #      - echo "Prepping build environment"
       #      - echo "$testRunVariable"
       #      - echo "$testingAgain"
@@ -343,7 +343,7 @@ pipelines:
             - decrypt_file encrypted2.txt --output decrypted2.txt --key key.pem
             - cat decrypted2.txt
           onSuccess:
-         #   - send_notification slack
+            - send_notification slack
             - echo "Job well done!"
           onFailure:
          #   - send_notification slack
