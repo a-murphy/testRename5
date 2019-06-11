@@ -510,9 +510,9 @@ pipelines:
      #     timeoutSeconds: 120
      #     nodePool: node_pool
      #     chronological: false
-          integrations:
-            - name: artifactory
-            - name: docker
+      #    integrations:
+      #      - name: artifactory
+      #      - name: docker
      #inputSteps:
      #       - name: main_step  
           inputResources:
@@ -528,8 +528,8 @@ pipelines:
         type: SignReleaseBundle
         configuration:
           inputResources:
-      #      - name: my_signed_releaseBundle
-            - name: gitRepoResource
+            - name: my_signed_releaseBundle
+      #      - name: gitRepoResource
           outputResources:
             - name: my_releaseBundle2
             
