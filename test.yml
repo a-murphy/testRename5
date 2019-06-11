@@ -49,7 +49,20 @@ resources:
       sourceArtifactory: artifactory
       buildName: myName
       buildNumber: 101
+  - name: my_BuildInfo2
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: artifactory
+      buildName: myName
+      buildNumber: 101
   - name: my_Aql
+    type: Aql
+    configuration:
+      sourceArtifactory: artifactory
+      name: amurphy/test
+      version: master.105
+      query: test
+  - name: my_Aql2
     type: Aql
     configuration:
       sourceArtifactory: artifactory
@@ -518,16 +531,17 @@ pipelines:
         configuration:
           releaseBundleName: name
           releaseBundleVersion: version
-          integrations:
-            - name: slack
-            - name: docker
+      #    integrations:
+      #      - name: slack
+      #      - name: docker
           inputResources:
-            - name: my_signed_releaseBundle
-            - name: gitRepoResource
+            - name: my_BuildInfo
+            - name: my_Aql
+       #     - name: gitRepoResource
       #      - name: gitRepoResource
           outputResources:
-            - name: my_releaseBundle2
-        #    - name: gitRepoResource
+       #     - name: my_releaseBundle2
+            - name: gitRepoResource
             
   - name: test_pipeline_2
     #setup:
