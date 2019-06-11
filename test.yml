@@ -43,6 +43,18 @@ resources:
       sourceArtifactory: artifactory
       name: amurphy/test
       version: master.105
+  - name: my_BuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: artifactory
+      name: amurphy/test
+      version: master.105
+  - name: my_Aql
+    type: Aql
+    configuration:
+      sourceArtifactory: artifactory
+      name: amurphy/test
+      version: master.105
       
 #  - name: bitbucketServerRepoResource
 #    type: gitRepo
@@ -500,16 +512,18 @@ pipelines:
             
   - name: test_pipeline_release2
     steps:
-      - name: my_release
-        type: SignReleaseBundle
+      - name: my_releaseCreate
+        type: CreateReleaseBundle
         configuration:
           integrations:
             - name: slack
+            - name: docker
           inputResources:
             - name: my_signed_releaseBundle
       #      - name: gitRepoResource
           outputResources:
             - name: my_releaseBundle2
+            - name: gitRepoResource
             
   - name: test_pipeline_2
     #setup:
