@@ -529,8 +529,6 @@ pipelines:
       - name: my_xray
         type: XrayScan
         configuration:
-          buildName: name
-          buildNumber: version
           integrations:
             - name: slack
             - name: docker
@@ -543,7 +541,7 @@ pipelines:
       #      - name: gitRepoResource
           outputResources:
             - name: my_releaseBundle2
-            - name: gitRepoResource
+    #        - name: gitRepoResource
   #    - name: my_releaseCreate
   #      type: CreateReleaseBundle
   #      configuration:
