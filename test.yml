@@ -504,8 +504,8 @@ pipelines:
         type: SignReleaseBundle
         configuration:
           integrations:
-            - slack
-            - docker
+            - name: slack
+            - name: docker
           inputResources:
             - name: my_signed_releaseBundle
       #      - name: gitRepoResource
