@@ -520,7 +520,19 @@ pipelines:
             - name: my_releaseBundle2 # one ReleaseBundle is mandatory
      #         trigger: false 
           outputResources:
-            - name: my_signed_releaseBundle  
+            - name: my_signed_releaseBundle 
+            
+  - name: test_pipeline_release2
+    steps:
+      - name: my_release
+        type: SignReleaseBundle
+        configuration:
+          inputSteps:
+            - name: my_release2
+          inputResources:
+            - name: my_signed_releaseBundle 
+            - name: my_releaseBundle2
+            
   - name: test_pipeline_2
     #setup:
     #  environmentVariables:
