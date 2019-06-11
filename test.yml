@@ -527,8 +527,6 @@ pipelines:
       - name: my_release
         type: SignReleaseBundle
         configuration:
-          inputSteps:
-            - name: my_release2
           inputResources:
             - name: my_signed_releaseBundle
           outputResources:
