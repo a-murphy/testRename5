@@ -528,10 +528,10 @@ pipelines:
         type: SignReleaseBundle
         configuration:
           inputResources:
-            - name: my_signed_releaseBundle
-          outputResources:
-         #   - name: my_releaseBundle2
+      #      - name: my_signed_releaseBundle
             - name: gitRepoResource
+          outputResources:
+            - name: my_releaseBundle2
             
   - name: test_pipeline_2
     #setup:
