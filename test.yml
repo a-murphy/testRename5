@@ -535,9 +535,10 @@ pipelines:
       #      - name: slack
       #      - name: docker
           inputResources:
-          #  - name: my_BuildInfo
-            - name: my_Aql
-            - name: my_Aql2
+            - name: my_BuildInfo
+            - name: my_BuildInfo2
+          #  - name: my_Aql
+          #  - name: my_Aql2
        #     - name: gitRepoResource
       #      - name: gitRepoResource
           outputResources:
