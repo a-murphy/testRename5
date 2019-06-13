@@ -161,11 +161,11 @@ pipelines:
         #    ENV1: value1
         #    ENV2: value2
           runtime:            
-            type: host         
-      #      type: image
-      #      image:
-           #   auto:
-           #     language: nodejs
+      #      type: host         
+            type: image
+            image:
+              auto:
+                language: nodejs
       #        custom: 
       #          name: drydock/u18java
       #          tag:  master
@@ -236,12 +236,12 @@ pipelines:
           runtime:            
             type: image
             image:
-           #   auto:
-           #     language: nodejs
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+              auto:
+                language: java
+        #      custom: 
+        #        name: drydock/u16node
+        #        tag:  master
+        #        autoPull: false
           inputResources:
          #   - name: imageResource
             - name: fileIntegrationResource
