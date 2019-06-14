@@ -376,6 +376,7 @@ pipelines:
      #     resources:
      #       - gitRepoResource
         configuration:
+          affinityGroup: group2
           inputResources:
             - name: gitRepoResource
             - name: imageResource
@@ -398,6 +399,7 @@ pipelines:
       - name: after_resource2
         type: Bash
         configuration:
+          affinityGroup: group2
   #        affinityGroup: test_group
      #   requires:
      #     resources:
