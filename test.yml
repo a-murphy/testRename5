@@ -488,6 +488,7 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
+            - printenv
             - echo "executing task command 1"
             - echo "executing task command 2"
       - name: step_6
