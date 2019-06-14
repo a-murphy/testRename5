@@ -573,7 +573,7 @@ pipelines:
       - name: pre_pre_second_pipeline
         type: Bash
         configuration:
-          priority: 10
+          priority: 1000
           outputResources:
             - name: imageResource
         execution:
@@ -585,7 +585,7 @@ pipelines:
       - name: pre_second_pipeline
         type: Bash
         configuration:
-          priority: 10
+          priority: 1000
           affinityGroup: three
           inputResources:
             - name: imageResource
