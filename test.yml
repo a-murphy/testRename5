@@ -718,8 +718,7 @@ pipelines:
       - name: post_third_pipeline
         type: Bash
         configuration:
-          inputResources:
-            steps:
+          inputSteps:
               - third_pipeline
         execution:
           onStart:
