@@ -214,6 +214,7 @@ pipelines:
       - name: main_step
         type: Bash
         configuration:
+          chronological: true
           affinityGroup: test_group
           environmentVariables:
             ENV3: value3
@@ -435,6 +436,7 @@ pipelines:
       - name: step_2
         type: Bash
         configuration:
+          chronological: true
           nodePool: u18
           inputSteps:
             - name: step_1
