@@ -147,6 +147,7 @@ pipelines:
       - name: in_trigger_step
         type: Bash
         configuration:
+          priority: 1
           affinityGroup: test_group 
           timeoutSeconds: 180
         #  environmentVariables:
@@ -436,6 +437,7 @@ pipelines:
       - name: step_2
         type: Bash
         configuration:
+          priority: 10
           chronological: true
           nodePool: u18
           inputSteps:
