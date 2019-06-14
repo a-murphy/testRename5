@@ -28,7 +28,7 @@ resources:
     type: Image
     configuration:
       registry: docker
-      imageName: amurphy/test2
+      imageName: amurphy/test
       imageTag: master.105.1
       autoPull: true
   - name: my_releaseBundle2
