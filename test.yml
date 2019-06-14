@@ -497,6 +497,8 @@ pipelines:
           nodePool: u18
           inputSteps:
             - name: step_5
+          integrations:
+            - name: test
         execution:
           onStart:
             - echo "Prepping build environment"
