@@ -111,15 +111,7 @@ resources:
         except:      file
         only:        file       
       source: github 
-      
-  - name: fileSpecResource
-    type: FileSpec
-    configuration:
-      sourceArtifactory: github
-      pattern: test  
-#    version:
-#      fileName: file
-#      fileDtTm: test6
+ 
 #  - name: cluster
 #    type: cluster
 #    configuration:
