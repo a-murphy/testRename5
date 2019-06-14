@@ -237,7 +237,6 @@ pipelines:
           inputResources:
          #   - name: imageResource
             - name: fileIntegrationResource
-            - name: fileSpecResource
             - name: gitRepoResource
       #      - bitbucketServerRepoResource
           inputSteps:
