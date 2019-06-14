@@ -30,7 +30,7 @@ resources:
       registry: docker
       imageName: amurphy/test
       imageTag: master.105
-      autoPull: true
+      autoPull: false
   - name: my_releaseBundle2
     type: ReleaseBundle
     configuration:
