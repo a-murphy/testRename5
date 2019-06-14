@@ -241,8 +241,8 @@ pipelines:
             - name: imageResource
           integrations:
             - name: github
-            - name: bitbucket
-            - name: bitbucketServer
+         #   - name: bitbucket
+         #   - name: bitbucketServer
             - name: test
             - name: docker
             - name: artifactory
@@ -323,7 +323,7 @@ pipelines:
       #      - sample_java_file_test
             - name: main_step
         execution:
-          onStart:
+       #   onStart:
        #     - send_notification slack
       #      - echo "Prepping build environment"
       #      - echo "$testRunVariable"
@@ -490,7 +490,7 @@ pipelines:
       - name: step_6
         type: Bash
         configuration:
-          priority: 10001
+          priority: 10000
           nodePool: u18
           inputSteps:
             - name: step_5
@@ -530,8 +530,8 @@ pipelines:
       - name: my_xray
         type: XrayScan
         configuration:
-          integrations:
-            - name: slack
+     #     integrations:
+     #       - name: slack
     #        - name: docker
           inputResources:
             - name: my_BuildInfo
@@ -574,7 +574,7 @@ pipelines:
       - name: pre_pre_second_pipeline
         type: Bash
         configuration:
-          priority: 10000
+          priority: 9999
           outputResources:
             - name: imageResource
         execution:
@@ -586,7 +586,7 @@ pipelines:
       - name: pre_second_pipeline
         type: Bash
         configuration:
-          priority: 10000
+          priority: 9999
           affinityGroup: three
           inputResources:
             - name: imageResource
