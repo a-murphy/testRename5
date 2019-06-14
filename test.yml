@@ -715,22 +715,22 @@ pipelines:
             - echo "Cleaning up some stuff"
 #          onCancel:
 #            - echo "Someone cancelled the job"
-#      - name: post_third_pipeline
-#        type: bash
-#        triggeredBy:
-#          steps:
-#            - third_pipeline
-#        execution:
-#          onStart:
-#            - echo "Prepping build environment"
-#          onExecute:
-#            - echo "executing task command 1"
-#            - echo "executing task command 2"
-#          onSuccess:
-#            - echo "Job well done!"
-#          onFailure:
-#            - echo "uh oh, something went wrong"
-#          onComplete:
-#            - echo "Cleaning up some stuff"
-#          onCancel:
-#            - echo "Someone cancelled the job"
+      - name: post_third_pipeline
+        type: Bash
+        triggeredBy:
+          steps:
+            - third_pipeline
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete:
+            - echo "Cleaning up some stuff"
+          onCancel:
+            - echo "Someone cancelled the job"
