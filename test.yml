@@ -589,6 +589,7 @@ pipelines:
         type: Bash
         configuration:
           priority: 10
+          affinityGroup: three
           inputResources:
             - name: imageResource
       #  requires:
@@ -663,6 +664,7 @@ pipelines:
       - name: after_resource
         type: Bash
         configuration:
+          affinityGroup: three
      #   requires:
      #     resources:
      #       - gitRepoResource
