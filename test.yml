@@ -441,6 +441,8 @@ pipelines:
           nodePool: u18
           inputSteps:
             - name: main_step
+            - name: after_resource2
+            - name: second_step
         execution:
           onStart:
             - echo "Prepping build environment"
