@@ -309,6 +309,7 @@ pipelines:
       - name: other_step
         type: Bash
         configuration:
+          priority: 50
   #        affinityGroup: test_group 
           runtime:            
             type: host
@@ -368,6 +369,7 @@ pipelines:
       - name: second_step
         type: Bash
         configuration:
+          priority: 50
           affinityGroup: group2
           inputResources:
             - name: gitRepoResource2
@@ -391,6 +393,7 @@ pipelines:
       - name: after_resource2
         type: Bash
         configuration:
+          priority: 50
           affinityGroup: group2
   #        affinityGroup: test_group
      #   requires:
@@ -423,6 +426,7 @@ pipelines:
       - name: step_1
         type: Bash
         configuration:
+          priority: 100
           nodePool: u18
           inputSteps:
             - name: main_step
@@ -451,6 +455,7 @@ pipelines:
       - name: step_3
         type: Bash
         configuration:
+          priority: 500
           nodePool: u18
           inputSteps:
             - name: step_2
