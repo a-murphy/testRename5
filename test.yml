@@ -215,6 +215,7 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: test_group 
+          nodePool: Centos
           environmentVariables:
             ENV3: value3
             ENV4: value4
