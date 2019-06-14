@@ -719,7 +719,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-              - third_pipeline
+              - name: third_pipeline
         execution:
           onStart:
             - echo "Prepping build environment"
