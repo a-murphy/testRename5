@@ -365,13 +365,10 @@ pipelines:
             - echo "Someone cancelled the job"
       - name: second_step
         type: Bash
-     #   requires:
-     #     resources:
-     #       - gitRepoResource
         configuration:
           affinityGroup: group2
           inputResources:
-            - name: gitRepoResource
+            - name: gitRepoResource2
             - name: imageResource
           inputSteps:
             - name: main_step
