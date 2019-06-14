@@ -165,7 +165,7 @@ pipelines:
             type: image
             image:
               auto:
-                language: c
+                language: none
       #        custom: 
       #          name: drydock/u18java
       #          tag:  master
