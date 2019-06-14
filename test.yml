@@ -580,6 +580,18 @@ pipelines:
     #  runtime:            
     #    type: host
     steps:
+      - name: pre_pre_second_pipeline
+        type: Bash
+        configuration:
+          priority: 10
+          outputResources:
+            - name: imageResource
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
       - name: pre_second_pipeline
         type: Bash
         configuration:
