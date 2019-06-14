@@ -218,22 +218,15 @@ pipelines:
           environmentVariables:
             ENV3: value3
             ENV4: value4
-        #  environmentVariables:
-        #    normal:
-        #      ENV1: value1
-          #    ENV2: value2
-          #  encrypted:
-          #    SECURE_ENV1: test_value
-          #    SECURE_ENV2: test_value
           runtime:            
             type: image
             image:
-              auto:
-                language: go
-        #      custom: 
-        #        name: drydock/u16node
-        #        tag:  master
-        #        autoPull: false
+        #      auto:
+        #        language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
           inputResources:
          #   - name: imageResource
             - name: fileIntegrationResource
