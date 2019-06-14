@@ -490,6 +490,7 @@ pipelines:
       - name: step_6
         type: Bash
         configuration:
+          priority: 10001
           nodePool: u18
           inputSteps:
             - name: step_5
@@ -573,7 +574,7 @@ pipelines:
       - name: pre_pre_second_pipeline
         type: Bash
         configuration:
-          priority: 1000
+          priority: 10000
           outputResources:
             - name: imageResource
         execution:
@@ -585,7 +586,7 @@ pipelines:
       - name: pre_second_pipeline
         type: Bash
         configuration:
-          priority: 1000
+          priority: 10000
           affinityGroup: three
           inputResources:
             - name: imageResource
