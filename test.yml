@@ -717,9 +717,10 @@ pipelines:
 #            - echo "Someone cancelled the job"
       - name: post_third_pipeline
         type: Bash
-        triggeredBy:
-          steps:
-            - third_pipeline
+        configuration:
+          inputResources:
+            steps:
+              - third_pipeline
         execution:
           onStart:
             - echo "Prepping build environment"
