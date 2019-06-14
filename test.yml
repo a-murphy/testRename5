@@ -438,6 +438,7 @@ pipelines:
       - name: step_1
         type: Bash
         configuration:
+          nodePool: u18
           inputSteps:
             - name: main_step
         execution:
@@ -449,6 +450,7 @@ pipelines:
       - name: step_2
         type: Bash
         configuration:
+          nodePool: u18
           inputSteps:
             - name: step_1
         execution:
@@ -460,6 +462,7 @@ pipelines:
       - name: step_3
         type: Bash
         configuration:
+          nodePool: u18
           inputSteps:
             - name: step_2
         execution:
@@ -471,6 +474,7 @@ pipelines:
       - name: step_4
         type: Bash
         configuration:
+          nodePool: u18
           inputSteps:
             - name: step_3
         execution:
@@ -482,6 +486,7 @@ pipelines:
       - name: step_5
         type: Bash
         configuration:
+          nodePool: u18
           inputSteps:
             - name: step_4
         execution:
@@ -493,6 +498,7 @@ pipelines:
       - name: step_6
         type: Bash
         configuration:
+          nodePool: u18
           inputSteps:
             - name: step_5
         execution:
@@ -504,6 +510,7 @@ pipelines:
       - name: step_7
         type: Bash
         configuration:
+          nodePool: u18
           inputSteps:
             - name: step_6
         execution:
@@ -515,6 +522,7 @@ pipelines:
       - name: step_8
         type: Bash
         configuration:
+          nodePool: u18
           inputSteps:
             - name: step_7
         execution:
