@@ -632,6 +632,7 @@ pipelines:
        #     - name: imageResource
           inputSteps:
             - name: pre_second_pipeline
+            - name: after_resource
         #    - main_step
         execution:
           onStart:
