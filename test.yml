@@ -214,8 +214,7 @@ pipelines:
       - name: main_step
         type: Bash
         configuration:
-          affinityGroup: test_group 
-          nodePool: Centos
+          affinityGroup: test_group
           environmentVariables:
             ENV3: value3
             ENV4: value4
