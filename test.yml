@@ -5,6 +5,8 @@ resources:
       integration: github
   - name: promoteInfo
     type: PromoteInfo
+    configuration:
+      test: test
 
   #- name: kubeClusterIntegrationResource
   #  type: KubeCluster
