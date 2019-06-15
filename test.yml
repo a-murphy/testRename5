@@ -753,7 +753,7 @@ pipelines:
         type: PromoteBuild
         configuration:
           inputSteps:
-              - name: third_pipeline
+            - name: third_pipeline
           targetRepository: test
           inputResources:
             - name: imageResource
