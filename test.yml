@@ -1,15 +1,15 @@
 resources:
-  - name: vmCluster
-    type: VmCluster
-    configuration:
-      integration: github
-  - name: promoteInfo
-    type: PromoteInfo
-    configuration:
-      version: test
-    version:
-      buildName: test
-      buildNumber: 1
+#  - name: vmCluster
+#    type: VmCluster
+#    configuration:
+#      integration: github
+#  - name: promoteInfo
+#    type: PromoteInfo
+#    configuration:
+#      version: test
+#    version:
+#      buildName: test
+#      buildNumber: 1
 
   #- name: kubeClusterIntegrationResource
   #  type: KubeCluster
@@ -749,8 +749,8 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
-      - name: PromoteBuild
-        type: Bash
+      - name: promoteBuild
+        type: PromoteBuild
         configuration:
           inputSteps:
               - name: third_pipeline
