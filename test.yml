@@ -146,6 +146,7 @@ resources:
 #      integrationName: fileServerIntegration
        
 pipelines:
+  -
   - name: test_pipeline_1
     setup:
    #   environmentVariables:   
