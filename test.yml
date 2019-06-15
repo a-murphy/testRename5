@@ -1,5 +1,6 @@
 resources:
-  - 2
+  - name: gitRepoResource3
+    type: GitRepo
   #- name: kubeClusterIntegrationResource
   #  type: KubeCluster
   #  configuration:
