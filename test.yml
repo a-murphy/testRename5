@@ -155,7 +155,6 @@ pipelines:
       runtime:            
         type: host
     steps:
-      -
       - name: in_trigger_step
         type: Bash
         configuration:
@@ -758,9 +757,6 @@ pipelines:
         execution:
           onStart:
             - echo "Prepping build environment"
-          onExecute:
-            - echo "executing task command 1"
-            - echo "executing task command 2"
           onSuccess:
             - echo "Job well done!"
           onFailure:
