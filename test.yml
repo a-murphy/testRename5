@@ -1,6 +1,9 @@
 resources:
-  - name: gitRepoResource3
+  - name: gitRepoResource4
     type: GitRepo
+    configuration:
+      gitProvider: docker
+      path: a-murphy/5testRename5
   #- name: kubeClusterIntegrationResource
   #  type: KubeCluster
   #  configuration:
