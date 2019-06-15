@@ -156,6 +156,7 @@ pipelines:
       runtime:            
         type: host
     steps:
+      -
       - name: in_trigger_step
         type: Bash
         configuration:
