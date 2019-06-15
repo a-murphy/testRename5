@@ -754,6 +754,11 @@ pipelines:
         configuration:
           inputSteps:
               - name: third_pipeline
+          targetRepository: test
+          inputResources:
+            - name: imageResource
+          outputResources
+            - name: my_signed_releaseBundle
         execution:
           onStart:
             - echo "Prepping build environment"
