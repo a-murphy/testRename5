@@ -6,7 +6,7 @@ resources:
   - name: promoteInfo
     type: PromoteInfo
     configuration:
-      test: test
+      version: test
 
   #- name: kubeClusterIntegrationResource
   #  type: KubeCluster
