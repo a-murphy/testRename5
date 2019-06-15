@@ -757,7 +757,7 @@ pipelines:
           targetRepository: test
           inputResources:
             - name: imageResource
-          outputResources
+          outputResources:
             - name: my_signed_releaseBundle
         execution:
           onStart:
