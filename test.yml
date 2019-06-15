@@ -1,5 +1,5 @@
 resources:
-  -
+  - 2
   #- name: kubeClusterIntegrationResource
   #  type: KubeCluster
   #  configuration:
