@@ -1,6 +1,6 @@
 resources:
   - name: vmCluster
-    type: Image
+    type: VmCluster
     configuration:
       integration: github
   #- name: kubeClusterIntegrationResource
