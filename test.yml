@@ -435,7 +435,8 @@ pipelines:
           onCancel:
             - echo "Someone cancelled the job"
             
-      - type: Bash
+      - name: step_1
+        type: Bash
         configuration:
           priority: 100
           nodePool: u18
@@ -456,7 +457,7 @@ pipelines:
           chronological: true
           nodePool: u18
           inputSteps:
-            - name: 
+            - name: step_1
         execution:
           onStart:
             - echo "Prepping build environment"
