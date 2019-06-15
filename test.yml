@@ -435,8 +435,7 @@ pipelines:
           onCancel:
             - echo "Someone cancelled the job"
             
-      - name: step_1
-        type: Bash
+      - type: Bash
         configuration:
           priority: 100
           nodePool: u18
