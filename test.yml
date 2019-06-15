@@ -3,6 +3,9 @@ resources:
     type: VmCluster
     configuration:
       integration: github
+  - name: promoteInfo
+    type: PromoteInfo
+
   #- name: kubeClusterIntegrationResource
   #  type: KubeCluster
   #  configuration:
