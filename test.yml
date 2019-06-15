@@ -456,7 +456,7 @@ pipelines:
           chronological: true
           nodePool: u18
           inputSteps:
-            - name: step_1
+            - name: 
         execution:
           onStart:
             - echo "Prepping build environment"
