@@ -260,7 +260,7 @@ pipelines:
           onExecute:
             - echo $CURRENT_SCRIPT_SECTION
             - replicate_resource gitRepoResource gitRepoResource2 #--match-settings
-            - write_output imageResource "imageTag2=$testPipelineVariable"
+            - write_output imageResource "imageTag=$testPipelineVariable"
          #   - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
             - echo "executing task command 1"
             - echo "executing task command 2"
