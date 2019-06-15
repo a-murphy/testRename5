@@ -1,5 +1,5 @@
 resources:
-  - name: imageResource4
+  - name: vmCluster
     type: Image
   #- name: kubeClusterIntegrationResource
   #  type: KubeCluster
