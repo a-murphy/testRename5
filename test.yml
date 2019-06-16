@@ -1,4 +1,5 @@
 resources:
+  -
 #  - name: vmCluster
 #    type: VmCluster
 #    configuration:
@@ -146,6 +147,7 @@ resources:
 #      integrationName: fileServerIntegration
        
 pipelines:
+  - 
   - name: test_pipeline_1
     setup:
    #   environmentVariables:   
@@ -741,27 +743,6 @@ pipelines:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-          onSuccess:
-            - echo "Job well done!"
-          onFailure:
-            - echo "uh oh, something went wrong"
-          onComplete:
-            - echo "Cleaning up some stuff"
-          onCancel:
-            - echo "Someone cancelled the job"
-      - name: promoteBuild
-        type: PromoteBuild
-        configuration:
-          inputSteps:
-            - name: third_pipeline
-          targetRepository: test
-          inputResources:
-            - name: imageResource
-          outputResources:
-            - name: my_signed_releaseBundle
-        execution:
-          onStart:
-            - echo "Prepping build environment"
           onSuccess:
             - echo "Job well done!"
           onFailure:
