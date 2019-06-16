@@ -1,9 +1,8 @@
 resources:
-  - 
-#  - name: vmCluster
-#    type: VmCluster
-#    configuration:
-#      integration: github
+  - name: vmCluster
+    type: VmCluster
+    configuration:
+      integration: github
 #  - name: promoteInfo
 #    type: PromoteInfo
 #    configuration:
@@ -147,8 +146,7 @@ resources:
 #      integrationName: fileServerIntegration
        
 pipelines:
-  - 
-  - name: test_pipeline_1
+    - name: test_pipeline_1
     setup:
    #   environmentVariables:   
    #    readOnly:
@@ -589,7 +587,6 @@ pipelines:
     #  runtime:            
     #    type: host
     steps:
-      - 
       - name: pre_pre_second_pipeline
         type: Bash
         configuration:
