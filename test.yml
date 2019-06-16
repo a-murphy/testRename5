@@ -1,5 +1,5 @@
 resources:
-  - 3
+  - 
 #  - name: vmCluster
 #    type: VmCluster
 #    configuration:
@@ -147,7 +147,7 @@ resources:
 #      integrationName: fileServerIntegration
        
 pipelines:
-  - 3
+  - 
   - name: test_pipeline_1
     setup:
    #   environmentVariables:   
@@ -589,7 +589,7 @@ pipelines:
     #  runtime:            
     #    type: host
     steps:
-      - 3
+      - 
       - name: pre_pre_second_pipeline
         type: Bash
         configuration:
