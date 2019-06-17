@@ -1,24 +1,11 @@
 resources:
-  - name: vmCluster
-    type: VmCluster
+  - name: imageResource2
+    type: Image
     configuration:
-      integration: github
-#  - name: promoteInfo
-#    type: PromoteInfo
-#    configuration:
-#      version: test
-#    version:
-#      buildName: test
-#      buildNumber: 1
-
-  #- name: kubeClusterIntegrationResource
-  #  type: KubeCluster
-  #  configuration:
-  #    integrationName: kubeIntegration
-  #    bastionHostIP: 1.2.3.4
-  #    bastionUser: sshUser
-  #    bastionIntegrationName: sshKeyIntegration
-
+      registry: docker
+      imageName: amurphy/test
+      imageTag: master.105
+      autoPull: false
   - name: gitRepoResource
     type: GitRepo
     configuration:
