@@ -3,8 +3,8 @@ resources:
     type: Image
     configuration:
       registry: docker
-      imageName: amurphy/test
-      imageTag: master.105
+      imageName: amurphy/test2
+      imageTag: master.105.2
       autoPull: false
   - name: gitRepoResource
     type: GitRepo
