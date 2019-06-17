@@ -432,6 +432,7 @@ pipelines:
             - name: second_step
         execution:
           onStart:
+            - return 1
             - echo "Prepping build environment"
           onExecute:
             - echo "executing task command 1"
