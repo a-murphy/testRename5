@@ -6,10 +6,26 @@ resources:
       imageName: amurphy/test
       imageTag: master.105
       autoPull: true
+      
+  - name: fileIntegrationResource2
+    type: RemoteFile
+    configuration:
+      fileLocation: location
+      fileName: file
+      fileDateTime: test     
+  - name: fileIntegrationResource3
+    type: RemoteFile
+    configuration:
+      test: location 
+  - name: fileIntegrationResource4
+    type: RemoteFile
+    configuration:
+      source: github 
   - name: imageResource3
     type: Image
     configuration:
       registry: artifactory
+      sourceRepository: test
   - name: imageResource4
     type: Image
     configuration:
