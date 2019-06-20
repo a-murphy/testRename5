@@ -30,6 +30,19 @@ resources:
     type: Image
     configuration:
       test: artifactory
+  - name: cluster1
+    type: KubeCluster
+    configuration:
+      test: artifactory
+  - name: webhook1
+    type: Webhook
+    configuration:
+      webhookName: artifactory
+  - name: webhook2
+    type: Webhook
+    configuration:
+      webhookName: artifactory
+      payload: test
   - name: gitRepoResource
     type: GitRepo
     configuration:
