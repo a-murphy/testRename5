@@ -17,8 +17,8 @@ resources:
   - name: cluster1
     type: KubeCluster
     configuration:
-      test: artifactory
-  - kubernetesConfig: cluster2
+      kubernetesConfig: artifactory
+  - name: cluster2
     type: KubeCluster
     configuration:
       kubernetesConfig: kubernetes
