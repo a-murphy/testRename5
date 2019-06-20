@@ -191,10 +191,10 @@ pipelines:
             image:
               auto:
                 language: none
-      #        custom: 
-      #          name: drydock/u18java
-      #          tag:  master
-      #          autoPull: false
+              custom: 
+                name: drydock/u18java
+                tag:  master
+                autoPull: false
           #    options: test
         execution:
           onExecute:
