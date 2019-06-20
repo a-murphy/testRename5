@@ -17,12 +17,12 @@ resources:
   - name: cluster1
     type: KubeCluster
     configuration:
-      kubernetesConfig: artifactory
+      kubernetesConfig: kubernetes
   - name: cluster2
     type: KubeCluster
     configuration:
       kubernetesConfig: kubernetes
-      bastionHostIP: 127.0.0.1
+     # bastionHostIP: 127.0.0.1
       bastionUser: shippable
       bastionIntegrationName: 127.0.0.1
       
