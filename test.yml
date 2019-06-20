@@ -35,6 +35,11 @@ resources:
     configuration:
       webhookName: artifactory
       payload: test
+  - name: webhook3
+    type: Webhook
+    configuration:
+      webhookName: webhook
+      payload: test
   - name: gitRepoResource
     type: GitRepo
     configuration:
