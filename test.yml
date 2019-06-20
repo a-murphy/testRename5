@@ -562,6 +562,18 @@ pipelines:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
+      - name: step_9
+        type: bash
+        configuration:
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
             
   - name: test_pipeline_release2
     steps:
