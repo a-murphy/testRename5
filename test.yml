@@ -21,15 +21,6 @@ resources:
     type: RemoteFile
     configuration:
       source: github 
-  - name: imageResource3
-    type: Image
-    configuration:
-      registry: artifactory
-      sourceRepository: test
-  - name: imageResource4
-    type: Image
-    configuration:
-      test: artifactory
   - name: cluster1
     type: KubeCluster
     configuration:
