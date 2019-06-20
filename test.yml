@@ -6,6 +6,14 @@ resources:
       imageName: amurphy/test
       imageTag: master.105
       autoPull: true
+  - name: imageResource3
+    type: Image
+    configuration:
+      registry: artifactory
+  - name: imageResource4
+    type: Image
+    configuration:
+      test: artifactory
   - name: gitRepoResource
     type: GitRepo
     configuration:
