@@ -14,18 +14,15 @@ resources:
       fileLocation: location
       fileName: file
       fileDateTime: test     
-  - name: fileIntegrationResource3
-    type: RemoteFile
-    configuration:
-      test: location 
-  - name: fileIntegrationResource4
-    type: RemoteFile
-    configuration:
-      source: github 
   - name: cluster1
     type: KubeCluster
     configuration:
       test: artifactory
+  - name: cluster2
+    type: KubeCluster
+    configuration:
+      test: kubernetes
+      
   - name: webhook1
     type: Webhook
     configuration:
