@@ -22,9 +22,9 @@ resources:
     type: KubeCluster
     configuration:
       kubernetesConfig: kubernetes
-     # bastionHostIP: 127.0.0.1
+      bastionHostIP: 127.0.0.1
       bastionUser: shippable
-      bastionIntegrationName: kubernetes
+      bastionIntegrationName: sshKey
       
   - name: webhook1
     type: Webhook
