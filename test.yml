@@ -21,7 +21,7 @@ resources:
   - name: cluster2
     type: KubeCluster
     configuration:
-      test: kubernetes
+      kubernetesConfig: kubernetes
       
   - name: webhook1
     type: Webhook
