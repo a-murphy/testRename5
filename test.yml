@@ -10,7 +10,7 @@ resources:
   - name: fileIntegrationResource2
     type: RemoteFile
     configuration:
-      source: github
+      source: artifactory
       fileLocation: location
       fileName: file
       fileDateTime: test     
