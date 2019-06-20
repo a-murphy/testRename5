@@ -24,7 +24,7 @@ resources:
       kubernetesConfig: kubernetes
      # bastionHostIP: 127.0.0.1
       bastionUser: shippable
-      bastionIntegrationName: 127.0.0.1
+      bastionIntegrationName: kubernetes
       
   - name: webhook1
     type: Webhook
