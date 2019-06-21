@@ -109,7 +109,7 @@ resources:
       files:
         except:      file
         only:        file       
-      source: github 
+      source: artifactory 
  
 #  - name: cluster
 #    type: cluster
