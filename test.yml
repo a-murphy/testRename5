@@ -142,9 +142,9 @@ pipelines:
     #      ENV2: value-pipe-2
     configuration:
       runtime:            
-        type: host
-        image:
-          test: test
+        type: nothost
+      #  image:
+      #    test: test
       #    auto:
       #      language: none
       #    custom: 
