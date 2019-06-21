@@ -143,8 +143,8 @@ pipelines:
     configuration:
       runtime:            
         type: image
-        image:
-          test: test
+      #  image:
+      #    test: test
       #    auto:
       #      language: none
       #    custom: 
