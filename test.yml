@@ -132,7 +132,7 @@ resources:
        
 pipelines:
   - name: test_pipeline_1
-      setup:
+    setup:
       environmentVariables:   
        readOnly:
           ENV1: value-pipe-1
