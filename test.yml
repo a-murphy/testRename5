@@ -148,6 +148,7 @@ pipelines:
             tag:  master
             autoPull: false
     steps:
+      - type: test
       - name: in_trigger_step
         type: Bash
         configuration:
