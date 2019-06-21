@@ -541,11 +541,11 @@ pipelines:
       - name: step_9
         type: Bash
         configuration:
-          runtime:            
-            type: image
-            image:
-              auto:
-                language: go
+     #     runtime:            
+     #       type: image
+     #       image:
+     #         auto:
+     #           language: go
           #    custom: 
           #      name: drydock/u16node
           #      tag:  master
@@ -562,15 +562,15 @@ pipelines:
       - name: step_CreateReleaseBundle
         type: CreateReleaseBundle
         configuration:
-          runtime:            
-            type: image
-            image:
+    #      runtime:            
+    #        type: image
+    #        image:
           #    auto:
           #      language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+    #          custom: 
+    #            name: drydock/u16node
+    #            tag:  master
+    #            autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -581,10 +581,10 @@ pipelines:
         type: DistributeReleaseBundle
         configuration:
           runtime:            
-            type: image
-            image:
-              auto:
-                language: go
+            type: host
+     #       image:
+     #         auto:
+     #           language: go
          #     custom: 
          #       name: drydock/u16node
          #       tag:  master
@@ -600,13 +600,13 @@ pipelines:
         configuration:
           runtime:            
             type: image
-            image:
+      #      image:
         #      auto:
         #        language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+      #        custom: 
+      #          name: drydock/u16node
+      #          tag:  master
+      #          autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -617,10 +617,10 @@ pipelines:
         type: DockerPush
         configuration:
           runtime:            
-            type: image
-            image:
-              auto:
-                language: go
+        #    type: image
+        #    image:
+        #      auto:
+        #        language: go
         #      custom: 
         #        name: drydock/u16node
         #        tag:  master
@@ -635,14 +635,14 @@ pipelines:
         type: GoBuild
         configuration:
           runtime:            
-            type: image
-            image:
+         #   type: image
+         #   image:
          #     auto:
          #       language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+         #     custom: 
+         #       name: drydock/u16node
+         #       tag:  master
+         #       autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -652,11 +652,11 @@ pipelines:
       - name: step_GoPublishBinary
         type: GoPublishBinary
         configuration:
-          runtime:            
-            type: image
-            image:
-              auto:
-                language: go
+        #  runtime:            
+        #    type: image
+        #    image:
+        #      auto:
+        #        language: go
         #      custom: 
         #        name: drydock/u16node
         #        tag:  master
@@ -670,15 +670,15 @@ pipelines:
       - name: step_GoPublishModule
         type: GoPublishModule
         configuration:
-          runtime:            
-            type: image
-            image:
+        #  runtime:            
+        #    type: image
+        #    image:
         #      auto:
         #        language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+        #      custom: 
+        #        name: drydock/u16node
+        #        tag:  master
+        #        autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -688,11 +688,11 @@ pipelines:
       - name: step_GradleBuild
         type: GradleBuild
         configuration:
-          runtime:            
-            type: image
-            image:
-              auto:
-                language: go
+       #   runtime:            
+       #     type: image
+       #     image:
+       #       auto:
+       #         language: go
        #       custom: 
        #         name: drydock/u16node
        #         tag:  master
@@ -706,15 +706,15 @@ pipelines:
       - name: step_MvnBuild
         type: MvnBuild
         configuration:
-          runtime:            
-            type: image
-            image:
+       #   runtime:            
+       #     type: image
+       #     image:
        #       auto:
        #         language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+       #       custom: 
+       #         name: drydock/u16node
+       #         tag:  master
+       #         autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -724,11 +724,11 @@ pipelines:
       - name: step_NpmBuild
         type: NpmBuild
         configuration:
-          runtime:            
-            type: image
-            image:
-              auto:
-                language: go
+       #   runtime:            
+       #     type: image
+       #     image:
+       #       auto:
+       #         language: go
        #       custom: 
        #         name: drydock/u16node
        #         tag:  master
@@ -742,15 +742,15 @@ pipelines:
       - name: step_NpmPublish
         type: NpmPublish
         configuration:
-          runtime:            
-            type: image
-            image:
+        #  runtime:            
+        #    type: image
+        #    image:
         #      auto:
         #        language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+        #      custom: 
+        #        name: drydock/u16node
+        #        tag:  master
+        #        autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -760,11 +760,11 @@ pipelines:
       - name: step_PromoteBuild
         type: PromoteBuild
         configuration:
-          runtime:            
-            type: image
-            image:
-              auto:
-                language: go
+       #   runtime:            
+       #     type: image
+       #     image:
+       #       auto:
+       #         language: go
        #       custom: 
        #         name: drydock/u16node
        #         tag:  master
@@ -778,15 +778,15 @@ pipelines:
       - name: step_PublishBuildInfo
         type: PublishBuildInfo
         configuration:
-          runtime:            
-            type: image
-            image:
+        #  runtime:            
+        #    type: image
+        #    image:
         #      auto:
         #        language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+        #      custom: 
+        #        name: drydock/u16node
+        #        tag:  master
+        #        autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -796,11 +796,11 @@ pipelines:
       - name: step_PushArtifactoryPackage
         type: PushArtifactoryPackage
         configuration:
-          runtime:            
-            type: image
-            image:
-              auto:
-                language: go
+        #  runtime:            
+        #    type: image
+        #    image:
+        #      auto:
+        #        language: go
         #      custom: 
         #        name: drydock/u16node
         #        tag:  master
@@ -814,15 +814,15 @@ pipelines:
       - name: step_SignReleaseBundle
         type: SignReleaseBundle
         configuration:
-          runtime:            
-            type: image
-            image:
+        #  runtime:            
+        #    type: image
+        #    image:
         #      auto:
         #        language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+        #      custom: 
+        #        name: drydock/u16node
+        #        tag:  master
+        #        autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -832,11 +832,11 @@ pipelines:
       - name: step_XrayScan
         type: XrayScan
         configuration:
-          runtime:            
-            type: image
-            image:
-              auto:
-                language: go
+         # runtime:            
+         #   type: image
+         #   image:
+         #     auto:
+         #       language: go
          #     custom: 
          #       name: drydock/u16node
          #       tag:  master
