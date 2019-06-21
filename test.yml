@@ -546,10 +546,10 @@ pipelines:
             image:
               auto:
                 language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+          #    custom: 
+          #      name: drydock/u16node
+          #      tag:  master
+          #      autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -565,8 +565,8 @@ pipelines:
           runtime:            
             type: image
             image:
-              auto:
-                language: go
+          #    auto:
+          #      language: go
               custom: 
                 name: drydock/u16node
                 tag:  master
@@ -585,10 +585,10 @@ pipelines:
             image:
               auto:
                 language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+         #     custom: 
+         #       name: drydock/u16node
+         #       tag:  master
+         #       autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -601,8 +601,8 @@ pipelines:
           runtime:            
             type: image
             image:
-              auto:
-                language: go
+        #      auto:
+        #        language: go
               custom: 
                 name: drydock/u16node
                 tag:  master
@@ -621,10 +621,10 @@ pipelines:
             image:
               auto:
                 language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+        #      custom: 
+        #        name: drydock/u16node
+        #        tag:  master
+        #        autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -637,8 +637,8 @@ pipelines:
           runtime:            
             type: image
             image:
-              auto:
-                language: go
+         #     auto:
+         #       language: go
               custom: 
                 name: drydock/u16node
                 tag:  master
@@ -657,10 +657,10 @@ pipelines:
             image:
               auto:
                 language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+        #      custom: 
+        #        name: drydock/u16node
+        #        tag:  master
+        #        autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -673,8 +673,8 @@ pipelines:
           runtime:            
             type: image
             image:
-              auto:
-                language: go
+        #      auto:
+        #        language: go
               custom: 
                 name: drydock/u16node
                 tag:  master
@@ -693,10 +693,10 @@ pipelines:
             image:
               auto:
                 language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+       #       custom: 
+       #         name: drydock/u16node
+       #         tag:  master
+       #         autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -709,8 +709,8 @@ pipelines:
           runtime:            
             type: image
             image:
-              auto:
-                language: go
+       #       auto:
+       #         language: go
               custom: 
                 name: drydock/u16node
                 tag:  master
@@ -729,10 +729,10 @@ pipelines:
             image:
               auto:
                 language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+       #       custom: 
+       #         name: drydock/u16node
+       #         tag:  master
+       #         autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -745,8 +745,8 @@ pipelines:
           runtime:            
             type: image
             image:
-              auto:
-                language: go
+        #      auto:
+        #        language: go
               custom: 
                 name: drydock/u16node
                 tag:  master
@@ -765,10 +765,10 @@ pipelines:
             image:
               auto:
                 language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+       #       custom: 
+       #         name: drydock/u16node
+       #         tag:  master
+       #         autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -781,8 +781,8 @@ pipelines:
           runtime:            
             type: image
             image:
-              auto:
-                language: go
+        #      auto:
+        #        language: go
               custom: 
                 name: drydock/u16node
                 tag:  master
@@ -801,10 +801,10 @@ pipelines:
             image:
               auto:
                 language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+        #      custom: 
+        #        name: drydock/u16node
+        #        tag:  master
+        #        autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -817,8 +817,8 @@ pipelines:
           runtime:            
             type: image
             image:
-              auto:
-                language: go
+        #      auto:
+        #        language: go
               custom: 
                 name: drydock/u16node
                 tag:  master
@@ -837,10 +837,10 @@ pipelines:
             image:
               auto:
                 language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+         #     custom: 
+         #       name: drydock/u16node
+         #       tag:  master
+         #       autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
