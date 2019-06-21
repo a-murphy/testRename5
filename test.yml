@@ -177,8 +177,8 @@ pipelines:
       runtime:            
         type: image
         image:
-          auto:
-            language: none
+      #    auto:
+      #      language: none
           custom: 
             name: drydock/u18java
             tag:  master
