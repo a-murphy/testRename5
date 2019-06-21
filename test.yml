@@ -105,10 +105,7 @@ resources:
     type: RemoteFile
     configuration:
       fileLocation: location
-      fileName: file
-      files:
-        except:      file
-        only:        file       
+      fileName: file   
       source: artifactory 
  
 #  - name: cluster
@@ -135,22 +132,22 @@ resources:
        
 pipelines:
   - name: test_pipeline_1
-   #   setup:
-   #   environmentVariables:   
-   #    readOnly:
-    #      ENV1: value-pipe-1
-    #      ENV2: value-pipe-2
-    #configuration:
-      #runtime:            
-      #  type: nothost
-      #  image:
-      #    test: test
-      #    auto:
-      #      language: none
-      #    custom: 
-      #      name: drydock/u18java
-      #      tag:  master
-      #      autoPull: false
+      setup:
+      environmentVariables:   
+       readOnly:
+          ENV1: value-pipe-1
+          ENV2: value-pipe-2
+    configuration:
+      runtime:            
+        type: nothost
+        image:
+          test: test
+          auto:
+            language: none
+          custom: 
+            name: drydock/u18java
+            tag:  master
+            autoPull: false
     steps:
       - name: in_trigger_step
         type: Bash
