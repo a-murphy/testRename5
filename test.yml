@@ -634,7 +634,7 @@ pipelines:
       - name: step_GoBuild
         type: GoBuild
         configuration:
-          runtime:            
+         # runtime:            
          #   type: image
          #   image:
          #     auto:
