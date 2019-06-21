@@ -7,39 +7,6 @@ resources:
       imageTag: master.105
       autoPull: true
       
-  - name: fileIntegrationResource2
-    type: RemoteFile
-    configuration:
-      source: artifactory
-      fileLocation: location
-      fileName: file
-      fileDateTime: test     
-  - name: cluster1
-    type: KubeCluster
-    configuration:
-      kubernetesConfig: kubernetes
-  - name: cluster2
-    type: KubeCluster
-    configuration:
-      kubernetesConfig: kubernetes
-      bastionHostIP: 127.0.0.1
-      bastionUser: shippable
-      bastionIntegrationName: kubernetes
-      
-  - name: webhook1
-    type: Webhook
-    configuration:
-      webhookName: artifactory
-  - name: webhook2
-    type: Webhook
-    configuration:
-      webhookName: artifactory
-      payload: test
-  - name: webhook3
-    type: Webhook
-    configuration:
-      webhookName: webhook
-      payload: test
   - name: gitRepoResource
     type: GitRepo
     configuration:
@@ -177,12 +144,13 @@ pipelines:
       runtime:            
         type: image
         image:
+          test: test
       #    auto:
       #      language: none
-          custom: 
-            name: drydock/u18java
-            tag:  master
-            autoPull: false
+      #    custom: 
+      #      name: drydock/u18java
+      #      tag:  master
+      #      autoPull: false
     steps:
       - name: in_trigger_step
         type: Bash
