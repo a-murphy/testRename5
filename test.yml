@@ -140,9 +140,9 @@ pipelines:
    #    readOnly:
     #      ENV1: value-pipe-1
     #      ENV2: value-pipe-2
-    configuration:
-      runtime:            
-        type: nothost
+    #configuration:
+      #runtime:            
+      #  type: nothost
       #  image:
       #    test: test
       #    auto:
@@ -539,8 +539,17 @@ pipelines:
             - echo "executing task command 1"
             - echo "executing task command 2"
       - name: step_9
-        type: bash
+        type: Bash
         configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -550,6 +559,294 @@ pipelines:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
+      - name: step_CreateReleaseBundle
+        type: CreateReleaseBundle
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_DistributeReleaseBundle
+        type: DistributeReleaseBundle
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_DockerBuild
+        type: DockerBuild
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_DockerPush
+        type: DockerPush
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_GoBuild
+        type: GoBuild
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_GoPublishBinary
+        type: GoPublishBinary
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_GoPublishModule
+        type: GoPublishModule
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_GradleBuild
+        type: GradleBuild
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_MvnBuild
+        type: MvnBuild
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_NpmBuild
+        type: NpmBuild
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_NpmPublish
+        type: NpmPublish
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_PromoteBuild
+        type: PromoteBuild
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_PublishBuildInfo
+        type: PublishBuildInfo
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_PushArtifactoryPackage
+        type: PushArtifactoryPackage
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_SignReleaseBundle
+        type: SignReleaseBundle
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_XrayScan
+        type: XrayScan
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+              custom: 
+                name: drydock/u16node
+                tag:  master
+                autoPull: false
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
             
   - name: test_pipeline_release2
     steps:
