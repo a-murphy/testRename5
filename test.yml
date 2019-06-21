@@ -174,7 +174,14 @@ pipelines:
     #      ENV1: value-pipe-1
     #      ENV2: value-pipe-2
     runtime:            
-      type: host
+      type: image
+      image:
+        auto:
+          language: none
+        custom: 
+          name: drydock/u18java
+          tag:  master
+          autoPull: false
     steps:
       - name: in_trigger_step
         type: Bash
