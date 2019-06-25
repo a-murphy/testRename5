@@ -234,7 +234,6 @@ pipelines:
                 autoPull: false
           inputResources:
          #   - name: imageResource
-            - name: fileIntegrationResource
             - name: gitRepoResource
       #      - bitbucketServerRepoResource
           inputSteps:
