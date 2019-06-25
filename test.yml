@@ -132,7 +132,6 @@ resources:
        
 pipelines:
   - name: test_pipeline_1
-    type: bash
     configuration:
       environmentVariables:   
        readOnly:
@@ -148,7 +147,6 @@ pipelines:
             tag:  master
             autoPull: false
     steps:
-      - type: test
       - name: in_trigger_step
         type: Bash
         configuration:
