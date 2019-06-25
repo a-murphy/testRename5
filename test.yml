@@ -255,6 +255,7 @@ pipelines:
             - echo $int_test_key2
             - echo $int_test_key3
             - echo $int_test_key4
+            - echo "$ENV1 $ENV2 $ENV3 $ENV4"
          #   - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
             - echo "Prepping build environment"
             - echo "$testPipelineVariable"
