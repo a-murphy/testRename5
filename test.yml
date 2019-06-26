@@ -49,7 +49,9 @@ resources:
       serviceName: service
       cityName: city
       siteName: site
-      countryCodes: country
+      countryCodes:
+       - country1
+       - country2
   - name: my_BuildInfo
     type: BuildInfo
     configuration:
