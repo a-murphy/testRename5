@@ -558,12 +558,12 @@ pipelines:
         type: CreateReleaseBundle
         configuration:
           releaseBundleName: test
-          releaseBundleVersion: 1
+          releaseBundleVersion: one
           nodePool: u18
           inputResources:
-            - my_BuildInfo
+            - name: my_BuildInfo
           outputResources:
-            - my_ReleaseBundle
+            - name: my_ReleaseBundle
           inputSteps:
             - name: step_7
         execution:
@@ -575,7 +575,7 @@ pipelines:
           runtime:            
             type: host
           inputResources:
-            - my_ReleaseBundle
+            - name: my_ReleaseBundle
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -589,7 +589,7 @@ pipelines:
             type: image
           nodePool: u18
           inputResources:
-            - my_BuildInfo
+            - name: my_BuildInfo
           dockerFileLocation: Dockerfile
           dockerFileName: Dockerfile
           dockerImageName: amurphy/test
@@ -618,7 +618,7 @@ pipelines:
           inputSteps:
             - name: step_7
           inputResources:
-            - my_BuildInfo
+            - name: my_BuildInfo
           sourceLocation: location
           repository: repo
           outputLocation: out
@@ -630,11 +630,7 @@ pipelines:
         type: GoPublishBinary
         configuration:
           inputResources:
-            - my_BuildInfo
-          sourceLocation: location
-          repository: repo
-          outputLocation: out
-          outputFile: file
+            - name: my_BuildInfo
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -645,11 +641,8 @@ pipelines:
         type: GoPublishModule
         configuration:
           inputResources:
-            - my_BuildInfo
+            - name: my_BuildInfo
           sourceLocation: location
-          repository: repo
-          outputLocation: out
-          outputFile: file
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -660,11 +653,11 @@ pipelines:
         type: GradleBuild
         configuration:
           inputResources:
-            - my_BuildInfo
+            - name: my_BuildInfo
           sourceLocation: location
-          repository: repo
-          outputLocation: out
-          outputFile: file
+          gradleCommand: gradle
+          configFileLocation: .
+          configFileName: config
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -675,11 +668,11 @@ pipelines:
         type: MvnBuild
         configuration:
           inputResources:
-            - my_BuildInfo
+            - name: my_BuildInfo
           sourceLocation: location
-          repository: repo
-          outputLocation: out
-          outputFile: file
+          mvnCommand: mvn
+          configFileLocation: .
+          configFileName: config
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -690,11 +683,8 @@ pipelines:
         type: NpmBuild
         configuration:
           inputResources:
-            - my_BuildInfo
+            - name: my_BuildInfo
           sourceLocation: location
-          repository: repo
-          outputLocation: out
-          outputFile: file
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -705,11 +695,7 @@ pipelines:
         type: NpmPublish
         configuration:
           inputResources:
-            - my_BuildInfo
-          sourceLocation: location
-          repository: repo
-          outputLocation: out
-          outputFile: file
+            - name: my_BuildInfo
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -720,11 +706,7 @@ pipelines:
         type: PromoteBuild
         configuration:
           inputResources:
-            - my_BuildInfo
-          sourceLocation: location
-          repository: repo
-          outputLocation: out
-          outputFile: file
+            - name: my_BuildInfo
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -735,7 +717,7 @@ pipelines:
         type: PublishBuildInfo
         configuration:
           inputResources:
-            - my_BuildInfo
+            - name: my_BuildInfo
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -746,7 +728,7 @@ pipelines:
         type: PushArtifactoryPackage
         configuration:
           inputResources:
-            - my_BuildInfo
+            - name: my_BuildInfo
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -757,7 +739,7 @@ pipelines:
         type: SignReleaseBundle
         configuration:
           inputResources:
-            - my_ReleaseBundle
+            - name: my_ReleaseBundle
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -768,7 +750,7 @@ pipelines:
         type: XrayScan
         configuration:
           inputResources:
-            - my_BuildInfo
+            - name: my_BuildInfo
           nodePool: u18
           inputSteps:
             - name: step_7
