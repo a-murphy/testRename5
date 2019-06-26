@@ -42,6 +42,12 @@ resources:
       sourceArtifactory: artifactory
       name: amurphy/test
       version: master.105
+  - name: my_DistributionRule
+    type: DistributionRule
+    configuration:
+      sourceArtifactory: artifactory
+      name: amurphy/test
+      version: master.105
   - name: my_BuildInfo
     type: BuildInfo
     configuration:
@@ -577,6 +583,7 @@ pipelines:
           inputResources:
             - name: my_releaseBundle2
             - name: my_BuildInfo
+            - name: my_DistributionRule
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -767,7 +774,7 @@ pipelines:
         type: SignReleaseBundle
         configuration:
           inputResources:
-            - name: my_releaseBundle
+            - name: my_releaseBundle2
           outputResources:
             - name: my_signed_releaseBundle
           nodePool: u18
