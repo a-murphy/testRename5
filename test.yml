@@ -278,12 +278,12 @@ pipelines:
             - echo "executing task command 1"
             - echo "executing task command 2"
           #  - ls -R $STEP_WORKSPACE_DIR/download
-            - restore_cache test lastrun.txt
+            - add_cache_files test lastrun.txt
             - ls
             - echo "testing1234" > testing.txt
-            - cache_files testing.txt test
+            - add_cache_files testing.txt test
           #  - restore_pipeline_state testing testfile.txt
-            - restore_pipeline_state key.pem key.pem
+            - restore_pipeline_files key.pem key.pem
             - ls
             - write_output gitRepoResource2 key=value123
         #    - update_commit_status gitRepoResource --status processing --message "my message"
@@ -423,7 +423,7 @@ pipelines:
             - echo "testing" > test.txt
             - cache_files test.txt my_file
             - ls -alR $STEP_WORKSPACE_DIR
-            - restore_cache my_file cachefile.txt
+            - restore_cache_files my_file cachefile.txt
             - ls
             - echo "executing task command 1"
             - echo "executing task command 2"
@@ -947,9 +947,9 @@ pipelines:
         execution:
           onExecute:
             - echo "testing" > test.txt
-            - cache_files test.txt my_file
+            - add_cache_files test.txt my_file
             - ls -alR $STEP_WORKSPACE_DIR
-            - restore_cache my_file cachefile.txt
+            - restore_cache_files my_file cachefile.txt
             - ls
             - echo "executing task command 1"
             - echo "executing task command 2"
