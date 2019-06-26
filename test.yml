@@ -563,7 +563,7 @@ pipelines:
           inputResources:
             - name: my_BuildInfo
           outputResources:
-            - name: my_ReleaseBundle2
+            - name: my_releaseBundle2
           inputSteps:
             - name: step_7
         execution:
@@ -575,7 +575,7 @@ pipelines:
           runtime:            
             type: host
           inputResources:
-            - name: my_ReleaseBundle2
+            - name: my_releaseBundle2
             - name: my_BuildInfo
           nodePool: u18
           inputSteps:
@@ -634,6 +634,7 @@ pipelines:
         configuration:
           inputResources:
             - name: my_BuildInfo
+          targetRepository: test
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -645,6 +646,8 @@ pipelines:
         configuration:
           inputResources:
             - name: my_BuildInfo
+          version: one
+          targetRepository: test
           sourceLocation: location
           nodePool: u18
           inputSteps:
@@ -655,6 +658,8 @@ pipelines:
       - name: step_GradleBuild
         type: GradleBuild
         configuration:
+          integrations:
+            - name: artifactory
           inputResources:
             - name: gitRepoResource
           sourceLocation: location
@@ -670,6 +675,8 @@ pipelines:
       - name: step_MvnBuild
         type: MvnBuild
         configuration:
+          integrations:
+            - name: artifactory
           inputResources:
             - name: gitRepoResource
           sourceLocation: location
@@ -688,6 +695,7 @@ pipelines:
           inputResources:
             - name: gitRepoResource
           sourceLocation: location
+          repositoryName: test
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -697,6 +705,9 @@ pipelines:
       - name: step_NpmPublish
         type: NpmPublish
         configuration:
+          integrations:
+            - name: artifactory
+          repositoryName: test
           inputResources:
             - name: gitRepoResource
           nodePool: u18
@@ -708,8 +719,11 @@ pipelines:
       - name: step_PromoteBuild
         type: PromoteBuild
         configuration:
+          targetRepository: test
           inputResources:
             - name: my_BuildInfo
+          outputResources:
+            - name: my_BuildInfo2
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -730,6 +744,9 @@ pipelines:
       - name: step_PushArtifactoryPackage
         type: PushArtifactoryPackage
         configuration:
+          targetRepo: test
+          integrations:
+            - name: artifactory
           inputResources:
             - name: my_BuildInfo
           nodePool: u18
@@ -743,6 +760,8 @@ pipelines:
         configuration:
           inputResources:
             - name: my_ReleaseBundle
+          outputResources:
+            - name: my_signed_ReleaseBundle
           nodePool: u18
           inputSteps:
             - name: step_7
