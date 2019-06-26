@@ -211,8 +211,8 @@ pipelines:
             - echo $testRunVariable
             - echo $testPipelineVariable
             - echo $testingAgain
-            - add_run_variable testRunVariable="testing" testingAgain=2 testThree=three
-            - add_pipeline_variable testPipelineVariable="RUN$run_id" testingAgain=three
+            - add_run_variables testRunVariable="testing" testingAgain=2 testThree=three
+            - add_pipeline_variables testPipelineVariable="RUN$run_id" testingAgain=three
             - echo $testRunVariable
             - echo $testPipelineVariable
             - echo $testingAgain
@@ -295,7 +295,7 @@ pipelines:
         #    - compare_git --commit-range d4c493389cd54b2ad795f94e91d445fece8cba2f..master --path $STEP_DEPENDENCY_STATE_DIR/resources/gitRepoResource
         #    - write_output gitRepoResource2 key1=value1 key2="value2" key3="value 3" "key4=value4" key5= key6="" key7=value7=7 key8
 
-            - add_run_variable testRunVariable="testing" testingAgain=2 testThree=three
+            - add_run_variables testRunVariable="testing" testingAgain=2 testThree=three
          #   - rm $PIPELINE_WORKSPACE_DIR/**
          #   - ls -al $PIPELINE_WORKSPACE_DIR
           #  - switch_env c --jdk openjdk11 4
@@ -350,7 +350,7 @@ pipelines:
             - echo "$testRunVariable"
             - echo "$testingAgain"
             - echo "$testThree"
-            - add_run_variable testRunVariable="testingAgain"
+            - add_run_variables testRunVariable="testingAgain"
             - yes "testing 1234 " | head -c 100000 > test.txt
             - echo "testing 1234 " > test2.txt
             - openssl genrsa -out key.pem 2048
