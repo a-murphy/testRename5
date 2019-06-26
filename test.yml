@@ -46,8 +46,10 @@ resources:
     type: DistributionRule
     configuration:
       sourceArtifactory: artifactory
-      name: amurphy/test
-      version: master.105
+      serviceName: service
+      cityName: city
+      siteName: site
+      countryCodes: country
   - name: my_BuildInfo
     type: BuildInfo
     configuration:
