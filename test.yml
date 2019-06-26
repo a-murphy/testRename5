@@ -632,6 +632,8 @@ pipelines:
       - name: step_GoPublishBinary
         type: GoPublishBinary
         configuration:
+          integrations:
+            - name: artifactory
           inputResources:
             - name: my_BuildInfo
           targetRepository: test
@@ -644,8 +646,10 @@ pipelines:
       - name: step_GoPublishModule
         type: GoPublishModule
         configuration:
+          integrations:
+            - name: artifactory
           inputResources:
-            - name: my_BuildInfo
+            - name: gitRepoResource
           version: one
           targetRepository: test
           sourceLocation: location
@@ -692,6 +696,8 @@ pipelines:
       - name: step_NpmBuild
         type: NpmBuild
         configuration:
+          integrations:
+            - name: artifactory
           inputResources:
             - name: gitRepoResource
           sourceLocation: location
@@ -735,6 +741,8 @@ pipelines:
         configuration:
           inputResources:
             - name: my_BuildInfo
+          outputResources:
+            - name: my_BuildInfo2
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -751,7 +759,7 @@ pipelines:
             - name: my_BuildInfo
           nodePool: u18
           inputSteps:
-            - name: step_7
+            - name: step_DockerBuild
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -759,9 +767,9 @@ pipelines:
         type: SignReleaseBundle
         configuration:
           inputResources:
-            - name: my_ReleaseBundle
+            - name: my_releaseBundle
           outputResources:
-            - name: my_signed_ReleaseBundle
+            - name: my_signed_releaseBundle
           nodePool: u18
           inputSteps:
             - name: step_7
