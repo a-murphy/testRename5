@@ -141,7 +141,7 @@ resources:
 #      integrationName: fileServerIntegration
        
 pipelines:
-  - name: invalid_name
+  - name: invalid-name
     configuration:
       environmentVariables:   
        readOnly:
