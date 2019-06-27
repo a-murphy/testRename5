@@ -141,14 +141,14 @@ resources:
 #      integrationName: fileServerIntegration
        
 pipelines:
-  - name: invalid-name
+  - name: invalid_name
     configuration:
       environmentVariables:   
        readOnly:
           ENV1: value-1
           ENV2: value-2
     steps:
-      - name: in_trigger_step
+      - name: in-trigger-step
         type: Bash
         execution:
           onExecute:
