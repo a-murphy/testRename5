@@ -160,7 +160,7 @@ pipelines:
       - name: in_trigger_step
         type: Bash
         configuration:
-          priority: 1
+          priority: 10
           affinityGroup: test_group 
           timeoutSeconds: 180
         #  environmentVariables:
