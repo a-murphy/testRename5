@@ -838,17 +838,12 @@ pipelines:
             
   - name: test_pipeline_2
     configuration:
-      environmentVariables:   
-        readOnly:
-          ENV1: value-1
-          ENV2: value-2
-    #setup:
-    #  environmentVariables:
+    #  environmentVariables:   
     #    readOnly:
-    #      ENV1: value-pipe-1
-    #      ENV2: value-pipe-2
-    #  runtime:            
-    #    type: host
+    #      ENV1: value-1
+    #      ENV2: value-2
+      runtime:            
+        type: host
     steps:
       - name: pre_pre_second_pipeline
         type: Bash
