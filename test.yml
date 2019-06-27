@@ -148,7 +148,7 @@ pipelines:
           ENV1: value-1
           ENV2: value-2
     steps:
-      - name: in-trigger-step
+      - name: in_trigger_step
         type: Bash
         execution:
           onExecute:
