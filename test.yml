@@ -145,7 +145,7 @@ pipelines:
     configuration:
       environmentVariables:   
        readOnly:
-          ENV1: value-one
+          ENV1: value-1
           ENV2: value-2
       runtime:            
         type: image
@@ -837,6 +837,11 @@ pipelines:
        #     - name: gitRepoResource
             
   - name: test_pipeline_2
+    configuration:
+      environmentVariables:   
+        readOnly:
+          ENV1: value-1
+          ENV2: value-2
     #setup:
     #  environmentVariables:
     #    readOnly:
