@@ -145,7 +145,7 @@ pipelines:
     configuration:
       environmentVariables:   
        readOnly:
-          ENV1: value-1
+          ENV1: value-one
           ENV2: value-2
       runtime:            
         type: image
