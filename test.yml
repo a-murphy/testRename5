@@ -837,13 +837,13 @@ pipelines:
        #     - name: gitRepoResource
             
   - name: test_pipeline_2
-    configuration:
+    #configuration:
     #  environmentVariables:   
     #    readOnly:
     #      ENV1: value-1
     #      ENV2: value-2
-      runtime:            
-        type: host
+    #  runtime:            
+    #    type: host
     steps:
       - name: pre_pre_second_pipeline
         type: Bash
