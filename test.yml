@@ -177,6 +177,8 @@ pipelines:
           priority: 10
           affinityGroup: test_group 
           timeoutSeconds: 180
+          integrations:
+            - docker
         #  environmentVariables:
         #    ENV1: value1
         #    ENV2: value2
