@@ -644,9 +644,8 @@ pipelines:
             - name: gitRepoResource
           integrations:
             - name: artifactory
-          sourceLocation: location
-          integrations:
             - name: docker
+          sourceLocation: location
           repository: repo
           outputLocation: out
           outputFile: file
@@ -658,11 +657,10 @@ pipelines:
         configuration:
           integrations:
             - name: artifactory
+            - name: docker
           inputResources:
             - name: my_BuildInfo
           targetRepository: test
-          integrations:
-            - name: docker
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -690,11 +688,10 @@ pipelines:
         configuration:
           integrations:
             - name: artifactory
+            - name: docker
           inputResources:
             - name: gitRepoResource
           sourceLocation: location
-          integrations:
-            - name: docker
           gradleCommand: gradle
           configFileLocation: .
           configFileName: config
