@@ -627,9 +627,8 @@ pipelines:
           targetRepository: test
           integrations:
             - name: artifactory
-          nodePool: u18
-          integrations:
             - name: docker
+          nodePool: u18
           inputSteps:
             - name: step_DockerBuild
         execution:
