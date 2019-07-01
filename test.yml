@@ -246,7 +246,7 @@ pipelines:
                 tag:  master
                 autoPull: false
           inputResources:
-            - name: imageResource
+            - name: imageResource2
             - name: gitRepoResource
       #      - bitbucketServerRepoResource
           inputSteps:
