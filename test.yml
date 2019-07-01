@@ -185,6 +185,7 @@ pipelines:
             - bump_semver v1.2.3 minor
             - echo "executing task command 1"
             - echo "executing task command 2"
+            - cat $steplet_script_path
       #      - switch_env java openjdk7 || true
       #      - switch_env java openjdk8 || true
       #      - switch_env java openjdk9 || true
@@ -231,7 +232,7 @@ pipelines:
         type: Bash
         configuration:
           chronological: true
-          affinityGroup: test_group
+       #   affinityGroup: test_group
           environmentVariables:
             ENV3: value3
             ENV4: value4
@@ -245,7 +246,7 @@ pipelines:
                 tag:  master
                 autoPull: false
           inputResources:
-         #   - name: imageResource
+            - name: imageResource
             - name: gitRepoResource
       #      - bitbucketServerRepoResource
           inputSteps:
