@@ -141,20 +141,6 @@ resources:
 #      integrationName: fileServerIntegration
        
 pipelines:
-  - name: invalid-name
-    configuration:
-      environmentVariables:   
-       readOnly:
-          ENV1: value-1
-          ENV2: value-2
-    steps:
-      - name: in_trigger_step
-        type: Bash
-        execution:
-          onExecute:
-            - echo "executing task command 1"
-            - echo "executing task command 2"
-
   - name: test_pipeline_1
     configuration:
       environmentVariables:   
