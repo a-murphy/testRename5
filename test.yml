@@ -574,6 +574,8 @@ pipelines:
           releaseBundleName: test
           releaseBundleVersion: one
           nodePool: u18
+          integrations:
+            - name: docker
           inputResources:
             - name: my_BuildInfo
           outputResources:
@@ -588,6 +590,8 @@ pipelines:
         configuration:
           runtime:            
             type: host
+          integrations:
+            - name: docker
           inputResources:
             - name: my_releaseBundle2
             - name: my_BuildInfo
@@ -604,6 +608,8 @@ pipelines:
           runtime:            
             type: image
           nodePool: u18
+          integrations:
+            - name: docker
           inputResources:
             - name: gitRepoResource
           dockerFileLocation: Dockerfile
@@ -622,6 +628,8 @@ pipelines:
           integrations:
             - name: artifactory
           nodePool: u18
+          integrations:
+            - name: docker
           inputSteps:
             - name: step_DockerBuild
         execution:
@@ -638,6 +646,8 @@ pipelines:
           integrations:
             - name: artifactory
           sourceLocation: location
+          integrations:
+            - name: docker
           repository: repo
           outputLocation: out
           outputFile: file
@@ -652,6 +662,8 @@ pipelines:
           inputResources:
             - name: my_BuildInfo
           targetRepository: test
+          integrations:
+            - name: docker
           nodePool: u18
           inputSteps:
             - name: step_7
@@ -682,6 +694,8 @@ pipelines:
           inputResources:
             - name: gitRepoResource
           sourceLocation: location
+          integrations:
+            - name: docker
           gradleCommand: gradle
           configFileLocation: .
           configFileName: config
