@@ -33,19 +33,19 @@ resources:
   - name: my_releaseBundle2
     type: ReleaseBundle
     configuration:
-      sourceArtifactory: artifactory
+      sourceDistribution: artifactory
       name: amurphy/test
       version: master.105
   - name: my_signed_releaseBundle
     type: ReleaseBundle
     configuration:
-      sourceArtifactory: artifactory
+      sourceDistribution: artifactory
       name: amurphy/test
       version: master.105
   - name: my_DistributionRule
     type: DistributionRule
     configuration:
-      sourceArtifactory: artifactory
+      sourceDistribution: artifactory
       serviceName: service
       cityName: city
       siteName: site
@@ -178,7 +178,7 @@ pipelines:
           affinityGroup: test_group 
           timeoutSeconds: 180
           integrations:
-            - docker
+            - name: docker
         #  environmentVariables:
         #    ENV1: value1
         #    ENV2: value2
