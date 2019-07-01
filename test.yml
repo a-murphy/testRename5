@@ -33,19 +33,19 @@ resources:
   - name: my_releaseBundle2
     type: ReleaseBundle
     configuration:
-      sourceDistribution: artifactory
+      sourceDistribution: distribution
       name: amurphy/test
       version: master.105
   - name: my_signed_releaseBundle
     type: ReleaseBundle
     configuration:
-      sourceDistribution: artifactory
+      sourceDistribution: distribution
       name: amurphy/test
       version: master.105
   - name: my_DistributionRule
     type: DistributionRule
     configuration:
-      sourceDistribution: artifactory
+      sourceDistribution: distribution
       serviceName: service
       cityName: city
       siteName: site
