@@ -594,7 +594,6 @@ pipelines:
             - name: my_releaseBundle2
             - name: my_BuildInfo
             - name: my_DistributionRule
-          nodePool: u18
           inputSteps:
             - name: step_7
         execution:
@@ -605,7 +604,6 @@ pipelines:
         configuration:
           runtime:            
             type: image
-          nodePool: u18
           integrations:
             - name: docker
           inputResources:
@@ -626,7 +624,6 @@ pipelines:
           integrations:
             - name: artifactory
             - name: docker
-          nodePool: u18
           inputSteps:
             - name: step_DockerBuild
         execution:
@@ -635,7 +632,6 @@ pipelines:
       - name: step_GoBuild
         type: GoBuild
         configuration:
-          nodePool: u18
           inputSteps:
             - name: step_7
           inputResources:
@@ -659,7 +655,6 @@ pipelines:
           inputResources:
             - name: my_BuildInfo
           targetRepository: test
-          nodePool: u18
           inputSteps:
             - name: step_7
         execution:
@@ -693,7 +688,6 @@ pipelines:
           gradleCommand: gradle
           configFileLocation: .
           configFileName: config
-          nodePool: u18
           inputSteps:
             - name: step_7
         execution:
