@@ -574,8 +574,6 @@ pipelines:
           releaseBundleName: test
           releaseBundleVersion: one
           nodePool: u18
-          integrations:
-            - name: docker
           inputResources:
             - name: my_BuildInfo
           outputResources:
