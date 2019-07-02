@@ -189,6 +189,7 @@ pipelines:
         #    - bump_semver v1.2.3 minor
             - aws configure set region "us-west-2"
             - aws ecr get-login
+            - jfrog rt s "pipelines_1560551909"
             - echo "executing task command 1"
             - echo "executing task command 2"
       #      - switch_env java openjdk7 || true
@@ -267,10 +268,11 @@ pipelines:
          #   - name: bitbucketServer
             - name: test
             - name: docker
-            - name: artifactory
+           # - name: artifactory
         execution:
           onStart:
             - echo $CURRENT_SCRIPT_SECTION
+            - jfrog rt s "pipelines_1560551909"
             - echo $int_test_key1
             - echo $int_test_key2
             - echo $int_test_key3
