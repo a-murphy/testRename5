@@ -167,9 +167,9 @@ pipelines:
             - name: docker
             - name: AWS
             - name: realArtifactory
-        #  environmentVariables:
+          environmentVariables:
         #    ENV1: value1
-        #    ENV2: value2
+            ENV2: value2
           runtime:            
             type: host         
       #      type: image
@@ -187,7 +187,6 @@ pipelines:
           onExecute:
         #    - sleep 10
         #    - bump_semver v1.2.3 minor
-            - ENV2=value-two
             - aws configure set region "us-west-2"
             - aws ecr get-login
             - jfrog rt s "pipelines_1560551909"
