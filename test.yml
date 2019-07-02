@@ -186,7 +186,7 @@ pipelines:
           onExecute:
         #    - sleep 10
         #    - bump_semver v1.2.3 minor
-            - aws configure region "us-west-2"
+            - aws configure set region "us-west-2"
             - aws ecr get-login
             - echo "executing task command 1"
             - echo "executing task command 2"
@@ -277,7 +277,7 @@ pipelines:
          #   - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
             - echo "Prepping build environment"
             - echo "$testPipelineVariable"
-            - aws configure region "us-west-2"
+            - aws configure set region "us-west-2"
             - aws ecr get-login
          #   - update_commit_status gitRepoResource --status processing
           onExecute:
