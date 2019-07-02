@@ -166,7 +166,7 @@ pipelines:
           integrations:
             - name: docker
             - name: AWS
-            - realArtifactory
+            - name: realArtifactory
         #  environmentVariables:
         #    ENV1: value1
         #    ENV2: value2
@@ -262,7 +262,7 @@ pipelines:
           integrations:
             - name: github
             - name: AWS
-            - realArtifactory
+            - name: realArtifactory
          #   - name: bitbucket
          #   - name: bitbucketServer
             - name: test
