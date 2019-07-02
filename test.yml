@@ -273,10 +273,12 @@ pipelines:
             - name: test
             - name: docker
             - name: gcloud
+            - name: kubernetes
            # - name: artifactory
         execution:
           onStart:
             - echo $CURRENT_SCRIPT_SECTION
+            - kubectl get services
             - jfrog rt s "pipelines_1560551909"
             - echo $int_test_key1
             - echo $int_test_key2
