@@ -249,12 +249,12 @@ pipelines:
           runtime:            
             type: image
             image:
-        #      auto:
-        #        language: go
-              custom: 
-                name: drydock/u16node
-                tag:  master
-                autoPull: false
+              auto:
+                language: nodejs
+           #   custom: 
+           #     name: drydock/u16node
+           #     tag:  master
+           #     autoPull: false
           inputResources:
             - name: imageResource2
             - name: gitRepoResource
