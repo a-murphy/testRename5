@@ -165,6 +165,7 @@ pipelines:
           timeoutSeconds: 180
           integrations:
             - name: docker
+            - name: AWS
         #  environmentVariables:
         #    ENV1: value1
         #    ENV2: value2
@@ -257,6 +258,7 @@ pipelines:
             - name: imageResource
           integrations:
             - name: github
+            - name: AWS
          #   - name: bitbucket
          #   - name: bitbucketServer
             - name: test
