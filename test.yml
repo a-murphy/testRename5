@@ -167,7 +167,7 @@ pipelines:
             - name: docker
             - name: AWS
             - name: realArtifactory
-            - name: gcloud
+         #   - name: gcloud
             - name: sshKey
         #  environmentVariables:
         #    ENV1: value1
