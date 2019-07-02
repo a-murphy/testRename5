@@ -78,6 +78,10 @@ resources:
       name: amurphy/test
       version: master.105
       query: test
+  - name: kubeCluster
+    type: KubeCluster
+    configuration:
+      kubernetesConfig: kubernetes
       
 #  - name: bitbucketServerRepoResource
 #    type: gitRepo
@@ -258,6 +262,7 @@ pipelines:
           inputResources:
             - name: imageResource2
             - name: gitRepoResource
+            - name: kubeCluster
       #      - bitbucketServerRepoResource
           inputSteps:
             - name: in_trigger_step
@@ -273,13 +278,13 @@ pipelines:
             - name: test
             - name: docker
             - name: gcloud
-            - name: kubernetes
+        #    - name: kubernetes
            # - name: artifactory
         execution:
           onStart:
             - echo $CURRENT_SCRIPT_SECTION
             - sudo apt-get install kubectl
-            - cat $KUBECONFIG
+            - cat ~/.kube/config
             - kubectl get services
             - jfrog rt s "pipelines_1560551909"
             - echo $int_test_key1
