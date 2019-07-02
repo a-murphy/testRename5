@@ -167,9 +167,10 @@ pipelines:
             - name: docker
             - name: AWS
             - name: realArtifactory
-          environmentVariables:
+            - name: gcloud
+        #  environmentVariables:
         #    ENV1: value1
-            ENV2: value2
+        #    ENV2: value2
           runtime:            
             type: host         
       #      type: image
@@ -268,6 +269,7 @@ pipelines:
          #   - name: bitbucketServer
             - name: test
             - name: docker
+            - name: gcloud
            # - name: artifactory
         execution:
           onStart:
