@@ -278,7 +278,7 @@ pipelines:
         execution:
           onStart:
             - echo $CURRENT_SCRIPT_SECTION
-            - gcloud components install kubectl
+            - sudo apt-get install kubectl
             - kubectl get services
             - jfrog rt s "pipelines_1560551909"
             - echo $int_test_key1
