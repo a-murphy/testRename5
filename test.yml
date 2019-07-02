@@ -168,6 +168,7 @@ pipelines:
             - name: AWS
             - name: realArtifactory
             - name: gcloud
+            - name: sshKey
         #  environmentVariables:
         #    ENV1: value1
         #    ENV2: value2
@@ -190,6 +191,8 @@ pipelines:
         #    - bump_semver v1.2.3 minor
             - aws configure set region "us-west-2"
             - aws ecr get-login
+            - ssh-keygen -l -f ~/.ssh/sshKey.pub 
+            - openssl rsa -check -in ~/.ssh/sshKey -noout
             - jfrog rt s "pipelines_1560551909"
             - echo "executing task command 1"
             - echo "executing task command 2"
