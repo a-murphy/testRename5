@@ -187,6 +187,7 @@ pipelines:
           onExecute:
         #    - sleep 10
         #    - bump_semver v1.2.3 minor
+            - ENV2=value-two
             - aws configure set region "us-west-2"
             - aws ecr get-login
             - jfrog rt s "pipelines_1560551909"
