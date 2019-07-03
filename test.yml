@@ -7,6 +7,12 @@ resources:
       imageTag: master.105
       autoPull: true
       
+  - name: webhook
+    type: Webhook
+    configuration:
+      webhookName: webhook
+      payload: "test"
+      
   - name: gitRepoResource
     type: GitRepo
     configuration:
@@ -267,6 +273,7 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
           outputResources:
+            - name: webhook
             - name: gitRepoResource2
             - name: imageResource
           integrations:
