@@ -313,8 +313,8 @@ pipelines:
             - echo "executing task command 1"
             - echo "executing task command 2"
           #  - ls -R $STEP_WORKSPACE_DIR/download
-            - add_cache_files test lastrun.txt
-            - ls
+          #  - add_cache_files test lastrun.txt
+          #  - ls
             - echo "testing1234" > testing.txt
             - add_cache_files testing.txt test
           #  - restore_pipeline_state testing testfile.txt
