@@ -321,7 +321,7 @@ pipelines:
             - restore_pipeline_files key.pem key.pem
             - ls
             - write_output gitRepoResource2 key=value123
-            - write_output webhook key=value123 key2=value456 key3="testing 123" key4='testing "23' key5=testing\'
+            - write_output webhook key=value123 key2=value456 key3="testing 123" key4='testing "23' key5=testing\' key6='testing$test'
         #    - update_commit_status gitRepoResource --status processing --message "my message"
         #    - update_commit_status bitbucketServerRepoResource --status failure --context "failing-context"
         #    - update_commit_status bitbucketServerRepoResource --status success --message "my message" --context "succcess-context"
