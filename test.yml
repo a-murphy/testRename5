@@ -280,6 +280,7 @@ pipelines:
             - name: github
             - name: AWS
             - name: realArtifactory
+            - name: slack
          #   - name: bitbucket
          #   - name: bitbucketServer
             - name: test
@@ -291,6 +292,7 @@ pipelines:
           onStart:
             - printenv
             - echo $CURRENT_SCRIPT_SECTION
+            - send_notification slack
          #   - sudo apt-get install kubectl
          #   - cat ~/.kube/config
          #   - kubectl get services
