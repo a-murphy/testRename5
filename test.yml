@@ -27,7 +27,7 @@ resources:
          releaseCreate: true
          tagCreate: true
     version:
-      sha: no-integrations
+      sha: nointegrations
       
   - name: imageResource
     type: Image
