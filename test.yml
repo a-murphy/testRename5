@@ -26,7 +26,6 @@ resources:
      #    pullRequestClose: false
          releaseCreate: true
          tagCreate: true
-    version:
       sha: no-integrations
       
   - name: imageResource
