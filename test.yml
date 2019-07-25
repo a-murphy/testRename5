@@ -32,7 +32,6 @@ resources:
      #    pullRequestClose: false
          releaseCreate: true
          tagCreate: true
-      sha: no-integrations
       
   - name: imageResource
     type: Image
@@ -75,20 +74,20 @@ resources:
       sourceArtifactory: artifactory
       buildName: myName
       buildNumber: 101
-  - name: my_Aql
-    type: Aql
-    configuration:
-      sourceArtifactory: artifactory
-      name: amurphy/test
-      version: master.105
-      query: test
-  - name: my_Aql2
-    type: Aql
-    configuration:
-      sourceArtifactory: artifactory
-      name: amurphy/test
-      version: master.105
-      query: test
+ # - name: my_Aql
+ #   type: Aql
+ #   configuration:
+ #     sourceArtifactory: artifactory
+ #     name: amurphy/test
+ #     version: master.105
+ #     query: test
+ # - name: my_Aql2
+ #   type: Aql
+ #   configuration:
+ #     sourceArtifactory: artifactory
+ #     name: amurphy/test
+ #     version: master.105
+ #     query: test
   - name: kubeCluster
     type: KubeCluster
     configuration:
