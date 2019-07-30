@@ -17,7 +17,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: bitbucketServer
-      path: ~aidan/test
+      path: aidan/test
       
   - name: gitRepoResource
     type: GitRepo
