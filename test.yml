@@ -28,8 +28,8 @@ resources:
      #   only: test[
       buildOn:
      #    commit: false
-     #    pullRequest: true
-     #    pullRequestClose: false
+         pullRequestCreate: true
+         pullRequestClose: false
          releaseCreate: true
          tagCreate: true
       
@@ -114,16 +114,14 @@ resources:
       path: a-murphy/5testRename5
       buildOn:
    #      commit: false
-         pullRequest: true
+         pullRequestCreate: true
          pullRequestClose: true
-         release: true
-         tagPush: true
+         releaseCreate: true
+         tagCreate: true
   #    tags:
   #      only: tag1|tag2
   #    branches:
   #      only: master|test
-    version:
-      sha: master
 
   - name: fileIntegrationResource
     type: RemoteFile
