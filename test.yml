@@ -13,7 +13,7 @@ resources:
       webhookName: webhook
       payload: "test"
       
-  - name: bitbucketRepo2
+  - name: bitbucketRepo3
     type: GitRepo
     configuration:
       gitProvider: bitbucketServer
