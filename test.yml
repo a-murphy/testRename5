@@ -934,6 +934,7 @@ pipelines:
           affinityGroup: three
           inputResources:
             - name: imageResource
+            - name: gitRepoResource
       #  requires:
       #    resources:
       #      - gitRepoResource2
