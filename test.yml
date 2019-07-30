@@ -18,6 +18,11 @@ resources:
     configuration:
       gitProvider: bitbucketServer
       path: ~AIDAN/test
+      buildOn:
+         pullRequestCreate: true
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
       
   - name: gitRepoResource
     type: GitRepo
