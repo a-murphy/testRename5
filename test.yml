@@ -13,11 +13,11 @@ resources:
       webhookName: webhook
       payload: "test"
       
-  - name: bitbucketRepo
+  - name: bitbucketRepo2
     type: GitRepo
     configuration:
       gitProvider: bitbucketServer
-      path: aidan/test
+      path: ~AIDAN/test
       
   - name: gitRepoResource
     type: GitRepo
