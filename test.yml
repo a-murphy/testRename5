@@ -112,12 +112,12 @@ resources:
     configuration:
       gitProvider: github
       path: a-murphy/5testRename5
-   #   buildOn:
+      buildOn:
    #      commit: false
-   #      pullRequest: false
-   #      pullRequestClose: false
-   #      release: false
-   #      tagPush: false
+         pullRequest: true
+         pullRequestClose: true
+         release: true
+         tagPush: true
   #    tags:
   #      only: tag1|tag2
   #    branches:
