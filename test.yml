@@ -20,7 +20,7 @@ resources:
       path: ~AIDAN/test
       buildOn:
          pullRequestCreate: true
-         pullRequestClose: false
+         pullRequestClose: true
          releaseCreate: true
          tagCreate: true
       
