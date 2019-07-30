@@ -34,7 +34,18 @@ resources:
          pullRequestClose: true
          releaseCreate: true
          tagCreate: true
-      
+        
+  - name: gitlabRepo
+    type: GitRepo
+    configuration:
+      gitProvider: gitlab
+      path: a-murphy/testRename5
+      buildOn:
+         pullRequestCreate: true
+         pullRequestClose: true
+         releaseCreate: true
+         tagCreate: true
+
   - name: gitRepoResource
     type: GitRepo
     configuration:
