@@ -1,5 +1,5 @@
 resources:
-  - name: imageResource2
+  - name: imageResource3
     type: Image
     configuration:
       registry: docker
@@ -295,7 +295,7 @@ pipelines:
            #     tag:  master
            #     autoPull: false
           inputResources:
-            - name: imageResource2
+            - name: imageResource3
             - name: gitRepoResource
             - name: kubeCluster
       #      - bitbucketServerRepoResource
