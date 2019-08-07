@@ -825,20 +825,20 @@ pipelines:
         execution:
           onStart:
             - echo "Prepping build environment"
-      - name: step_PushArtifactoryPackage
-        type: PushArtifactoryPackage
-        configuration:
-          targetRepo: test
-          integrations:
-            - name: artifactory
-          inputResources:
-            - name: my_BuildInfo
-          nodePool: u18
-          inputSteps:
-            - name: step_DockerBuild
-        execution:
-          onStart:
-            - echo "Prepping build environment"
+    #  - name: step_PushArtifactoryPackage
+    #    type: PushArtifactoryPackage
+    #    configuration:
+    #      targetRepo: test
+    #      integrations:
+    #        - name: artifactory
+    #      inputResources:
+    #        - name: my_BuildInfo
+    #      nodePool: u18
+    #      inputSteps:
+    #        - name: step_DockerBuild
+    #    execution:
+    #      onStart:
+    #        - echo "Prepping build environment"
       - name: step_SignReleaseBundle
         type: SignReleaseBundle
         configuration:
@@ -929,7 +929,7 @@ pipelines:
           affinityGroup: three
           inputResources:
             - name: imageResource
-            - name: gitRepoResource
+    #        - name: gitRepoResource
       #  requires:
       #    resources:
       #      - gitRepoResource2
@@ -959,8 +959,8 @@ pipelines:
       #  requires:
       #    resources:
       #      - gitRepoResource2
-          inputResources:
-            - name: gitRepoResource
+      #    inputResources:
+      #      - name: gitRepoResource
        #     - name: imageResource
           inputSteps:
             - name: pre_second_pipeline
