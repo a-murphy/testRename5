@@ -291,14 +291,14 @@ pipelines:
            #     autoPull: false
           inputResources:
             - name: imageResource3
-            - name: gitRepoResource
+        #    - name: gitRepoResource
             - name: kubeCluster
       #      - bitbucketServerRepoResource
           inputSteps:
             - name: in_trigger_step
           outputResources:
             - name: webhook
-            - name: gitRepoResource2
+       #     - name: gitRepoResource2
             - name: imageResource
           integrations:
             - name: github
@@ -334,7 +334,7 @@ pipelines:
          #   - update_commit_status gitRepoResource --status processing
           onExecute:
             - echo $CURRENT_SCRIPT_SECTION
-            - replicate_resource gitRepoResource gitRepoResource2 #--match-settings
+         #   - replicate_resource gitRepoResource gitRepoResource2 #--match-settings
             - write_output imageResource "imageTag=$testPipelineVariable"
          #   - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
             - echo "executing task command 1"
@@ -347,7 +347,7 @@ pipelines:
           #  - restore_pipeline_state testing testfile.txt
             - restore_pipeline_files key.pem key.pem
             - ls
-            - write_output gitRepoResource2 key=value123
+         #   - write_output gitRepoResource2 key=value123
          #   - write_output webhook key=value123 key2=value456 key3="testing 123" key4='testing "23' key5=testing\' key6='testing$test'
         #    - update_commit_status gitRepoResource --status processing --message "my message"
         #    - update_commit_status bitbucketServerRepoResource --status failure --context "failing-context"
@@ -448,7 +448,7 @@ pipelines:
           priority: 50
           affinityGroup: group2
           inputResources:
-            - name: gitRepoResource2
+      #      - name: gitRepoResource2
             - name: imageResource
           inputSteps:
             - name: main_step
@@ -665,8 +665,8 @@ pipelines:
             type: image
           integrations:
             - name: docker
-          inputResources:
-            - name: gitRepoResource
+        #  inputResources:
+        #    - name: gitRepoResource
           dockerFileLocation: Dockerfile
           dockerFileName: Dockerfile
           dockerImageName: amurphy/test
@@ -693,8 +693,8 @@ pipelines:
         configuration:
           inputSteps:
             - name: step_7
-          inputResources:
-            - name: gitRepoResource
+       #   inputResources:
+       #     - name: gitRepoResource
           integrations:
             - name: artifactory
             - name: docker
@@ -724,8 +724,8 @@ pipelines:
         configuration:
           integrations:
             - name: artifactory
-          inputResources:
-            - name: gitRepoResource
+      #    inputResources:
+      #      - name: gitRepoResource
           version: one
           targetRepository: test
           sourceLocation: location
@@ -741,8 +741,8 @@ pipelines:
           integrations:
             - name: artifactory
             - name: docker
-          inputResources:
-            - name: gitRepoResource
+      #    inputResources:
+      #      - name: gitRepoResource
           sourceLocation: location
           gradleCommand: gradle
           configFileLocation: .
@@ -757,8 +757,8 @@ pipelines:
         configuration:
           integrations:
             - name: artifactory
-          inputResources:
-            - name: gitRepoResource
+      #    inputResources:
+      #      - name: gitRepoResource
           sourceLocation: location
           mvnCommand: mvn
           configFileLocation: .
@@ -774,8 +774,8 @@ pipelines:
         configuration:
           integrations:
             - name: artifactory
-          inputResources:
-            - name: gitRepoResource
+      #    inputResources:
+      #      - name: gitRepoResource
           sourceLocation: location
           repositoryName: test
           nodePool: u18
@@ -790,8 +790,8 @@ pipelines:
           integrations:
             - name: artifactory
           repositoryName: test
-          inputResources:
-            - name: gitRepoResource
+      #    inputResources:
+      #      - name: gitRepoResource
           nodePool: u18
           inputSteps:
             - name: step_7
