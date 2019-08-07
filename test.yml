@@ -45,6 +45,12 @@ resources:
          pullRequestClose: true
          releaseCreate: true
          tagCreate: true
+         
+  - name: gitNodeRepoResource
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: a-murphy/sample_node
 
  # - name: gitRepoResource
  #   type: GitRepo
