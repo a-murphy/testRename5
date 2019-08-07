@@ -35,7 +35,7 @@ resources:
 #         releaseCreate: true
 #         tagCreate: true
         
-  - name: gitlabRepo9
+  - name: gitlabRepo10
     type: GitRepo
     configuration:
       gitProvider: gitlab
@@ -46,7 +46,7 @@ resources:
          releaseCreate: true
          tagCreate: true
          
-  - name: gitNodeRepoResource7
+  - name: gitNodeRepoResource8
     type: GitRepo
     configuration:
       gitProvider: github
