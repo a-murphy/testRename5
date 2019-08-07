@@ -35,7 +35,7 @@ resources:
 #         releaseCreate: true
 #         tagCreate: true
         
-  - name: gitlabRepo10
+  - name: gitlabRepo11
     type: GitRepo
     configuration:
       gitProvider: gitlab
@@ -46,11 +46,11 @@ resources:
          releaseCreate: true
          tagCreate: true
          
-  - name: gitNodeRepoResource8
-    type: GitRepo
-    configuration:
-      gitProvider: github
-      path: a-murphy/sample_node
+ # - name: gitNodeRepoResource8
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: github
+ #     path: a-murphy/sample_node
 
  # - name: gitRepoResource
  #   type: GitRepo
