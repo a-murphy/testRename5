@@ -24,27 +24,27 @@ resources:
 #         releaseCreate: true
 #         tagCreate: true
    
-  - name: bitbucketRepo5
-    type: GitRepo
-    configuration:
-      gitProvider: bitbucket
-      path: a-murphy/sample_pipelines
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: true
-         releaseCreate: true
-         tagCreate: true
+ # - name: bitbucketRepo5
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: bitbucket
+ #     path: a-murphy/sample_pipelines
+ #     buildOn:
+ #        pullRequestCreate: true
+ #        pullRequestClose: true
+ #        releaseCreate: true
+ #        tagCreate: true
         
-  - name: gitlabRepo
-    type: GitRepo
-    configuration:
-      gitProvider: gitlab
-      path: a-murphy/testRename5
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: true
-         releaseCreate: true
-         tagCreate: true
+ # - name: gitlabRepo
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: gitlab
+ #     path: a-murphy/testRename5
+ #     buildOn:
+ #        pullRequestCreate: true
+ #        pullRequestClose: true
+ #        releaseCreate: true
+ #        tagCreate: true
 
  # - name: gitRepoResource
  #   type: GitRepo
