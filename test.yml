@@ -13,7 +13,7 @@ resources:
       webhookName: webhook
       payload: "test"
       
-  - name: bitbucketRepo4
+  - name: bitbucketRepo5
     type: GitRepo
     configuration:
       gitProvider: bitbucketServer
@@ -24,7 +24,7 @@ resources:
          releaseCreate: true
          tagCreate: true
    
-  - name: bitbucketRepo6
+  - name: bitbucketRepo7
     type: GitRepo
     configuration:
       gitProvider: bitbucket
@@ -35,7 +35,7 @@ resources:
          releaseCreate: true
          tagCreate: true
         
-  - name: gitlabRepo2
+  - name: gitlabRepo3
     type: GitRepo
     configuration:
       gitProvider: gitlab
@@ -46,7 +46,7 @@ resources:
          releaseCreate: true
          tagCreate: true
          
-  - name: gitNodeRepoResource
+  - name: gitNodeRepoResource2
     type: GitRepo
     configuration:
       gitProvider: github
