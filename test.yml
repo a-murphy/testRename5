@@ -35,7 +35,7 @@ resources:
 #         releaseCreate: true
 #         tagCreate: true
         
-  - name: gitlabRepo11
+  - name: gitlabRepo12
     type: GitRepo
     configuration:
       gitProvider: gitlab
