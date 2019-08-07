@@ -13,52 +13,52 @@ resources:
       webhookName: webhook
       payload: "test"
       
-  - name: bitbucketRepo3
-    type: GitRepo
-    configuration:
-      gitProvider: bitbucketServer
-      path: ~AIDAN/test
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: true
-         releaseCreate: true
-         tagCreate: true
+ # - name: bitbucketRepo3
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: bitbucketServer
+ #     path: ~AIDAN/test
+ #     buildOn:
+ #        pullRequestCreate: true
+ #        pullRequestClose: true
+ #        releaseCreate: true
+ #        tagCreate: true
    
-  - name: bitbucketRepo5
-    type: GitRepo
-    configuration:
-      gitProvider: bitbucket
-      path: a-murphy/sample_pipelines
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: true
-         releaseCreate: true
-         tagCreate: true
+ # - name: bitbucketRepo5
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: bitbucket
+ #     path: a-murphy/sample_pipelines
+ #     buildOn:
+ #        pullRequestCreate: true
+ #        pullRequestClose: true
+ #        releaseCreate: true
+ #        tagCreate: true
         
-  - name: gitlabRepo
-    type: GitRepo
-    configuration:
-      gitProvider: gitlab
-      path: a-murphy/testRename5
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: true
-         releaseCreate: true
-         tagCreate: true
+ # - name: gitlabRepo
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: gitlab
+ #     path: a-murphy/testRename5
+ #     buildOn:
+ #        pullRequestCreate: true
+ #        pullRequestClose: true
+ #        releaseCreate: true
+ #        tagCreate: true
 
-  - name: gitRepoResource
-    type: GitRepo
-    configuration:
-      gitProvider: github
-      path: a-murphy/5testRename5
+ # - name: gitRepoResource
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: github
+ #     path: a-murphy/5testRename5
      # branches:
      #   only: test[
-      buildOn:
+ #     buildOn:
      #    commit: false
-         pullRequestCreate: true
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
+  #       pullRequestCreate: true
+  #       pullRequestClose: false
+  #       releaseCreate: true
+  #       tagCreate: true
       
   - name: imageResource
     type: Image
@@ -134,21 +134,16 @@ resources:
 #    version:
 #      sha: master
 
-  - name: gitRepoResource2
-    type: GitRepo
-    configuration:
-      gitProvider: github
-      path: a-murphy/5testRename5
-      buildOn:
-   #      commit: false
-         pullRequestCreate: true
-         pullRequestClose: true
-         releaseCreate: true
-         tagCreate: true
-  #    tags:
-  #      only: tag1|tag2
-  #    branches:
-  #      only: master|test
+#  - name: gitRepoResource2
+#    type: GitRepo
+#    configuration:
+#      gitProvider: github
+#      path: a-murphy/5testRename5
+#      buildOn:
+#         pullRequestCreate: true
+#         pullRequestClose: true
+#         releaseCreate: true
+#         tagCreate: true
 
   - name: fileIntegrationResource
     type: RemoteFile
