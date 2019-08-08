@@ -4,7 +4,7 @@ resources:
     configuration:
       registry: docker
       imageName: amurphy/test
-      imageTag: master.105
+      imageTag: master
       autoPull: true
       
   - name: webhook
