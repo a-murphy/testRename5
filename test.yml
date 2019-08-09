@@ -6,19 +6,34 @@ resources:
       imageName: amurphy/test
       imageTag: master.100
       autoPull: true
-      
-  - name: webhookTest
-    type: Webhook
-    configuration:
-      webhookName: webhook
-      payload: "test"
-      
             
   - name: webhook
     type: Webhook
     configuration:
       webhookName: webhook
       payload: "test"
+      
+  - name: my_AqlTest
+    type: Aql
+    configuration:
+      sourceArtifactory: artifactory
+      name: amurphy/test
+      version: master.105
+      query: test
+      
+  - name: VmClusterTest
+    type: VmCluster
+    configuration:
+      sshKey: sshKey
+      targets:
+        - 127.0.0.1
+        
+  - name: FileSpecTest
+    type: VmCluster
+    configuration:
+      sourceArtifactory: artifactory
+      limit: 1
+      offset: 1
       
  # - name: bitbucketRepo20
  #   type: GitRepo
@@ -72,39 +87,7 @@ resources:
   #       pullRequestClose: false
   #       releaseCreate: true
   #       tagCreate: true
-  
-  - name: my_releaseBundleTest
-    type: ReleaseBundle
-    configuration:
-      sourceDistribution: distribution
-      name: amurphy/test
-      version: master.105
-  - name: my_DistributionRuleTest
-    type: DistributionRule
-    configuration:
-      sourceDistribution: distribution
-      serviceName: service
-      cityName: city
-      siteName: site
-      countryCodes:
-       - country1
-       - country2
-  - name: my_BuildInfoTest
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: artifactory
-      buildName: myName
-      buildNumber: 101
-  - name: kubeClusterTest
-    type: KubeCluster
-    configuration:
-      kubernetesConfig: kubernetes
-  - name: fileIntegrationResourceTest
-    type: RemoteFile
-    configuration:
-      fileLocation: location
-      fileName: file   
-      source: artifactory 
+ 
       
   - name: imageResource
     type: Image
