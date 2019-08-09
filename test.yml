@@ -13,6 +13,13 @@ resources:
       webhookName: webhook
       payload: "test"
       
+            
+  - name: webhook
+    type: Webhook
+    configuration:
+      webhookName: webhook
+      payload: "test"
+      
  # - name: bitbucketRepo20
  #   type: GitRepo
  #   configuration:
