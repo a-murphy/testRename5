@@ -4,7 +4,7 @@ resources:
     configuration:
       registry: docker
       imageName: amurphy/test
-      imageTag: master
+      imageTag: master.100
       autoPull: true
       
   - name: webhook
@@ -65,6 +65,34 @@ resources:
   #       pullRequestClose: false
   #       releaseCreate: true
   #       tagCreate: true
+  
+  - name: my_releaseBundleTest
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: distribution
+      name: amurphy/test
+      version: master.105
+  - name: my_DistributionRuleTest
+    type: DistributionRule
+    configuration:
+      sourceDistribution: distribution
+      serviceName: service
+      cityName: city
+      siteName: site
+      countryCodes:
+       - country1
+       - country2
+  - name: my_BuildInfoTest
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: artifactory
+      buildName: myName
+      buildNumber: 101
+  - name: kubeClusterTest
+    type: KubeCluster
+    configuration:
+      kubernetesConfig: kubernetes
+
       
   - name: imageResource
     type: Image
@@ -107,6 +135,16 @@ resources:
       sourceArtifactory: artifactory
       buildName: myName
       buildNumber: 101
+  
+  - name: fileIntegrationResource
+    type: RemoteFile
+    configuration:
+      fileLocation: location
+      fileName: file   
+      source: artifactory 
+      
+      
+      
  # - name: my_Aql
  #   type: Aql
  #   configuration:
