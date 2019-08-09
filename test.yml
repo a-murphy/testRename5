@@ -17,8 +17,6 @@ resources:
     type: Aql
     configuration:
       sourceArtifactory: artifactory
-      name: amurphy/test
-      version: master.105
       query: test
       
   - name: VmClusterTest
@@ -29,7 +27,7 @@ resources:
         - 127.0.0.1
         
   - name: FileSpecTest
-    type: VmCluster
+    type: FileSpec
     configuration:
       sourceArtifactory: artifactory
       limit: 1
