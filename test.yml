@@ -7,7 +7,7 @@ resources:
       imageTag: master.100
       autoPull: true
       
-  - name: webhook
+  - name: webhookTest
     type: Webhook
     configuration:
       webhookName: webhook
@@ -92,7 +92,12 @@ resources:
     type: KubeCluster
     configuration:
       kubernetesConfig: kubernetes
-
+  - name: fileIntegrationResourceTest
+    type: RemoteFile
+    configuration:
+      fileLocation: location
+      fileName: file   
+      source: artifactory 
       
   - name: imageResource
     type: Image
@@ -135,13 +140,6 @@ resources:
       sourceArtifactory: artifactory
       buildName: myName
       buildNumber: 101
-  
-  - name: fileIntegrationResource
-    type: RemoteFile
-    configuration:
-      fileLocation: location
-      fileName: file   
-      source: artifactory 
       
       
       
