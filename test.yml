@@ -13,12 +13,6 @@ resources:
       webhookName: webhook
       payload: "test"
       
-  - name: my_AqlTest
-    type: Aql
-    configuration:
-      sourceArtifactory: artifactory
-      query: test
-      
   - name: VmClusterTest
     type: VmCluster
     configuration:
