@@ -313,38 +313,38 @@ pipelines:
            #     name: drydock/u16node
            #     tag:  master
            #     autoPull: false
-          inputResources:
-            - name: imageResource3
+        #  inputResources:
+       #     - name: imageResource3
         #    - name: gitRepoResource
-            - name: kubeCluster
+        #    - name: kubeCluster
       #      - bitbucketServerRepoResource
           inputSteps:
             - name: in_trigger_step
           outputResources:
             - name: webhook
        #     - name: gitRepoResource2
-            - name: imageResource
-          integrations:
-            - name: github
-            - name: AWS
-            - name: realArtifactory
-            - name: slack
+       #     - name: imageResource
+        #  integrations:
+       #     - name: github
+       #     - name: AWS
+       #     - name: realArtifactory
+       #     - name: slack
          #   - name: bitbucket
          #   - name: bitbucketServer
-            - name: test
-            - name: docker
-            - name: gcloud
+       #     - name: test
+       #     - name: docker
+       #     - name: gcloud
         #    - name: kubernetes
            # - name: artifactory
         execution:
           onStart:
-            - printenv
+         #   - printenv
             - echo $CURRENT_SCRIPT_SECTION
-            - send_notification slack
+         #   - send_notification slack
          #   - sudo apt-get install kubectl
          #   - cat ~/.kube/config
          #   - kubectl get services
-            - jfrog rt s "pipelines_1560551909"
+        #    - jfrog rt s "pipelines_1560551909"
             - echo $int_test_key1
             - echo $int_test_key2
             - echo $int_test_key3
@@ -353,13 +353,13 @@ pipelines:
          #   - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
             - echo "Prepping build environment"
             - echo "$testPipelineVariable"
-            - aws configure set region "us-west-2"
-            - aws ecr get-login
+        #    - aws configure set region "us-west-2"
+        #    - aws ecr get-login
          #   - update_commit_status gitRepoResource --status processing
           onExecute:
             - echo $CURRENT_SCRIPT_SECTION
          #   - replicate_resource gitRepoResource gitRepoResource2 #--match-settings
-            - write_output imageResource "imageTag=$testPipelineVariable"
+         #   - write_output imageResource "imageTag=$testPipelineVariable"
          #   - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
             - echo "executing task command 1"
             - echo "executing task command 2"
@@ -388,6 +388,7 @@ pipelines:
           #  - switch_env c --jdk openjdk11 4
           onSuccess:
             - echo "Job well done!"
+            - "false"
             - echo $CURRENT_SCRIPT_SECTION
          #   - compare_git --resource gitRepoResource
         #    - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
