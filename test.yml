@@ -1,18 +1,4 @@
 resources:
-  - name: stateOne
-    type: state
-    initialVersion:
-      sha: master
-  - name: stateTwo
-    type: state
-  - name: stateThree
-    type: state
-    repoPath: path
-    fileLocation: location
-    imageName: name
-    initialVersion:
-      sha: master
- 
   - name: myImage
     type: image
     imageName: drydock/u16pytall
@@ -29,17 +15,17 @@ resources:
       imageTag: v7.4.1
       test: test2
       
- # - name: bitbucketRepoResource
- #   type: gitRepo
- #   repoPath: a-murphy/sample_pipelines3_rename
- #   configuration:
- #     integrationName: bitbucket
- #     buildOn:
+  - name: bitbucketRepoResource
+    type: gitRepo
+    repoPath: a-murphy/sample_pipelines3_rename
+    configuration:
+      integrationName: bitbucket
+      buildOn:
  #   #     commit: false
  #   #     pullRequest: true
- #        pullRequestClose: true
- #        release: true
- #        tagPush: true
+         pullRequestClose: true
+         release: true
+         tagPush: true
  #   initialVersion:
  #     sha: master
       
@@ -167,7 +153,7 @@ resources:
 #      integrationName: fileServerIntegration
        
 pipelines:
-  - name: test_pipeline_1
+  - name: test_pipeline_10
     setup:
    #   environmentVariables:
    #     readOnly:
@@ -228,18 +214,12 @@ pipelines:
             - nodeRepoResource
          #   - bitbucketServerRepoResource
          #   - bitbucketRepoResource2
-         #   - stateOne
          #   - myImage
          # integrations:
          #   - test
-        outputResources:
-          - stateOne
-          - stateTwo
         triggeredBy:
           steps:
             - in_trigger_step
-        #  resources:
-        #    - stateOne
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -309,9 +289,6 @@ pipelines:
           runtime:            
             type: host
         requires:
-          resources:
-            - stateTwo
-      #      - sample_java_file_test
           integrations:
             - github
         triggeredBy:
@@ -327,8 +304,6 @@ pipelines:
             - echo "executing task command 2"
             - restore_run_state myYml testyml.yml
             - restore_run_state myWildcard testing/test
-            - restore_resource_state stateTwo myYml testyml.yml
-            - restore_resource_state stateTwo myWildcard testWildcard
             - ls -R
             - ls -R $RUN_DIR
           onSuccess:
