@@ -54,7 +54,7 @@ pipelines:
         type: host
     steps:
       - name: in_trigger_step
-        type: bash
+        type: Bash
         configuration:
           runtime:            
             type: host
@@ -92,12 +92,10 @@ pipelines:
               custom: 
                 name: drydock/u16nodall
                 tag:  v7.1.4
-        requires:
-          resources:
-            - nodeRepoResource
-        triggeredBy:
-          steps:
-            - in_trigger_step
+        inputResources:
+          - nodeRepoResource
+        inputSteps:
+          - in_trigger_step
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -128,12 +126,10 @@ pipelines:
         configuration:
           runtime:            
             type: host
-        requires:
-          integrations:
-            - github
-        triggeredBy:
-          steps:
-            - main_step
+        integrations:
+          - github
+        inputSteps:
+          - main_step
         execution:
           onStart:
             - echo "Prepping build environment"
