@@ -1,22 +1,19 @@
 resources:
   - name: myImage
-    type: image
+    type: Image
     imageName: drydock/u16pytall
     configuration:
       integrationName: github
-    initialVersion:
       imageTag: v7.4.1
   - name: imageTwo
-    type: image
+    type: Image
     imageName: drydock/u16pytall
     configuration:
       integrationName: github
-    initialVersion:
       imageTag: v7.4.1
-      test: test2
       
   - name: bitbucketRepoResource
-    type: gitRepo
+    type: GitRepo
     repoPath: a-murphy/sample_pipelines3_rename
     configuration:
       integrationName: bitbucket
@@ -72,7 +69,7 @@ resources:
  #     sha: master
 
   - name: gitRepoResource
-    type: gitRepo
+    type: GitRepo
     repoPath: a-murphy/5testRename5
     configuration:
       integrationName: github
@@ -82,11 +79,9 @@ resources:
          pullRequestClose: false
          release: true
          tagPush: true
-    initialVersion:
-      sha: master
 
   - name: gitRepoResource2
-    type: gitRepo
+    type: GitRepo
     repoPath: a-murphy/5testRename5
     configuration:
       integrationName: github
@@ -100,11 +95,9 @@ resources:
         only: tag1|tag2
       branches:
         only: master|test
-    initialVersion:
-      sha: master
       
   - name: nodeRepoResource
-    type: gitRepo
+    type: GitRepo
     repoPath: a-murphy/basic-node
     configuration:
       integrationName: github
@@ -114,8 +107,6 @@ resources:
          pullRequestClose: false
          release: true
          tagPush: true
-    initialVersion:
-      sha: master
 
 #  - name: fileIntegrationResource
 #    type: file
@@ -154,7 +145,7 @@ resources:
        
 pipelines:
   - name: test_pipeline_10
-    setup:
+    configuration:
    #   environmentVariables:
    #     readOnly:
    #       ENV1: value-pipe-1
@@ -169,7 +160,7 @@ pipelines:
     #    requires:
     #      resources:
     #        - gitRepoResource
-        setup:
+        configuration:
           runtime:            
             type: host
             image:
@@ -202,7 +193,7 @@ pipelines:
         type: bash
    #     configuration:
    #       affinityGroup: test_group 
-        setup:
+        configuration:
           runtime:            
             type: image
             image:
@@ -278,7 +269,7 @@ pipelines:
         type: bash
      #   configuration:
      #     affinityGroup: test_group 
-        setup:
+        configuration:
         #  environmentVariables:
         #    normal:
         #      ENV1: value11
