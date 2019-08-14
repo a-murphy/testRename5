@@ -84,7 +84,7 @@ pipelines:
             - decrypt_string "$encryptedstring" --key key.pem
 
       - name: main_step
-        type: bash
+        type: Bash
         configuration:
           runtime:            
             type: image
@@ -92,10 +92,10 @@ pipelines:
               custom: 
                 name: drydock/u16nodall
                 tag:  v7.1.4
-        inputResources:
-          - nodeRepoResource
-        inputSteps:
-          - in_trigger_step
+          inputResources:
+            - nodeRepoResource
+          inputSteps:
+            - in_trigger_step
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -113,33 +113,6 @@ pipelines:
             - cd .. && ls
             - save_tests testresults.xml
             
-          onSuccess:
-            - echo "Job well done!"
-          onFailure:
-            - echo "uh oh, something went wrong"
-          onComplete: #always
-            - echo "Cleaning up some stuff"
-          onCancel:
-            - echo "Someone cancelled the job"
-      - name: other_step
-        type: bash
-        configuration:
-          runtime:            
-            type: host
-        integrations:
-          - github
-        inputSteps:
-          - main_step
-        execution:
-          onStart:
-            - echo "Prepping build environment"
-          onExecute:
-            - echo "executing task command 1"
-            - echo "executing task command 2"
-            - restore_run_state myYml testyml.yml
-            - restore_run_state myWildcard testing/test
-            - ls -R
-            - ls -R $RUN_DIR
           onSuccess:
             - echo "Job well done!"
           onFailure:
