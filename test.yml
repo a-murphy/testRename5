@@ -388,8 +388,9 @@ pipelines:
           #  - switch_env c --jdk openjdk11 4
           onSuccess:
             - echo "Job well done!"
-            - "false"
             - echo $CURRENT_SCRIPT_SECTION
+            - 1
+            - echo "test"
          #   - compare_git --resource gitRepoResource
         #    - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
           onFailure:
