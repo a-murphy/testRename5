@@ -1,81 +1,20 @@
 resources:
-  - name: myImage
-    type: Image
-    imageName: drydock/u16pytall
-    configuration:
-      integrationName: github
-      imageTag: v7.4.1
-  - name: imageTwo
-    type: Image
-    imageName: drydock/u16pytall
-    configuration:
-      integrationName: github
-      imageTag: v7.4.1
-      
   - name: bitbucketRepoResource
     type: GitRepo
     repoPath: a-murphy/sample_pipelines3_rename
     configuration:
-      integrationName: bitbucket
+      gitProvider: bitbucket
       buildOn:
- #   #     commit: false
- #   #     pullRequest: true
          pullRequestClose: true
          release: true
          tagPush: true
- #   initialVersion:
- #     sha: master
-      
- # - name: bitbucketRepoResource2
- #   type: gitRepo
- #   repoPath: a-murphy/sample_pipelines
- #   configuration:
- #     integrationName: bitbucket
- #     buildOn:
-    #     commit: false
- #        pullRequest: true
- #        pullRequestClose: true
- #        release: true
- #        tagPush: true
- #   initialVersion:
- #     sha: master
-      
- # - name: bitbucketServerRepoResource
- #   type: gitRepo
- #   repoPath: ~aidan/test
- #   configuration:
- #     integrationName: bitbucketServer
- #     buildOn:
-    #     commit: false
- #        pullRequest: true
- #        pullRequestClose: false
- #        release: true
- #        tagPush: true
- #   initialVersion:
- #     sha: master
-      
- # - name: gheRepoResource
- #   type: gitRepo
- #   repoPath: a-murphy/5testRename5
- #   configuration:
- #     integrationName: githubEnterprise
- #     buildOn:
- #   #     commit: false
- #        pullRequest: true
- #        pullRequestClose: false
- #        release: true
- #        tagPush: true
- #   initialVersion:
- #     sha: master
 
   - name: gitRepoResource
     type: GitRepo
     repoPath: a-murphy/5testRename5
     configuration:
-      integrationName: github
+      gitProvider: github
       buildOn:
-    #     commit: false
-    #     pullRequest: false
          pullRequestClose: false
          release: true
          tagPush: true
@@ -84,7 +23,7 @@ resources:
     type: GitRepo
     repoPath: a-murphy/5testRename5
     configuration:
-      integrationName: github
+      gitProvider: github
       buildOn:
          commit: false
          pullRequest: false
@@ -100,66 +39,22 @@ resources:
     type: GitRepo
     repoPath: a-murphy/basic-node
     configuration:
-      integrationName: github
+      gitProvider: github
       buildOn:
          commit: true
          pullRequest: true
          pullRequestClose: false
          release: true
          tagPush: true
-
-#  - name: fileIntegrationResource
-#    type: file
-#    fileLocation: location
-#    configuration:
-#      files:
-#        except:      file
-#        only:        file       
-#      integrationName: fileServerIntegration 
-#    initialVersion:
-#      fileName: file
-#      fileDtTm: test6
-#  - name: cluster
-#    type: cluster
-#    configuration:
-#      integrationName: sshKey 
-#    initialVersion:
-#      targetIPs:
-   #     - 1
-   #     - test:
-   #         test: test
-#        - 1.2.3.5
-#        - test2
-#  - name: sample_java_file_test
-#    type: file
-#    fileLocation: text.js
-#    configuration:
-#      integrationName: fileServerIntegration
-#    initialVersion:
-#      fileName: test4
-#  - name: file_test
-#    type: file
-#    fileLocation: text.js
-#    configuration:
-#      integrationName: fileServerIntegration
        
 pipelines:
   - name: test_pipeline_10
     configuration:
-   #   environmentVariables:
-   #     readOnly:
-   #       ENV1: value-pipe-1
-    #      ENV2: value-pipe-2
       runtime:            
         type: host
     steps:
       - name: in_trigger_step
         type: bash
-  #      configuration:
-  #        affinityGroup: test_group 
-    #    requires:
-    #      resources:
-    #        - gitRepoResource
         configuration:
           runtime:            
             type: host
@@ -169,7 +64,6 @@ pipelines:
             custom: 
               name: drydock/u16javall
               tag:  v7.1.4
-          #    options: test
         execution:
           onExecute:
             - bump_semver v1.2.3 minor
@@ -191,8 +85,6 @@ pipelines:
 
       - name: main_step
         type: bash
-   #     configuration:
-   #       affinityGroup: test_group 
         configuration:
           runtime:            
             type: image
@@ -203,11 +95,6 @@ pipelines:
         requires:
           resources:
             - nodeRepoResource
-         #   - bitbucketServerRepoResource
-         #   - bitbucketRepoResource2
-         #   - myImage
-         # integrations:
-         #   - test
         triggeredBy:
           steps:
             - in_trigger_step
@@ -218,10 +105,6 @@ pipelines:
             - echo "executing task command 1"
             - echo "executing task command 2"
             - compare_git --resource nodeRepoResource
-           # - ls "$(cat $STEP_JSON_PATH | jq -r .'resources.bitbucketServerRepoResource.resourcePath')"
-           # - cd "$(cat $STEP_JSON_PATH | jq -r .'resources.bitbucketServerRepoResource.resourcePath')"
-           # - cat test.txt
-           # - cat test.yml
             - cd "$res_nodeRepoResource_resourcePath"
             - switch_env nodejs 0.12
             - npm install
@@ -231,32 +114,7 @@ pipelines:
             - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
             - cd .. && ls
             - save_tests testresults.xml
-          #  - cache_files shippable.yml myYml
-          #  - mkdir -p testing/test
-          #  - echo "testing" > testing/test/text.txt
-          #  - echo "test2" > testing/test/text2.txt
-          #  - cache_files testing/test myDirectory
-          #  - cp shippable.yml shippable2.yml
-          #  - cache_files *.yml myWildcard
-          #  - restore_cache test doesnotexist.txt
-          #  - restore_cache myYml testyml.yml
-          #  - ls
-          #  - restore_cache myDirectory testing2
-          #  - ls
-          #  - ls -R testing2
-          #  - restore_cache myWildcard wildcards
-          #  - add_run_variable testRunVariable="testing" testingAgain=2 testThree=three
-          #  - save_run_state testyml.yml myYml
-          #  - save_run_state *.yml myWildcard
-          #  - echo $STEP_ID > testid.txt
-          #  - restore_resource_state stateOne test oldtestid.txt
-          #  - cat oldtestid.txt || true
-          #  - save_resource_state stateOne testid.txt test
-          #  - save_resource_state stateOne testyml.yml myYml
-          #  - save_resource_state stateTwo *.yml myWildcard
-          #  - ls -R $RUN_DIR
             
-        #    - save_tests $(cat $STEP_JSON_PATH | jq -r .'resources.nodeRepoResource.resourcePath') #testresults.xml
           onSuccess:
             - echo "Job well done!"
           onFailure:
@@ -267,24 +125,13 @@ pipelines:
             - echo "Someone cancelled the job"
       - name: other_step
         type: bash
-     #   configuration:
-     #     affinityGroup: test_group 
         configuration:
-        #  environmentVariables:
-        #    normal:
-        #      ENV1: value11
-        #      ENV2: value21
-        #    encrypted:
-        #      SECURE_ENV1: test_value1
-        #      SECURE_ENV2: test_value1
           runtime:            
             type: host
         requires:
           integrations:
             - github
         triggeredBy:
-      #    resources:
-      #      - sample_java_file_test
           steps:
             - main_step
         execution:
