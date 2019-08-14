@@ -1,51 +1,51 @@
 resources:
   - name: bitbucketRepoResource
     type: GitRepo
-    repoPath: a-murphy/sample_pipelines3_rename
     configuration:
       gitProvider: bitbucket
+      path: a-murphy/sample_pipelines3_rename
       buildOn:
          pullRequestClose: true
-         release: true
-         tagPush: true
+         releaseCreate: true
+         tagCreate: true
 
   - name: gitRepoResource
     type: GitRepo
-    repoPath: a-murphy/5testRename5
     configuration:
       gitProvider: github
+      path: a-murphy/5testRename5
       buildOn:
          pullRequestClose: false
-         release: true
-         tagPush: true
+         releaseCreate: true
+         tagCreate: true
 
   - name: gitRepoResource2
     type: GitRepo
-    repoPath: a-murphy/5testRename5
     configuration:
       gitProvider: github
+      path: a-murphy/5testRename5
       buildOn:
          commit: false
-         pullRequest: false
+         pullRequestCreate: false
          pullRequestClose: false
-         release: false
-         tagPush: false
-      tags:
-        only: tag1|tag2
-      branches:
-        only: master|test
+         releaseCreate: false
+         tagCreate: false
+  #    tags:
+  #      only: tag1|tag2
+  #    branches:
+  #      only: master|test
       
   - name: nodeRepoResource
     type: GitRepo
-    repoPath: a-murphy/basic-node
     configuration:
       gitProvider: github
+      path: a-murphy/basic-node
       buildOn:
          commit: true
-         pullRequest: true
+         pullRequestCreate: true
          pullRequestClose: false
-         release: true
-         tagPush: true
+         releaseCreate: true
+         tagCreate: true
        
 pipelines:
   - name: test_pipeline_10
