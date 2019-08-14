@@ -389,7 +389,7 @@ pipelines:
           onSuccess:
             - echo "Job well done!"
             - echo $CURRENT_SCRIPT_SECTION
-            - 1
+            - "1"
             - echo "test"
          #   - compare_git --resource gitRepoResource
         #    - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
