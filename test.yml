@@ -61,9 +61,6 @@ pipelines:
             image:
               language: java
               versions: v1.1
-            custom: 
-              name: drydock/u16javall
-              tag:  v7.1.4
         execution:
           onExecute:
             - bump_semver v1.2.3 minor
@@ -88,14 +85,10 @@ pipelines:
         configuration:
           runtime:            
             type: image
-            image:
-              custom: 
-                name: drydock/u16nodall
-                tag:  v7.1.4
           inputResources:
-            - nodeRepoResource
+            - name: nodeRepoResource
           inputSteps:
-            - in_trigger_step
+            - name: in_trigger_step
         execution:
           onStart:
             - echo "Prepping build environment"
