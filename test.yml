@@ -1,13 +1,13 @@
 resources:
-  - name: bitbucketRepoResource
-    type: GitRepo
-    configuration:
-      gitProvider: bitbucket
-      path: a-murphy/sample_pipelines3_rename
-      buildOn:
-         pullRequestClose: true
-         releaseCreate: true
-         tagCreate: true
+ # - name: bitbucketRepoResource
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: bitbucket
+ #     path: a-murphy/sample_pipelines3_rename
+ #     buildOn:
+ #        pullRequestClose: true
+ #        releaseCreate: true
+ #        tagCreate: true
 
   - name: gitRepoResource
     type: GitRepo
