@@ -58,9 +58,6 @@ pipelines:
         configuration:
           runtime:            
             type: host
-            image:
-              language: java
-              versions: v1.1
         execution:
           onExecute:
             - bump_semver v1.2.3 minor
