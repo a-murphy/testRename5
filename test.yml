@@ -1,14 +1,4 @@
 resources:
- # - name: bitbucketRepoResource
- #   type: GitRepo
- #   configuration:
- #     gitProvider: bitbucket
- #     path: a-murphy/sample_pipelines3_rename
- #     buildOn:
- #        pullRequestClose: true
- #        releaseCreate: true
- #        tagCreate: true
-
   - name: gitRepoResource
     type: GitRepo
     configuration:
@@ -30,22 +20,18 @@ resources:
          pullRequestClose: false
          releaseCreate: false
          tagCreate: false
-  #    tags:
-  #      only: tag1|tag2
-  #    branches:
-  #      only: master|test
       
-  - name: nodeRepoResource
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_github
-      path: a-murphy/basic-node
-      buildOn:
-         commit: true
-         pullRequestCreate: true
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
+ # - name: nodeRepoResource
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: aidan_github
+ #     path: a-murphy/basic-node
+ #     buildOn:
+ #        commit: true
+ #        pullRequestCreate: true
+ #        pullRequestClose: false
+ #        releaseCreate: true
+ #        tagCreate: true
        
 pipelines:
   - name: test_pipeline_10
