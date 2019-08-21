@@ -12,7 +12,7 @@ resources:
   - name: gitRepoResource
     type: GitRepo
     configuration:
-      gitProvider: github
+      gitProvider: aidan_github
       path: a-murphy/5testRename5
       buildOn:
          pullRequestClose: false
@@ -22,7 +22,7 @@ resources:
   - name: gitRepoResource2
     type: GitRepo
     configuration:
-      gitProvider: github
+      gitProvider: aidan_github
       path: a-murphy/5testRename5
       buildOn:
          commit: false
@@ -38,7 +38,7 @@ resources:
   - name: nodeRepoResource
     type: GitRepo
     configuration:
-      gitProvider: github
+      gitProvider: aidan_github
       path: a-murphy/basic-node
       buildOn:
          commit: true
