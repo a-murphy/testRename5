@@ -68,8 +68,8 @@ pipelines:
         configuration:
           runtime:            
             type: image
-          inputResources:
-            - name: nodeRepoResource
+       #   inputResources:
+       #     - name: nodeRepoResource
           inputSteps:
             - name: in_trigger_step
         execution:
