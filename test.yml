@@ -9,6 +9,7 @@ resources:
       
   - name: imageResource4
     type: Image
+    syntaxVersion: 1.0
     configuration:
       registry: docker
       imageName: amurphy/test
@@ -59,6 +60,7 @@ resources:
         
   - name: gitlabRepo5
     type: GitRepo
+    syntaxVersion: 1.0
     configuration:
       gitProvider: gitlab
       path: a-murphy/testRename5
