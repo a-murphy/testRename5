@@ -6,6 +6,14 @@ resources:
       imageName: amurphy/test
       imageTag: master.100
       autoPull: true
+      
+  - name: imageResource4
+    type: Image
+    configuration:
+      registry: docker
+      imageName: amurphy/test
+      imageTag: master.100
+      autoPull: true
             
   - name: webhook
     type: Webhook
@@ -49,16 +57,16 @@ resources:
  #        releaseCreate: true
  #        tagCreate: true
         
- # - name: gitlabRepo5
- #   type: GitRepo
- #   configuration:
- #     gitProvider: gitlab
- #     path: a-murphy/testRename5
- #     buildOn:
- #        pullRequestCreate: true
- #        pullRequestClose: true
- #        releaseCreate: true
- #        tagCreate: true
+  - name: gitlabRepo5
+    type: GitRepo
+    configuration:
+      gitProvider: gitlab
+      path: a-murphy/testRename5
+      buildOn:
+         pullRequestCreate: true
+         pullRequestClose: true
+         releaseCreate: true
+         tagCreate: true
          
   - name: gitNodeRepoResource
     type: GitRepo
@@ -313,8 +321,9 @@ pipelines:
            #     name: drydock/u16node
            #     tag:  master
            #     autoPull: false
-        #  inputResources:
-       #     - name: imageResource3
+          inputResources:
+            - name: imageResource4
+            - name: gitlabRepo5
         #    - name: gitRepoResource
         #    - name: kubeCluster
       #      - bitbucketServerRepoResource
