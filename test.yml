@@ -7,7 +7,7 @@ resources:
       imageTag: master.100
       autoPull: true
       
-  - name: imageResource4
+  - name: imageResource5
     type: Image
     configuration:   
       registry: docker
@@ -74,7 +74,7 @@ resources:
       gitProvider: github
       path: a-murphy/sample_node
 
-  - name: gitRepoResource3
+  - name: gitRepoResource4
     type: GitRepo
     configuration:
       gitProvider: github
@@ -322,9 +322,9 @@ pipelines:
            #     tag:  master
            #     autoPull: false
           inputResources:
-            - name: imageResource4
+            - name: imageResource5
         #    - name: gitlabRepo5
-            - name: gitRepoResource3
+            - name: gitRepoResource4
         #    - name: kubeCluster
       #      - bitbucketServerRepoResource
           inputSteps:
