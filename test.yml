@@ -74,7 +74,7 @@ resources:
       gitProvider: github
       path: a-murphy/sample_node
 
-  - name: gitRepoResource2
+  - name: gitRepoResource3
     type: GitRepo
     configuration:
       gitProvider: github
@@ -324,7 +324,7 @@ pipelines:
           inputResources:
             - name: imageResource4
         #    - name: gitlabRepo5
-            - name: gitRepoResource2
+            - name: gitRepoResource3
         #    - name: kubeCluster
       #      - bitbucketServerRepoResource
           inputSteps:
