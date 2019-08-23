@@ -9,8 +9,8 @@ resources:
       
   - name: imageResource4
     type: Image
-    syntaxVersion: 1.0
-    configuration:
+    configuration:   
+      syntaxVersion: 1.0
       registry: docker
       imageName: amurphy/test
       imageTag: master.100
@@ -60,8 +60,8 @@ resources:
         
   - name: gitlabRepo5
     type: GitRepo
-    syntaxVersion: 1.0
     configuration:
+      syntaxVersion: 1.0
       gitProvider: gitlab
       path: a-murphy/testRename5
       buildOn:
