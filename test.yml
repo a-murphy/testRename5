@@ -62,6 +62,7 @@ pipelines:
             - encryptedstring=$(encrypt_string "encryptme" --key pub.pem)
             - echo "$encryptedstring"
             - decrypt_string "$encryptedstring" --key key.pem
+            - sleep 60
 
       - name: main_step
         type: Bash
