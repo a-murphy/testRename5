@@ -57,9 +57,9 @@ pipelines:
         configuration:
           runtime:            
             type: host
-        integrations:
-          - aidan_github
-          - test4
+          integrations:
+            - aidan_github
+            - test4
         execution:
           onExecute:
             - bump_semver v1.2.3 minor
