@@ -57,6 +57,10 @@ pipelines:
         configuration:
           runtime:            
             type: host
+          inputResources:
+            - name: gitRepoResource2
+          outputResources:
+            - name: gitRepoResource3
           integrations:
             - name: aidan_github
             - name: test4
@@ -86,10 +90,6 @@ pipelines:
           nodePool: Ubuntu16
           runtime:            
             type: image
-          inputResources:
-            - name: gitRepoResource2
-          outputResources:
-            - name: gitRepoResource3
           inputSteps:
             - name: in_trigger_step
         execution:
