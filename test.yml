@@ -36,7 +36,7 @@ resources:
 pipelines:
   - name: test_pipeline_10
     configuration:
-      nodePool: Ubuntu16
+      nodePool: Ubuntu18
       runtime:            
         type: host
     steps:
@@ -68,7 +68,7 @@ pipelines:
       - name: main_step
         type: Bash
         configuration:
-          nodePool: Ubuntu18
+          nodePool: Ubuntu16
           runtime:            
             type: image
        #   inputResources:
