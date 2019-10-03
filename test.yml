@@ -20,6 +20,18 @@ resources:
          pullRequestClose: false
          releaseCreate: false
          tagCreate: false
+         
+  - name: gitRepoResource3
+    type: GitRepo
+    configuration:
+      gitProvider: github
+      path: a-murphy/5testRename5
+      buildOn:
+         commit: false
+         pullRequestCreate: false
+         pullRequestClose: false
+         releaseCreate: false
+         tagCreate: false
       
  # - name: nodeRepoResource
  #   type: GitRepo
@@ -45,6 +57,9 @@ pipelines:
         configuration:
           runtime:            
             type: host
+        integrations:
+          - aidan_github
+          - test4
         execution:
           onExecute:
             - bump_semver v1.2.3 minor
@@ -71,8 +86,10 @@ pipelines:
           nodePool: Ubuntu16
           runtime:            
             type: image
-       #   inputResources:
-       #     - name: nodeRepoResource
+          inputResources:
+            - name: gitRepoResource2
+          outputResources:
+            - name: gitRepoResource3
           inputSteps:
             - name: in_trigger_step
         execution:
