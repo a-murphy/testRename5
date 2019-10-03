@@ -59,6 +59,7 @@ pipelines:
             type: host
           inputResources:
             - name: gitRepoResource2
+            - name: otherSourceGitRepo
           outputResources:
             - name: gitRepoResource3
           integrations:
