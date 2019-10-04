@@ -2,7 +2,17 @@ resources:
   - name: otherSourceGitRepo
     type: GitRepo
     configuration:
-      gitProvider: aidan_github
+      gitProvider: github
+      path: a-murphy/5testRename5
+      buildOn:
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
+         
+  - name: otherSourceGitRepo2
+    type: GitRepo
+    configuration:
+      gitProvider: github
       path: a-murphy/5testRename5
       buildOn:
          pullRequestClose: false
