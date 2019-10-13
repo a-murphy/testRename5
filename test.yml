@@ -88,7 +88,7 @@ pipelines:
       - name: main_step
         type: Bash
         configuration:
-          nodePool: Ubuntu16
+     #     nodePool: Ubuntu16
           runtime:            
             type: image
           inputSteps:
