@@ -48,7 +48,7 @@ resources:
 pipelines:
   - name: test_pipeline_10
     configuration:
-      nodePool: Ubuntu16
+   #   nodePool: Ubuntu16
       runtime:            
         type: host
     steps:
