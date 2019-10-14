@@ -1,20 +1,22 @@
-resources:
-  - name: otherSourceGitRepo
-    type: GitRepo
+pipelines:
+  - name: build_images_temp
     configuration:
-      gitProvider: github
-      path: a-murphy/5testRename5
-      buildOn:
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
-         
-  - name: otherSourceGitRepo2
-    type: GitRepo
-    configuration:
-      gitProvider: github
-      path: a-murphy/5testRename5
-      buildOn:
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
+      environmentVariables:
+        readOnly:
+          rtRegistry: "pipelines-docker"
+          versionTag: "master"
+          dockerRepo: "pipelines-docker.jfrog.io/jfrog"
+
+    steps:
+      - name: build_u18_node
+        type: DockerBuild
+        configuration:
+          affinityGroup: "u18node"
+          dockerFileLocation: "./u16/node"
+          dockerFileName: "Dockerfile"
+          dockerImageName: "$dockerRepo/pipelines-u18node-base"
+          dockerImageTag: "$versionTag"
+          integrations:
+            - name: artifactory
+          inputResources:
+            - name: otherPipelineGitRepo
