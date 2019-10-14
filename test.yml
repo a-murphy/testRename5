@@ -20,3 +20,13 @@ pipelines:
             - name: artifactory
           inputResources:
             - name: otherSourceGitRepo
+
+      - name: push_u18_node
+        type: DockerPush
+        configuration:
+          affinityGroup: "u18node"
+          targetRepository: pipelines-docker
+          integrations:
+            - name: artifactory
+          inputSteps:
+            - name: build_u18_node
