@@ -30,3 +30,26 @@ pipelines:
             - name: artifactory
           inputSteps:
             - name: build_u18_node
+
+      - name: build_u18_node2
+        type: DockerBuild
+        configuration:
+          affinityGroup: "u18node"
+          dockerFileLocation: "./u16/node"
+          dockerFileName: "Dockerfile"
+          dockerImageName: "$dockerRepo/pipelines-u18node-base"
+          dockerImageTag: "$versionTag"
+          integrations:
+            - name: artifactory
+          inputResources:
+            - name: otherSourceGitRepo
+
+      - name: push_u18_node2
+        type: DockerPush
+        configuration:
+          affinityGroup: "u18node"
+          targetRepository: pipelines-docker
+          integrations:
+            - name: artifactory
+          inputSteps:
+            - name: build_u18_node2
