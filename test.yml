@@ -91,7 +91,7 @@ pipelines:
             - encryptedstring=$(encrypt_string "encryptme" --key pub.pem)
             - echo "$encryptedstring"
             - decrypt_string "$encryptedstring" --key key.pem
-            - write_output myImage test=$run_number
+            - write_output myImage "imageTag=$run_number" "sha=test"
             - sleep 60
 
       - name: main_step
