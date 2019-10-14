@@ -32,6 +32,13 @@ resources:
          pullRequestClose: false
          releaseCreate: false
          tagCreate: false
+         
+  - name: myImage
+    type: Image
+    configuration:
+      registry: docker
+      imageName: amurphy/test
+      imageTag: master
       
  # - name: nodeRepoResource
  #   type: GitRepo
@@ -62,6 +69,7 @@ pipelines:
             - name: otherSourceGitRepo
           outputResources:
             - name: gitRepoResource3
+            - name: myImage
           integrations:
             - name: aidan_github
             - name: test4
@@ -83,6 +91,7 @@ pipelines:
             - encryptedstring=$(encrypt_string "encryptme" --key pub.pem)
             - echo "$encryptedstring"
             - decrypt_string "$encryptedstring" --key key.pem
+            - write_output myImage test=$run_number
             - sleep 60
 
       - name: main_step
