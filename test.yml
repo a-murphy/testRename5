@@ -19,4 +19,4 @@ pipelines:
           integrations:
             - name: artifactory
           inputResources:
-            - name: otherPipelineGitRepo
+            - name: otherSourceGitRepo
