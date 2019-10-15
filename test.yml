@@ -34,7 +34,7 @@ pipelines:
       - name: build_u18_node2
         type: DockerBuild
         configuration:
-          affinityGroup: "u18node2"
+          affinityGroup: "u18node20"
           dockerFileLocation: "./u16/node"
           dockerFileName: "Dockerfile"
           dockerImageName: "$dockerRepo/pipelines-u18node-base"
@@ -47,7 +47,7 @@ pipelines:
       - name: push_u18_node2
         type: DockerPush
         configuration:
-          affinityGroup: "u18node2"
+          affinityGroup: "u18node20"
           targetRepository: pipelines-docker
           integrations:
             - name: artifactory
