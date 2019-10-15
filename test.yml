@@ -67,7 +67,6 @@ pipelines:
             - name: artifactory
           inputResources:
             - name: otherSourceGitRepo
-            - name: otherSourceGitRepo2
 
       - name: push_u18_node4
         type: DockerPush
