@@ -55,6 +55,9 @@ resources:
 pipelines:
   - name: test_pipeline_10
     configuration:
+     environmentVariables:
+       readOnly:
+         MY_MESSAGE: "My name is"
    #   nodePool: Ubuntu16
       runtime:            
         type: host
