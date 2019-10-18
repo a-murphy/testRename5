@@ -18,3 +18,11 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
+         
+  - name: file
+    type: FileSpec
+    configuration:
+      sourceArtifactory: artifactory
+      pattern: test
+      buildName: name
+      buildNumber: 10
