@@ -66,7 +66,7 @@ pipelines:
             type: host
           inputResources:
             - name: gitRepoResource2
-            - name: otherSourceGitRepo
+        #    - name: otherSourceGitRepo
           outputResources:
             - name: gitRepoResource3
             - name: myImage
