@@ -205,6 +205,12 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
+  - name: test_pipeline_12
+    configuration:
+   #   nodePool: Ubuntu16
+      runtime:            
+        type: host
+    steps:
       - name: in_trigger_step3
         type: Bash
         configuration:
