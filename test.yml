@@ -62,7 +62,7 @@ pipelines:
       - name: in_trigger_step
         type: Bash
         configuration:
-          affinityGroup: group1
+          affinityGroup: groupone
           runtime:            
             type: host
           inputResources:
@@ -98,7 +98,7 @@ pipelines:
       - name: main_step
         type: Bash
         configuration:
-          affinityGroup: group1
+          affinityGroup: groupone
      #     nodePool: Ubuntu16
           runtime:            
             type: image
@@ -138,7 +138,7 @@ pipelines:
       - name: in_trigger_step2
         type: Bash
         configuration:
-          affinityGroup: group2
+          affinityGroup: grouptwo
           runtime:            
             type: host
           inputResources:
@@ -171,10 +171,10 @@ pipelines:
             - write_output myImage "imageTag=$run_number" "sha=test"
             - sleep 60
 
-      - name: main_step2
+      - name: main_steptwo
         type: Bash
         configuration:
-          affinityGroup: group2
+          affinityGroup: grouptwo
      #     nodePool: Ubuntu16
           runtime:            
             type: image
