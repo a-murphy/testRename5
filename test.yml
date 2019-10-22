@@ -55,6 +55,7 @@ resources:
 pipelines:
   - name: test_pipeline_10
     configuration:
+      affinityGroup: group1
    #   nodePool: Ubuntu16
       runtime:            
         type: host
@@ -97,11 +98,88 @@ pipelines:
       - name: main_step
         type: Bash
         configuration:
+          affinityGroup: group1
      #     nodePool: Ubuntu16
           runtime:            
             type: image
           inputSteps:
             - name: in_trigger_step
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+            - compare_git --resource nodeRepoResource
+            - cd "$res_nodeRepoResource_resourcePath"
+            - switch_env nodejs 0.12
+            - npm install
+            - cd tests
+            - ../node_modules/.bin/mocha --recursive "**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=../testresults.xml
+            - ../node_modules/.bin/istanbul --include-all-sources cover -root "../routes" ../node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "**/*.spec.js"
+            - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
+            - cd .. && ls
+            - save_tests testresults.xml
+            
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete: #always
+            - echo "Cleaning up some stuff"
+          onCancel:
+            - echo "Someone cancelled the job"
+  - name: test_pipeline_11
+    configuration:
+   #   nodePool: Ubuntu16
+      runtime:            
+        type: host
+    steps:
+      - name: in_trigger_step2
+        type: Bash
+        configuration:
+          affinityGroup: group2
+          runtime:            
+            type: host
+          inputResources:
+            - name: gitRepoResource2
+        #    - name: otherSourceGitRepo
+          outputResources:
+            - name: gitRepoResource3
+            - name: myImage
+          integrations:
+            - name: aidan_github
+            - name: test4
+        execution:
+          onExecute:
+            - bump_semver v1.2.3 minor
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+            - openssl genrsa -out key.pem 1024 
+            - openssl rsa -in key.pem -text -noout 
+            - openssl rsa -in key.pem -pubout -out pub.pem 
+            - openssl rsa -in pub.pem -pubin -text -noout 
+            - echo "testing encryption" > testfile.txt
+            - encrypt_file --output testencrypted.txt testfile.txt --key pub.pem
+            - cat testencrypted.txt
+            - decrypt_file testencrypted.txt --output testunencrypted.txt --key key.pem
+            - cat testunencrypted.txt
+            - encrypt_string "encryptme" --key pub.pem
+            - encryptedstring=$(encrypt_string "encryptme" --key pub.pem)
+            - echo "$encryptedstring"
+            - decrypt_string "$encryptedstring" --key key.pem
+            - write_output myImage "imageTag=$run_number" "sha=test"
+            - sleep 60
+
+      - name: main_step2
+        type: Bash
+        configuration:
+          affinityGroup: group2
+     #     nodePool: Ubuntu16
+          runtime:            
+            type: image
+          inputSteps:
+            - name: in_trigger_step2
         execution:
           onStart:
             - echo "Prepping build environment"
