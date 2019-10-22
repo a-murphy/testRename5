@@ -55,7 +55,6 @@ resources:
 pipelines:
   - name: test_pipeline_10
     configuration:
-      affinityGroup: group1
    #   nodePool: Ubuntu16
       runtime:            
         type: host
@@ -63,6 +62,7 @@ pipelines:
       - name: in_trigger_step
         type: Bash
         configuration:
+          affinityGroup: group1
           runtime:            
             type: host
           inputResources:
