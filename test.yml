@@ -21,24 +21,24 @@ resources:
          releaseCreate: false
          tagCreate: false
          
-  - name: gitRepoResource3
-    type: GitRepo
-    configuration:
-      gitProvider: github
-      path: a-murphy/5testRename5
-      buildOn:
-         commit: false
-         pullRequestCreate: false
-         pullRequestClose: false
-         releaseCreate: false
-         tagCreate: false
-         
-  - name: myImage
-    type: Image
-    configuration:
-      registry: docker
-      imageName: amurphy/test
-      imageTag: master
+ # - name: gitRepoResource3
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: github
+ #     path: a-murphy/5testRename5
+ #     buildOn:
+ #        commit: false
+ #        pullRequestCreate: false
+ #        pullRequestClose: false
+ #        releaseCreate: false
+ #        tagCreate: false
+ #        
+ # - name: myImage
+ #   type: Image
+ #   configuration:
+ #     registry: docker
+ #     imageName: amurphy/test
+ #     imageTag: master
       
   - name: nodeRepoResource
     type: GitRepo
@@ -68,9 +68,9 @@ pipelines:
           inputResources:
             - name: gitRepoResource2
         #    - name: otherSourceGitRepo
-          outputResources:
-            - name: gitRepoResource3
-            - name: myImage
+       #   outputResources:
+       #     - name: gitRepoResource3
+       #     - name: myImage
          # integrations:
          #   - name: aidan_github
          #   - name: test4
