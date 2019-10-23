@@ -40,17 +40,17 @@ resources:
       imageName: amurphy/test
       imageTag: master
       
- # - name: nodeRepoResource
- #   type: GitRepo
- #   configuration:
- #     gitProvider: aidan_github
- #     path: a-murphy/basic-node
- #     buildOn:
- #        commit: true
- #        pullRequestCreate: true
- #        pullRequestClose: false
- #        releaseCreate: true
- #        tagCreate: true
+  - name: nodeRepoResource
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/basic-node
+      buildOn:
+         commit: true
+         pullRequestCreate: true
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
        
 pipelines:
   - name: test_pipeline_10
@@ -104,6 +104,8 @@ pipelines:
             type: image
           inputSteps:
             - name: in_trigger_step
+          inputResources:
+            - name: nodeRepoResource
         execution:
           onStart:
             - echo "Prepping build environment"
