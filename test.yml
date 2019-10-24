@@ -8,6 +8,12 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
+  - name: file
+    type: RemoteFile
+    configuration:
+      source: ftpIntegration
+      fileLocation: /home/test
+      fileName: test.txt
 
   - name: gitRepoResource2
     type: GitRepo
@@ -67,6 +73,7 @@ pipelines:
             type: host
           inputResources:
             - name: gitRepoResource2
+            - name: file
         #    - name: otherSourceGitRepo
        #   outputResources:
        #     - name: gitRepoResource3
