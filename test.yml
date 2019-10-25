@@ -107,8 +107,6 @@ pipelines:
         configuration:
           affinityGroup: groupone
      #     nodePool: Ubuntu16
-          runtime:            
-            type: image
           inputSteps:
             - name: in_trigger_step
           inputResources:
