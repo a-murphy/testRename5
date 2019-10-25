@@ -113,13 +113,12 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: nodeRepoResource
-          runtime:            
+          runtime:
             type: image
             image:
               custom:
                 name: drydock/u16node
                 tag: master
-
         execution:
           onStart:
             - echo "Prepping build environment"
