@@ -27,6 +27,13 @@ resources:
          releaseCreate: false
          tagCreate: false
          
+  - name: fileSpec
+    type: FileSpec
+    configuration:
+      sourceArtifactory: artifactory
+      pattern: "test/test-$versionTag-.*"
+      recursive: false
+         
  # - name: gitRepoResource3
  #   type: GitRepo
  #   configuration:
@@ -82,8 +89,6 @@ pipelines:
          #   - name: aidan_github
          #   - name: test4
         execution:
-          onStart:
-            - echo "this is a step: $foo"
           onExecute:
             - bump_semver v1.2.3 minor
             - echo "executing task command 1"
@@ -113,6 +118,7 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: nodeRepoResource
+            - name: fileSpec
           runtime:
             type: image
             image:
@@ -144,16 +150,3 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
-            
-      - name: out_step
-        type: Bash
-        configuration:
-          runtime:
-            type: host
-          inputSteps:
-            - name: main_step
-        execution:
-          onStart:
-            - echo "this is a step: $foo"
-
-
