@@ -31,7 +31,7 @@ resources:
     type: FileSpec
     configuration:
       sourceArtifactory: artifactory
-      pattern: "test/test-${versionTag}-.*"
+      pattern: "test/$test-${versionTag}-.*"
       recursive: false
          
  # - name: gitRepoResource3
