@@ -83,7 +83,7 @@ pipelines:
          #   - name: test4
         execution:
           onExecute:
-            - bump_semver v1.2.3 minor
+            - bump_semver: v1.2.3 minor
             - echo "executing task command 1"
             - echo "executing task command 2"
             - openssl genrsa -out key.pem 1024 
