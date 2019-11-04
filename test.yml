@@ -144,3 +144,16 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
+            
+      - name: out_step
+        type: Bash
+        configuration:
+          runtime:
+            type: host
+          inputSteps:
+            - name: main_step
+        execution:
+          onStart:
+            - echo "this is a step: $foo"
+
+
