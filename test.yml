@@ -113,7 +113,7 @@ pipelines:
         type: Bash
         configuration:
           environmentVariables:
-            - versionTag=testTag
+            versionTag: testTag
           affinityGroup: groupone
      #     nodePool: Ubuntu16
           inputSteps:
