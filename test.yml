@@ -112,6 +112,8 @@ pipelines:
       - name: main_step
         type: Bash
         configuration:
+          environmentVariables:
+            - versionTag=testTag
           affinityGroup: groupone
      #     nodePool: Ubuntu16
           inputSteps:
