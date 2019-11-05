@@ -91,7 +91,7 @@ resources:
       imageName: "test"
       imageTag: ${versionTag}
       autoPull: true
-  - name: outgoingWebhook
+  - name: outgoingWebhook2
     type: OutgoingWebhook
     configuration:
       webhookName: outgoingWebhook
@@ -199,7 +199,7 @@ pipelines:
             - name: gcloudImage
             - name: cluster
           outputResources:
-            - name: outgoingWebhook
+            - name: outgoingWebhook2
           integrations:
             - name: test
           runtime:
