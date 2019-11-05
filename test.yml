@@ -36,6 +36,29 @@ resources:
       flat: ${testBoolean}
       limit: ${testNumber}
    #   offset: ${testNumber}
+  - name: dockerImage
+    type: Image
+    configuration:
+      registry: docker
+      imageName: "amurphy/test"
+      imageTag: ${versionTag}
+      autoPull: true
+  - name: awsImage
+    type: Image
+    configuration:
+      registry: AWS
+      imageName: "test"
+      imageTag: ${versionTag}
+      region: ${versionTag}
+      autoPull: true
+  - name: artifactoryImage
+    type: Image
+    configuration:
+      registry: AWS
+      sourceRepository: test
+      imageName: "test"
+      imageTag: ${versionTag}
+      autoPull: true
          
  # - name: gitRepoResource3
  #   type: GitRepo
@@ -126,6 +149,9 @@ pipelines:
           inputResources:
             - name: nodeRepoResource
             - name: fileSpec
+            - name: dockerImage
+            - name: awsImage
+            - name: artifactoryImage
           integrations:
             - name: test
           runtime:
