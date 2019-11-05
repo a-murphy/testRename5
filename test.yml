@@ -118,7 +118,7 @@ pipelines:
           environmentVariables:
             versionTag: testTag
             testNumber: 5
-            testBoolean: false
+            testBoolean: "false"
           affinityGroup: groupone
      #     nodePool: Ubuntu16
           inputSteps:
