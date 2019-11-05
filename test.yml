@@ -132,6 +132,9 @@ pipelines:
           inputResources:
             - name: gitRepoResource2
             - name: file
+            - name: awsFile
+            - name: gcloudFile
+            - name: artifactoryFile
         #    - name: otherSourceGitRepo
        #   outputResources:
        #     - name: gitRepoResource3
