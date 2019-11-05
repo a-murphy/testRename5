@@ -159,6 +159,7 @@ pipelines:
             - name: dockerImage
             - name: awsImage
             - name: artifactoryImage
+            - name: gcloudImage
           integrations:
             - name: test
           runtime:
