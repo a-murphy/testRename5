@@ -100,6 +100,18 @@ resources:
       path: /test
       headers:
         Content-Type: ${versionTag}
+  - name: inputBuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: artifactory
+      buildNumber: ${testNumber}
+      buildName: ${versionTag}
+  - name: outputBuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: artifactory
+      buildNumber: ${testNumber}
+      buildName: ${versionTag}
          
  # - name: gitRepoResource3
  #   type: GitRepo
@@ -233,3 +245,18 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
+
+      - name: xray_step
+        type: XrayScan
+        configuration:
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          inputResources:
+            - name: inputBuildInfo
+          outputResources:
+            - name: outputBuildInfo
+
