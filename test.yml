@@ -91,6 +91,15 @@ resources:
       imageName: "test"
       imageTag: ${versionTag}
       autoPull: true
+  - name: outgoingWebhook
+    type: OutgoingWebhook
+    configuration:
+      webhookName: outgoingWebhook
+      method: "POST"
+      parameters: ${versionTag}
+      path: /test
+      headers:
+        Content-Type: ${versionTag}
          
  # - name: gitRepoResource3
  #   type: GitRepo
