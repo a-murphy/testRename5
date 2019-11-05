@@ -121,6 +121,8 @@ pipelines:
           inputResources:
             - name: nodeRepoResource
             - name: fileSpec
+          integrations:
+            - name: test
           runtime:
             type: image
             image:
