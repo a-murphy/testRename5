@@ -58,6 +58,13 @@ resources:
       sourceRepository: test
       imageName: "test"
       imageTag: ${versionTag}
+      autoPull: ${testBoolean}
+  - name: gcloudImage
+    type: Image
+    configuration:
+      registry: gcloud
+      imageName: "test"
+      imageTag: ${versionTag}
       autoPull: true
          
  # - name: gitRepoResource3
