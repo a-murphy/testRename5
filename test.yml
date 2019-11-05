@@ -198,6 +198,8 @@ pipelines:
             - name: artifactoryImage
             - name: gcloudImage
             - name: cluster
+          outputResources:
+            - name: outgoingWebhook
           integrations:
             - name: test
           runtime:
