@@ -31,8 +31,8 @@ resources:
     type: FileSpec
     configuration:
       sourceArtifactory: artifactory
-      pattern: "test/$test-${versionTag}-.*"
-      recursive: false
+      pattern: "test/$test-${versionTag}-*"
+      recursive: true
       flat: ${testBoolean}
       limit: ${testNumber}
    #   offset: ${testNumber}
