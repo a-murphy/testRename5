@@ -33,6 +33,9 @@ resources:
       sourceArtifactory: artifactory
       pattern: "test/$test-${versionTag}-.*"
       recursive: false
+      flat: true
+      limit: 5
+      offset: 10
          
  # - name: gitRepoResource3
  #   type: GitRepo
