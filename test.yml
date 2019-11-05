@@ -32,6 +32,13 @@ resources:
       source: gcloud
       fileLocation: ${versionTag}
       fileName: test.txt
+      
+  - name: cluster
+    type: VmCluster
+    configuration:
+      sshKey: sshKey
+      targets:
+        - targetOne
 
   - name: gitRepoResource2
     type: GitRepo
@@ -181,6 +188,7 @@ pipelines:
             - name: awsImage
             - name: artifactoryImage
             - name: gcloudImage
+            - name: cluster
           integrations:
             - name: test
           runtime:
