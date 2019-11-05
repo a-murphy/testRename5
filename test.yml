@@ -33,9 +33,9 @@ resources:
       sourceArtifactory: artifactory
       pattern: "test/$test-${versionTag}-.*"
       recursive: false
-      flat: true
-      limit: 5
-      offset: 10
+      flat: $testBoolean
+      limit: $testNumber
+      offset: $testNumber
          
  # - name: gitRepoResource3
  #   type: GitRepo
@@ -117,6 +117,8 @@ pipelines:
         configuration:
           environmentVariables:
             versionTag: testTag
+            testNumber: 5
+            testBoolean: false
           affinityGroup: groupone
      #     nodePool: Ubuntu16
           inputSteps:
