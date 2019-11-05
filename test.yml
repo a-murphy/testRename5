@@ -54,7 +54,7 @@ resources:
   - name: artifactoryImage
     type: Image
     configuration:
-      registry: AWS
+      registry: artifactory
       sourceRepository: test
       imageName: "test"
       imageTag: ${versionTag}
