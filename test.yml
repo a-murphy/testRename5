@@ -321,7 +321,6 @@ pipelines:
         configuration:
           sourceLocation: source
           repository: repo
-          version: test
           outputLocation: output
           outputFile: outputFile
           noRegistry: false
@@ -340,7 +339,6 @@ pipelines:
         configuration:
           sourceLocation: source
           repository: repo
-          version: test
           outputLocation: output
           outputFile: outputFile
           noRegistry: false
@@ -351,7 +349,8 @@ pipelines:
             testBoolean: "false"
           inputSteps:
             - name: main_step
-          integrations: artifactory
+          integrations:
+            - name: artifactory
           inputResources:
             - name: nodeRepoResource
       - name: promote_step
