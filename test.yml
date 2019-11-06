@@ -263,7 +263,6 @@ pipelines:
       - name: create_step
         type: CreateReleaseBundle
         configuration:
-          targetRepository: test
           releaseBundleName: bundleName
           releaseBundleVersion: bundleVersion
           environmentVariables:
