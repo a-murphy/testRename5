@@ -319,7 +319,7 @@ pipelines:
       - name: go_build_file
         type: GoBuild
         configuration:
-          sourceLocation: source
+          sourceLocation: /
           repository: repo
           outputLocation: output
           outputFile: outputFile
@@ -369,7 +369,7 @@ pipelines:
       - name: go_build_artifactory
         type: GoBuild
         configuration:
-          sourceLocation: source
+          sourceLocation: /
           repository: repo
           outputLocation: output
           outputFile: outputFile
@@ -388,7 +388,7 @@ pipelines:
       - name: gradle_build
         type: GradleBuild
         configuration:
-          sourceLocation: source
+          sourceLocation: /
           configFileLocation: fileLocation
           configFileName: shippable.yml
           gradleCommand: "gradle command"
@@ -406,7 +406,7 @@ pipelines:
       - name: mvn_build
         type: MvnBuild
         configuration:
-          sourceLocation: source
+          sourceLocation: /
           configFileLocation: fileLocation
           configFileName: shippable.yml
           mvnCommand: "maven command"
@@ -424,7 +424,7 @@ pipelines:
       - name: npm_build
         type: NpmBuild
         configuration:
-          sourceLocation: source
+          sourceLocation: /
           repositoryName: test
           environmentVariables:
             versionTag: testTag
