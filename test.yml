@@ -409,7 +409,7 @@ pipelines:
           sourceLocation: source
           configFileLocation: fileLocation
           configFileName: shippable.yml
-          mavenCommand: "maven command"
+          mvnCommand: "maven command"
           environmentVariables:
             versionTag: testTag
             testNumber: 5
@@ -425,6 +425,7 @@ pipelines:
         type: NpmBuild
         configuration:
           sourceLocation: source
+          repositoryName: test
           environmentVariables:
             versionTag: testTag
             testNumber: 5
