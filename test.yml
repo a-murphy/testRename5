@@ -260,6 +260,23 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
+      - name: create_step
+        type: CreateReleaseBundle
+        configuration:
+          targetRepository: test
+          releaseBundleName: bundleName
+          releaseBundleVersion: bundleVersion
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          inputResources:
+            - name: inputBuildInfo
+            - name: outputBuildInfo
+          outputResources:
+            - name: outputReleaseBundle
       - name: promote_step
         type: PromoteBuild
         configuration:
