@@ -313,7 +313,7 @@ pipelines:
           inputSteps:
             - name: main_step
           inputResources:
-            - name: file
+            - name: fileSpec
             - name: nodeRepoResource
       - name: promote_step
         type: PromoteBuild
