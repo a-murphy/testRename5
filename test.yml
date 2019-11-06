@@ -126,7 +126,16 @@ resources:
       name: bundleName
       version: ${versionTag}
       isSigned: ${testBoolean}
-      
+  - name: inputDistributionRule
+    type: DistributionRule
+    configuration:
+      sourceDistribution: distribution
+      serviceName: service${versionTag}
+      cityName: service${versionTag}
+      siteName: site${versionTag}
+      countryCodes:
+        - ${versionTag}
+        - ${testBoolean}
          
  # - name: gitRepoResource3
  #   type: GitRepo
@@ -274,6 +283,20 @@ pipelines:
           inputResources:
             - name: inputBuildInfo
             - name: outputBuildInfo
+          outputResources:
+            - name: outputReleaseBundle
+      - name: distribute_step
+        type: DistributeReleaseBundle
+        configuration:
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          inputResources:
+            - name: inputReleaseBundle
+            - name: inputDistributionRule
           outputResources:
             - name: outputReleaseBundle
       - name: promote_step
