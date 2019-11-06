@@ -352,12 +352,15 @@ pipelines:
         type: GoPublishModule
         configuration:
           targetRepository: repo
+          version: version
           environmentVariables:
             versionTag: testTag
             testNumber: 5
             testBoolean: "false"
           inputSteps:
             - name: go_build_file
+          inputResources:
+            - name: nodeRepoResource
           integrations:
             - name: artifactory
           outputResources:
