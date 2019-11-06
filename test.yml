@@ -353,6 +353,7 @@ pipelines:
         configuration:
           targetRepository: repo
           version: version
+          sourceLocation: .
           environmentVariables:
             versionTag: testTag
             testNumber: 5
