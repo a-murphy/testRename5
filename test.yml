@@ -315,6 +315,45 @@ pipelines:
           inputResources:
             - name: fileSpec
             - name: nodeRepoResource
+
+      - name: go_build_file
+        type: GoBuild
+        configuration:
+          sourceLocation: source
+          repository: repo
+          version: test
+          outputLocation: output
+          outputFile: outputFile
+          noRegistry: false
+          publishDeps: false
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          inputResources:
+            - name: fileSpec
+            - name: nodeRepoResource
+      - name: go_build_artifactory
+        type: GoBuild
+        configuration:
+          sourceLocation: source
+          repository: repo
+          version: test
+          outputLocation: output
+          outputFile: outputFile
+          noRegistry: false
+          publishDeps: false
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          integrations: artifactory
+          inputResources:
+            - name: nodeRepoResource
       - name: promote_step
         type: PromoteBuild
         configuration:
