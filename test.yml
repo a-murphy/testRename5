@@ -299,6 +299,18 @@ pipelines:
             - name: inputDistributionRule
           outputResources:
             - name: outputReleaseBundle
+      - name: docker_build
+        type: DockerBuild
+        configuration:
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          inputResources:
+            - name: file
+            - name: nodeRepoResource
       - name: promote_step
         type: PromoteBuild
         configuration:
