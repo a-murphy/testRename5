@@ -334,6 +334,18 @@ pipelines:
           inputResources:
             - name: fileSpec
             - name: nodeRepoResource
+      - name: go_publish_binary
+        type: GoPublishBinary
+        configuration:
+          targetRepository: repo
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: go_build_file
+          outputResources:
+            - name: outputBuildInfo
       - name: go_build_artifactory
         type: GoBuild
         configuration:
