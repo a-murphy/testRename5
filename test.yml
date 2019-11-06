@@ -344,6 +344,8 @@ pipelines:
             testBoolean: "false"
           inputSteps:
             - name: go_build_file
+          integrations:
+            - name: artifactory
           outputResources:
             - name: outputBuildInfo
       - name: go_build_artifactory
