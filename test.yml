@@ -348,6 +348,20 @@ pipelines:
             - name: artifactory
           outputResources:
             - name: outputBuildInfo
+      - name: go_publish_module
+        type: GoPublishModule
+        configuration:
+          targetRepository: repo
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: go_build_file
+          integrations:
+            - name: artifactory
+          outputResources:
+            - name: outputBuildInfo
       - name: go_build_artifactory
         type: GoBuild
         configuration:
