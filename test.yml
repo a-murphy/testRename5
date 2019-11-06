@@ -385,6 +385,23 @@ pipelines:
             - name: artifactory
           inputResources:
             - name: nodeRepoResource
+      - name: gradle_build
+        type: GradleBuild
+        configuration:
+          sourceLocation: source
+          configFileLocation: fileLocation
+          configFileName: shippable.yml
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          integrations:
+            - name: artifactory
+          inputResources:
+            - name: nodeRepoResource
+            - name: fileSpec
       - name: promote_step
         type: PromoteBuild
         configuration:
