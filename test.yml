@@ -115,7 +115,14 @@ resources:
   - name: inputReleaseBundle
     type: ReleaseBundle
     configuration:
-      sourceDistribution: artifactory
+      sourceDistribution: distribution
+      name: bundleName
+      version: ${versionTag}
+      isSigned: ${testBoolean}
+  - name: outputReleaseBundle
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: distribution
       name: bundleName
       version: ${versionTag}
       isSigned: ${testBoolean}
@@ -264,6 +271,8 @@ pipelines:
             - name: main_step
           inputResources:
             - name: inputReleaseBundle
+          outputResources:
+            - name: outputReleaseBundle
       - name: xray_step
         type: XrayScan
         configuration:
