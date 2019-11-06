@@ -112,6 +112,14 @@ resources:
       sourceArtifactory: artifactory
       buildNumber: ${testNumber}
       buildName: ${versionTag}
+  - name: inputReleaseBundle
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: artifactory
+      name: bundleName
+      version: ${versionTag}
+      isSigned: ${testBoolean}
+      
          
  # - name: gitRepoResource3
  #   type: GitRepo
@@ -245,7 +253,17 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
-
+      - name: sign_step
+        type: SignReleaseBundle
+        configuration:
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          inputResources:
+            - name: inputReleaseBundle
       - name: xray_step
         type: XrayScan
         configuration:
