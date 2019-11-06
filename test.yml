@@ -391,6 +391,7 @@ pipelines:
           sourceLocation: source
           configFileLocation: fileLocation
           configFileName: shippable.yml
+          gradleCommand: "gradle command"
           environmentVariables:
             versionTag: testTag
             testNumber: 5
