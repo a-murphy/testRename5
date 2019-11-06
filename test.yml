@@ -302,6 +302,10 @@ pipelines:
       - name: docker_build
         type: DockerBuild
         configuration:
+          dockerFileLocation: ${versionTag}
+          dockerFileName: test${versionTag}
+          dockerImageName: image${versionTag}
+          dockerImageTag: tag${versionTag}
           environmentVariables:
             versionTag: testTag
             testNumber: 5
