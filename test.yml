@@ -403,6 +403,42 @@ pipelines:
           inputResources:
             - name: nodeRepoResource
             - name: fileSpec
+      - name: mvn_build
+        type: MvnBuild
+        configuration:
+          sourceLocation: source
+          configFileLocation: fileLocation
+          configFileName: shippable.yml
+          gradleCommand: "gradle command"
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          integrations:
+            - name: artifactory
+          inputResources:
+            - name: nodeRepoResource
+            - name: fileSpec
+      - name: npm_build
+        type: NpmBuild
+        configuration:
+          sourceLocation: source
+          configFileLocation: fileLocation
+          configFileName: shippable.yml
+          gradleCommand: "gradle command"
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          integrations:
+            - name: artifactory
+          inputResources:
+            - name: nodeRepoResource
+            - name: fileSpec
       - name: promote_step
         type: PromoteBuild
         configuration:
