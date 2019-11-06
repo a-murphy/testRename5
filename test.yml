@@ -136,6 +136,13 @@ resources:
       countryCodes:
         - ${versionTag}
         - ${testBoolean}
+  - name: helmChart
+    type: HelmChart
+    configuration:
+      sourceArtifactory: artifactory
+      repository: repo${versionTag}
+      version: version${versionTag}
+      chart: chart${versionTag}
          
  # - name: gitRepoResource3
  #   type: GitRepo
@@ -437,6 +444,51 @@ pipelines:
           inputResources:
             - name: nodeRepoResource
             - name: fileSpec
+      - name: helm_deploy
+        type: HelmDeploy
+        configuration:
+          releaseName: release
+          dryRun: true
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          integrations:
+            - name: artifactory
+          inputResources:
+            - name: helmChart
+      - name: helm_deploy_repo
+        type: HelmDeploy
+        configuration:
+          releaseName: release
+          dryRun: true
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          integrations:
+            - name: artifactory
+          inputResources:
+            - name: nodeRepoResource
+      - name: helm_publish
+        type: HelmPublish
+        configuration:
+          releaseName: release
+          dryRun: true
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          integrations:
+            - name: artifactory
+          inputResources:
+            - name: nodeRepoResource
       - name: promote_step
         type: PromoteBuild
         configuration:
