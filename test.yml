@@ -260,6 +260,19 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
+      - name: publish_step
+        type: PublishBuildInfo
+        configuration:
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          inputResources:
+            - name: inputBuildInfo
+          outputResources:
+            - name: outputBuildInfo
       - name: sign_step
         type: SignReleaseBundle
         configuration:
