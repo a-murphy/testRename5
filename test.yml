@@ -521,30 +521,30 @@ pipelines:
             - name: inputBuildInfo
           outputResources:
             - name: outputBuildInfo
-      - name: sign_step
-        type: SignReleaseBundle
-        configuration:
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: main_step
-          inputResources:
-            - name: inputReleaseBundle
-          outputResources:
-            - name: outputReleaseBundle
-      - name: xray_step
-        type: XrayScan
-        configuration:
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: main_step
-          inputResources:
-            - name: inputBuildInfo
-          outputResources:
-            - name: outputBuildInfo
+  #    - name: sign_step
+  #      type: SignReleaseBundle
+  #      configuration:
+  #        environmentVariables:
+  #          versionTag: testTag
+  #          testNumber: 5
+  #          testBoolean: "false"
+  #        inputSteps:
+  #          - name: main_step
+  #        inputResources:
+  #          - name: inputReleaseBundle
+  #        outputResources:
+  #          - name: outputReleaseBundle
+   #   - name: xray_step
+   #     type: XrayScan
+   #     configuration:
+   #       environmentVariables:
+   #         versionTag: testTag
+   #         testNumber: 5
+   #         testBoolean: "false"
+   #       inputSteps:
+   #         - name: main_step
+   #       inputResources:
+   #         - name: inputBuildInfo
+   #       outputResources:
+   #         - name: outputBuildInfo
 
