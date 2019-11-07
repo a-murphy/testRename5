@@ -453,8 +453,6 @@ pipelines:
             versionTag: testTag
             testNumber: 5
             testBoolean: "false"
-          inputSteps:
-            - name: main_step
           integrations:
             - name: artifactory
           inputResources:
@@ -468,8 +466,6 @@ pipelines:
             versionTag: testTag
             testNumber: 5
             testBoolean: "false"
-          inputSteps:
-            - name: main_step
           integrations:
             - name: artifactory
           inputResources:
@@ -483,8 +479,6 @@ pipelines:
             versionTag: testTag
             testNumber: 5
             testBoolean: "false"
-          inputSteps:
-            - name: main_step
           integrations:
             - name: artifactory
           inputResources:
