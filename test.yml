@@ -464,7 +464,7 @@ pipelines:
             - name: artifactory
             - name: Kubernetes
           inputResources:
-            - name: helmChart
+            - name: outputHelmChart
       - name: helm_deploy_repo
         type: HelmDeploy
         configuration:
