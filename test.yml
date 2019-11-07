@@ -455,6 +455,7 @@ pipelines:
             testBoolean: "false"
           integrations:
             - name: artifactory
+            - name: Kubernetes
           inputResources:
             - name: helmChart
       - name: helm_deploy_repo
@@ -462,27 +463,28 @@ pipelines:
         configuration:
           releaseName: release
           dryRun: true
+          chartPath: chart
           environmentVariables:
             versionTag: testTag
             testNumber: 5
             testBoolean: "false"
           integrations:
             - name: artifactory
+            - name: Kubernetes
           inputResources:
             - name: nodeRepoResource
       - name: helm_publish
         type: HelmPublish
         configuration:
-          releaseName: release
           chartPath: path
           environmentVariables:
             versionTag: testTag
             testNumber: 5
             testBoolean: "false"
-          integrations:
-            - name: artifactory
           inputResources:
             - name: nodeRepoResource
+          outputResources:
+            - name: outputBuildInfo
       - name: promote_step
         type: PromoteBuild
         configuration:
