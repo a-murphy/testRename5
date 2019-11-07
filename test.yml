@@ -478,7 +478,7 @@ pipelines:
         type: HelmPublish
         configuration:
           releaseName: release
-          dryRun: true
+          chartPath: path
           environmentVariables:
             versionTag: testTag
             testNumber: 5
