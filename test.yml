@@ -143,6 +143,13 @@ resources:
       repository: repo${versionTag}
       version: version${versionTag}
       chart: chart${versionTag}
+  - name: outputHelmChart
+    type: HelmChart
+    configuration:
+      sourceArtifactory: artifactory
+      repository: repo${versionTag}
+      version: version${versionTag}
+      chart: chart${versionTag}
          
  # - name: gitRepoResource3
  #   type: GitRepo
@@ -484,7 +491,7 @@ pipelines:
           inputResources:
             - name: nodeRepoResource
           outputResources:
-            - name: outputBuildInfo
+            - name: outputHelmChart
       - name: promote_step
         type: PromoteBuild
         configuration:
