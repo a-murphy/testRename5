@@ -289,7 +289,12 @@ pipelines:
         type: CreateReleaseBundle
         configuration:
           releaseBundleName: bundleName
-          releaseBundleVersion: bundleVersion
+          releaseBundleVersion: bundleVersion${versionTag}
+          dryRun: ${testBoolean}
+          sign: ${testBoolean}
+          releaseNotes:
+            content: ${testNumber}
+            syntax: markdown
           environmentVariables:
             versionTag: testTag
             testNumber: 5
