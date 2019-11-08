@@ -357,8 +357,8 @@ pipelines:
       - name: go_build_file
         type: GoBuild
         configuration:
-          sourceLocation: location${testTag}
-          repository: repo${testTag}
+          sourceLocation: location${versionTag}
+          repository: repo${versionTag}
           outputLocation: output${testTag}
           outputFile: outputFile${testTag}
           noRegistry: ${testBoolean}
