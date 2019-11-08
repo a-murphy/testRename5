@@ -485,6 +485,20 @@ pipelines:
           inputResources:
             - name: nodeRepoResource
             - name: fileSpec
+      - name: npm_publish
+        type: NpmPublish
+        configuration:
+          repositoryName: repo${versionTag}
+          forceXrayScan: ${testBoolean}
+          autoPublishBuildInfo: false
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: npm_build
+          integrations:
+            - name: artifactory
       - name: helm_deploy
         type: HelmDeploy
         configuration:
