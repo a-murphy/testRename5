@@ -593,6 +593,8 @@ pipelines:
             - name: publish_step
           inputResources:
             - name: inputBuildInfo
+          integrations:
+            - name: artifactory
 
   #    - name: sign_step
   #      type: SignReleaseBundle
