@@ -590,7 +590,7 @@ pipelines:
           autoPublishBuildInfo: false
           forceXrayScan: ${testBoolean}
           inputSteps:
-            - name: publish_step
+            - name: npm_build
           inputResources:
             - name: inputBuildInfo
           integrations:
