@@ -471,8 +471,9 @@ pipelines:
       - name: npm_build
         type: NpmBuild
         configuration:
-          sourceLocation: /
-          repositoryName: test
+          sourceLocation: /${versionTag}
+          repositoryName: test${versionTag}
+          npmArgs: ${testNumber}test${versionTag}
           environmentVariables:
             versionTag: testTag
             testNumber: 5
