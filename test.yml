@@ -337,6 +337,20 @@ pipelines:
           inputResources:
             - name: fileSpec
             - name: nodeRepoResource
+      - name: docker_push
+        type: DockerPush
+        configuration:
+          targetRepository: repo${versionTag}
+          forceXrayScan: ${testBoolean}
+          autoPublishBuildInfo: true
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: docker_build
+          integrations:
+            - name: artifactory
 
       - name: go_build_file
         type: GoBuild
