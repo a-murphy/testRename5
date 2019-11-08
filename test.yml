@@ -357,12 +357,12 @@ pipelines:
       - name: go_build_file
         type: GoBuild
         configuration:
-          sourceLocation: /
-          repository: repo
-          outputLocation: output
-          outputFile: outputFile
-          noRegistry: false
-          publishDeps: false
+          sourceLocation: location${testTag}
+          repository: repo${testTag}
+          outputLocation: output${testTag}
+          outputFile: outputFile${testTag}
+          noRegistry: ${testBoolean}
+          publishDeps: ${testBoolean}
           environmentVariables:
             versionTag: testTag
             testNumber: 5
