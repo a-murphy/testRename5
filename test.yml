@@ -502,7 +502,10 @@ pipelines:
         configuration:
           releaseName: release
           dryRun: true
-          chartPath: chart
+          chartPath: chart${versionTag}
+          lint: ${testBoolean}
+          test: true
+          testFlags: ${versionTag}
           environmentVariables:
             versionTag: testTag
             testNumber: 5
@@ -515,7 +518,9 @@ pipelines:
       - name: helm_publish
         type: HelmPublish
         configuration:
-          chartPath: path
+          chartPath: path${versionTag}
+          autoPublishBuildInfo: ${testBoolean}
+          flags: ${testNumber}
           environmentVariables:
             versionTag: testTag
             testNumber: 5
