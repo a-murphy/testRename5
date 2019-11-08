@@ -519,7 +519,7 @@ pipelines:
         type: HelmPublish
         configuration:
           chartPath: path${versionTag}
-          autoPublishBuildInfo: ${testBoolean}
+          autoPublishBuildInfo: false
           flags: ${testNumber}
           environmentVariables:
             versionTag: testTag
