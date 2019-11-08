@@ -394,8 +394,12 @@ pipelines:
         type: GoPublishModule
         configuration:
           targetRepository: repo
-          version: version
-          sourceLocation: .
+          version: version${versionTag}
+          sourceLocation: .${versionTag}
+          forceXrayScan: ${testBoolean}
+          autoPublishBuildInfo: ${testBoolean}
+          self: ${testBoolean}
+          deps: dep${versionTag}
           environmentVariables:
             versionTag: testTag
             testNumber: 5
