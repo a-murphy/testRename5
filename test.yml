@@ -378,6 +378,8 @@ pipelines:
         type: GoPublishBinary
         configuration:
           targetRepository: repo
+          autoPublishBuildInfo: true
+          forceXrayScan: true
           environmentVariables:
             versionTag: testTag
             testNumber: 5
