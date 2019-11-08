@@ -452,10 +452,11 @@ pipelines:
       - name: mvn_build
         type: MvnBuild
         configuration:
-          sourceLocation: /
-          configFileLocation: fileLocation
+          sourceLocation: /${versionTag}
+          configFileLocation: fileLocation${testNumber}
           configFileName: shippable.yml
-          mvnCommand: "maven command"
+          forceXrayScan: ${testBoolean}
+          mvnCommand: "maven command ${versionTag} $testNumber"
           environmentVariables:
             versionTag: testTag
             testNumber: 5
