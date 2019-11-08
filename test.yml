@@ -434,10 +434,10 @@ pipelines:
       - name: gradle_build
         type: GradleBuild
         configuration:
-          sourceLocation: /
+          sourceLocation: /${testNumber}
           configFileLocation: fileLocation
-          configFileName: shippable.yml
-          gradleCommand: "gradle command"
+          configFileName: shippable${testNumber}.yml
+          gradleCommand: "gradle command ${testNumber}"
           environmentVariables:
             versionTag: testTag
             testNumber: 5
