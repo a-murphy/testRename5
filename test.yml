@@ -579,6 +579,21 @@ pipelines:
             - name: inputBuildInfo
           outputResources:
             - name: outputBuildInfo
+      - name: push_artifactory
+        type: PushArtifactoryPackage
+        configuration:
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "true"
+          targetRepo: ${versionTag}
+          autoPublishBuildInfo: false
+          forceXrayScan: ${testBoolean}
+          inputSteps:
+            - name: publish_step
+          inputResources:
+            - name: inputBuildInfo
+
   #    - name: sign_step
   #      type: SignReleaseBundle
   #      configuration:
