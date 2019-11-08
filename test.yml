@@ -549,10 +549,14 @@ pipelines:
         type: PromoteBuild
         configuration:
           targetRepository: test
+          includeDependencies: ${testBoolean}
+          status: ${testNumber}
+          comment: ${versionTag}
+          copy: ${testBoolean}
           environmentVariables:
             versionTag: testTag
             testNumber: 5
-            testBoolean: "false"
+            testBoolean: "true"
           inputSteps:
             - name: main_step
           inputResources:
