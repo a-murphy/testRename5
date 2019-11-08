@@ -569,7 +569,10 @@ pipelines:
           environmentVariables:
             versionTag: testTag
             testNumber: 5
-            testBoolean: "false"
+            testBoolean: "true"
+          envInclude: ${versionTag}
+          envExclude: $versionTag
+          forceXrayScan: ${testBoolean}
           inputSteps:
             - name: main_step
           inputResources:
