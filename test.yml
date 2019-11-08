@@ -359,7 +359,7 @@ pipelines:
         configuration:
           sourceLocation: location${versionTag}
           repository: repo${versionTag}
-          version: version${versionTag}
+       #   version: version${versionTag}
           goCommand: test command ${versionTag} $versionTag}
           outputLocation: output${testTag}
           outputFile: outputFile${testTag}
