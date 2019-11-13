@@ -1,4 +1,72 @@
-resources:      
+resources:
+  - name: imageResource3
+    type: Image
+    configuration:
+      registry: docker
+      imageName: amurphy/test
+      imageTag: master.100
+      autoPull: true
+      
+  - name: imageResource6
+    type: Image
+    configuration:   
+      registry: docker
+      imageName: amurphy/test
+      imageTag: master.100
+      autoPull: true
+            
+  - name: webhook
+    type: Webhook
+    configuration:
+      webhookName: webhook
+      payload: "test"
+      
+  - name: VmClusterTest
+    type: VmCluster
+    configuration:
+      sshKey: sshKey
+      targets:
+        - 127.0.0.1
+        
+  - name: FileSpecTest
+    type: FileSpec
+    configuration:
+      sourceArtifactory: artifactory
+      limit: 1
+      offset: 1
+      
+ # - name: bitbucketRepo20
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: bitbucketServer
+ #     path: ~AIDAN/test
+ #     buildOn:
+ #        pullRequestCreate: true
+ #        pullRequestClose: true
+ #        releaseCreate: true
+ #        tagCreate: true
+   
+ # - name: bitbucketRepo12
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: bitbucket
+ #     path: a-murphy/sample_pipelines
+ #     buildOn:
+ #        pullRequestCreate: true
+ #        pullRequestClose: true
+ #        releaseCreate: true
+ #        tagCreate: true
+        
+ # - name: gitlabRepo5
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: gitlab
+ #     path: a-murphy/testRename5
+ #     buildOn:
+ #        pullRequestCreate: true
+ #        pullRequestClose: true
+ #        releaseCreate: true
+ #        tagCreate: true
          
   - name: gitNodeRepoResource
     type: GitRepo
@@ -28,6 +96,75 @@ resources:
       imageName: amurphy/test
       imageTag: master.105
       autoPull: false
+  - name: my_releaseBundle2
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: distribution
+      name: amurphy/test
+      version: master.105
+  - name: my_signed_releaseBundle
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: distribution
+      name: amurphy/test
+      version: master.105
+  - name: my_DistributionRule
+    type: DistributionRule
+    configuration:
+      sourceDistribution: distribution
+      serviceName: service
+      cityName: city
+      siteName: site
+      countryCodes:
+       - country1
+       - country2
+  - name: my_BuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: artifactory
+      buildName: myName
+      buildNumber: 101
+  - name: my_BuildInfo2
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: artifactory
+      buildName: myName
+      buildNumber: 101
+      
+      
+      
+ # - name: my_Aql
+ #   type: Aql
+ #   configuration:
+ #     sourceArtifactory: artifactory
+ #     name: amurphy/test
+ #     version: master.105
+ #     query: test
+ # - name: my_Aql2
+ #   type: Aql
+ #   configuration:
+ #     sourceArtifactory: artifactory
+ #     name: amurphy/test
+ #     version: master.105
+ #     query: test
+  - name: kubeCluster
+    type: KubeCluster
+    configuration:
+      kubernetesConfig: kubernetes
+      
+#  - name: bitbucketServerRepoResource
+#    type: gitRepo
+#    repoPath: ~aidan/test
+#    configuration:
+#      integrationName: bitbucketServer
+#      buildOn:
+    #     commit: false
+#         pullRequest: true
+#         pullRequestClose: false
+    #     release: true
+#         tagPush: true
+#    version:
+#      sha: master
 
 #  - name: gitRepoResource2
 #    type: GitRepo
@@ -39,6 +176,35 @@ resources:
 #         pullRequestClose: true
 #         releaseCreate: true
 #         tagCreate: true
+
+  - name: fileIntegrationResource
+    type: RemoteFile
+    configuration:
+      fileLocation: location
+      fileName: file   
+      source: artifactory 
+ 
+#  - name: cluster
+#    type: cluster
+#    configuration:
+#      integrationName: sshKey 
+#    version:
+#      targetIPs:
+   #     - 1
+#        - 1.2.3.5
+#        - test2
+#  - name: sample_java_file_test
+#    type: file
+#    fileLocation: text.js
+#    configuration:
+#      integrationName: fileServerIntegration
+#    version:
+#      fileName: test4
+#  - name: file_test
+#    type: file
+#    fileLocation: text.js
+#    configuration:
+#      integrationName: fileServerIntegration
        
 pipelines:
   - name: test_pipeline_1
@@ -52,6 +218,10 @@ pipelines:
         image:
           auto:
             language: none
+     #     custom: 
+     #       name: drydock/u18java
+     #       tag:  master
+     #       autoPull: false
     steps:
       - name: in_trigger_step
         type: Bash
@@ -61,9 +231,13 @@ pipelines:
           timeoutSeconds: 180
           integrations:
             - name: docker
-          environmentVariables:
-            ENV1: value1
-            ENV2: value2
+            - name: AWS
+            - name: realArtifactory
+         #   - name: gcloud
+            - name: sshKey
+        #  environmentVariables:
+        #    ENV1: value1
+        #    ENV2: value2
           runtime:            
             type: host         
       #      type: image
@@ -79,8 +253,56 @@ pipelines:
           onSuccess:
             - echo "test"
           onExecute:
-            - sleep 10
+        #    - sleep 10
+        #    - bump_semver v1.2.3 minor
+            - aws configure set region "us-west-2"
+            - aws ecr get-login
+            - ssh-keygen -l -f ~/.ssh/sshKey.pub 
+            - openssl rsa -check -in ~/.ssh/sshKey -noout
+            - jfrog rt s "pipelines_1560551909"
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+      #      - switch_env java openjdk7 || true
+      #      - switch_env java openjdk8 || true
+      #      - switch_env java openjdk9 || true
+      #      - switch_env java openjdk10 || true
+      #      - switch_env java openjdk11 || true
+      #      - java -version
+      #      - switch_env java oraclejdk7 || true
+      #      - switch_env java oraclejdk8 || true
+      #      - switch_env java oraclejdk9 || true
+      #      - switch_env java oraclejdk10 || true
+      #      - switch_env java oraclejdk11 || true
+      #      - java -version
+        #    - openssl genrsa -out key.pem 1024 
+        #    - openssl rsa -in key.pem -text -noout 
+        #    - openssl rsa -in key.pem -pubout -out pub.pem 
+        #    - openssl rsa -in pub.pem -pubin -text -noout 
+        #    - echo "testing encryption" > testfile.txt
+        #    - encrypt_file --output testencrypted.txt testfile.txt --key pub.pem
+        #    - cat testencrypted.txt
+        #    - decrypt_file testencrypted.txt --output testunencrypted.txt --key key.pem
+        #    - cat testunencrypted.txt
+        #    - encrypt_string "encryptme" --key pub.pem
+        #    - encryptedstring=$(encrypt_string "encryptme" --key pub.pem)
+        #    - echo "$encryptedstring"
+        #    - decrypt_string "$encryptedstring" --key key.pem
+            - echo $testRunVariable
+            - echo $testPipelineVariable
+            - echo $testingAgain
+            - add_run_variables testRunVariable="testing" testingAgain=2 testThree=three
+            - add_pipeline_variables testPipelineVariable="RUN$run_id" testingAgain=three
+            - echo $testRunVariable
+            - echo $testPipelineVariable
+            - echo $testingAgain
+         #   - restore_pipeline_state testing testfile2.txt
+         #   - save_pipeline_state key.pem key2.pem
             - ls
+         #   - save_pipeline_state testfile.txt testing
+         #   - save_pipeline_state key.pem key.pem
+         #   - mkdir -p testdirectory
+         #   - echo "testing" > testdirectory/test1.txt
+         #   - echo "testing again" > testdirectory/test2.txt
 
       - name: main_step
         type: Bash
@@ -95,21 +317,82 @@ pipelines:
             image:
               auto:
                 language: nodejs
+           #   custom: 
+           #     name: drydock/u16node
+           #     tag:  master
+           #     autoPull: false
           inputResources:
+            - name: imageResource6
+        #    - name: gitlabRepo5
             - name: gitRepoResource5
+        #    - name: kubeCluster
+      #      - bitbucketServerRepoResource
           inputSteps:
             - name: in_trigger_step
+          outputResources:
+            - name: webhook
+       #     - name: gitRepoResource2
+       #     - name: imageResource
+        #  integrations:
+       #     - name: github
+       #     - name: AWS
+       #     - name: realArtifactory
+       #     - name: slack
+         #   - name: bitbucket
+         #   - name: bitbucketServer
+       #     - name: test
+       #     - name: docker
+       #     - name: gcloud
+        #    - name: kubernetes
+           # - name: artifactory
         execution:
           onStart:
+         #   - printenv
             - echo $CURRENT_SCRIPT_SECTION
+         #   - send_notification slack
+         #   - sudo apt-get install kubectl
+         #   - cat ~/.kube/config
+         #   - kubectl get services
+        #    - jfrog rt s "pipelines_1560551909"
+            - echo $int_test_key1
+            - echo $int_test_key2
+            - echo $int_test_key3
+            - echo $int_test_key4
             - echo "$ENV1 $ENV2 $ENV3 $ENV4"
+         #   - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
+            - echo "Prepping build environment"
+            - echo "$testPipelineVariable"
+        #    - aws configure set region "us-west-2"
+        #    - aws ecr get-login
+         #   - update_commit_status gitRepoResource --status processing
           onExecute:
             - echo $CURRENT_SCRIPT_SECTION
+         #   - replicate_resource gitRepoResource gitRepoResource2 #--match-settings
+         #   - write_output imageResource "imageTag=$testPipelineVariable"
+         #   - update_commit_status bitbucketServerRepoResource --message "$CURRENT_SCRIPT_SECTION" --context "$CURRENT_SCRIPT_SECTION"
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+          #  - ls -R $STEP_WORKSPACE_DIR/download
+          #  - add_cache_files test lastrun.txt
+          #  - ls
             - echo "testing1234" > testing.txt
+            - add_cache_files testing.txt test
+          #  - restore_pipeline_state testing testfile.txt
+            - restore_pipeline_files key.pem key.pem
+            - ls
          #   - write_output gitRepoResource2 key=value123
          #   - write_output webhook key=value123 key2=value456 key3="testing 123" key4='testing "23' key5=testing\' key6='testing$test'
-   
+        #    - update_commit_status gitRepoResource --status processing --message "my message"
+        #    - update_commit_status bitbucketServerRepoResource --status failure --context "failing-context"
+        #    - update_commit_status bitbucketServerRepoResource --status success --message "my message" --context "succcess-context"
+          #  - update_commit_status gitRepoResource --status testing
+        #    - update_commit_status gitRepoResource2
+        #    - compare_git --resource gitRepoResource
+        #    - compare_git --commit-range d4c493389cd54b2ad795f94e91d445fece8cba2f..master --path $STEP_DEPENDENCY_STATE_DIR/resources/gitRepoResource
+        #    - write_output gitRepoResource2 key1=value1 key2="value2" key3="value 3" "key4=value4" key5= key6="" key7=value7=7 key8
+
             - add_run_variables testRunVariable="testing" testingAgain=2 testThree=three
+         #   - rm $PIPELINE_WORKSPACE_DIR/**
          #   - ls -al $PIPELINE_WORKSPACE_DIR
           #  - switch_env c --jdk openjdk11 4
           onSuccess:
@@ -141,8 +424,12 @@ pipelines:
   #        affinityGroup: test_group 
           runtime:            
             type: host
+      #    resources:
+      #      - stateOne
+      #      - sample_java_file_test
           integrations:
             - name: github
+      #      - name: slack
           inputSteps:
       #    resources:
       #      - sample_java_file_test
@@ -390,7 +677,265 @@ pipelines:
         execution:
           onStart:
             - echo "Prepping build environment"
-
+      - name: step_DistributeReleaseBundle
+        type: DistributeReleaseBundle
+        configuration:
+          runtime:            
+            type: host
+          integrations:
+            - name: docker
+          inputResources:
+            - name: my_releaseBundle2
+            - name: my_BuildInfo
+            - name: my_DistributionRule
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+    #  - name: step_DockerBuild
+    #    type: DockerBuild
+    #    configuration:
+    #      runtime:            
+    #        type: image
+    #      integrations:
+    #        - name: docker
+        #  inputResources:
+        #    - name: gitRepoResource
+    #      dockerFileLocation: Dockerfile
+    #      dockerFileName: Dockerfile
+    #      dockerImageName: amurphy/test
+    #      dockerImageTag: test
+    #      inputSteps:
+    #        - name: step_7
+    #    execution:
+    #      onStart:
+    #        - echo "Prepping build environment"
+    #  - name: step_DockerPush
+    #    type: DockerPush
+    #    configuration:
+    #      targetRepository: test
+    #      integrations:
+    #        - name: artifactory
+    #        - name: docker
+    #      inputSteps:
+    #        - name: step_DockerBuild
+    #    execution:
+    #      onStart:
+    #        - echo "Prepping build environment"
+    #  - name: step_GoBuild
+    #    type: GoBuild
+    #    configuration:
+    #      inputSteps:
+    #        - name: step_7
+       #   inputResources:
+       #     - name: gitRepoResource
+    #      integrations:
+    #        - name: artifactory
+    #        - name: docker
+    #      sourceLocation: location
+    #      repository: repo
+    #      outputLocation: out
+    #      outputFile: file
+    #    execution:
+    #      onStart:
+    #        - echo "Prepping build environment"
+    #  - name: step_GoPublishBinary
+    #    type: GoPublishBinary
+    #    configuration:
+    #      integrations:
+    #        - name: artifactory
+    #        - name: docker
+    #      inputResources:
+    #        - name: my_BuildInfo
+    #      targetRepository: test
+    #      inputSteps:
+    #        - name: step_7
+    #    execution:
+    #      onStart:
+    #        - echo "Prepping build environment"
+    #  - name: step_GoPublishModule
+    #    type: GoPublishModule
+    #    configuration:
+    #      integrations:
+    #        - name: artifactory
+      #    inputResources:
+      #      - name: gitRepoResource
+    #      version: one
+    #      targetRepository: test
+    #      sourceLocation: location
+    #      nodePool: u18
+    #      inputSteps:
+    #        - name: step_7
+    #    execution:
+    #      onStart:
+    #        - echo "Prepping build environment"
+    #  - name: step_GradleBuild
+    #    type: GradleBuild
+    #    configuration:
+    #      integrations:
+    #        - name: artifactory
+    #        - name: docker
+      #    inputResources:
+      #      - name: gitRepoResource
+    #      sourceLocation: location
+    #      gradleCommand: gradle
+    #      configFileLocation: .
+    #      configFileName: config
+    #      inputSteps:
+    #        - name: step_7
+    #    execution:
+    #      onStart:
+    #        - echo "Prepping build environment"
+    #  - name: step_MvnBuild
+    #    type: MvnBuild
+    #    configuration:
+    #      integrations:
+    #        - name: artifactory
+      #    inputResources:
+      #      - name: gitRepoResource
+    #      sourceLocation: location
+    #      mvnCommand: mvn
+    #      configFileLocation: .
+    #      configFileName: config
+    #      nodePool: u18
+    #      inputSteps:
+    #        - name: step_7
+    #    execution:
+    #      onStart:
+    #        - echo "Prepping build environment"
+    #  - name: step_NpmBuild
+    #    type: NpmBuild
+    #    configuration:
+    #      integrations:
+    #        - name: artifactory
+      #    inputResources:
+      #      - name: gitRepoResource
+    #      sourceLocation: location
+    #      repositoryName: test
+    #      nodePool: u18
+    #      inputSteps:
+    #        - name: step_7
+    #    execution:
+    #      onStart:
+    #        - echo "Prepping build environment"
+    #  - name: step_NpmPublish
+    #    type: NpmPublish
+    #    configuration:
+    #      integrations:
+    #        - name: artifactory
+    #      repositoryName: test
+      #    inputResources:
+      #      - name: gitRepoResource
+    #      nodePool: u18
+    #      inputSteps:
+    #        - name: step_7
+    #    execution:
+    #      onStart:
+    #        - echo "Prepping build environment"
+      - name: step_PromoteBuild
+        type: PromoteBuild
+        configuration:
+          targetRepository: test
+          inputResources:
+            - name: my_BuildInfo
+          outputResources:
+            - name: my_BuildInfo2
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_PublishBuildInfo
+        type: PublishBuildInfo
+        configuration:
+          inputResources:
+            - name: my_BuildInfo
+          outputResources:
+            - name: my_BuildInfo2
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+    #  - name: step_PushArtifactoryPackage
+    #    type: PushArtifactoryPackage
+    #    configuration:
+    #      targetRepo: test
+    #      integrations:
+    #        - name: artifactory
+    #      inputResources:
+    #        - name: my_BuildInfo
+    #      nodePool: u18
+    #      inputSteps:
+    #        - name: step_DockerBuild
+    #    execution:
+    #      onStart:
+    #        - echo "Prepping build environment"
+      - name: step_SignReleaseBundle
+        type: SignReleaseBundle
+        configuration:
+          inputResources:
+            - name: my_releaseBundle2
+          outputResources:
+            - name: my_signed_releaseBundle
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+      - name: step_XrayScan
+        type: XrayScan
+        configuration:
+          inputResources:
+            - name: my_BuildInfo
+          nodePool: u18
+          inputSteps:
+            - name: step_7
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+            
+  - name: test_pipeline_release2
+    steps:
+      - name: my_xray
+        type: XrayScan
+        configuration:
+     #     integrations:
+     #       - name: slack
+    #        - name: docker
+          inputResources:
+            - name: my_BuildInfo
+  #          - name: my_BuildInfo2
+    #        - name: my_Aql
+          #  - name: my_Aql2
+       #     - name: gitRepoResource
+      #      - name: gitRepoResource
+     #     outputResources:
+     #       - name: my_BuildInfo2
+    #        - name: gitRepoResource
+  #    - name: my_releaseCreate
+  #      type: CreateReleaseBundle
+  #      configuration:
+  #        releaseBundleName: name
+  #        releaseBundleVersion: version
+      #    integrations:
+      #      - name: slack
+      #      - name: docker
+  #        inputResources:
+  #          - name: my_BuildInfo
+  #          - name: my_BuildInfo2
+          #  - name: my_Aql
+          #  - name: my_Aql2
+       #     - name: gitRepoResource
+      #      - name: gitRepoResource
+  #        outputResources:
+  #          - name: my_releaseBundle2
+       #     - name: gitRepoResource
+            
   - name: test_pipeline_2
     #configuration:
     #  environmentVariables:   
