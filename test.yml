@@ -8,38 +8,6 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
-  - name: file
-    type: RemoteFile
-    configuration:
-      source: ftpIntegration2
-      fileLocation: /home/test
-      fileName: test.txt
-  - name: awsFile
-    type: RemoteFile
-    configuration:
-      source: AWS
-      fileLocation: ${versionTag}
-      fileName: test.txt
-  - name: artifactoryFile
-    type: RemoteFile
-    configuration:
-      source: artifactory
-      fileLocation: ${versionTag}
-      fileName: test.txt
-  - name: gcloudFile
-    type: RemoteFile
-    configuration:
-      source: gcloud
-      fileLocation: ${versionTag}
-      fileName: test.txt
-      
-  - name: cluster
-    type: VmCluster
-    configuration:
-      sshKey: sshKey
-      targets:
-        - targetOne
-
   - name: gitRepoResource2
     type: GitRepo
     configuration:
@@ -51,16 +19,6 @@ resources:
          pullRequestClose: false
          releaseCreate: false
          tagCreate: false
-         
-  - name: fileSpec
-    type: FileSpec
-    configuration:
-      sourceArtifactory: artifactory
-      pattern: "$test-${versionTag}-*"
-      recursive: true
-      flat: ${testBoolean}
-      limit: ${testNumber}
-   #   offset: ${testNumber}
   - name: dockerImage
     type: Image
     configuration:
@@ -68,108 +26,6 @@ resources:
       imageName: "amurphy/test"
       imageTag: ${versionTag}
       autoPull: true
-  - name: awsImage
-    type: Image
-    configuration:
-      registry: AWS
-      imageName: "test"
-      imageTag: ${versionTag}
-      region: ${versionTag}
-      autoPull: true
-  - name: artifactoryImage
-    type: Image
-    configuration:
-      registry: artifactory
-      sourceRepository: test
-      imageName: "test"
-      imageTag: ${versionTag}
-      autoPull: ${testBoolean}
-  - name: gcloudImage
-    type: Image
-    configuration:
-      registry: gcloud
-      imageName: "test"
-      imageTag: ${versionTag}
-      autoPull: true
-  - name: outgoingWebhook2
-    type: OutgoingWebhook
-    configuration:
-      webhookName: outgoingWebhook
-      method: "POST"
-      parameters: ${versionTag}
-      path: /test
-      headers:
-        Content-Type: ${versionTag}
-  - name: inputBuildInfo
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: artifactory
-      buildNumber: ${testNumber}
-      buildName: ${versionTag}
-  - name: outputBuildInfo
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: artifactory
-      buildNumber: ${testNumber}
-      buildName: ${versionTag}
-  - name: inputReleaseBundle
-    type: ReleaseBundle
-    configuration:
-      sourceDistribution: distribution
-      name: bundleName
-      version: ${versionTag}
-      isSigned: ${testBoolean}
-  - name: outputReleaseBundle
-    type: ReleaseBundle
-    configuration:
-      sourceDistribution: distribution
-      name: bundleName
-      version: ${versionTag}
-      isSigned: ${testBoolean}
-  - name: inputDistributionRule
-    type: DistributionRule
-    configuration:
-      sourceDistribution: distribution
-      serviceName: service${versionTag}
-      cityName: service${versionTag}
-      siteName: site${versionTag}
-      countryCodes:
-        - ${versionTag}
-        - ${testBoolean}
-  - name: helmChart
-    type: HelmChart
-    configuration:
-      sourceArtifactory: artifactory
-      repository: repo${versionTag}
-      version: version${versionTag}
-      chart: chart${versionTag}
-  - name: outputHelmChart
-    type: HelmChart
-    configuration:
-      sourceArtifactory: artifactory
-      repository: repo${versionTag}
-      version: version${versionTag}
-      chart: chart${versionTag}
-         
- # - name: gitRepoResource3
- #   type: GitRepo
- #   configuration:
- #     gitProvider: github
- #     path: a-murphy/5testRename5
- #     buildOn:
- #        commit: false
- #        pullRequestCreate: false
- #        pullRequestClose: false
- #        releaseCreate: false
- #        tagCreate: false
- #        
- # - name: myImage
- #   type: Image
- #   configuration:
- #     registry: docker
- #     imageName: amurphy/test
- #     imageTag: master
-      
   - name: nodeRepoResource
     type: GitRepo
     configuration:
@@ -197,20 +53,8 @@ pipelines:
             type: host
           inputResources:
             - name: gitRepoResource2
-            - name: file
-            - name: awsFile
-            - name: gcloudFile
-            - name: artifactoryFile
-        #    - name: otherSourceGitRepo
-       #   outputResources:
-       #     - name: gitRepoResource3
-       #     - name: myImage
-         # integrations:
-         #   - name: aidan_github
-         #   - name: test4
         execution:
           onExecute:
-            - update_commit_status gitRepoResource2
             - bump_semver v1.2.3 minor
             - echo "executing task command 1"
             - echo "executing task command 2"
@@ -243,16 +87,6 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: nodeRepoResource
-            - name: fileSpec
-            - name: dockerImage
-            - name: awsImage
-            - name: artifactoryImage
-            - name: gcloudImage
-            - name: cluster
-          outputResources:
-            - name: outgoingWebhook2
-          integrations:
-            - name: test
           runtime:
             type: image
             image:
@@ -265,7 +99,6 @@ pipelines:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-            - set_payload outgoingWebhook2 "{"test":"$run_number"}"
             - compare_git --resource nodeRepoResource
             - cd "$res_nodeRepoResource_resourcePath"
           #  - switch_env nodejs 0.12
@@ -285,342 +118,49 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
-      - name: create_step
-        type: CreateReleaseBundle
+      - name: step_3
+        type: Bash
         configuration:
-          releaseBundleName: bundleName
-          releaseBundleVersion: bundleVersion${versionTag}
-          dryRun: ${testBoolean}
-          sign: ${testBoolean}
-          releaseNotes:
-            content: ${testNumber}
-            syntax: markdown
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
+          affinityGroup: grouptwo
+          runtime:            
+            type: host
           inputSteps:
             - name: main_step
-          inputResources:
-            - name: inputBuildInfo
-            - name: outputBuildInfo
-          outputResources:
-            - name: outputReleaseBundle
-      - name: distribute_step
-        type: DistributeReleaseBundle
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_4
+        type: Bash
         configuration:
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          dryRun: ${testBoolean}
+          affinityGroup: grouptwo
+          runtime:            
+            type: host
           inputSteps:
             - name: main_step
-          inputResources:
-            - name: inputReleaseBundle
-            - name: inputDistributionRule
-          outputResources:
-            - name: outputReleaseBundle
-      - name: docker_build
-        type: DockerBuild
+        execution:
+          onExecute:
+            - sleep 10
+       - name: step_5
+        type: Bash
         configuration:
-          dockerFileLocation: .
-          dockerFileName: test${versionTag}
-          dockerImageName: image${versionTag}
-          dockerImageTag: tag${versionTag}
-          dockerOptions: "test${versionTag} --test ${testNumber}"
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
+          affinityGroup: grouptwo
+          priority: 10
+          runtime:            
+            type: host
           inputSteps:
             - name: main_step
-          inputResources:
-            - name: fileSpec
-            - name: nodeRepoResource
-      - name: docker_push
-        type: DockerPush
-        configuration:
-          targetRepository: repo${versionTag}
-          forceXrayScan: ${testBoolean}
-          autoPublishBuildInfo: true
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: docker_build
-          outputResources:
-            - name: outputBuildInfo
-          integrations:
-            - name: artifactory
-
-      - name: go_build_file
-        type: GoBuild
-        configuration:
-          sourceLocation: location${versionTag}
-          repository: repo${versionTag}
-       #   version: version${versionTag}
-          goCommand: test command ${versionTag} $versionTag}
-          outputLocation: output${testTag}
-          outputFile: outputFile${testTag}
-          noRegistry: ${testBoolean}
-          publishDeps: ${testBoolean}
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: main_step
-          inputResources:
-            - name: fileSpec
-            - name: nodeRepoResource
-      - name: go_publish_binary
-        type: GoPublishBinary
-        configuration:
-          targetRepository: repo
-          autoPublishBuildInfo: true
-          forceXrayScan: true
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: go_build_file
-          integrations:
-            - name: artifactory
-          outputResources:
-            - name: outputBuildInfo
-      - name: go_publish_module
-        type: GoPublishModule
-        configuration:
-          targetRepository: repo
-          version: version${versionTag}
-          sourceLocation: .${versionTag}
-          forceXrayScan: ${testBoolean}
-          autoPublishBuildInfo: ${testBoolean}
-          self: ${testBoolean}
-          deps: dep${versionTag}
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: go_build_file
-          inputResources:
-            - name: nodeRepoResource
-          integrations:
-            - name: artifactory
-          outputResources:
-            - name: outputBuildInfo
-      - name: go_build_artifactory
-        type: GoBuild
-        configuration:
-          sourceLocation: /
-          repository: repo
-          outputLocation: output
-          outputFile: outputFile
-          noRegistry: false
-          publishDeps: false
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: main_step
-          integrations:
-            - name: artifactory
-          inputResources:
-            - name: nodeRepoResource
-      - name: gradle_build
-        type: GradleBuild
-        configuration:
-          sourceLocation: /${testNumber}
-          configFileLocation: fileLocation
-          configFileName: shippable${testNumber}.yml
-          gradleCommand: "gradle command ${testNumber}"
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: main_step
-          integrations:
-            - name: artifactory
-          inputResources:
-            - name: nodeRepoResource
-            - name: fileSpec
-      - name: mvn_build
-        type: MvnBuild
-        configuration:
-          sourceLocation: /${versionTag}
-          configFileLocation: fileLocation${testNumber}
-          configFileName: shippable.yml
-          forceXrayScan: ${testBoolean}
-          mvnCommand: "maven command ${versionTag} $testNumber"
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: main_step
-          integrations:
-            - name: artifactory
-          inputResources:
-            - name: nodeRepoResource
-            - name: fileSpec
-      - name: npm_build
-        type: NpmBuild
-        configuration:
-          sourceLocation: /${versionTag}
-          repositoryName: test${versionTag}
-          npmArgs: ${testNumber}test${versionTag}
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: main_step
-          integrations:
-            - name: artifactory
-          inputResources:
-            - name: nodeRepoResource
-            - name: fileSpec
-      - name: npm_publish
-        type: NpmPublish
-        configuration:
-          repositoryName: repo${versionTag}
-          forceXrayScan: ${testBoolean}
-          autoPublishBuildInfo: false
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: npm_build
-          integrations:
-            - name: artifactory
-      - name: helm_deploy
-        type: HelmDeploy
-        configuration:
-          releaseName: release
-          dryRun: true
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          integrations:
-            - name: artifactory
-            - name: Kubernetes
-          inputResources:
-            - name: outputHelmChart
-      - name: helm_deploy_repo
-        type: HelmDeploy
-        configuration:
-          releaseName: release
-          dryRun: true
-          chartPath: chart${versionTag}
-          lint: ${testBoolean}
-          test: true
-          testFlags: ${versionTag}
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          integrations:
-            - name: artifactory
-            - name: Kubernetes
-          inputResources:
-            - name: nodeRepoResource
-      - name: helm_publish
-        type: HelmPublish
-        configuration:
-          chartPath: path${versionTag}
-          autoPublishBuildInfo: false
-          flags: ${testNumber}
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputResources:
-            - name: nodeRepoResource
-          outputResources:
-            - name: outputHelmChart
-      - name: promote_step
-        type: PromoteBuild
-        configuration:
-          targetRepository: test
-          includeDependencies: ${testBoolean}
-          status: ${testNumber}
-          comment: ${versionTag}
-          copy: ${testBoolean}
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "true"
-          inputSteps:
-            - name: main_step
-          inputResources:
-            - name: inputBuildInfo
-          outputResources:
-            - name: outputBuildInfo
-      - name: publish_step
-        type: PublishBuildInfo
-        configuration:
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "true"
-          envInclude: ${versionTag}
-          envExclude: $versionTag
-          forceXrayScan: ${testBoolean}
-          inputSteps:
-            - name: main_step
-          inputResources:
-            - name: inputBuildInfo
-          outputResources:
-            - name: outputBuildInfo
-      - name: push_artifactory
-        type: PushArtifactoryPackage
-        configuration:
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "true"
-          targetRepo: ${versionTag}
-          autoPublishBuildInfo: false
-          forceXrayScan: ${testBoolean}
-          inputSteps:
-            - name: npm_build
-          inputResources:
-            - name: inputBuildInfo
-          integrations:
-            - name: artifactory
-
-  #    - name: sign_step
-  #      type: SignReleaseBundle
-  #      configuration:
-  #        environmentVariables:
-  #          versionTag: testTag
-  #          testNumber: 5
-  #          testBoolean: "false"
-  #        inputSteps:
-  #          - name: main_step
-  #        inputResources:
-  #          - name: inputReleaseBundle
-  #        outputResources:
-  #          - name: outputReleaseBundle
-   #   - name: xray_step
-   #     type: XrayScan
-   #     configuration:
-   #       environmentVariables:
-   #         versionTag: testTag
-   #         testNumber: 5
-   #         testBoolean: "false"
-   #       inputSteps:
-   #         - name: main_step
-   #       inputResources:
-   #         - name: inputBuildInfo
-   #       outputResources:
-   #         - name: outputBuildInfo
-
+        execution:
+          onExecute:
+            - sleep 10
+       - name: step_6
+         type: Bash
+         configuration:
+           affinityGroup: grouptwo
+           priority: 5
+           runtime:            
+             type: host
+           inputSteps:
+             - name: step_5
+         execution:
+           onExecute:
+             - sleep 10
