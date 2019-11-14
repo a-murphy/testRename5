@@ -149,6 +149,8 @@ pipelines:
             type: host
           inputSteps:
             - name: main_step
+          outputResources:
+            - name: dockerImage
         execution:
           onExecute:
             - sleep 10
@@ -159,8 +161,8 @@ pipelines:
           priority: 5
           runtime:            
             type: host
-          inputSteps:
-            - name: step_5
+          inputResources:
+            - name: dockerImage
         execution:
           onExecute:
             - sleep 10
