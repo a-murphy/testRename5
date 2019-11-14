@@ -44,10 +44,10 @@ resources:
       path: a-murphy/5testRename5
       buildOn:
          commit: true
-         pullRequestCreate: true
+         pullRequestCreate: false
          pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
+         releaseCreate: false
+         tagCreate: false
       files:
         include: test.*
         exclude: test.exclude
