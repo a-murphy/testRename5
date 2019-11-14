@@ -37,6 +37,20 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
+  - name: testRepo
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/5testRename5
+      buildOn:
+         commit: true
+         pullRequestCreate: true
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
+      files:
+        include: test.*
+        exclude: test.exclude
        
 pipelines:
   - name: test_pipeline_10
@@ -87,6 +101,7 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: nodeRepoResource
+            - name: testRepo
           runtime:
             type: image
             image:
