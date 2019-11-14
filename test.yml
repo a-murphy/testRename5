@@ -39,93 +39,34 @@ resources:
          tagCreate: true
        
 pipelines:
-  - name: test_pipeline_10
-    configuration:
-   #   nodePool: Ubuntu16
-      runtime:            
-        type: host
+  - name: test_pipeline
     steps:
-      - name: in_trigger_step
+      - name: step_1
         type: Bash
         configuration:
           affinityGroup: groupone
-          runtime:            
-            type: host
           inputResources:
             - name: gitRepoResource2
         execution:
           onExecute:
-            - bump_semver v1.2.3 minor
-            - echo "executing task command 1"
-            - echo "executing task command 2"
-            - openssl genrsa -out key.pem 1024 
-            - openssl rsa -in key.pem -text -noout 
-            - openssl rsa -in key.pem -pubout -out pub.pem 
-            - openssl rsa -in pub.pem -pubin -text -noout 
-            - echo "testing encryption" > testfile.txt
-            - encrypt_file --output testencrypted.txt testfile.txt --key pub.pem
-            - cat testencrypted.txt
-            - decrypt_file testencrypted.txt --output testunencrypted.txt --key key.pem
-            - cat testunencrypted.txt
-            - encrypt_string "encryptme" --key pub.pem
-            - encryptedstring=$(encrypt_string "encryptme" --key pub.pem)
-            - echo "$encryptedstring"
-            - decrypt_string "$encryptedstring" --key key.pem
-         #   - write_output myImage "imageTag=$run_number" "sha=test"
-            - sleep 10
-
-      - name: main_step
+            - echo "test"
+      - name: step_2
         type: Bash
         configuration:
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
           affinityGroup: groupone
-     #     nodePool: Ubuntu16
-          inputSteps:
-            - name: in_trigger_step
           inputResources:
-            - name: nodeRepoResource
-          runtime:
-            type: image
-            image:
-              custom:
-                name: drydock/u16node
-                tag: master
-        execution:
-          onStart:
-            - echo "Prepping build environment"
-          onExecute:
-            - echo "executing task command 1"
-            - echo "executing task command 2"
-            - compare_git --resource nodeRepoResource
-            - cd "$res_nodeRepoResource_resourcePath"
-          #  - switch_env nodejs 0.12
-            - npm install
-            - cd tests
-            - ../node_modules/.bin/mocha --recursive "**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=../testresults.xml
-            - ../node_modules/.bin/istanbul --include-all-sources cover -root "../routes" ../node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "**/*.spec.js"
-            - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
-            - cd .. && ls
-            - save_tests testresults.xml
-            
-          onSuccess:
-            - echo "Job well done!"
-          onFailure:
-            - echo "uh oh, something went wrong"
-          onComplete: #always
-            - echo "Cleaning up some stuff"
-          onCancel:
-            - echo "Someone cancelled the job"
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
       - name: step_3
         type: Bash
         configuration:
           affinityGroup: grouptwo
-          runtime:            
-            type: host
           inputSteps:
-            - name: main_step
+            - name: step_1
         execution:
           onExecute:
             - sleep 10
@@ -133,10 +74,8 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: grouptwo
-          runtime:            
-            type: host
           inputSteps:
-            - name: main_step
+            - name: step_1
         execution:
           onExecute:
             - sleep 10
@@ -145,12 +84,8 @@ pipelines:
         configuration:
           affinityGroup: grouptwo
           priority: 10
-          runtime:            
-            type: host
           inputSteps:
-            - name: main_step
-          outputResources:
-            - name: dockerImage
+            - name: step_1
         execution:
           onExecute:
             - sleep 10
@@ -159,10 +94,8 @@ pipelines:
         configuration:
           affinityGroup: grouptwo
           priority: 5
-          runtime:            
-            type: host
-          inputResources:
-            - name: dockerImage
+          inputSteps:
+            - name: step_5
         execution:
           onExecute:
             - sleep 10
@@ -170,10 +103,8 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: groupthree
-          runtime:            
-            type: host
           inputSteps:
-            - name: main_step
+            - name: step_1
         execution:
           onExecute:
             - sleep 10
@@ -181,10 +112,8 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: groupthree
-          runtime:            
-            type: host
           inputSteps:
-            - name: main_step
+            - name: step_1
         execution:
           onExecute:
             - sleep 10
@@ -193,10 +122,8 @@ pipelines:
         configuration:
           affinityGroup: groupfour
           priority: 10
-          runtime:            
-            type: host
           inputSteps:
-            - name: main_step
+            - name: step_1
         execution:
           onExecute:
             - sleep 10
@@ -204,10 +131,1939 @@ pipelines:
         type: Bash
         configuration:
           priority: 5
-          runtime:            
-            type: host
           inputSteps:
             - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_11
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_12
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_13
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_14
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_15
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_16
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_17
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_18
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_19
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_20
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_21
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_22
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_23
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_24
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_25
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_26
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_27
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_28
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_29
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_30
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_31
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_32
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_33
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_34
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_35
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_36
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_37
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_38
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_39
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+          execution:
+            onExecute:
+              - sleep 10
+      - name: step_40
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_41
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_42
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_43
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_44
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_45
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_46
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_47
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_48
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_49
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_50
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_51
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_52
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_53
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_54
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_55
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_56
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_57
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_58
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_59
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_60
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_61
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_62
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_63
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_64
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_65
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_66
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_67
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_68
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_69
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_70
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_71
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_72
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_73
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_74
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_75
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_76
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_77
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_78
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_79
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_80
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_81
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_82
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_83
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_84
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_85
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_86
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_87
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_88
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_89
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_90
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_91
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_92
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_93
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_94
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_95
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_96
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_97
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_98
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_99
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_100
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_101
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_102
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_103
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_104
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_105
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_106
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_107
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_108
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_109
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+          execution:
+            onExecute:
+              - sleep 10
+      - name: step_110
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_111
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_112
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_113
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_114
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_115
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_116
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_117
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_118
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_119
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_120
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_121
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_122
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_123
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_124
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_125
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_126
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_127
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_128
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_129
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_130
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_131
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_132
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_133
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_134
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_135
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_136
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_137
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_138
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_139
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_140
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_141
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_142
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_143
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_144
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_145
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_146
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_147
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_148
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_149
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_150
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_151
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_152
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_153
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_154
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_155
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_156
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_157
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_158
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_159
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_160
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_161
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_162
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_163
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_164
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_165
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_166
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_167
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_168
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_169
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_170
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_171
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_172
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_173
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_174
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_175
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_176
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_177
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_178
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_179
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_180
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_181
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_182
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_183
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_184
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_185
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_186
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_187
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_188
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_189
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_190
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_191
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_192
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_193
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_194
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_195
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_196
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_197
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_198
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_199
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_200
+        type: Bash
+        configuration:
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_201
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_202
+        type: Bash
+        configuration:
+          affinityGroup: groupone
+          inputResources:
+            - name: gitRepoResource2
+          integrations:
+            - name: aidan_github
+          execution:
+            onExecute:
+              - echo "test"
+      - name: step_203
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_204
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_205
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 10
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_206
+        type: Bash
+        configuration:
+          affinityGroup: grouptwo
+          priority: 5
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_207
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_208
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          inputSteps:
+            - name: step_1
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_209
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          inputSteps:
+            - name: step_1
         execution:
           onExecute:
             - sleep 10
