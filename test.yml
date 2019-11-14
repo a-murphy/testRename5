@@ -58,9 +58,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_3
         type: Bash
         configuration:
@@ -144,9 +144,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_12
         type: Bash
         configuration:
@@ -155,9 +155,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_13
         type: Bash
         configuration:
@@ -241,9 +241,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_22
         type: Bash
         configuration:
@@ -252,9 +252,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_23
         type: Bash
         configuration:
@@ -338,9 +338,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_32
         type: Bash
         configuration:
@@ -349,9 +349,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_33
         type: Bash
         configuration:
@@ -415,9 +415,9 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
-          execution:
-            onExecute:
-              - sleep 10
+        execution:
+          onExecute:
+            - sleep 10
       - name: step_40
         type: Bash
         configuration:
@@ -435,9 +435,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_42
         type: Bash
         configuration:
@@ -446,9 +446,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_43
         type: Bash
         configuration:
@@ -532,9 +532,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_52
         type: Bash
         configuration:
@@ -543,9 +543,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_53
         type: Bash
         configuration:
@@ -629,9 +629,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_62
         type: Bash
         configuration:
@@ -640,9 +640,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_63
         type: Bash
         configuration:
@@ -726,9 +726,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_72
         type: Bash
         configuration:
@@ -737,9 +737,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_73
         type: Bash
         configuration:
@@ -823,9 +823,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_82
         type: Bash
         configuration:
@@ -834,9 +834,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_83
         type: Bash
         configuration:
@@ -920,9 +920,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_92
         type: Bash
         configuration:
@@ -931,9 +931,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_93
         type: Bash
         configuration:
@@ -1017,9 +1017,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_102
         type: Bash
         configuration:
@@ -1028,9 +1028,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_103
         type: Bash
         configuration:
@@ -1094,9 +1094,9 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
-          execution:
-            onExecute:
-              - sleep 10
+        execution:
+          onExecute:
+            - sleep 10
       - name: step_110
         type: Bash
         configuration:
@@ -1114,9 +1114,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_112
         type: Bash
         configuration:
@@ -1125,9 +1125,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_113
         type: Bash
         configuration:
@@ -1211,9 +1211,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_122
         type: Bash
         configuration:
@@ -1222,9 +1222,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_123
         type: Bash
         configuration:
@@ -1308,9 +1308,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_132
         type: Bash
         configuration:
@@ -1319,9 +1319,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_133
         type: Bash
         configuration:
@@ -1405,9 +1405,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_142
         type: Bash
         configuration:
@@ -1416,9 +1416,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_143
         type: Bash
         configuration:
@@ -1502,9 +1502,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_152
         type: Bash
         configuration:
@@ -1513,9 +1513,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_153
         type: Bash
         configuration:
@@ -1599,9 +1599,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_162
         type: Bash
         configuration:
@@ -1610,9 +1610,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_163
         type: Bash
         configuration:
@@ -1696,9 +1696,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_172
         type: Bash
         configuration:
@@ -1707,9 +1707,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_173
         type: Bash
         configuration:
@@ -1793,9 +1793,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_182
         type: Bash
         configuration:
@@ -1804,9 +1804,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_183
         type: Bash
         configuration:
@@ -1890,9 +1890,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_192
         type: Bash
         configuration:
@@ -1901,9 +1901,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_193
         type: Bash
         configuration:
@@ -1987,9 +1987,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_202
         type: Bash
         configuration:
@@ -1998,9 +1998,9 @@ pipelines:
             - name: gitRepoResource2
           integrations:
             - name: aidan_github
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: step_203
         type: Bash
         configuration:
