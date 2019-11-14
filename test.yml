@@ -164,3 +164,48 @@ pipelines:
         execution:
           onExecute:
             - sleep 10
+      - name: step_7
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          runtime:            
+            type: host
+          inputSteps:
+            - name: main_step
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_8
+        type: Bash
+        configuration:
+          affinityGroup: groupthree
+          runtime:            
+            type: host
+          inputSteps:
+            - name: main_step
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_9
+        type: Bash
+        configuration:
+          affinityGroup: groupfour
+          priority: 10
+          runtime:            
+            type: host
+          inputSteps:
+            - name: main_step
+        execution:
+          onExecute:
+            - sleep 10
+      - name: step_10
+        type: Bash
+        configuration:
+          priority: 5
+          runtime:            
+            type: host
+          inputSteps:
+            - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
