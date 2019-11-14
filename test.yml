@@ -101,6 +101,7 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: nodeRepoResource
+              trigger: false
             - name: testRepo
           runtime:
             type: image
