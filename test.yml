@@ -8,7 +8,7 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
-  - name: gitRepoResourceTestCase
+  - name: gitRepoResourceTestCase2
     type: GitRepo
     configuration:
       gitProvider: aidan_github
