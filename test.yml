@@ -19,15 +19,6 @@ resources:
       flat: ${testBoolean}
       limit: ${testNumber}
    #   offset: ${testNumber}
-  - name: gitRepoResourceTestCase2
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_github
-      path: a-murphy/basic_node
-      buildOn:
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
   - name: gitRepoResource2
     type: GitRepo
     configuration:
