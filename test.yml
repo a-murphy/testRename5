@@ -62,28 +62,6 @@ resources:
       files:
         include: test.*
         exclude: test.exclude
-  - name: testBitbucketServer
-    type: GitRepo
-    configuration:
-      gitProvider: bitbucketServer
-      path: ~aidan/Test
-      buildOn:
-         commit: true
-         pullRequestCreate: false
-         pullRequestClose: false
-         releaseCreate: false
-         tagCreate: false
-  - name: testBitbucket
-    type: GitRepo
-    configuration:
-      gitProvider: bitbucket
-      path: a-murphy/sample_pipelines
-      buildOn:
-         commit: true
-         pullRequestCreate: false
-         pullRequestClose: false
-         releaseCreate: false
-         tagCreate: false
        
 pipelines:
   - name: test_pipeline_10
