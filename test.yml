@@ -8,6 +8,17 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
+  - name: fileSpec
+    type: FileSpec
+    configuration:
+      sourceArtifactory: artifactory
+      pattern: "$test-${versionTag}-*"
+      recursive: true
+      buildName: myBuildName
+      buildNumber: 100
+      flat: ${testBoolean}
+      limit: ${testNumber}
+   #   offset: ${testNumber}
   - name: gitRepoResourceTestCase2
     type: GitRepo
     configuration:
