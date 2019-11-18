@@ -12,7 +12,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: aidan_github
-      path: a-murphy/5TESTRename5
+      path: a-murphy/basic_node
       buildOn:
          pullRequestClose: false
          releaseCreate: true
