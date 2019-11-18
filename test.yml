@@ -8,6 +8,15 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
+  - name: gitRepoResourceTestCase
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/5TESTRename5
+      buildOn:
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
   - name: gitRepoResource2
     type: GitRepo
     configuration:
