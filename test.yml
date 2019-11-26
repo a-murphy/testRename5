@@ -251,3 +251,11 @@ pipelines:
         execution:
           onExecute:
             - sleep 10
+      - name: following_step
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: triggered_by_resource
+        execution:
+          onExecute:
+            - sleep 10
