@@ -36,7 +36,13 @@ resources:
       registry: docker
       imageName: "amurphy/test"
       imageTag: ${versionTag}
-      autoPull: true
+      autoPull: false
+  - name: dockerImage2
+    type: Image
+    configuration:
+      registry: docker
+      imageName: "amurphy/test"
+      imageTag: ${versionTag}
   - name: nodeRepoResource
     type: GitRepo
     configuration:
@@ -248,14 +254,16 @@ pipelines:
         configuration:
           inputResources:
             - name: dockerImage
+          outputResources:
+            - name: dockerImage2
         execution:
           onExecute:
             - sleep 10
       - name: following_step
         type: Bash
         configuration:
-          inputSteps:
-            - name: triggered_by_resource
+          inputResources:
+            - name: dockerImage2
         execution:
           onExecute:
             - sleep 10
