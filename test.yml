@@ -182,6 +182,7 @@ pipelines:
         execution:
           onExecute:
             - sleep 10
+            - write_output dockerImage "imageTag=$run_number" "sha=test"
       - name: step_6
         type: Bash
         configuration:
@@ -236,6 +237,17 @@ pipelines:
             type: host
           inputSteps:
             - name: step_5
+        execution:
+          onExecute:
+            - sleep 10
+
+  - name: test_pipeline_11
+    steps:
+      - name: triggered_by_resource
+        type: Bash
+        configuration:
+          inputResources:
+            - name: dockerImage
         execution:
           onExecute:
             - sleep 10
