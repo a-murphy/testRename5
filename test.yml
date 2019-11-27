@@ -8,6 +8,10 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
+  - name: cronTrigger
+    type: CronTrigger
+    configuration:
+      interval: * * 1
   - name: fileSpec
     type: FileSpec
     configuration:
