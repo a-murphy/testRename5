@@ -286,8 +286,8 @@ pipelines:
             testBoolean: "false"
           inputSteps:
             - name: docker_build
-      #    outputResources:
-      #      - name: outputBuildInfo
+          outputResources:
+            - name: outputBuildInfo
           integrations:
             - name: artifactory
 
