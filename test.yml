@@ -72,6 +72,12 @@ resources:
       files:
         include: test.*
         exclude: test.exclude
+  - name: outputBuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: artifactory
+      buildName: test
+      buildNumber: 1
        
 pipelines:
   - name: test_pipeline_10
