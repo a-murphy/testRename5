@@ -289,7 +289,7 @@ pipelines:
           outputResources:
             - name: outputBuildInfo
           integrations:
-            - name: github
+            - name: aidan_github
 
 
   - name: test_pipeline_11
