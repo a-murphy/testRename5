@@ -250,6 +250,41 @@ pipelines:
         execution:
           onExecute:
             - sleep 10
+            
+      - name: docker_build
+        type: DockerBuild
+        configuration:
+          dockerFileLocation: .
+          dockerFileName: test${versionTag}
+          dockerImageName: image${versionTag}
+          dockerImageTag: tag${versionTag}
+          dockerOptions: "test${versionTag} --test ${testNumber}"
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          inputResources:
+            - name: fileSpec
+            - name: nodeRepoResource
+      - name: docker_push
+        type: DockerPush
+        configuration:
+          targetRepository: repo${versionTag}
+          forceXrayScan: ${testBoolean}
+          autoPublishBuildInfo: true
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: docker_build
+          outputResources:
+            - name: outputBuildInfo
+          integrations:
+            - name: artifactory3
+
 
   - name: test_pipeline_11
     steps:
