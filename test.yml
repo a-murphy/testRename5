@@ -289,7 +289,7 @@ pipelines:
           outputResources:
             - name: outputBuildInfo
           integrations:
-            - name: artifactory2
+            - name: github
 
 
   - name: test_pipeline_11
