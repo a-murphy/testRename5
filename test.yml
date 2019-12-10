@@ -11,7 +11,7 @@ resources:
   - name: cronTrigger
     type: CronTrigger
     configuration:
-      interval: "* * * 1 *"
+      interval: "0 0 * * 1"
   - name: fileSpec
     type: FileSpec
     configuration:
