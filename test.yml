@@ -84,7 +84,11 @@ pipelines:
     configuration:
    #   nodePool: Ubuntu16
       runtime:            
-        type: host
+        type: image
+        auto:
+          language: nodejs
+          versions:
+            - 10.6.3
     steps:
       - name: in_trigger_step
         type: Bash
@@ -166,8 +170,6 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: grouptwo
-          runtime:            
-            type: host
           inputSteps:
             - name: main_step
         execution:
@@ -177,8 +179,6 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: grouptwo
-          runtime:            
-            type: host
           inputSteps:
             - name: main_step
         execution:
@@ -189,8 +189,6 @@ pipelines:
         configuration:
           affinityGroup: grouptwo
           priority: 10
-          runtime:            
-            type: host
           inputSteps:
             - name: main_step
           outputResources:
@@ -204,8 +202,6 @@ pipelines:
         configuration:
           affinityGroup: grouptwo
           priority: 5
-          runtime:            
-            type: host
           inputResources:
             - name: dockerImage
         execution:
@@ -215,8 +211,6 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: groupthree
-          runtime:            
-            type: host
           inputSteps:
             - name: main_step
         execution:
@@ -227,7 +221,7 @@ pipelines:
         configuration:
           affinityGroup: groupthree
           runtime:            
-            type: host
+            type: image
           inputSteps:
             - name: main_step
         execution:
@@ -238,8 +232,6 @@ pipelines:
         configuration:
           affinityGroup: groupfour
           priority: 10
-          runtime:            
-            type: host
           inputSteps:
             - name: main_step
         execution:
@@ -249,8 +241,6 @@ pipelines:
         type: Bash
         configuration:
           priority: 5
-          runtime:            
-            type: host
           inputSteps:
             - name: step_5
         execution:
