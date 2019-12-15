@@ -85,10 +85,11 @@ pipelines:
    #   nodePool: Ubuntu16
       runtime:            
         type: image
-        auto:
-          language: nodejs
-          versions:
-            - 10.6.3
+        image:
+          auto:
+            language: nodejs
+            versions:
+              - 10.6.3
     steps:
       - name: in_trigger_step
         type: Bash
