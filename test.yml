@@ -309,6 +309,10 @@ pipelines:
       - name: test
         type: Bash
         configuration:
+          environmentVariables:
+            chart: artifactory
+            appVersion: ''
+            segment: patch
           inputResources:
             - name: gitRepoResource
           runtime:
