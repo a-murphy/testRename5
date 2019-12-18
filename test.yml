@@ -317,7 +317,7 @@ pipelines:
               custom:
                 name: drydock/u16phpall
                 tag: master
-                autoPull: false
+                autoPull: true
         execution:
           onExecute:
             - php --version
