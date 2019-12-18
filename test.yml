@@ -303,3 +303,21 @@ pipelines:
         execution:
           onExecute:
             - sleep 10
+            
+  - name: pipeline_test
+    steps:
+      - name: test
+        type: Bash
+        configuration:
+          inputResources:
+            - name: gitRepoResource
+          runtime:
+            type: image
+            image:
+              custom:
+                name: drydock/u16phpall
+                tag: master
+                autoPull: false
+        execution:
+          onExecute:
+            - php --version
