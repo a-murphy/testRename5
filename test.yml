@@ -341,8 +341,8 @@ pipelines:
             - name: artifactory
           runtime:
             type: image
-            image:
-              auto:
-                language: go
-                versions:
-                  - 1.11.11
+     #       image:
+     #         auto:
+     #           language: go
+     #           versions:
+     #             - 1.11.11
