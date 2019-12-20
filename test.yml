@@ -338,6 +338,8 @@ pipelines:
           outputFile: "file"
           inputResources:
             - name: gitRepoResource
+          integrations:
+            - name: artifactory
           runtime:
             type: image
             image:
