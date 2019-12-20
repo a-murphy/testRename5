@@ -325,3 +325,23 @@ pipelines:
         execution:
           onExecute:
             - php --version
+
+  - name: go_test
+    steps:
+      - name: Go
+        type: GoBuild
+        configuration:
+          sourceLocation: "."
+          goCommand: --version
+          repository: repo
+          outputLocation: "output"
+          outputFile: "file"
+          inputResources:
+            - name: gitRepoResource
+          runtime:
+            type: image
+            image:
+              auto:
+                language: go
+                versions:
+                  - 1.11.11
