@@ -332,7 +332,6 @@ pipelines:
         type: GoBuild
         configuration:
           sourceLocation: "."
-          goCommand: --version
           repository: repo
           outputLocation: "output"
           outputFile: "file"
