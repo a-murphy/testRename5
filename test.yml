@@ -89,8 +89,8 @@ pipelines:
         image:
           auto:
             language: nodejs
-            versions:
-              - 10.6.3
+     #       versions:
+     #         - 10.6.3
     steps:
       - name: in_trigger_step
         type: Bash
