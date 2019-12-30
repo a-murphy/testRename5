@@ -93,7 +93,7 @@ pipelines:
         type: image
         image:
           auto:
-            language: node
+            language: nodejs
             versions:
               - 10.6.3
     steps:
