@@ -350,3 +350,15 @@ pipelines:
      #           language: go
      #           versions:
      #             - 1.11.11
+      - name: GoPublish
+        type: GoPublishBinary
+        configuration:
+          autoPublishBuildInfo: "true"
+          targetRepository: test
+          inputResources:
+            - name: Go
+          outputResources:
+            - name: outputBuildInfo
+     #     integrations:
+     #       - name: artifactory
+
