@@ -350,14 +350,14 @@ pipelines:
      #           language: go
      #           versions:
      #             - 1.11.11
-      - name: Gradle
-        type: GradleBuild
+      - name: maven
+        type: MvnBuild
         configuration:
           autoPublishBuildInfo: "true"
           targetRepository: test
           configFileLocation: test
           configFileName: test
-          gradleCommand: gradle
+          mvnCommand: gradle
           version: test
           inputSteps:
             - name: Go
