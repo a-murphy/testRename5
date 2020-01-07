@@ -355,7 +355,9 @@ pipelines:
         configuration:
           autoPublishBuildInfo: "true"
           targetRepository: test
-          sourceLocation: test
+          configFileLocation: test
+          configFileName: test
+          gradleCommand: gradle
           version: test
           inputSteps:
             - name: Go
