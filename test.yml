@@ -355,7 +355,7 @@ pipelines:
         configuration:
           autoPublishBuildInfo: "true"
           targetRepository: test
-          inputResources:
+          inputSteps:
             - name: Go
           outputResources:
             - name: outputBuildInfo
