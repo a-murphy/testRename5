@@ -338,6 +338,7 @@ pipelines:
           outputFile: "file"
           inputResources:
             - name: gitRepoResource
+            - name: fileSpec
           outputResources:
             - name: outputBuildInfo
      #     integrations:
