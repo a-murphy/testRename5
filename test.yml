@@ -350,8 +350,8 @@ pipelines:
      #           language: go
      #           versions:
      #             - 1.11.11
-      - name: GoPublish2
-        type: GoPublishModule
+      - name: Gradle
+        type: GradleBuild
         configuration:
           autoPublishBuildInfo: "true"
           targetRepository: test
