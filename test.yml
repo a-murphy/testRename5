@@ -353,8 +353,8 @@ pipelines:
       - name: npmBuild
         type: NpmBuild
         configuration:
-          autoPublishBuildInfo: "true"
-          targetRepository: test
+          sourceLocation: "true"
+          repositoryName: test
           inputSteps:
             - name: Go
           inputResources:
