@@ -351,12 +351,15 @@ pipelines:
      #           versions:
      #             - 1.11.11
       - name: GoPublish
-        type: GoPublishBinary
+        type: GoPublishModule
         configuration:
           autoPublishBuildInfo: "true"
           targetRepository: test
           inputSteps:
             - name: Go
+          inputResources:
+            - name: gitRepoResource
+            - name: fileSpec
           outputResources:
             - name: outputBuildInfo
      #     integrations:
