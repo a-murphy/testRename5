@@ -350,11 +350,13 @@ pipelines:
      #           language: go
      #           versions:
      #             - 1.11.11
-      - name: GoPublish
+      - name: GoPublish2
         type: GoPublishModule
         configuration:
           autoPublishBuildInfo: "true"
           targetRepository: test
+          sourceLocation: test
+          version: test
           inputSteps:
             - name: Go
           inputResources:
