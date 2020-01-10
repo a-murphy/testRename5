@@ -367,17 +367,5 @@ pipelines:
             - name: outputBuildInfo
      #     integrations:
      #       - name: artifactory
-      - name: npmPublish
-        type: NpmPublish
-        configuration:
-          repositoryName: test
-          inputSteps:
-            - name: NpmBuild
-          inputResources:
-            - name: gitRepoResource
-            - name: fileSpec
-          outputResources:
-            - name: outputBuildInfo
-          integrations:
-            - name: artifactory
+
 
