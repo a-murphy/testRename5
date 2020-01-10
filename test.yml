@@ -10,8 +10,7 @@ resources:
          tagCreate: true
       tags:
         include: include.*
-        exclude: exclude.*
-
+    
   - name: cronTrigger
     type: CronTrigger
     configuration:
