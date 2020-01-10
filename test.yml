@@ -378,6 +378,6 @@ pipelines:
             - name: fileSpec
           outputResources:
             - name: outputBuildInfo
-     #     integrations:
-     #       - name: artifactory
+          integrations:
+            - name: artifactory
 
