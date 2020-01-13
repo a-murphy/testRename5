@@ -151,6 +151,9 @@ pipelines:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
+            - mkdir /test
+            - cd /test && touch textFile.txt && echo "this is to test" > textFile.txt && cd ../
+            - add_pipeline_files /test testFolder
             - compare_git --resource nodeRepoResource
             - cd "$res_nodeRepoResource_resourcePath"
           #  - switch_env nodejs 0.12
