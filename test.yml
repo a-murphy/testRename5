@@ -127,7 +127,7 @@ pipelines:
             - mkdir -p /test
             - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
             - add_run_files /test testFolder1
-            - add_run_files /test/testFile.txt file
+            - add_run_files /test/textFile.txt file
             
 
       - name: main_step
