@@ -154,7 +154,8 @@ pipelines:
             - mkdir /test
             - cd /test && touch textFile.txt && echo "this is to test $run_number" > textFile.txt && cd ../
             - add_pipeline_files /test testFolder
-            - add_pipeline_files /var/opt/jfrog/pipelines testBigFolder
+            - cp -r /var/opt/jfrog/pipelines /tmp/test
+            - add_pipeline_files /tmp/test testBigFolder
             - add_run_files /test testFolder
             - add_cache_files /test testFolder
             - compare_git --resource nodeRepoResource
