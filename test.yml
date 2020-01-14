@@ -123,6 +123,10 @@ pipelines:
             - decrypt_string "$encryptedstring" --key key.pem
          #   - write_output myImage "imageTag=$run_number" "sha=test"
             - sleep 10
+            - mkdir /test
+            - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
+            - add_run_files /test testFolder1
+            
 
       - name: main_step
         type: Bash
@@ -151,12 +155,16 @@ pipelines:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
+            - restore_pipeline_files testFolder /testRestore
+            - ls -R /testRestore
             - mkdir /test
             - cd /test && touch textFile.txt && echo "this is to test $run_number" > textFile.txt && cd ../
             - add_pipeline_files /test testFolder
             - cp -r /var/opt/jfrog/pipelines /tmp/test
             - add_pipeline_files /tmp/test testBigFolder
             - add_run_files /test testFolder
+            - restore_run_files testFolder1 /test1
+            - ls -R /test1
             - add_cache_files /test testFolder
             - compare_git --resource nodeRepoResource
             - cd "$res_nodeRepoResource_resourcePath"
