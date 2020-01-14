@@ -124,7 +124,7 @@ pipelines:
          #   - write_output myImage "imageTag=$run_number" "sha=test"
             - add_run_files *.txt files
             - sleep 10
-            - mkdir /test
+            - mkdir -p /test
             - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
             - add_run_files /test testFolder1
             - add_run_files /test/testFile.txt file
