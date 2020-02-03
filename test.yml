@@ -180,6 +180,8 @@ pipelines:
             - ../node_modules/.bin/istanbul --include-all-sources cover -root "../routes" ../node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "**/*.spec.js"
             - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
             - cd .. && ls
+            - fallocate -l 1G largefile
+            - save_tests largefile
             - save_tests testresults.xml
             
           onSuccess:
