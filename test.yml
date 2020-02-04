@@ -157,7 +157,7 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
-          #  - send_notification jira --project-id "TES" --type "Task" --summary "test bug" --description "test bug description" 
+            - send_notification jira --project-id "TES" --type "Task" --summary "test bug" --description "test bug description" 
             - echo "executing task command 1"
             - echo "executing task command 2"
           #  - restore_pipeline_files testFolder /testRestore
