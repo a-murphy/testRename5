@@ -157,7 +157,8 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
-            - send_notification jira --project-id "TES" --type "Task" --summary "test bug" --description "test bug description" 
+            - find_step_configuration_value "testing123"
+        #    - send_notification jira --project-id "TES" --type "Task" --summary "test bug" --description "test bug description" 
             - echo "executing task command 1"
             - echo "executing task command 2"
           #  - restore_pipeline_files testFolder /testRestore
@@ -180,8 +181,8 @@ pipelines:
             - ../node_modules/.bin/istanbul --include-all-sources cover -root "../routes" ../node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "**/*.spec.js"
             - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
             - cd .. && ls
-            - fallocate -l 9M largefile
-            - save_tests largefile
+         #   - fallocate -l 9M largefile
+         #   - save_tests largefile
             - save_tests testresults.xml
             
           onSuccess:
