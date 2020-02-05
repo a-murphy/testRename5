@@ -81,6 +81,14 @@ resources:
       sourceArtifactory: artifactory
       buildName: test
       buildNumber: 1
+  - name: aql
+    type: Aql
+    configuration:
+      sourceArtifactory: artifactory
+      query: test query
+      addedProperties:
+        propertyOne: 1
+        propertyTwo: two
        
 pipelines:
   - name: test_pipeline_10
@@ -145,6 +153,7 @@ pipelines:
             - name: nodeRepoResource
               trigger: false
             - name: testRepo
+            - name: aql
           integrations:
             - name: jira
           runtime:
