@@ -157,7 +157,9 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
-            - find_step_configuration_value "testing123"
+            - test=$(find_step_configuration_value "testing123")
+            - if [ -z "$test" ]; then echo "empty"; fi
+            - if [ "$test" == "null" ]; then echo "null"; fi
         #    - send_notification jira --project-id "TES" --type "Task" --summary "test bug" --description "test bug description" 
             - echo "executing task command 1"
             - echo "executing task command 2"
