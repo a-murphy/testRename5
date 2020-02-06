@@ -109,8 +109,10 @@ pipelines:
           runtime:            
             type: host
           inputResources:
-            - name: gitRepoResource2
+            - name: gitRepoResource
               trigger: false
+          outputResources:
+            - name: gitRepoResource2
         execution:
           onExecute:
             - bump_semver v1.2.3 minor
