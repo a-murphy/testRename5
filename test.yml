@@ -8,12 +8,12 @@ resources:
  #        pullRequestClose: false
  #        releaseCreate: true
  #        tagCreate: true
- # - name: file
- #   type: RemoteFile
- #   configuration:
- #     source: ftpIntegration2
- #     fileLocation: /home/test
- #     fileName: test.txt
+  - name: file
+    type: RemoteFile
+    configuration:
+      source: ftpIntegration2
+      fileLocation: /home/test
+      fileName: test.txt
   - name: awsFile
     type: RemoteFile
     configuration:
