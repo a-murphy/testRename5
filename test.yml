@@ -183,7 +183,7 @@ resources:
  #        tagCreate: true
        
 pipelines:
-  - name: test_pipeline_10
+  - name: test_pipeline_20
     configuration:
    #   nodePool: Ubuntu16
       runtime:            
