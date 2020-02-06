@@ -303,7 +303,7 @@ pipelines:
             - name: main_step
           inputResources:
          #   - name: inputBuildInfo
-            - name: outputBuildInfo
+         #   - name: outputBuildInfo
             - name: aql
           outputResources:
             - name: outputReleaseBundle
