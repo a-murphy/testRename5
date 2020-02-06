@@ -31,6 +31,8 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/5testRename5
+      branches:
+        include: master$
       buildOn:
          commit: false
          pullRequestCreate: false
