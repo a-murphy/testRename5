@@ -313,7 +313,7 @@ pipelines:
           environmentVariables:
             versionTag: testTag
             testNumber: 5
-            testBoolean: "false"
+            testBoolean: false
           dryRun: ${testBoolean}
           inputSteps:
             - name: main_step
