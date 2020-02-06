@@ -1,19 +1,19 @@
 resources:
-  - name: gitRepoResource
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_github
-      path: a-murphy/5testRename5
-      buildOn:
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
-  - name: file
-    type: RemoteFile
-    configuration:
-      source: ftpIntegration2
-      fileLocation: /home/test
-      fileName: test.txt
+ # - name: gitRepoResource
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: aidan_github
+ #     path: a-murphy/5testRename5
+ #     buildOn:
+ #        pullRequestClose: false
+ #        releaseCreate: true
+ #        tagCreate: true
+ # - name: file
+ #   type: RemoteFile
+ #   configuration:
+ #     source: ftpIntegration2
+ #     fileLocation: /home/test
+ #     fileName: test.txt
   - name: awsFile
     type: RemoteFile
     configuration:
@@ -52,22 +52,22 @@ resources:
          releaseCreate: false
          tagCreate: false
          
-  - name: fileSpec
-    type: FileSpec
-    configuration:
-      sourceArtifactory: artifactory
-      pattern: "$test-${versionTag}-*"
-      recursive: true
-      flat: ${testBoolean}
-      limit: ${testNumber}
+ # - name: fileSpec
+ #   type: FileSpec
+ #   configuration:
+ #     sourceArtifactory: artifactory
+ #     pattern: "$test-${versionTag}-*"
+ #     recursive: true
+ #     flat: ${testBoolean}
+ #     limit: ${testNumber}
    #   offset: ${testNumber}
-  - name: dockerImage
-    type: Image
-    configuration:
-      registry: docker
-      imageName: "amurphy/test"
-      imageTag: ${versionTag}
-      autoPull: true
+ # - name: dockerImage
+ #   type: Image
+ #   configuration:
+ #     registry: docker
+ #     imageName: "amurphy/test"
+ #     imageTag: ${versionTag}
+ #     autoPull: true
   - name: awsImage
     type: Image
     configuration:
@@ -106,12 +106,12 @@ resources:
       sourceArtifactory: artifactory
       buildNumber: ${testNumber}
       buildName: ${versionTag}
-  - name: outputBuildInfo
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: artifactory
-      buildNumber: ${testNumber}
-      buildName: ${versionTag}
+ # - name: outputBuildInfo
+ #   type: BuildInfo
+ #   configuration:
+ #     sourceArtifactory: artifactory
+ #     buildNumber: ${testNumber}
+ #     buildName: ${versionTag}
   - name: inputReleaseBundle
     type: ReleaseBundle
     configuration:
