@@ -40,17 +40,17 @@ resources:
       targets:
         - targetOne
 
-  - name: gitRepoResource2
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_github
-      path: a-murphy/5testRename5
-      buildOn:
-         commit: false
-         pullRequestCreate: false
-         pullRequestClose: false
-         releaseCreate: false
-         tagCreate: false
+#  - name: gitRepoResource2
+#    type: GitRepo
+#    configuration:
+#      gitProvider: aidan_github
+#      path: a-murphy/5testRename5
+#      buildOn:
+#         commit: false
+#         pullRequestCreate: false
+#         pullRequestClose: false
+#         releaseCreate: false
+#         tagCreate: false
          
  # - name: fileSpec
  #   type: FileSpec
@@ -170,17 +170,17 @@ resources:
  #     imageName: amurphy/test
  #     imageTag: master
       
-  - name: nodeRepoResource
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_github
-      path: a-murphy/basic-node
-      buildOn:
-         commit: true
-         pullRequestCreate: true
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
+ # - name: nodeRepoResource
+ #   type: GitRepo
+ #   configuration:
+ #     gitProvider: aidan_github
+ #     path: a-murphy/basic-node
+ #     buildOn:
+ #        commit: true
+ #        pullRequestCreate: true
+ #        pullRequestClose: false
+ #        releaseCreate: true
+ #        tagCreate: true
        
 pipelines:
   - name: test_pipeline_10
