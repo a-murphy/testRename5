@@ -302,8 +302,9 @@ pipelines:
           inputSteps:
             - name: main_step
           inputResources:
-            - name: inputBuildInfo
+         #   - name: inputBuildInfo
             - name: outputBuildInfo
+            - name: aql
           outputResources:
             - name: outputReleaseBundle
       - name: distribute_step
