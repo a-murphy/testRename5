@@ -482,7 +482,6 @@ pipelines:
           sourceLocation: /${versionTag}
           repositoryName: test${versionTag}
           npmArgs: ${testNumber}test${versionTag}
-          failOnScan: false
           environmentVariables:
             versionTag: testTag
             testNumber: 5
@@ -500,6 +499,7 @@ pipelines:
           repositoryName: repo${versionTag}
           forceXrayScan: ${testBoolean}
           autoPublishBuildInfo: false
+          failOnScan: false
           environmentVariables:
             versionTag: testTag
             testNumber: 5
