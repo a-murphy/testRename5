@@ -344,7 +344,7 @@ pipelines:
         configuration:
           targetRepository: repo${versionTag}
           forceXrayScan: true
-          failOnScan: ${testBoolean}
+         # failOnScan: true
           autoPublishBuildInfo: true
           environmentVariables:
             versionTag: testTag
