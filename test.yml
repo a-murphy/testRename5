@@ -444,6 +444,7 @@ pipelines:
           configFileName: shippable${testNumber}.yml
           gradleCommand: "gradle command ${testNumber}"
           forceXrayScan: true
+          failOnScan: false
           environmentVariables:
             versionTag: testTag
             testNumber: 5
