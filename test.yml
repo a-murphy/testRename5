@@ -383,7 +383,7 @@ pipelines:
           targetRepository: repo
           autoPublishBuildInfo: true
           forceXrayScan: true
-          failOnScan: true
+          failOnScan: false
           environmentVariables:
             versionTag: testTag
             testNumber: 5
@@ -401,6 +401,7 @@ pipelines:
           version: version${versionTag}
           sourceLocation: .${versionTag}
           forceXrayScan: ${testBoolean}
+          failOnScan: false
           autoPublishBuildInfo: ${testBoolean}
           self: ${testBoolean}
           deps: dep${versionTag}
