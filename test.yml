@@ -463,6 +463,7 @@ pipelines:
           configFileLocation: fileLocation${testNumber}
           configFileName: shippable.yml
           forceXrayScan: ${testBoolean}
+          failOnScan: false
           mvnCommand: "maven command ${versionTag} $testNumber"
           environmentVariables:
             versionTag: testTag
@@ -481,6 +482,7 @@ pipelines:
           sourceLocation: /${versionTag}
           repositoryName: test${versionTag}
           npmArgs: ${testNumber}test${versionTag}
+          failOnScan: false
           environmentVariables:
             versionTag: testTag
             testNumber: 5
