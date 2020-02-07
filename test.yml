@@ -383,6 +383,7 @@ pipelines:
           targetRepository: repo
           autoPublishBuildInfo: true
           forceXrayScan: true
+          failOnScan: true
           environmentVariables:
             versionTag: testTag
             testNumber: 5
