@@ -627,6 +627,7 @@ pipelines:
             versionTag: testTag
             testNumber: 5
    #         testBoolean: "false"
+          failOnScan: false
           inputSteps:
             - name: main_step
           inputResources:
