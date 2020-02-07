@@ -443,17 +443,18 @@ pipelines:
           configFileLocation: fileLocation
           configFileName: shippable${testNumber}.yml
           gradleCommand: "gradle command ${testNumber}"
+          forceXrayScan: true
           environmentVariables:
             versionTag: testTag
             testNumber: 5
-            testBoolean: "false"
+            testBoolean: "true"
           inputSteps:
             - name: main_step
           integrations:
             - name: artifactory
           inputResources:
             - name: nodeRepoResource
-            - name: fileSpec
+         #   - name: fileSpec
       - name: mvn_build
         type: MvnBuild
         configuration:
@@ -465,7 +466,7 @@ pipelines:
           environmentVariables:
             versionTag: testTag
             testNumber: 5
-            testBoolean: "false"
+            testBoolean: "true"
           inputSteps:
             - name: main_step
           integrations:
@@ -499,7 +500,7 @@ pipelines:
           environmentVariables:
             versionTag: testTag
             testNumber: 5
-            testBoolean: "false"
+            testBoolean: "true"
           inputSteps:
             - name: npm_build
           integrations:
@@ -614,17 +615,17 @@ pipelines:
   #          - name: inputReleaseBundle
   #        outputResources:
   #          - name: outputReleaseBundle
-   #   - name: xray_step
-   #     type: XrayScan
-   #     configuration:
-   #       environmentVariables:
-   #         versionTag: testTag
-   #         testNumber: 5
+      - name: xray_step
+        type: XrayScan
+        configuration:
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
    #         testBoolean: "false"
-   #       inputSteps:
-   #         - name: main_step
-   #       inputResources:
-   #         - name: inputBuildInfo
-   #       outputResources:
-   #         - name: outputBuildInfo
+          inputSteps:
+            - name: main_step
+          inputResources:
+            - name: inputBuildInfo
+          outputResources:
+            - name: outputBuildInfo
 
