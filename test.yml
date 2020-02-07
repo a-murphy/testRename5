@@ -343,7 +343,8 @@ pipelines:
         type: DockerPush
         configuration:
           targetRepository: repo${versionTag}
-          forceXrayScan: ${testBoolean}
+          forceXrayScan: true
+          failOnScan: ${testBoolean}
           autoPublishBuildInfo: true
           environmentVariables:
             versionTag: testTag
