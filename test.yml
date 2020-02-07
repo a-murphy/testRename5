@@ -473,7 +473,7 @@ pipelines:
             - name: artifactory
           inputResources:
             - name: nodeRepoResource
-            - name: fileSpec
+         #   - name: fileSpec
       - name: npm_build
         type: NpmBuild
         configuration:
