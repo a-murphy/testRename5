@@ -582,6 +582,7 @@ pipelines:
           envInclude: ${versionTag}
           envExclude: $versionTag
           forceXrayScan: ${testBoolean}
+          failOnScan: false
           inputSteps:
             - name: main_step
           inputResources:
@@ -598,6 +599,7 @@ pipelines:
           targetRepo: ${versionTag}
           autoPublishBuildInfo: false
           forceXrayScan: ${testBoolean}
+          failOnScan: false
           inputSteps:
             - name: npm_build
           inputResources:
