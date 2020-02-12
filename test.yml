@@ -109,7 +109,15 @@ pipelines:
         configuration:
           affinityGroup: groupone
           runtime:            
-            type: host
+           # type: host
+            integrations:
+              - name: docker
+            runtime:
+              type: image
+                image:
+                  custom:
+                    name: amurphy/test2
+                    tag: master
           inputResources:
             - name: gitRepoResource
               trigger: false
