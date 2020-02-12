@@ -115,6 +115,7 @@ pipelines:
             type: image
             image:
               custom:
+                registry: docker
                 name: amurphy/test2
                 tag: master
           inputResources:
