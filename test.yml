@@ -171,6 +171,9 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
+            - 'echo "step_node_name: $step_node_name"'
+            - 'echo "step_node_id: $step_node_id"'
+            - 'echo "step_node_pool_name: $step_node_pool_name"'
             - test=$(find_step_configuration_value "testing123")
             - if [ -z "$test" ]; then echo "empty"; fi
             - if [ "$test" == "null" ]; then echo "null"; fi
