@@ -167,8 +167,8 @@ pipelines:
               trigger: false
             - name: testRepo
             - name: aql
-          integrations:
-            - name: jira
+         # integrations:
+         #   - name: jira
           runtime:
             type: image
             image:
