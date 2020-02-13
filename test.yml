@@ -111,13 +111,7 @@ pipelines:
           integrations:
             - name: docker
           runtime:            
-           # type: host
-            type: image
-            image:
-              custom:
-                registry: docker
-                name: amurphy/test2
-                tag: master
+            type: host
           inputResources:
             - name: gitRepoResource
               trigger: false
