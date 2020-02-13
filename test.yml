@@ -166,9 +166,13 @@ pipelines:
           runtime:
             type: image
             image:
-              custom:
-                name: drydock/u16node
-                tag: master
+              auto:
+                language: NodeJS
+                versions:
+                  - 10
+       #       custom:
+       #         name: drydock/u16node
+       #         tag: master
         execution:
           onStart:
             - echo "Prepping build environment"
