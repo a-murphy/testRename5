@@ -308,6 +308,7 @@ pipelines:
           inputResources:
          #   - name: inputBuildInfo
          #   - name: outputBuildInfo
+            - name: badResource
             - name: aql
           outputResources:
             - name: outputReleaseBundle
@@ -343,6 +344,7 @@ pipelines:
           inputResources:
             - name: fileSpec
             - name: nodeRepoResource
+            - name: badResource
       - name: docker_push
         type: dockerPush
         configuration:
@@ -622,6 +624,7 @@ pipelines:
             - name: main_step
           inputResources:
             - name: inputReleaseBundle
+            - name: badResource
           outputResources:
             - name: outputReleaseBundle
       - name: xray_step
@@ -638,4 +641,8 @@ pipelines:
             - name: inputBuildInfo
           outputResources:
             - name: outputBuildInfo
+      - name: bad_step
+        configuration:
+          inputSteps:
+            - name: main_step
 
