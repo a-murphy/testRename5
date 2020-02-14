@@ -20,9 +20,9 @@ resources:
       source: AWS
       fileLocation: ${versionTag}
       fileName: test.txt
-  - name: badResource
-    configuration:
-      source: AWS
+#  - name: badResource
+#    configuration:
+#      source: AWS
   - name: artifactoryFile
     type: RemoteFile
     configuration:
@@ -199,7 +199,6 @@ pipelines:
           runtime:            
             type: host
           inputResources:
-            - name: badResource
             - name: gitRepoResource2
             - name: file
             - name: awsFile
@@ -308,7 +307,6 @@ pipelines:
           inputResources:
          #   - name: inputBuildInfo
          #   - name: outputBuildInfo
-            - name: badResource
             - name: aql
           outputResources:
             - name: outputReleaseBundle
@@ -344,7 +342,6 @@ pipelines:
           inputResources:
             - name: fileSpec
             - name: nodeRepoResource
-            - name: badResource
       - name: docker_push
         type: dockerPush
         configuration:
@@ -624,7 +621,6 @@ pipelines:
             - name: main_step
           inputResources:
             - name: inputReleaseBundle
-            - name: badResource
           outputResources:
             - name: outputReleaseBundle
       - name: xray_step
@@ -641,8 +637,8 @@ pipelines:
             - name: inputBuildInfo
           outputResources:
             - name: outputBuildInfo
-      - name: bad_step
-        configuration:
-          inputSteps:
-            - name: main_step
+     # - name: bad_step
+     #   configuration:
+     #     inputSteps:
+     #       - name: main_step
 
