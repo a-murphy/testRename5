@@ -20,6 +20,9 @@ resources:
       source: AWS
       fileLocation: ${versionTag}
       fileName: test.txt
+  - name: badResource
+    configuration:
+      source: AWS
   - name: artifactoryFile
     type: RemoteFile
     configuration:
@@ -196,6 +199,7 @@ pipelines:
           runtime:            
             type: host
           inputResources:
+            - name: badResource
             - name: gitRepoResource2
             - name: file
             - name: awsFile
