@@ -9,13 +9,13 @@ resources:
  #        releaseCreate: true
  #        tagCreate: true
   - name: file
-    type: RemoteFile
+    type: remoteFile
     configuration:
       source: ftpIntegration2
       fileLocation: /home/test
       fileName: test.txt
   - name: awsFile
-    type: RemoteFile
+    type: Remotefile
     configuration:
       source: AWS
       fileLocation: ${versionTag}
@@ -34,7 +34,7 @@ resources:
       fileName: test.txt
       
   - name: cluster
-    type: VmCluster
+    type: vmCluster
     configuration:
       sshKey: sshKey
       targets:
@@ -69,7 +69,7 @@ resources:
  #     imageTag: ${versionTag}
  #     autoPull: true
   - name: awsImage
-    type: Image
+    type: image
     configuration:
       registry: AWS
       imageName: "test"
@@ -77,7 +77,7 @@ resources:
       region: ${versionTag}
       autoPull: true
   - name: artifactoryImage
-    type: Image
+    type: IMAGE
     configuration:
       registry: artifactory
       sourceRepository: test
@@ -92,7 +92,7 @@ resources:
       imageTag: ${versionTag}
       autoPull: true
   - name: outgoingWebhook2
-    type: OutgoingWebhook
+    type: outgoingWebhook
     configuration:
       webhookName: outgoingWebhook
       method: "POST"
@@ -101,7 +101,7 @@ resources:
       headers:
         Content-Type: ${versionTag}
   - name: inputBuildInfo
-    type: BuildInfo
+    type: Buildinfo
     configuration:
       sourceArtifactory: artifactory
       buildNumber: ${testNumber}
@@ -113,21 +113,21 @@ resources:
  #     buildNumber: ${testNumber}
  #     buildName: ${versionTag}
   - name: inputReleaseBundle
-    type: ReleaseBundle
+    type: releaseBundle
     configuration:
       sourceDistribution: distribution
       name: bundleName
       version: ${versionTag}
       isSigned: ${testBoolean}
   - name: outputReleaseBundle
-    type: ReleaseBundle
+    type: Releasebundle
     configuration:
       sourceDistribution: distribution
       name: bundleName
       version: ${versionTag}
       isSigned: ${testBoolean}
   - name: inputDistributionRule
-    type: DistributionRule
+    type: distributionRule
     configuration:
       sourceDistribution: distribution
       serviceName: service${versionTag}
@@ -137,31 +137,31 @@ resources:
         - ${versionTag}
         - ${testBoolean}
   - name: helmChart
-    type: HelmChart
+    type: helmChart
     configuration:
       sourceArtifactory: artifactory
       repository: repo${versionTag}
       version: version${versionTag}
       chart: chart${versionTag}
   - name: outputHelmChart
-    type: HelmChart
+    type: Helmchart
     configuration:
       sourceArtifactory: artifactory
       repository: repo${versionTag}
       version: version${versionTag}
       chart: chart${versionTag}
          
- # - name: gitRepoResource3
- #   type: GitRepo
- #   configuration:
- #     gitProvider: github
- #     path: a-murphy/5testRename5
- #     buildOn:
- #        commit: false
- #        pullRequestCreate: false
- #        pullRequestClose: false
- #        releaseCreate: false
- #        tagCreate: false
+  - name: gitRepoResource3
+    type: NotGitRepo
+    configuration:
+      gitProvider: github
+      path: a-murphy/5testRename5
+      buildOn:
+         commit: false
+         pullRequestCreate: false
+         pullRequestClose: false
+         releaseCreate: false
+         tagCreate: false
  #        
  # - name: myImage
  #   type: Image
@@ -190,7 +190,7 @@ pipelines:
         type: host
     steps:
       - name: in_trigger_step
-        type: Bash
+        type: bash
         configuration:
           affinityGroup: groupone
           runtime:            
@@ -286,7 +286,7 @@ pipelines:
           onCancel:
             - echo "Someone cancelled the job"
       - name: create_step
-        type: CreateReleaseBundle
+        type: createReleaseBundle
         configuration:
           releaseBundleName: bundleName
           releaseBundleVersion: bundleVersion${versionTag}
@@ -308,7 +308,7 @@ pipelines:
           outputResources:
             - name: outputReleaseBundle
       - name: distribute_step
-        type: DistributeReleaseBundle
+        type: distributeReleaseBundle
         configuration:
           environmentVariables:
             versionTag: testTag
@@ -323,7 +323,7 @@ pipelines:
           outputResources:
             - name: outputReleaseBundle
       - name: docker_build
-        type: DockerBuild
+        type: dockerBuild
         configuration:
           dockerFileLocation: .
           dockerFileName: test${versionTag}
@@ -340,7 +340,7 @@ pipelines:
             - name: fileSpec
             - name: nodeRepoResource
       - name: docker_push
-        type: DockerPush
+        type: dockerPush
         configuration:
           targetRepository: repo${versionTag}
           forceXrayScan: true
@@ -358,7 +358,7 @@ pipelines:
             - name: artifactory
 
       - name: go_build_file
-        type: GoBuild
+        type: goBuild
         configuration:
           sourceLocation: location${versionTag}
           repository: repo${versionTag}
@@ -378,7 +378,7 @@ pipelines:
             - name: fileSpec
             - name: nodeRepoResource
       - name: go_publish_binary
-        type: GoPublishBinary
+        type: goPublishBinary
         configuration:
           targetRepository: repo
           autoPublishBuildInfo: true
@@ -395,7 +395,7 @@ pipelines:
           outputResources:
             - name: outputBuildInfo
       - name: go_publish_module
-        type: GoPublishModule
+        type: goPublishModule
         configuration:
           targetRepository: repo
           version: version${versionTag}
@@ -418,7 +418,7 @@ pipelines:
           outputResources:
             - name: outputBuildInfo
       - name: go_build_artifactory
-        type: GoBuild
+        type: goBuild
         configuration:
           sourceLocation: /
           repository: repo
@@ -437,7 +437,7 @@ pipelines:
           inputResources:
             - name: nodeRepoResource
       - name: gradle_build
-        type: GradleBuild
+        type: gradleBuild
         configuration:
           sourceLocation: /${testNumber}
           configFileLocation: fileLocation
@@ -457,7 +457,7 @@ pipelines:
             - name: nodeRepoResource
          #   - name: fileSpec
       - name: mvn_build
-        type: MvnBuild
+        type: mvnBuild
         configuration:
           sourceLocation: /${versionTag}
           configFileLocation: fileLocation${testNumber}
@@ -477,7 +477,7 @@ pipelines:
             - name: nodeRepoResource
          #   - name: fileSpec
       - name: npm_build
-        type: NpmBuild
+        type: npmBuild
         configuration:
           sourceLocation: /${versionTag}
           repositoryName: test${versionTag}
@@ -494,7 +494,7 @@ pipelines:
             - name: nodeRepoResource
             - name: fileSpec
       - name: npm_publish
-        type: NpmPublish
+        type: npmPublish
         configuration:
           repositoryName: repo${versionTag}
           forceXrayScan: ${testBoolean}
@@ -509,7 +509,7 @@ pipelines:
           integrations:
             - name: artifactory
       - name: helm_deploy
-        type: HelmDeploy
+        type: helmDeploy
         configuration:
           releaseName: release
           dryRun: true
@@ -523,7 +523,7 @@ pipelines:
           inputResources:
             - name: outputHelmChart
       - name: helm_deploy_repo
-        type: HelmDeploy
+        type: helmDeploy
         configuration:
           releaseName: release
           dryRun: true
@@ -541,7 +541,7 @@ pipelines:
           inputResources:
             - name: nodeRepoResource
       - name: helm_publish
-        type: HelmPublish
+        type: helmPublish
         configuration:
           chartPath: path${versionTag}
           autoPublishBuildInfo: false
@@ -555,7 +555,7 @@ pipelines:
           outputResources:
             - name: outputHelmChart
       - name: promote_step
-        type: PromoteBuild
+        type: promoteBuild
         configuration:
           targetRepository: test
           includeDependencies: ${testBoolean}
@@ -573,7 +573,7 @@ pipelines:
           outputResources:
             - name: outputBuildInfo
       - name: publish_step
-        type: PublishBuildInfo
+        type: publishBuildInfo
         configuration:
           environmentVariables:
             versionTag: testTag
@@ -590,7 +590,7 @@ pipelines:
           outputResources:
             - name: outputBuildInfo
       - name: push_artifactory
-        type: PushArtifactoryPackage
+        type: pushArtifactoryPackage
         configuration:
           environmentVariables:
             versionTag: testTag
@@ -607,21 +607,21 @@ pipelines:
           integrations:
             - name: artifactory
 
-  #    - name: sign_step
-  #      type: SignReleaseBundle
-  #      configuration:
-  #        environmentVariables:
-  #          versionTag: testTag
-  #          testNumber: 5
-  #          testBoolean: "false"
-  #        inputSteps:
-  #          - name: main_step
-  #        inputResources:
-  #          - name: inputReleaseBundle
-  #        outputResources:
-  #          - name: outputReleaseBundle
+      - name: sign_step
+        type: signReleaseBundle
+        configuration:
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          inputResources:
+            - name: inputReleaseBundle
+          outputResources:
+            - name: outputReleaseBundle
       - name: xray_step
-        type: XrayScan
+        type: xrayScan
         configuration:
           environmentVariables:
             versionTag: testTag
