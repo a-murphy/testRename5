@@ -151,17 +151,17 @@ resources:
       version: version${versionTag}
       chart: chart${versionTag}
          
-  - name: gitRepoResource3
-    type: NotGitRepo
-    configuration:
-      gitProvider: github
-      path: a-murphy/5testRename5
-      buildOn:
-         commit: false
-         pullRequestCreate: false
-         pullRequestClose: false
-         releaseCreate: false
-         tagCreate: false
+ # - name: gitRepoResource3
+ #   type: NotGitRepo
+ #   configuration:
+ #     gitProvider: github
+ #     path: a-murphy/5testRename5
+ #     buildOn:
+ #        commit: false
+ #        pullRequestCreate: false
+ #        pullRequestClose: false
+ #        releaseCreate: false
+ #        tagCreate: false
  #        
  # - name: myImage
  #   type: Image
