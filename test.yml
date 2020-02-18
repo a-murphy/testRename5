@@ -91,8 +91,33 @@ resources:
       addedProperties:
         propertyOne: 1
         propertyTwo: two
-       
+
+  - name: examples_repo
+    type: GitRepo
+    configuration:
+      path: ~aidanm/project-examples
+      gitProvider: aidan_bbs
+      branches:
+        include: master
+
 pipelines:
+  - name: MavenStuff
+    steps:
+    - name: BuildSample
+      type: MvnBuild
+      configuration:
+        sourceLocation: artifactory-maven-plugin-example
+        configFileLocation: .
+        configFileName: config
+        mvnCommand: "install -P release"
+        inputResources:
+          - name: examples_repo
+        integrations:
+          - name: artifactory
+      execution:
+        onStart:
+          - update-ca-certificates -f
+
   - name: test_pipeline_10
     configuration:
    #   nodePool: Ubuntu16
