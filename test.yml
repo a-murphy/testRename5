@@ -16,7 +16,7 @@ pipelines:
         sourceLocation: artifactory-maven-plugin-example
         configFileLocation: .
         configFileName: config
-        mvnCommand: "install deploy -Dbuildnumber=1 -s settings.xml"
+        mvnCommand: "install"
         inputResources:
           - name: maven_example_repo
         integrations:
