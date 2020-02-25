@@ -178,7 +178,7 @@ pipelines:
             testNumber: 5
             testBoolean: "false"
      #     affinityGroup: groupone
-          nodePool: Windows
+     #     nodePool: Windows
           inputSteps:
             - name: in_trigger_step
           inputResources:
@@ -249,7 +249,7 @@ pipelines:
       - name: powershell_step
         type: PowerShell
         configuration:
-          nodePool: pool
+      #    nodePool: pool
           inputSteps:
             - name: in_trigger_step
           inputResources:
