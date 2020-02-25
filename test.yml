@@ -249,7 +249,7 @@ pipelines:
       - name: powershell_step
         type: PowerShell
         configuration:
-          nodePool: Ubuntu16
+          nodePool: CentOS
           inputSteps:
             - name: in_trigger_step
           inputResources:
