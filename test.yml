@@ -132,6 +132,7 @@ pipelines:
       - name: in_trigger_step
         type: Bash
         configuration:
+          nodePool: CentOS
           affinityGroup: groupone
           integrations:
             - name: docker
@@ -249,7 +250,6 @@ pipelines:
       - name: powershell_step
         type: PowerShell
         configuration:
-          nodePool: CentOS
           inputSteps:
             - name: in_trigger_step
           inputResources:
