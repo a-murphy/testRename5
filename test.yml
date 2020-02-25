@@ -178,7 +178,7 @@ pipelines:
             versionTag: testTag
             testNumber: 5
             testBoolean: "false"
-          affinityGroup: groupone
+     #     affinityGroup: groupone
      #     nodePool: Ubuntu16
           inputSteps:
             - name: in_trigger_step
