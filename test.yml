@@ -121,7 +121,7 @@ pipelines:
   - name: test_pipeline_10
     configuration:
    #   nodePool: Ubuntu16
-      nodePool: Windows
+      nodePool: pool
       runtime:            
         type: image
         image:
