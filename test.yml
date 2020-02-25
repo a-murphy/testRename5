@@ -92,31 +92,31 @@ resources:
         propertyOne: 1
         propertyTwo: two
 
-  - name: examples_repo
-    type: GitRepo
-    configuration:
-      path: ~aidanm/project-examples
-      gitProvider: aidan_bbs
-      branches:
-        include: master
+  #- name: examples_repo
+  #  type: GitRepo
+  #  configuration:
+  #    path: ~aidanm/project-examples
+  #    gitProvider: aidan_bbs
+  #    branches:
+  #      include: master
 
 pipelines:
-  - name: MavenStuff
-    steps:
-    - name: BuildSample
-      type: MvnBuild
-      configuration:
-        sourceLocation: artifactory-maven-plugin-example
-        configFileLocation: .
-        configFileName: config
-        mvnCommand: "install -P release"
-        inputResources:
-          - name: examples_repo
-        integrations:
-          - name: artifactory
-      execution:
-        onStart:
-          - update-ca-certificates -f
+  #- name: MavenStuff
+  #  steps:
+  #  - name: BuildSample
+  #    type: MvnBuild
+  #    configuration:
+  #      sourceLocation: artifactory-maven-plugin-example
+  #      configFileLocation: .
+  #      configFileName: config
+  #      mvnCommand: "install -P release"
+     #   inputResources:
+     #     - name: examples_repo
+  #      integrations:
+  #        - name: artifactory
+  #    execution:
+  #      onStart:
+  #        - update-ca-certificates -f
 
   - name: test_pipeline_10
     configuration:
@@ -237,6 +237,41 @@ pipelines:
          #   - save_tests largefile
             - save_tests testresults.xml
             
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete: #always
+            - echo "Cleaning up some stuff"
+          onCancel:
+            - echo "Someone cancelled the job"
+            
+      - name: powershell_step
+        type: PowerShell
+        configuration:
+     #     nodePool: Ubuntu16
+          inputSteps:
+            - name: in_trigger_step
+          inputResources:
+            - name: nodeRepoResource
+              trigger: false
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 10
+       #       custom:
+       #         name: drydock/u16node
+       #         tag: master
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - 'echo "step_node_name: $step_node_name"'
+            - 'echo "step_node_id: $step_node_id"'
+            - 'echo "step_node_pool_name: $step_node_pool_name"'
           onSuccess:
             - echo "Job well done!"
           onFailure:
