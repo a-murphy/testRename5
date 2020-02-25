@@ -121,6 +121,7 @@ pipelines:
   - name: test_pipeline_10
     configuration:
    #   nodePool: Ubuntu16
+      nodePool: CentOS
       runtime:            
         type: image
         image:
@@ -132,7 +133,6 @@ pipelines:
       - name: in_trigger_step
         type: Bash
         configuration:
-          nodePool: CentOS
           affinityGroup: groupone
           integrations:
             - name: docker
