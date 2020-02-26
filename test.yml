@@ -232,7 +232,15 @@ pipelines:
             - decrypt_string "$encryptedstring" --key key.pem
          #   - write_output myImage "imageTag=$run_number" "sha=test"
             - sleep 10
-
+      - name: powershell_step
+        type: PowerShell
+        configuration:
+          nodePool: Windows
+          inputSteps:
+            - name: in_trigger_step
+        execution:
+          onStart:
+            - echo "Prepping build environment"
       - name: main_step
         type: Bash
         configuration:
@@ -393,6 +401,7 @@ pipelines:
             testBoolean: "false"
           inputSteps:
             - name: go_build_file
+            - name: powershell_step
           integrations:
             - name: artifactory
           outputResources:
@@ -509,6 +518,7 @@ pipelines:
             testBoolean: "true"
           inputSteps:
             - name: npm_build
+            - name: powershell_step
           integrations:
             - name: artifactory
       - name: helm_deploy
@@ -588,6 +598,7 @@ pipelines:
           failOnScan: false
           inputSteps:
             - name: main_step
+            - name: powershell_step
           inputResources:
             - name: inputBuildInfo
           outputResources:
