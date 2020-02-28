@@ -31,6 +31,9 @@ pipelines:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
+            - echo $STEP_WORKSPACE_DIR
+            - echo $run_dir
+            - echo $pipeline_WORKSPACE_DIR
             - ls $STEP_WORKSPACE_DIR
             - ls $run_dir
             - ls $pipeline_WORKSPACE_DIR
