@@ -23,9 +23,9 @@ pipelines:
           affinityGroup: groupone
           runtime:            
             type: host
-          inputResources:
-            - name: gitRepoResource
-              trigger: false
+     #     inputResources:
+     #       - name: gitRepoResource
+     #         trigger: false
         execution:
           onExecute:
             - echo "executing task command 1"
