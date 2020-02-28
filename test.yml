@@ -31,12 +31,21 @@ pipelines:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-            - echo "testing encryption" > testfile.txt
+            - ls $STEP_WORKSPACE_DIR
+            - ls $run_dir
+            - ls $pipeline_WORKSPACE_DIR
+            - echo "testing 1" > $STEP_WORKSPACE_DIR\upload\testfile.txt
+            - echo "testing 2" > $STEP_WORKSPACE_DIR\upload\testfile2.txt
+            - echo "testing 3" > $STEP_WORKSPACE_DIR\upload\cache\testfile.txt
+            - echo "testing 1" > $run_dir\testfile.txt
+            - echo "testing 2" > $run_dir\testfile2.txt
+            - echo "testing 1" > $pipeline_workspace_dir\testfile.txt
+            - echo "testing 2" > $pipeline_workspace_dir\testfile2.txt
          #   - write_output myImage "imageTag=$run_number" "sha=test"
          #   - add_run_files *.txt files
             - sleep 10
             - mkdir -p /test
-            - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
+         #   - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
          #   - add_run_files /test testFolder1
          #   - add_run_files /test/textFile.txt file
             
