@@ -1,66 +1,32 @@
-resources:
-  - name: gitRepoResource
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_github
-      path: a-murphy/5testRename5
-      buildOn:
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
-      tags:
-        include: include.*
-
 pipelines:
-
-  - name: test_pipeline_windows
+  - name: test_pipeline_bash
     configuration:
-      nodePool: win-pool-2
+      nodePool: c7test
     steps:
       - name: in_trigger_step
-        type: PowerShell
+        type: Bash
         configuration:    
-          nodePool: win-pool-2
           affinityGroup: groupone
           runtime:            
             type: host
-     #     inputResources:
-     #       - name: gitRepoResource
-     #         trigger: false
         execution:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-            - echo "testing encryption" > testfile.txt
-         #   - write_output myImage "imageTag=$run_number" "sha=test"
-         #   - add_run_files *.txt files
-            - sleep 10
-            - mkdir -p /test
-            - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
-         #   - add_run_files /test testFolder1
-         #   - add_run_files /test/textFile.txt file
             
 
       - name: main_step
-        type: PowerShell
+        type: Bash
         configuration:
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-     #     affinityGroup: groupone
           inputSteps:
             - name: in_trigger_step
           runtime:
             type: image
             image:
               auto:
-                language: NodeJS
+                language: Node
                 versions:
                   - 10
-       #       custom:
-       #         name: drydock/u16node
-       #         tag: master
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -68,18 +34,6 @@ pipelines:
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
-            - test=$(find_step_configuration_value "testing123")
-            - if [ -z "$test" ]; then echo "empty"; fi
-            - if [ "$test" == "null" ]; then echo "null"; fi
-            - if [ "$test" == "" ]; then echo "empty string"; fi
-            - cd "$res_nodeRepoResource_resourcePath"
-            - npm install
-            - cd tests
-            - ../node_modules/.bin/mocha --recursive "**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=../testresults.xml
-            - ../node_modules/.bin/istanbul --include-all-sources cover -root "../routes" ../node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "**/*.spec.js"
-            - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
-            - cd .. && ls
-             - save_tests testresults.xml
             
           onSuccess:
             - echo "Job well done!"
