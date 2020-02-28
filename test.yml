@@ -19,7 +19,8 @@ pipelines:
     steps:
       - name: in_trigger_step
         type: PowerShell
-        configuration:
+        configuration:    
+          nodePool: win-pool-2
           affinityGroup: groupone
           runtime:            
             type: host
