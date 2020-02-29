@@ -77,16 +77,16 @@ pipelines:
           inputResources:
             - name: nodeRepoResource
           runtime:
-            type: image
-            image:
+            type: host
+            #image:
             #  auto:
             #    language: NodeJS
             #    versions:
             #      - 10
-              custom:
-                name: test/node
-                tag: "10"
-                autoPull: false
+            #  custom:
+            #    name: test/node
+            #    tag: "10"
+            #    autoPull: false
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -94,7 +94,7 @@ pipelines:
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
-            - test=$(find_step_configuration_value "testing123")
+            - test = find_step_configuration_value "testing123"
             - if [ -z "$test" ]; then echo "empty"; fi
             - if [ "$test" == "null" ]; then echo "null"; fi
             - if [ "$test" == "" ]; then echo "empty string"; fi
@@ -104,8 +104,9 @@ pipelines:
             - ../node_modules/.bin/mocha --recursive "**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=../testresults.xml
             - ../node_modules/.bin/istanbul --include-all-sources cover -root "../routes" ../node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "**/*.spec.js"
             - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
-            - cd .. && ls
-             - save_tests testresults.xml
+            - cd .. 
+            - ls
+            #- save_tests testresults.xml
             
           onSuccess:
             - echo "Job well done!"
