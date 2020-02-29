@@ -84,7 +84,7 @@ pipelines:
             #      - 10
               custom:
                 name: test/node
-                tag: 10
+                tag: "10"
                 autoPull: false
         execution:
           onStart:
