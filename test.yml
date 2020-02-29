@@ -66,6 +66,7 @@ pipelines:
       - name: main_step
         type: PowerShell
         configuration:
+          nodePool: win-pool-2
           environmentVariables:
             versionTag: testTag
             testNumber: 5
