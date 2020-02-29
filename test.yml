@@ -39,6 +39,7 @@ pipelines:
             - ls $env:pipeline_WORKSPACE_DIR
             - echo "testing 1" > $env:STEP_WORKSPACE_DIR\upload\testfile.txt
             - echo "testing 2" > $env:STEP_WORKSPACE_DIR\upload\testfile2.txt
+            - mkdir $env:STEP_WORKSPACE_DIR\upload\cache
             - echo "testing 3" > $env:STEP_WORKSPACE_DIR\upload\cache\testfile.txt
             - echo "testing 1" > $env:run_dir\testfile.txt
             - echo "testing 2" > $env:run_dir\testfile2.txt
