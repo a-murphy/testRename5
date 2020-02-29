@@ -14,7 +14,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: aidan_github
-      path: a-murphy/basic_node
+      path: a-murphy/sample_node
       buildOn:
          pullRequestClose: false
          releaseCreate: true
