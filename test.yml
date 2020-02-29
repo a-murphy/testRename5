@@ -10,6 +10,15 @@ resources:
          tagCreate: true
       tags:
         include: include.*
+  - name: nodeRepoResource
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/basic_node
+      buildOn:
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
 
 pipelines:
 
@@ -64,6 +73,8 @@ pipelines:
      #     affinityGroup: groupone
           inputSteps:
             - name: in_trigger_step
+          inputResources:
+            - name: nodeRepoResource
           runtime:
             type: image
             image:
