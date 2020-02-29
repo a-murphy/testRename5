@@ -34,15 +34,15 @@ pipelines:
             - echo $env:STEP_WORKSPACE_DIR
             - echo $env:run_dir
             - echo $env:pipeline_WORKSPACE_DIR
-            - ls $env:STEP_WORKSPACE_DIR
+            - ls $env:STEP_WORKSPACE_DIR\upload
             - ls $env:run_dir
             - ls $env:pipeline_WORKSPACE_DIR
             - echo "testing 1" > $env:STEP_WORKSPACE_DIR\upload\testfile.txt
             - echo "testing 2" > $env:STEP_WORKSPACE_DIR\upload\testfile2.txt
             - mkdir $env:STEP_WORKSPACE_DIR\upload\cache
             - echo "testing 3" > $env:STEP_WORKSPACE_DIR\upload\cache\testfile.txt
-            - echo "testing 1" > $env:run_dir\testfile.txt
-            - echo "testing 2" > $env:run_dir\testfile2.txt
+            - echo "testing 1" > $env:run_dir\workspace\testfile.txt
+            - echo "testing 2" > $env:run_dir\workspace\testfile2.txt
             - echo "testing 1" > $env:pipeline_workspace_dir\testfile.txt
             - echo "testing 2" > $env:pipeline_workspace_dir\testfile2.txt
          #   - write_output myImage "imageTag=$run_number" "sha=test"
