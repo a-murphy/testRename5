@@ -246,40 +246,40 @@ pipelines:
           onCancel:
             - echo "Someone cancelled the job"
             
-      - name: powershell_step
-        type: PowerShell
-        configuration:
+   #   - name: powershell_step
+   #     type: Powershell
+   #     configuration:
       #    nodePool: pool
-          inputSteps:
-            - name: in_trigger_step
-          inputResources:
-            - name: nodeRepoResource
-              trigger: false
-          runtime:
-            type: image
-            image:
-              auto:
-                language: node
-                versions:
-                  - 10
-       #       custom:
-       #         name: drydock/u16node
-       #         tag: master
-        execution:
-          onStart:
-            - echo "Prepping build environment"
-          onExecute:
-            - 'echo "step_node_name: $step_node_name"'
-            - 'echo "step_node_id: $step_node_id"'
-            - 'echo "step_node_pool_name: $step_node_pool_name"'
-          onSuccess:
-            - echo "Job well done!"
-          onFailure:
-            - echo "uh oh, something went wrong"
-          onComplete: #always
-            - echo "Cleaning up some stuff"
-          onCancel:
-            - echo "Someone cancelled the job"
+   #       inputSteps:
+   #         - name: in_trigger_step
+   #       inputResources:
+   #         - name: nodeRepoResource
+   #           trigger: false
+   #       runtime:
+   #         type: image
+   #         image:
+   #           auto:
+   #             language: node
+   #             versions:
+   #               - 10
+   #    #       custom:
+   #    #         name: drydock/u16node
+   #    #         tag: master
+   #     execution:
+   #       onStart:
+   #         - echo "Prepping build environment"
+   #       onExecute:
+   #         - 'echo "step_node_name: $step_node_name"'
+   #         - 'echo "step_node_id: $step_node_id"'
+   #         - 'echo "step_node_pool_name: $step_node_pool_name"'
+   #       onSuccess:
+   #         - echo "Job well done!"
+   #       onFailure:
+   #         - echo "uh oh, something went wrong"
+   #       onComplete: #always
+   #         - echo "Cleaning up some stuff"
+   #       onCancel:
+   #         - echo "Someone cancelled the job"
       - name: step_3
         type: Bash
         configuration:
