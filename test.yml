@@ -87,7 +87,7 @@ resources:
     type: Aql
     configuration:
       sourceArtifactory: artifactory
-      query: test query
+      query: "test: query"
       addedProperties:
         propertyOne: 1
         propertyTwo: two
