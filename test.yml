@@ -98,7 +98,7 @@ pipelines:
             #- if [ -z "$test" ]; then echo "empty"; fi
             #- if [ "$test" == "null" ]; then echo "null"; fi
             #- if [ "$test" == "" ]; then echo "empty string"; fi
-            - cd "$res_nodeRepoResource_resourcePath"
+            - cd "$env:res_nodeRepoResource_resourcePath"
             - ls
             - npm install
             - cd tests
