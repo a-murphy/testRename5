@@ -22,6 +22,17 @@ resources:
          releaseCreate: true
          tagCreate: true
    #   shallowDepth: 100
+  - name: nodeRepoResource2
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/basic-node
+      buildOn:
+         pullRequestCreate: true
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
+   #   shallowDepth: 100
   - name: bbsRepo
     type: GitRepo
     configuration:
@@ -99,7 +110,7 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
           inputResources:
-            - name: nodeRepoResource
+            - name: nodeRepoResource2
           runtime:
             type: host
             #image:
@@ -122,7 +133,7 @@ pipelines:
             #- if [ -z "$test" ]; then echo "empty"; fi
             #- if [ "$test" == "null" ]; then echo "null"; fi
             #- if [ "$test" == "" ]; then echo "empty string"; fi
-            - cd "$env:res_nodeRepoResource_resourcePath"
+            - cd "$env:res_nodeRepoResource2_resourcePath"
             - ls
             - npm install
             - cd tests
