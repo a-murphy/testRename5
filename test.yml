@@ -31,6 +31,16 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
+  - name: gitlabRepo
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_gitlab
+      path: a-murphy/testRename5
+      buildOn:
+         pullRequestCreate: true
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
 
 pipelines:
   - name: test_pipeline_windows
@@ -147,6 +157,33 @@ pipelines:
             - 'echo "step_node_id: $env:step_node_id"'
             - 'echo "step_node_pool_name: $env:step_node_pool_name"'
             - cd "$env:res_bbsRepo_resourcePath"
+            - ls
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete: #always
+            - echo "Cleaning up some stuff"
+          onCancel:
+            - echo "Someone cancelled the job"
+      - name: gitlab_step
+        type: PowerShell
+        configuration:
+          nodePool: win-pool-2
+          inputSteps:
+            - name: in_trigger_step
+          inputResources:
+            - name: gitlabRepo
+          runtime:
+            type: host
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - 'echo "step_node_name: $env:step_node_name"'
+            - 'echo "step_node_id: $env:step_node_id"'
+            - 'echo "step_node_pool_name: $env:step_node_pool_name"'
+            - cd "$env:res_gitlabRepo_resourcePath"
             - ls
           onSuccess:
             - echo "Job well done!"
