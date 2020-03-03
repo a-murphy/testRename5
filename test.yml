@@ -22,7 +22,7 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
-      shallowDepth: 1
+      shallowDepth: 100
   - name: bbsRepo
     type: GitRepo
     configuration:
@@ -34,7 +34,7 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
-      shallowDepth: 1
+      shallowDepth: 100
   - name: gitlabRepo
     type: GitRepo
     configuration:
@@ -46,7 +46,7 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
-      shallowDepth: 1
+      shallowDepth: 100
 
 pipelines:
   - name: test_pipeline_windows
