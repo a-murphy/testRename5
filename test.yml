@@ -32,7 +32,7 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
-      shallowDepth: 1
+    #  shallowDepth: 1
   - name: gitlabRepo
     type: GitRepo
     configuration:
