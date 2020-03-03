@@ -5,6 +5,7 @@ resources:
       gitProvider: aidan_github
       path: a-murphy/5testRename5
       buildOn:
+         pullRequest: true
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
@@ -16,6 +17,7 @@ resources:
       gitProvider: aidan_github
       path: a-murphy/sample_node
       buildOn:
+         pullRequest: true
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
@@ -25,6 +27,7 @@ resources:
       gitProvider: aidan_bbs
       path: ~aidan/test
       buildOn:
+         pullRequest: true
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
