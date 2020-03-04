@@ -199,7 +199,7 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
             - send_notification aidan_slack
-            - send_notification aidan_email
+            - send_notification aidan_email -recipients "aidan@shippable.com"
           onExecute:
             - 'echo "step_node_name: $env:step_node_name"'
             - 'echo "step_node_id: $env:step_node_id"'
