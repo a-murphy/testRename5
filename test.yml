@@ -190,22 +190,29 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: gitlabRepo
+          integrations:
+            - name: aidan_slack
           runtime:
             type: host
         execution:
           onStart:
             - echo "Prepping build environment"
+            - send_notification aidan_slack
           onExecute:
             - 'echo "step_node_name: $env:step_node_name"'
             - 'echo "step_node_id: $env:step_node_id"'
             - 'echo "step_node_pool_name: $env:step_node_pool_name"'
             - cd "$env:res_gitlabRepo_resourcePath"
+            - send_notification aidan_slack
             - ls
           onSuccess:
             - echo "Job well done!"
+            - send_notification aidan_slack
           onFailure:
             - echo "uh oh, something went wrong"
+            - send_notification aidan_slack
           onComplete: #always
             - echo "Cleaning up some stuff"
+            - send_notification aidan_slack
           onCancel:
             - echo "Someone cancelled the job"
