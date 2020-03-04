@@ -192,12 +192,14 @@ pipelines:
             - name: gitlabRepo
           integrations:
             - name: aidan_slack
+            - name: aidan_email
           runtime:
             type: host
         execution:
           onStart:
             - echo "Prepping build environment"
             - send_notification aidan_slack
+            - send_notification aidan_email
           onExecute:
             - 'echo "step_node_name: $env:step_node_name"'
             - 'echo "step_node_id: $env:step_node_id"'
