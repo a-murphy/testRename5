@@ -207,6 +207,7 @@ pipelines:
             - ls
           onSuccess:
             - echo "Job well done!"
+            - $NOTIFY_COLOR = "#5183a0"
             - send_notification aidan_slack
           onFailure:
             - echo "uh oh, something went wrong"
