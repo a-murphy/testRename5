@@ -94,7 +94,6 @@ pipelines:
          #   - write_output myImage "imageTag=$run_number" "sha=test"
          #   - add_run_files *.txt files
             - sleep 10
-            - mkdir -p /test
             - git clone git@gitlab.com:a-murphy/testRename5.git
             - ls
          #   - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
