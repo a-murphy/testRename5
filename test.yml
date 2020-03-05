@@ -209,7 +209,7 @@ pipelines:
             - ls
           onSuccess:
             - echo "Job well done!"
-            - $NOTIFY_COLOR = "#5183a0"
+            - $global:NOTIFY_COLOR = "#5183a0"
             - Write-Output $NOTIFY_COLOR
             - send_notification aidan_slack -text "This is my string."
           onFailure:
