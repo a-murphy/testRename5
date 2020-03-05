@@ -71,6 +71,8 @@ pipelines:
      #     inputResources:
      #       - name: gitRepoResource
      #         trigger: false
+          integrations:
+            - name: aidan_ssh
         execution:
           onExecute:
             - echo "executing task command 1"
@@ -93,6 +95,8 @@ pipelines:
          #   - add_run_files *.txt files
             - sleep 10
             - mkdir -p /test
+            - git clone git@gitlab.com:a-murphy/testRename5.git
+            - ls
          #   - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
          #   - add_run_files /test testFolder1
          #   - add_run_files /test/textFile.txt file
