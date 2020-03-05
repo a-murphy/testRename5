@@ -200,6 +200,7 @@ pipelines:
             - echo "Prepping build environment"
             - send_notification aidan_slack
             - send_notification aidan_email -recipients @("aidan@shippable.com")
+            - send_notification aidan_email -recipients @("aidan@shippable.com") -attach-logs -show-failing-commands
           onExecute:
             - 'echo "step_node_name: $env:step_node_name"'
             - 'echo "step_node_id: $env:step_node_id"'
@@ -207,6 +208,7 @@ pipelines:
             - cd "$env:res_gitlabRepo_resourcePath"
             - send_notification aidan_slack
             - ls
+            - send_notification aidan_email -recipients @("aidan@shippable.com") -attach-file test.yml,test.txt
           onSuccess:
             - echo "Job well done!"
             - $global:NOTIFY_COLOR = "#5183a0"
