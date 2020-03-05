@@ -206,9 +206,10 @@ pipelines:
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
             - cd "$res_gitlabRepo_resourcePath"
-       #     - send_notification aidan_slack
+            - Set-Content -Path "testPayload.json" -Value "{'username':'Test','attachments':[{'pretext':'This is','text':'to test','color':'#5183a0'}],'icon_url':'${opt_icon_url}'}"
+            - send_notification aidan_slack -payload "testPayload.json"
             - ls
-            - send_notification aidan_email -recipients @("aidan@shippable.com") -attachments @("shippable.yml","shippable.resources.yml")
+       #     - send_notification aidan_email -recipients @("aidan@shippable.com") -attachments @("shippable.yml","shippable.resources.yml")
           onSuccess:
             - echo "Job well done!"
        #     - $global:NOTIFY_COLOR = "#5183a0"
