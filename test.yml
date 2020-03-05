@@ -210,7 +210,8 @@ pipelines:
           onSuccess:
             - echo "Job well done!"
             - $NOTIFY_COLOR = "#5183a0"
-            - send_notification aidan_slack
+            - Write-Output $NOTIFY_COLOR
+            - send_notification aidan_slack -text "This is my string."
           onFailure:
             - echo "uh oh, something went wrong"
             - send_notification aidan_slack
