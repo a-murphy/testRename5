@@ -94,6 +94,7 @@ pipelines:
          #   - write_output myImage "imageTag=$run_number" "sha=test"
          #   - add_run_files *.txt files
             - sleep 10
+            - ssh-add -l
             - "[System.Security.Principal.WindowsIdentity]::GetCurrent().Name"
             - 'git clone --config core.sshCommand="ssh -o StrictHostKeyChecking=no" git@gitlab.com:a-murphy/testRename5.git'
             - ls
