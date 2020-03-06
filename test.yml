@@ -200,6 +200,7 @@ pipelines:
           integrations:
             - name: aidan_slack
             - name: aidan_email
+            - name: aidan_jira
           runtime:
             type: host
         execution:
@@ -215,6 +216,7 @@ pipelines:
             - cd "$res_gitlabRepo_resourcePath"
             - Set-Content -Path "testPayload.json" -Value "{'username':'Test','attachments':[{'pretext':'This is','text':'to test','color':'#5183a0'}],'icon_url':'${opt_icon_url}'}"
             - send_notification aidan_slack -payload "testPayload.json"
+            - send_notification aidan_jira --project-id TES --type "Task" --summary "Testing $step_id"
             - ls
        #     - send_notification aidan_email -recipients @("aidan@shippable.com") -attachments @("shippable.yml","shippable.resources.yml")
           onSuccess:
