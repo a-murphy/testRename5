@@ -95,8 +95,8 @@ pipelines:
          #   - add_run_files *.txt files
             - sleep 10
             - "[System.Security.Principal.WindowsIdentity]::GetCurrent().Name"
-            - $keyPathEscaped = "$env:UserProfile\aidan_ssh" -replace("\\","/")
-            - 'git clone --config core.sshCommand="ssh -o StrictHostKeyChecking=no -i $keyPathEscaped" git@gitlab.com:a-murphy/testRename5.git'
+            - $global:profileEscaped = "$env:UserProfile" -replace("\\","/")
+            - 'git clone --config core.sshCommand="ssh -o StrictHostKeyChecking=no -i ${profileEscaped}/aidan_ssh" git@gitlab.com:a-murphy/testRename5.git'
             - ls
          #   - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
          #   - add_run_files /test testFolder1
