@@ -179,6 +179,7 @@ pipelines:
             - 'echo "step_node_name: $env:step_node_name"'
             - 'echo "step_node_id: $env:step_node_id"'
             - 'echo "step_node_pool_name: $env:step_node_pool_name"'
+            - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2"
             - cd "$env:res_bbsRepo_resourcePath"
             - ls
           onSuccess:
@@ -218,6 +219,10 @@ pipelines:
             - send_notification aidan_slack -payload "testPayload.json"
             - send_notification aidan_jira -project-id "TES" -type "Task" -summary "Testing $step_id" -attach-file "shippable.yml"
             - ls
+            - add_pipeline_variable pipelineVariable1=$run_number pipelineVariable2="String with =."
+            - add_run_variable runVariable1=$step_number runVariable2="A string with spaces."
+            - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2"
+            
        #     - send_notification aidan_email -recipients @("aidan@shippable.com") -attachments @("shippable.yml","shippable.resources.yml")
           onSuccess:
             - echo "Job well done!"
