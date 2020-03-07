@@ -182,6 +182,7 @@ pipelines:
             - 'echo "step_node_name: $env:step_node_name"'
             - 'echo "step_node_id: $env:step_node_id"'
             - 'echo "step_node_pool_name: $env:step_node_pool_name"'
+            - export_run_variables
             - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2"
             - cd "$env:res_bbsRepo_resourcePath"
             - ls
