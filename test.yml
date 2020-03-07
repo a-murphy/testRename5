@@ -99,6 +99,9 @@ pipelines:
             - $global:profileEscaped = "$env:UserProfile" -replace("\\","/")
             - 'git clone --config core.sshCommand="ssh -o StrictHostKeyChecking=no -i ${profileEscaped}/.ssh/aidan_ssh" git@gitlab.com:a-murphy/testRename5.git'
             - ls
+            - add_pipeline_variables pipelineVariable1=$run_number pipelineVariable2="String with =."
+            - add_run_variables runVariable1=$step_number runVariable2="A string with spaces."
+            - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2"
           #  - docker pull amurphy/test2:latest
          #   - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
          #   - add_run_files /test testFolder1
@@ -219,9 +222,6 @@ pipelines:
             - send_notification aidan_slack -payload "testPayload.json"
             - send_notification aidan_jira -project-id "TES" -type "Task" -summary "Testing $step_id" -attach-file "shippable.yml"
             - ls
-            - add_pipeline_variable pipelineVariable1=$run_number pipelineVariable2="String with =."
-            - add_run_variable runVariable1=$step_number runVariable2="A string with spaces."
-            - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2"
             
        #     - send_notification aidan_email -recipients @("aidan@shippable.com") -attachments @("shippable.yml","shippable.resources.yml")
           onSuccess:
