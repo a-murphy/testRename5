@@ -156,17 +156,17 @@ pipelines:
             - name: gcloudImage
             - name: artifactoryImage
           runtime:
-            #type: host
-            type: image
-            image:
+            type: host
+            #type: image
+            #image:
             #  auto:
             #    language: NodeJS
             #    versions:
             #      - 10
-              custom:
-                name: test/node
-                tag: "10"
-                autoPull: false	
+            #  custom:
+            #    name: test/node
+            #    tag: "10"
+            #    autoPull: false	
              #   registry: aidan_gcloud
         execution:
           onStart:
