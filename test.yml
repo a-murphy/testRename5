@@ -61,7 +61,7 @@ resources:
        registry: aidan_docker
        imageName: amurphy/test2
        imageTag: "increment.1"
-       autoPull: true
+  #     autoPull: true
   - name: awsImage
     type: Image
     configuration:
