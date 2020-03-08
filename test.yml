@@ -69,7 +69,7 @@ resources:
        region: "us-west-2"
        imageName: 544102397216.dkr.ecr.us-west-2.amazonaws.com/test/repository
        imageTag: "latest"
-       autoPull: true
+       autoPull: false
   - name: gcloudImage
     type: Image
     configuration:
