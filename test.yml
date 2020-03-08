@@ -55,6 +55,36 @@ resources:
          releaseCreate: true
          tagCreate: true
    #   shallowDepth: 100
+  - name: dockerImage
+    type: Image
+    configuration:
+       registry: aidan_docker
+       imageName: amurphy/test2
+       imageTag: "increment.1"
+       autoPull: true
+  - name: awsImage
+    type: Image
+    configuration:
+       registry: aidan_aws
+       region: "us-west-2"
+       imageName: 544102397216.dkr.ecr.us-west-2.amazonaws.com/test/repository
+       imageTag: "latest"
+       autoPull: true
+  - name: gcloudImage
+    type: Image
+    configuration:
+       registry: aidan_gcloud
+       imageName: gcr.io/molten-method-94423/test3
+       imageTag: "a.1"
+       autoPull: true
+  - name: artifactoryImage
+    type: Image
+    configuration:
+       registry: aidan_artifactory
+       sourceRepository: http://35.238.69.200:8082/artifactory/docker-image
+       imageName: docker-image
+       imageTag: "tag"
+       autoPull: true
 
 pipelines:
   - name: test_pipeline_windows
@@ -121,6 +151,10 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: nodeRepoResource2
+            - name: dockerImage
+            - name: awsImage
+            - name: gcloudImage
+            - name: artifactoryImage
           runtime:
             #type: host
             type: image
@@ -130,10 +164,10 @@ pipelines:
             #    versions:
             #      - 10
               custom:
-                name: gcr.io/molten-method-94423/test3
-                tag: "a.1"
-                autoPull: true	
-                registry: aidan_gcloud
+                name: test/node
+                tag: "10"
+                autoPull: false	
+             #   registry: aidan_gcloud
         execution:
           onStart:
             - echo "Prepping build environment"
