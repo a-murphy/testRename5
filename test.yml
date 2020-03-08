@@ -155,6 +155,8 @@ pipelines:
          #   - name: awsImage
          #   - name: gcloudImage
          #   - name: artifactoryImage
+          integrations:
+            - name: aidan_aws
           runtime:
             #type: host
             type: image
