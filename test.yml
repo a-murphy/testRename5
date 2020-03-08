@@ -130,11 +130,10 @@ pipelines:
             #    versions:
             #      - 10
               custom:
-                name: 544102397216.dkr.ecr.us-west-2.amazonaws.com/test/repository
-                tag: "latest"
+                name: gcr.io/molten-method-94423/test3
+                tag: "a.1"
                 autoPull: true
-                registry: aidan_aws
-                region: "us-west-2"
+                registry: aidan_gcloud
         execution:
           onStart:
             - echo "Prepping build environment"
