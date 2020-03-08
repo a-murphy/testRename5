@@ -132,6 +132,7 @@ pipelines:
               custom:
                 name: http://35.238.69.200:8082/artifactory/docker-image
                 tag: "tag"
+                sourceRepository: docker-image
                 autoPull: true
                 registry: aidan_artifactory
         execution:
