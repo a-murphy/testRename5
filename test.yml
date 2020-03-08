@@ -76,7 +76,7 @@ resources:
        registry: aidan_gcloud
        imageName: gcr.io/molten-method-94423/test3
        imageTag: "a.1"
-       autoPull: true
+       autoPull: false
   - name: artifactoryImage
     type: Image
     configuration:
@@ -151,23 +151,23 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: nodeRepoResource2
-            - name: dockerImage
-            - name: awsImage
-            - name: gcloudImage
-            - name: artifactoryImage
+         #   - name: dockerImage
+         #   - name: awsImage
+         #   - name: gcloudImage
+         #   - name: artifactoryImage
           runtime:
-            type: host
-            #type: image
+            #type: host
+            type: image
             #image:
             #  auto:
             #    language: NodeJS
             #    versions:
             #      - 10
-            #  custom:
-            #    name: test/node
-            #    tag: "10"
-            #    autoPull: false	
-             #   registry: aidan_gcloud
+              custom:
+                name: test/node
+                tag: "10"
+                autoPull: true	
+                registry: aidan_gcloud
         execution:
           onStart:
             - echo "Prepping build environment"
