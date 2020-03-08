@@ -130,10 +130,10 @@ pipelines:
             #    versions:
             #      - 10
               custom:
-                name: gcr.io/molten-method-94423/test3
-                tag: "a.1"
+                name: http://35.238.69.200:8082/artifactory/docker-image
+                tag: "tag"
                 autoPull: true
-                registry: aidan_gcloud
+                registry: aidan_artifactory
         execution:
           onStart:
             - echo "Prepping build environment"
