@@ -84,7 +84,7 @@ resources:
        sourceRepository: http://35.238.69.200:8082/artifactory/docker-image
        imageName: docker-image
        imageTag: "tag"
-       autoPull: true
+    #   autoPull: true
 
 pipelines:
   - name: test_pipeline_windows
