@@ -123,6 +123,7 @@ pipelines:
             - name: nodeRepoResource2
           runtime:
             #type: host
+            type: image
             image:
             #  auto:
             #    language: NodeJS
