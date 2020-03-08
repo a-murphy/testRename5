@@ -122,16 +122,17 @@ pipelines:
           inputResources:
             - name: nodeRepoResource2
           runtime:
-            type: host
-            #image:
+            #type: host
+            image:
             #  auto:
             #    language: NodeJS
             #    versions:
             #      - 10
-            #  custom:
-            #    name: test/node
-            #    tag: "10"
-            #    autoPull: false
+              custom:
+                name: amurphy/test2
+                tag: "increment.1"
+                autoPull: true
+                registry: aidan_docker
         execution:
           onStart:
             - echo "Prepping build environment"
