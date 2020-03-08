@@ -130,10 +130,11 @@ pipelines:
             #    versions:
             #      - 10
               custom:
-                name: amurphy/test2
-                tag: "increment.1"
+                name: 544102397216.dkr.ecr.us-west-2.amazonaws.com/test/repository
+                tag: "latest"
                 autoPull: true
-                registry: aidan_docker
+                registry: aidan_aws
+                region: "us-west-2"
         execution:
           onStart:
             - echo "Prepping build environment"
