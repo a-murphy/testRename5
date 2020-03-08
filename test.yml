@@ -158,7 +158,7 @@ pipelines:
           runtime:
             #type: host
             type: image
-            #image:
+            image:
             #  auto:
             #    language: NodeJS
             #    versions:
