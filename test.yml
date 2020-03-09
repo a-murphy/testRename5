@@ -185,7 +185,7 @@ pipelines:
             - 'echo "step_node_id: $env:step_node_id"'
             - 'echo "step_node_pool_name: $env:step_node_pool_name"'
             - aws sts get-caller-identity
-            - scp -i $env:USERPROFILE\.ssh\vmCluster root@165.227.59.154:test.txt test.txt
+            - ssh -o StrictHostKeyChecking=no -o NumberOfPasswordPrompts=0 -i $env:USERPROFILE\.ssh\vmCluster root@165.227.59.154:test.txt test.txt
             - cat test.txt
             - $test = find_step_configuration_value "testing123"
             #- if [ -z "$test" ]; then echo "empty"; fi
