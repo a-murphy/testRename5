@@ -85,6 +85,12 @@ resources:
        imageName: docker-image
        imageTag: "tag"
        autoPull: false
+  - name: vmCluster
+    type: VmCluster
+    configuration:
+      sshKey: aidan_ssh
+      targets:
+        - 165.227.59.154
 
 pipelines:
   - name: test_pipeline_windows
@@ -151,6 +157,7 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: nodeRepoResource2
+            - name: vmCluster
          #   - name: dockerImage
          #   - name: awsImage
          #   - name: gcloudImage
@@ -178,6 +185,8 @@ pipelines:
             - 'echo "step_node_id: $env:step_node_id"'
             - 'echo "step_node_pool_name: $env:step_node_pool_name"'
             - aws sts get-caller-identity
+            - scp -i $env:USERPROFILE\.ssh\vmCluster root@165.227.59.154:test.txt test.txt
+            - cat test.txt
             - $test = find_step_configuration_value "testing123"
             #- if [ -z "$test" ]; then echo "empty"; fi
             #- if [ "$test" == "null" ]; then echo "null"; fi
