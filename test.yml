@@ -130,7 +130,7 @@ pipelines:
             - 'git clone --config core.sshCommand="ssh -o StrictHostKeyChecking=no -i ${profileEscaped}/.ssh/aidan_ssh" git@gitlab.com:a-murphy/testRename5.git'
             - ls
             - add_pipeline_variables pipelineVariable1=$run_number pipelineVariable2="String with =."
-            - add_run_variables runVariable1=$step_number 'runVariable2="A string with spaces."'
+            - add_run_variables runVariable1=$step_number 'runVariable2="A string with spaces."' runVariable3='A string with $.'
             - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2"
           #  - docker pull amurphy/test2:latest
          #   - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
