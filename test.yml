@@ -109,6 +109,12 @@ resources:
       source: aidan_artifactory
       fileLocation:  example-repo-local
       fileName: testfile.txt
+  - name: ftpRemoteFile
+    type: RemoteFile
+    configuration:     
+      source: aidan_ftp
+      fileLocation:  .
+      fileName: test.txt
 
 pipelines:
   - name: test_pipeline_windows
@@ -178,6 +184,7 @@ pipelines:
             - name: awsRemoteFile
             - name: artifactoryRemoteFile
             - name: gcloudRemoteFile
+            - name: ftpRemoteFile
         #    - name: vmCluster
          #   - name: dockerImage
          #   - name: awsImage
@@ -211,6 +218,7 @@ pipelines:
             - ls "$res_artifactoryRemoteFile_resourcePath"
             - ls "$res_awsRemoteFile_resourcePath"
             - ls "$res_gcloudRemoteFile_resourcePath"
+            - ls "$res_ftpRemoteFile_resourcePath"
             - $test = find_step_configuration_value "testing123"
             #- if [ -z "$test" ]; then echo "empty"; fi
             #- if [ "$test" == "null" ]; then echo "null"; fi
