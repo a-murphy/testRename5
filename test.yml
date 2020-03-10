@@ -91,6 +91,24 @@ resources:
       sshKey: aidan_ssh
       targets:
         - 165.227.59.154
+  - name: awsRemoteFile
+    type: RemoteFile
+    configuration:     
+      source: aidan_aws
+      fileLocation: s3://jfrog-shippable-aidan
+      fileName: testfile.txt
+  - name: gcloudRemoteFile
+    type: RemoteFile
+    configuration:     
+      source: aidan_gcloud
+      fileLocation: gs://aidan-jfrog-bucket
+      fileName: testfile.txt
+  - name: artifactoryRemoteFile
+    type: RemoteFile
+    configuration:     
+      source: aidan_artifactory
+      fileLocation:  example-repo-local
+      fileName: testfile.txt
 
 pipelines:
   - name: test_pipeline_windows
@@ -157,7 +175,10 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: nodeRepoResource2
-            - name: vmCluster
+            - name: awsRemoteFile
+            - name: artifactoryRemoteFile
+            - name: gcloudRemoteFile
+        #    - name: vmCluster
          #   - name: dockerImage
          #   - name: awsImage
          #   - name: gcloudImage
@@ -181,17 +202,20 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
-            - 'echo "step_node_name: $env:step_node_name"'
-            - 'echo "step_node_id: $env:step_node_id"'
-            - 'echo "step_node_pool_name: $env:step_node_pool_name"'
+            - 'echo "step_node_name: $step_node_name"'
+            - 'echo "step_node_id: $step_node_id"'
+            - 'echo "step_node_pool_name: $step_node_pool_name"'
             - aws sts get-caller-identity
         #    - ssh -o StrictHostKeyChecking=no -o NumberOfPasswordPrompts=0 -i $env:USERPROFILE\.ssh\vmCluster root@165.227.59.154 "cat test.txt"
-            - cat test.txt
+          #  - cat test.txt
+            - ls "$res_artifactoryRemoteFile_resourcePath"
+            - ls "$res_awsRemoteFile_resourcePath"
+            - ls "$res_gcloudRemoteFile_resourcePath"
             - $test = find_step_configuration_value "testing123"
             #- if [ -z "$test" ]; then echo "empty"; fi
             #- if [ "$test" == "null" ]; then echo "null"; fi
             #- if [ "$test" == "" ]; then echo "empty string"; fi
-            - cd "$env:res_nodeRepoResource2_resourcePath"
+            - cd "$res_nodeRepoResource2_resourcePath"
             - ls
             - npm install
             - cd tests
@@ -200,8 +224,8 @@ pipelines:
             - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
             - cd .. 
             - ls
-            - mkdir (Join-Path $env:step_workspace_dir "upload/tests/$env:step_id")
-            - cp testresults.xml (Join-Path $env:step_workspace_dir "upload/tests/$env:step_id")
+            - mkdir (Join-Path $env:step_workspace_dir "upload/tests/$step_id")
+            - cp testresults.xml (Join-Path $env:step_workspace_dir "upload/tests/$step_id")
             #- save_tests testresults.xml
             
           onSuccess:
