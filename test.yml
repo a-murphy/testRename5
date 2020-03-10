@@ -113,7 +113,7 @@ resources:
     type: RemoteFile
     configuration:     
       source: aidan_ftp
-      fileLocation:  .
+      fileLocation: files
       fileName: test.txt
 
 pipelines:
@@ -215,10 +215,10 @@ pipelines:
             - aws sts get-caller-identity
         #    - ssh -o StrictHostKeyChecking=no -o NumberOfPasswordPrompts=0 -i $env:USERPROFILE\.ssh\vmCluster root@165.227.59.154 "cat test.txt"
           #  - cat test.txt
-            - ls "$res_artifactoryRemoteFile_resourcePath"
-            - ls "$res_awsRemoteFile_resourcePath"
-            - ls "$res_gcloudRemoteFile_resourcePath"
-            - ls "$res_ftpRemoteFile_resourcePath"
+            - cat "${res_artifactoryRemoteFile_resourcePath}\testfile.txt"
+            - cat "${res_awsRemoteFile_resourcePath}\testfile.txt"
+            - cat "${res_gcloudRemoteFile_resourcePath}\testfile.txt"
+            - cat "${res_ftpRemoteFile_resourcePath}\test.txt"
             - $test = find_step_configuration_value "testing123"
             #- if [ -z "$test" ]; then echo "empty"; fi
             #- if [ "$test" == "null" ]; then echo "null"; fi
