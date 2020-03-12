@@ -1,177 +1,24 @@
-resources:
-  - name: gitRepoResource
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_github
-      path: a-murphy/5testRename5
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
-      tags:
-        include: include.*
-  - name: nodeRepoResource
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_github
-      path: a-murphy/sample_node
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
-   #   shallowDepth: 100
-  - name: nodeRepoResource2
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_github
-      path: a-murphy/basic-node
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
-   #   shallowDepth: 100
-  - name: bbsRepo
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_bbs
-      path: ~aidan/test
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
-    #  shallowDepth: 1
-  - name: gitlabRepo
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_gitlab
-      path: a-murphy/testRename5
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
-   #   shallowDepth: 100
-  - name: dockerImage
-    type: Image
-    configuration:
-       registry: aidan_docker
-       imageName: amurphy/test2
-       imageTag: "increment.1"
-       autoPull: false
-  - name: awsImage
-    type: Image
-    configuration:
-       registry: aidan_aws
-       region: "us-west-2"
-       imageName: 544102397216.dkr.ecr.us-west-2.amazonaws.com/test/repository
-       imageTag: "latest"
-       autoPull: false
-  - name: gcloudImage
-    type: Image
-    configuration:
-       registry: aidan_gcloud
-       imageName: gcr.io/molten-method-94423/test3
-       imageTag: "a.1"
-       autoPull: false
-  - name: artifactoryImage
-    type: Image
-    configuration:
-       registry: aidan_artifactory
-       sourceRepository: http://35.238.69.200:8082/artifactory/docker-image
-       imageName: docker-image
-       imageTag: "tag"
-       autoPull: false
-  - name: vmCluster
-    type: VmCluster
-    configuration:
-      sshKey: aidan_ssh
-      targets:
-        - 165.227.59.154
-  - name: awsRemoteFile
-    type: RemoteFile
-    configuration:     
-      source: aidan_aws
-      fileLocation: s3://jfrog-shippable-aidan
-      fileName: testfile.txt
-  - name: gcloudRemoteFile
-    type: RemoteFile
-    configuration:     
-      source: aidan_gcloud
-      fileLocation: gs://aidan-jfrog-bucket
-      fileName: testfile.txt
-  - name: artifactoryRemoteFile
-    type: RemoteFile
-    configuration:     
-      source: aidan_artifactory
-      fileLocation:  example-repo-local
-      fileName: testfile.txt
-  - name: ftpRemoteFile2
-    type: RemoteFile
-    configuration:     
-      source: aidan_ftp
-      fileLocation: files
-      fileName: test.txt
-
 pipelines:
   - name: test_pipeline_windows
     configuration:
-      nodePool: win-pool-2
+      nodePool: windows
     steps:
       - name: in_trigger_step
         type: PowerShell
         configuration:    
-          nodePool: win-pool-2
+          nodePool: windows
           affinityGroup: groupone
           runtime:            
-            type: host
-     #     inputResources:
-     #       - name: gitRepoResource
-     #         trigger: false
-          integrations:
-            - name: aidan_ssh
-            - name: aidan_docker
+            type: image
         execution:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-            - echo $STEP_WORKSPACE_DIR
-            - echo $run_dir
-            - echo $pipeline_WORKSPACE_DIR
-            - ls $STEP_WORKSPACE_DIR\download
-            - ls $run_dir
-            - ls $pipeline_WORKSPACE_DIR
-            - echo "testing 1" > $STEP_WORKSPACE_DIR\upload\testfile.txt
-            - echo "testing 2" > $STEP_WORKSPACE_DIR\upload\testfile2.txt
-            - mkdir $STEP_WORKSPACE_DIR\upload\cache
-            - echo "testing 3" > $STEP_WORKSPACE_DIR\upload\cache\testfile.txt
-            - echo "testing 1" > $run_dir\workspace\testfile.txt
-            - echo "testing 2" > $run_dir\workspace\testfile2.txt
-            - echo "testing 1" > $pipeline_workspace_dir\testfile.txt
-            - echo "testing 4" > $pipeline_workspace_dir\testfile2.txt
-         #   - write_output myImage "imageTag=$run_number" "sha=test"
-         #   - add_run_files *.txt files
-            - sleep 10
-            - "[System.Security.Principal.WindowsIdentity]::GetCurrent().Name"
-            - $global:profileEscaped = "$env:UserProfile" -replace("\\","/")
-            - 'git clone --config core.sshCommand="ssh -o StrictHostKeyChecking=no -i ${profileEscaped}/.ssh/aidan_ssh" git@gitlab.com:a-murphy/testRename5.git'
-            - ls
-            - add_pipeline_variables pipelineVariable1=$run_number pipelineVariable2="String with =."
-            - add_run_variables runVariable1=$step_number 'runVariable2="A string with spaces."' runVariable3='A string with $.'
-            - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
-          #  - docker pull amurphy/test2:latest
-         #   - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
-         #   - add_run_files /test testFolder1
-         #   - add_run_files /test/textFile.txt file
-            
 
       - name: main_step
         type: PowerShell
         configuration:
-          nodePool: win-pool-2
+          nodePool: windows
           environmentVariables:
             versionTag: testTag
             testNumber: 5
@@ -179,32 +26,15 @@ pipelines:
      #     affinityGroup: groupone
           inputSteps:
             - name: in_trigger_step
-          inputResources:
-            - name: nodeRepoResource2
-            - name: awsRemoteFile
-            - name: artifactoryRemoteFile
-            - name: gcloudRemoteFile
-            - name: ftpRemoteFile2
-        #    - name: vmCluster
-         #   - name: dockerImage
-         #   - name: awsImage
-         #   - name: gcloudImage
-         #   - name: artifactoryImage
           integrations:
             - name: aidan_aws
           runtime:
-            #type: host
             type: image
             image:
-            #  auto:
-            #    language: NodeJS
-            #    versions:
-            #      - 10
-              custom:
-                name: test/node
-                tag: "10"
-                autoPull: true	
-                registry: aidan_gcloud
+              auto:
+                language: node
+                versions:
+                  - 10
         execution:
           onStart:
             - echo "Prepping build environment"
@@ -212,29 +42,6 @@ pipelines:
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
-            - aws sts get-caller-identity
-        #    - ssh -o StrictHostKeyChecking=no -o NumberOfPasswordPrompts=0 -i $env:USERPROFILE\.ssh\vmCluster root@165.227.59.154 "cat test.txt"
-          #  - cat test.txt
-            - cat "${res_artifactoryRemoteFile_resourcePath}\testfile.txt"
-            - cat "${res_awsRemoteFile_resourcePath}\testfile.txt"
-            - cat "${res_gcloudRemoteFile_resourcePath}\testfile.txt"
-            - cat "${res_ftpRemoteFile2_resourcePath}\test.txt"
-            - $test = find_step_configuration_value "testing123"
-            #- if [ -z "$test" ]; then echo "empty"; fi
-            #- if [ "$test" == "null" ]; then echo "null"; fi
-            #- if [ "$test" == "" ]; then echo "empty string"; fi
-            - cd "$res_nodeRepoResource2_resourcePath"
-            - ls
-            - npm install
-            - cd tests
-            - ../node_modules/.bin/mocha --recursive "**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=../testresults.xml
-            - ../node_modules/.bin/istanbul --include-all-sources cover -root "../routes" ../node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "**/*.spec.js"
-            - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
-            - cd .. 
-            - ls
-            - mkdir (Join-Path $env:step_workspace_dir "upload/tests/$step_id")
-            - cp testresults.xml (Join-Path $env:step_workspace_dir "upload/tests/$step_id")
-            #- save_tests testresults.xml
             
           onSuccess:
             - echo "Job well done!"
@@ -242,79 +49,5 @@ pipelines:
             - echo "uh oh, something went wrong"
           onComplete: #always
             - echo "Cleaning up some stuff"
-          onCancel:
-            - echo "Someone cancelled the job"
-
-      - name: bbs_step
-        type: PowerShell
-        configuration:
-          nodePool: win-pool-2
-          inputSteps:
-            - name: in_trigger_step
-          inputResources:
-            - name: bbsRepo
-          runtime:
-            type: host
-        execution:
-          onStart:
-            - echo "Prepping build environment"
-          onExecute:
-            - 'echo "step_node_name: $env:step_node_name"'
-            - 'echo "step_node_id: $env:step_node_id"'
-            - 'echo "step_node_pool_name: $env:step_node_pool_name"'
-            - export_run_variables
-            - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
-            - cd "$env:res_bbsRepo_resourcePath"
-            - ls
-          onSuccess:
-            - echo "Job well done!"
-          onFailure:
-            - echo "uh oh, something went wrong"
-          onComplete: #always
-            - echo "Cleaning up some stuff"
-          onCancel:
-            - echo "Someone cancelled the job"
-      - name: gitlab_step
-        type: PowerShell
-        configuration:
-          nodePool: win-pool-2
-          inputSteps:
-            - name: in_trigger_step
-          inputResources:
-            - name: gitlabRepo
-          integrations:
-            - name: aidan_slack
-            - name: aidan_email
-            - name: aidan_jira
-          runtime:
-            type: host
-        execution:
-          onStart:
-            - echo "Prepping build environment"
-        #    - send_notification aidan_slack
-        #    - send_notification aidan_email -recipients @("aidan@shippable.com")
-        #    - send_notification aidan_email -recipients @("aidan@shippable.com") -attach-logs -show-failing-commands
-          onExecute:
-            - 'echo "step_node_name: $step_node_name"'
-            - 'echo "step_node_id: $step_node_id"'
-            - 'echo "step_node_pool_name: $step_node_pool_name"'
-            - cd "$res_gitlabRepo_resourcePath"
-            - Set-Content -Path "testPayload.json" -Value "{'username':'Test','attachments':[{'pretext':'This is','text':'to test','color':'#5183a0'}],'icon_url':'${opt_icon_url}'}"
-            - send_notification aidan_slack -payload "testPayload.json"
-            - send_notification aidan_jira -project-id "TES" -type "Task" -summary "Testing $step_id" -attach-file "shippable.yml"
-            - ls
-            
-       #     - send_notification aidan_email -recipients @("aidan@shippable.com") -attachments @("shippable.yml","shippable.resources.yml")
-          onSuccess:
-            - echo "Job well done!"
-       #     - $global:NOTIFY_COLOR = "#5183a0"
-       #     - Write-Output $NOTIFY_COLOR
-            - send_notification aidan_slack -text "This is my string."
-          onFailure:
-            - echo "uh oh, something went wrong"
-            - send_notification aidan_slack
-          onComplete: #always
-            - echo "Cleaning up some stuff"
-            - send_notification aidan_slack
           onCancel:
             - echo "Someone cancelled the job"
