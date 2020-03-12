@@ -26,8 +26,6 @@ pipelines:
      #     affinityGroup: groupone
           inputSteps:
             - name: in_trigger_step
-          integrations:
-            - name: aidan_aws
           runtime:
             type: image
             image:
