@@ -206,8 +206,8 @@ pipelines:
               custom:
                 name: test/node
                 tag: "10"
-                autoPull: true	
-                registry: aidan_gcloud
+            #    autoPull: true	
+            #    registry: aidan_gcloud
         execution:
           onStart:
             - echo "Prepping build environment"
