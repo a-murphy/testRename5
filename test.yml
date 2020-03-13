@@ -216,7 +216,7 @@ pipelines:
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
             - aws sts get-caller-identity
-            - replicate_resource nodeRepoResource2 gitlabResource -match-settings
+            - replicate_resource nodeRepoResource2 gitlabRepo -match-settings
             - replicate_resource nodeRepoResource2 dockerImage -match-settings
         #    - ssh -o StrictHostKeyChecking=no -o NumberOfPasswordPrompts=0 -i $env:USERPROFILE\.ssh\vmCluster root@165.227.59.154 "cat test.txt"
           #  - cat test.txt
