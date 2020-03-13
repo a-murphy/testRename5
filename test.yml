@@ -184,7 +184,7 @@ pipelines:
             - name: awsRemoteFile
             - name: artifactoryRemoteFile
             - name: gcloudRemoteFile
-            - name: ftpRemoteFile2
+        #    - name: ftpRemoteFile2
         #    - name: vmCluster
          #   - name: dockerImage
          #   - name: awsImage
@@ -223,7 +223,7 @@ pipelines:
             - cat "${res_artifactoryRemoteFile_resourcePath}\testfile.txt"
             - cat "${res_awsRemoteFile_resourcePath}\testfile.txt"
             - cat "${res_gcloudRemoteFile_resourcePath}\testfile.txt"
-            - cat "${res_ftpRemoteFile2_resourcePath}\test.txt"
+         #   - cat "${res_ftpRemoteFile2_resourcePath}\test.txt"
             - $test = find_step_configuration_value "testing123"
             #- if [ -z "$test" ]; then echo "empty"; fi
             #- if [ "$test" == "null" ]; then echo "null"; fi
