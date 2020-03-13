@@ -239,8 +239,8 @@ pipelines:
             - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
             - cd .. 
             - ls
-            - mkdir (Join-Path $env:step_workspace_dir "upload/tests/$step_id")
-            - cp testresults.xml (Join-Path $env:step_workspace_dir "upload/tests/$step_id")
+            - mkdir (Join-Path $step_workspace_dir "upload/tests/$step_id")
+            - cp testresults.xml (Join-Path $step_workspace_dir "upload/tests/$step_id")
             #- save_tests testresults.xml
             
           onSuccess:
