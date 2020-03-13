@@ -206,7 +206,7 @@ pipelines:
               custom:
                 name: test/node
                 tag: "10"
-            #    autoPull: true	
+                autoPull: false	
             #    registry: aidan_gcloud
         execution:
           onStart:
