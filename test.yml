@@ -231,10 +231,11 @@ pipelines:
             #- if [ "$test" == "null" ]; then echo "null"; fi
             #- if [ "$test" == "" ]; then echo "empty string"; fi
             - compare_git nodeRepoResource2
+            - compare_git nodeRepoResource2 -depth 2
             - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..HEAD~4
             - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..HEAD~4 -depth 2
-            - compare_git nodeRepoResource2 -depth 2
-            - compare_git nodeRepoResource2 -directories-only
+            - compare_git nodeRepoResource2 -commit-range master..HEAD~4 -directories-only
+            - compare_git nodeRepoResource2 -commit-range master..HEAD~4 -directories-only -depth 2
             - cd "$res_nodeRepoResource2_resourcePath"
             - ls
             - npm install
