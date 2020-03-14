@@ -232,7 +232,7 @@ pipelines:
             #- if [ "$test" == "" ]; then echo "empty string"; fi
             - compare_git nodeRepoResource2
             - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..HEAD~4
-             - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..HEAD~4 -depth 2
+            - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..HEAD~4 -depth 2
             - compare_git nodeRepoResource2 -depth 2
             - compare_git nodeRepoResource2 -directories-only
             - cd "$res_nodeRepoResource2_resourcePath"
