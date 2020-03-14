@@ -230,6 +230,8 @@ pipelines:
             #- if [ -z "$test" ]; then echo "empty"; fi
             #- if [ "$test" == "null" ]; then echo "null"; fi
             #- if [ "$test" == "" ]; then echo "empty string"; fi
+            - compare_git nodeRepoResource2
+            - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..windows
             - cd "$res_nodeRepoResource2_resourcePath"
             - ls
             - npm install
