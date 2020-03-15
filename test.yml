@@ -37,7 +37,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: aidan_bitbucket
-      path: aidan/sample_pipelines
+      path: a-murphy/sample_pipelines
       buildOn:
          pullRequestCreate: true
          pullRequestClose: false
