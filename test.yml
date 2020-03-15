@@ -280,12 +280,15 @@ pipelines:
             - 'echo "step_node_name: $env:step_node_name"'
             - 'echo "step_node_id: $env:step_node_id"'
             - 'echo "step_node_pool_name: $env:step_node_pool_name"'
+            - update_commit_status bbsRepo -context "Windows" -message "testing step $step_id" -status failed
             - export_run_variables
             - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
             - cd "$env:res_bbsRepo_resourcePath"
+            - sleep 15
             - ls
           onSuccess:
             - echo "Job well done!"
+            - update_commit_status bbsRepo -context "Windows"
           onFailure:
             - echo "uh oh, something went wrong"
           onComplete: #always
