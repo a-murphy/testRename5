@@ -33,6 +33,17 @@ resources:
          releaseCreate: true
          tagCreate: true
    #   shallowDepth: 100
+  - name: bitbucketRepo
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_bitbucket
+      path: aidan/sample_pipelines
+      buildOn:
+         pullRequestCreate: true
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
+    #  shallowDepth: 1
   - name: bbsRepo
     type: GitRepo
     configuration:
@@ -43,7 +54,6 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
-    #  shallowDepth: 1
   - name: gitlabRepo
     type: GitRepo
     configuration:
@@ -337,5 +347,29 @@ pipelines:
           onComplete: #always
             - echo "Cleaning up some stuff"
             - send_notification aidan_slack
+          onCancel:
+            - echo "Someone cancelled the job"
+            
+      - name: bitbucket_step
+        type: PowerShell
+        configuration:
+          nodePool: win-pool-2
+          inputSteps:
+            - name: in_trigger_step
+          inputResources:
+            - name: bitbucketRepo
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - update_commit_status bitbucketRepo -context "Windows" -message "testing step $step_id" -status failure
+            - sleep 15
+          onSuccess:
+            - echo "Job well done!"
+            - update_commit_status bitbucketRepo -context "Windows"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete: #always
+            - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
