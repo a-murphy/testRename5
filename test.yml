@@ -33,6 +33,17 @@ resources:
          releaseCreate: true
          tagCreate: true
    #   shallowDepth: 100
+  - name: gradleRepoResource
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/sample_java_postgresql
+      buildOn:
+         pullRequestCreate: true
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
+   #   shallowDepth: 100
   - name: bitbucketRepo
     type: GitRepo
     configuration:
@@ -373,3 +384,12 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
+
+      - name: gradle_step
+        type: GradleBuild
+        configuration:
+          nodePool: win-pool-2
+          inputSteps:
+            - name: in_trigger_step
+          inputResources:
+            - name: gradleRepo
