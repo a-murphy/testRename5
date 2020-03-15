@@ -212,6 +212,7 @@ pipelines:
             #    registry: aidan_gcloud
         execution:
           onStart:
+            - update_commit_status nodeRepoResource2
             - echo "Prepping build environment"
           onExecute:
             - 'echo "step_node_name: $step_node_name"'
@@ -239,6 +240,7 @@ pipelines:
             - compare_git nodeRepoResource2 -commit-range master..HEAD~4 -directories-only -depth 2
             - cd "$res_nodeRepoResource2_resourcePath"
             - ls
+            - update_commit_status nodeRepoResource2 -context "testing step $step_id"
             - npm install
             - cd tests
             - ../node_modules/.bin/mocha --recursive "**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=../testresults.xml
@@ -251,8 +253,10 @@ pipelines:
             #- save_tests testresults.xml
             
           onSuccess:
+            - update_commit_status nodeRepoResource2
             - echo "Job well done!"
           onFailure:
+            - update_commit_status nodeRepoResource2 -status success
             - echo "uh oh, something went wrong"
           onComplete: #always
             - echo "Cleaning up some stuff"
