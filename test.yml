@@ -230,7 +230,7 @@ pipelines:
                 name: test/node
                 tag: "10"
                 autoPull: false	
-            #    registry: aidan_gcloud
+                registry: aidan_gcloud
         execution:
           onStart:
             - update_commit_status nodeRepoResource2
@@ -393,3 +393,9 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: gradleRepo
+          integrations:
+            - name: aidan_artifactory
+          sourceLocation: .
+          gradleCommand: build
+          configFileLocation: .
+          configFileName: gradle
