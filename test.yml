@@ -393,12 +393,13 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: gradleRepoResource
+            - name: artifactoryRemoteFile
           integrations:
             - name: aidan_artifactory
           sourceLocation: .
           gradleCommand: build
           configFileLocation: .
-          configFileName: gradle
+          configFileName: testfile.txt
           runtime:
             type: image
             image:
