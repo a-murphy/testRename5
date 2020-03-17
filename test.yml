@@ -495,5 +495,7 @@ pipelines:
           mvnCommand: "install -P release"
           inputResources:
             - name: examples_repo
+          inputSteps:
+            - name: in_trigger_step
           integrations:
             - name: aidan_artifactory
