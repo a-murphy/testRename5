@@ -132,6 +132,12 @@ resources:
       source: aidan_artifactory
       fileLocation:  example-repo-local
       fileName: testfile.txt
+  - name: artifactoryFile
+    type: FileSpec
+    configuration:     
+      sourceArtifactory: aidan_artifactory
+      target:  example-repo-local
+      pattern: testfile.txt
   - name: ftpRemoteFile2
     type: RemoteFile
     configuration:     
@@ -393,7 +399,7 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: gradleRepoResource
-            - name: artifactoryRemoteFile
+            - name: artifactoryFile
           integrations:
             - name: aidan_artifactory
           sourceLocation: .
