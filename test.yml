@@ -412,16 +412,31 @@ pipelines:
           inputResources:
             - name: gradleRepoResource
             - name: artifactoryFile
-          outputResources:
-            - name: buildInfo
           integrations:
             - name: aidan_artifactory
           sourceLocation: .
           gradleCommand: build
           configFileLocation: .
           configFileName: testfile.txt
-          autoPublishBuildInfo: true
+          autoPublishBuildInfo: false
           forceXrayScan: false
+          runtime:
+            type: image
+            image:
+              custom:
+                name: test/node
+                tag: "10"
+                autoPull: false
+      - name: publish_step
+        type: PublishBuildInfo
+        configuration:
+          nodePool: win-pool-2
+          inputSteps:
+            - name: gradle_step
+          outputResources:
+            - name: buildInfo
+          autoPublishBuildInfo: true
+          forceXrayScan: true
           runtime:
             type: image
             image:
