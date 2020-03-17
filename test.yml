@@ -436,6 +436,7 @@ pipelines:
           outputResources:
             - name: buildInfo
           forceXrayScan: true
+          envExclude: "buildinfo.env.PRO*"
           runtime:
             type: image
             image:
