@@ -144,6 +144,12 @@ resources:
       source: aidan_ftp
       fileLocation: files
       fileName: test.txt
+  - name: buildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: aidan_artifactory
+      buildName:  name
+      buildNumber: 1
 
 pipelines:
   - name: test_pipeline_windows
@@ -400,6 +406,8 @@ pipelines:
           inputResources:
             - name: gradleRepoResource
             - name: artifactoryFile
+          outputResources:
+            - name: buildInfo
           integrations:
             - name: aidan_artifactory
           sourceLocation: .
