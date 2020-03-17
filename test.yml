@@ -399,3 +399,10 @@ pipelines:
           gradleCommand: build
           configFileLocation: .
           configFileName: gradle
+          runtime:
+            type: image
+            image:
+              custom:
+                name: test/node
+                tag: "10"
+                autoPull: false
