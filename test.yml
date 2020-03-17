@@ -435,7 +435,6 @@ pipelines:
             - name: gradle_step
           outputResources:
             - name: buildInfo
-          autoPublishBuildInfo: true
           forceXrayScan: true
           runtime:
             type: image
