@@ -406,6 +406,8 @@ pipelines:
           gradleCommand: build
           configFileLocation: .
           configFileName: testfile.txt
+          autoPublishBuildInfo: true
+          forceXrayScan: true
           runtime:
             type: image
             image:
