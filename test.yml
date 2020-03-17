@@ -150,6 +150,12 @@ resources:
       sourceArtifactory: aidan_artifactory
       buildName:  name
       buildNumber: 1
+  - name: buildInfo2
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: aidan_artifactory
+      buildName:  name2
+      buildNumber: 10
 
 pipelines:
   - name: test_pipeline_windows
@@ -416,6 +422,21 @@ pipelines:
           configFileName: testfile.txt
           autoPublishBuildInfo: true
           forceXrayScan: true
+          runtime:
+            type: image
+            image:
+              custom:
+                name: test/node
+      - name: xrayScan
+        type: XrayScan
+        configuration:
+          nodePool: win-pool-2
+          inputResources:
+            - name: buildInfo
+          outputResources:
+            - name: buildInfo2
+          integrations:
+            - name: aidan_artifactory
           runtime:
             type: image
             image:
