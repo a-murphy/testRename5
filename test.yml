@@ -156,6 +156,13 @@ resources:
       sourceArtifactory: aidan_artifactory
       buildName:  name2
       buildNumber: 10
+  - name: examples_repo
+    type: GitRepo
+    configuration:
+      path: a-murphy/project-examples
+      gitProvider: aidan_github
+      branches:
+        include: master
 
 pipelines:
   - name: test_pipeline_windows
@@ -479,3 +486,14 @@ pipelines:
                 name: test/node
                 tag: "10"
                 autoPull: false
+      - name: BuildSample
+        type: MvnBuild
+        configuration:
+          sourceLocation: artifactory-maven-plugin-example
+          configFileLocation: .
+          configFileName: config
+          mvnCommand: "install -P release"
+          inputResources:
+            - name: examples_repo
+          integrations:
+            - name: aidan_artifactory
