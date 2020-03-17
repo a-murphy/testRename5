@@ -421,7 +421,7 @@ pipelines:
           configFileLocation: .
           configFileName: testfile.txt
           autoPublishBuildInfo: true
-          forceXrayScan: true
+          forceXrayScan: false
           runtime:
             type: image
             image:
