@@ -456,7 +456,7 @@ pipelines:
           includeDependencies: false
           status: test
           comment: testing1234
-          copy: true
+          copy: false
           runtime:
             type: image
             image:
