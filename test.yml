@@ -1,12 +1,12 @@
 pipelines:
   - name: test_pipeline_windows
-    configuration:
-      nodePool: windows
+  #  configuration:
+  #    nodePool: windows
     steps:
       - name: in_trigger_step
         type: PowerShell
         configuration:    
-          nodePool: windows
+   #       nodePool: windows
           affinityGroup: groupone
           runtime:            
             type: image
@@ -18,7 +18,7 @@ pipelines:
       - name: main_step
         type: PowerShell
         configuration:
-          nodePool: windows
+    #      nodePool: windows
           environmentVariables:
             versionTag: testTag
             testNumber: 5
