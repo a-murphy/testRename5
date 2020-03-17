@@ -136,8 +136,8 @@ resources:
     type: FileSpec
     configuration:     
       sourceArtifactory: aidan_artifactory
-      target:  example-repo-local
-      pattern: testfile.txt
+      target:  .
+      pattern: example-repo-local/testfile.txt
   - name: ftpRemoteFile2
     type: RemoteFile
     configuration:     
