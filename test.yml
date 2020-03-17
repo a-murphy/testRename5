@@ -427,6 +427,8 @@ pipelines:
             image:
               custom:
                 name: test/node
+                tag: "10"
+                autoPull: false
       - name: xrayScan
         type: XrayScan
         configuration:
@@ -435,8 +437,6 @@ pipelines:
             - name: buildInfo
           outputResources:
             - name: buildInfo2
-          integrations:
-            - name: aidan_artifactory
           runtime:
             type: image
             image:
