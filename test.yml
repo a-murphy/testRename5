@@ -498,6 +498,8 @@ pipelines:
             - name: examples_repo
           inputSteps:
             - name: in_trigger_step
+          outputResources:
+            - name: buildInfo2
           integrations:
             - name: aidan_artifactory
           autoPublishBuildInfo: true
