@@ -500,3 +500,5 @@ pipelines:
             - name: in_trigger_step
           integrations:
             - name: aidan_artifactory
+          autoPublishBuildInfo: true
+          forceXrayScan: true
