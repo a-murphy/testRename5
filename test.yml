@@ -512,7 +512,6 @@ pipelines:
           nodePool: win-pool-2
           sourceLocation: .
           repositoryName: example-repo-local
-          npmCommand: "install"
           inputResources:
             - name: nodeRepoResource2
           inputSteps:
