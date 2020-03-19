@@ -517,10 +517,11 @@ pipelines:
             - name: buildInfo2
           integrations:
             - name: aidan_artifactory
+          autoPublishBuildInfo: true
+          forceXrayScan: false
+        execution:
           onStart:
             - '$env:testing = "testing1234"'
-          autoPublishBuildInfo: false
-          forceXrayScan: false
       - name: npmBuild
         type: NpmBuild
         configuration:
