@@ -526,7 +526,7 @@ pipelines:
           sourceLocation: .
           repositoryName: example-repo-local
           inputResources:
-            - name: nodeRepoResource2
+            - name: nodeRepoResourceNoInstall
           inputSteps:
             - name: in_trigger_step
           outputResources:
