@@ -511,6 +511,7 @@ pipelines:
         configuration:
           nodePool: win-pool-2
           sourceLocation: .
+          repositoryName: example-repo-local
           npmCommand: "install"
           inputResources:
             - name: nodeRepoResource2
@@ -520,5 +521,3 @@ pipelines:
             - name: buildInfo2
           integrations:
             - name: aidan_artifactory
-          autoPublishBuildInfo: true
-          forceXrayScan: true
