@@ -505,7 +505,7 @@ pipelines:
           integrations:
             - name: aidan_artifactory
           autoPublishBuildInfo: true
-          forceXrayScan: true
+          forceXrayScan: false
       - name: npmBuild
         type: NpmBuild
         configuration:
