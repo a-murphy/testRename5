@@ -506,3 +506,19 @@ pipelines:
             - name: aidan_artifactory
           autoPublishBuildInfo: true
           forceXrayScan: true
+      - name: npmBuild
+        type: NpmBuild
+        configuration:
+          nodePool: win-pool-2
+          sourceLocation: .
+          npmCommand: "install"
+          inputResources:
+            - name: nodeRepoResource2
+          inputSteps:
+            - name: in_trigger_step
+          outputResources:
+            - name: buildInfo2
+          integrations:
+            - name: aidan_artifactory
+          autoPublishBuildInfo: true
+          forceXrayScan: true
