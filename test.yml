@@ -22,6 +22,19 @@ resources:
          releaseCreate: true
          tagCreate: true
    #   shallowDepth: 100
+  - name: nodeRepoResourceNoInstall
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/sample_node
+      buildOn:
+         pullRequestCreate: true
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
+      branches:
+        include: "install-nothing"
+   #   shallowDepth: 100
   - name: nodeRepoResource2
     type: GitRepo
     configuration:
