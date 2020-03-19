@@ -174,7 +174,7 @@ resources:
     configuration:
       sourceDistribution: aidan_distribution
       name: releaseBundle
-      version: 10
+      version: "10"
       isSigned: false
   - name: examples_repo
     type: GitRepo
@@ -548,10 +548,10 @@ pipelines:
         configuration:
           nodePool: win-pool-2
           releaseBundleName:        myReleaseBundle
-          releaseBundleVersion:     $run_id
+          releaseBundleVersion:     "$run_id"
           dryRun:                   true
           sign:                     true
-          storeAtSourceArtifactory: false
+          storeAtSourceArtifactory: "false"
           description:              "my description"
           releaseNotes:                         
             syntax:                markdown
