@@ -169,6 +169,13 @@ resources:
       sourceArtifactory: aidan_artifactory
       buildName:  name2
       buildNumber: 10
+  - name: releaseBundle
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: aidan_distribution
+      name: releaseBundle
+      version: 10
+      isSigned: false
   - name: examples_repo
     type: GitRepo
     configuration:
@@ -536,3 +543,24 @@ pipelines:
             - name: buildInfo2
           integrations:
             - name: aidan_artifactory
+      - name: createReleaseBundle
+        type: CreateReleaseBundle
+        configuration:
+          nodePool: win-pool-2
+          releaseBundleName:        myReleaseBundle
+          releaseBundleVersion:     $run_id
+          dryRun:                   true
+          sign:                     true
+          storeAtSourceArtifactory: false
+          description:              "my description"
+          releaseNotes:                         
+            syntax:                markdown
+            content:               "my release notes"
+          inputResources:
+            - name: buildInfo
+            - name: buildInfo2
+          inputSteps:
+            - name: BuildSample
+          outputResources:
+            - name: releaseBundle
+ 
