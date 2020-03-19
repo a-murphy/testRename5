@@ -331,6 +331,8 @@ pipelines:
             - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
             - cd "$env:res_bbsRepo_resourcePath"
             - sleep 15
+            - sleep 15
+            - sleep 15
             - ls
           onSuccess:
             - echo "Job well done!"
