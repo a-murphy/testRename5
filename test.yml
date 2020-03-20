@@ -629,7 +629,7 @@ pipelines:
             - name: releaseBundle2
               trigger: false   
             - name: distributionRule
-            - name: distributionRule
+       #     - name: distributionRule2
           outputResources:
             - name: releaseBundle3
  
