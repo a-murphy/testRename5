@@ -194,12 +194,11 @@ resources:
     type: DistributionRule
     configuration:
       sourceDistribution: aidan_distribution
-      serviceName: service
-      siteName: site
-      cityName: city
+      serviceName: *
+      siteName: *
+      cityName: *
       countryCodes:
-        - "1"
-        - "2"
+        - "*"
   - name: distributionRule2
     type: DistributionRule
     configuration:
