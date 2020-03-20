@@ -198,8 +198,8 @@ resources:
       siteName: site
       cityName: city
       countryCodes:
-        - 1
-        - 2
+        - "1"
+        - "2"
   - name: distributionRule2
     type: DistributionRule
     configuration:
@@ -208,7 +208,7 @@ resources:
       siteName: site2
       cityName: city2
       countryCodes:
-        - 3
+        - "3"
   - name: examples_repo
     type: GitRepo
     configuration:
