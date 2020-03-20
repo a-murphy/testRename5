@@ -563,9 +563,9 @@ pipelines:
         configuration:
           nodePool: win-pool-2
           releaseBundleName:        myReleaseBundle
-          releaseBundleVersion:     "${run_id}"
+          releaseBundleVersion:     "${run_number}"
           dryRun:                   true
-          sign:                     true
+          sign:                     false
           storeAtSourceArtifactory: "false"
           description:              "my description"
           releaseNotes:                         
@@ -573,7 +573,7 @@ pipelines:
             content:               "my release notes"
           inputResources:
           #  - name: aql
-            - name: buildInfo
+          #  - name: buildInfo
             - name: buildInfo2
           inputSteps:
             - name: BuildSample
