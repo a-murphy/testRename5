@@ -596,7 +596,7 @@ pipelines:
           nodePool: win-pool-2
           repositoryName: example-repo-local
           autoPublishBuildInfo: true
-          forceXrayScan: true
+          forceXrayScan: false
           inputSteps:
             - name: npmBuild
           outputResources:
