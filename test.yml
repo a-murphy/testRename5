@@ -332,8 +332,8 @@ pipelines:
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
             - aws sts get-caller-identity
-            - replicate_resource nodeRepoResource2 gitlabRepo
-            - replicate_resource awsImage dockerImage
+         #   - replicate_resource nodeRepoResource2 gitlabRepo
+         #   - replicate_resource awsImage dockerImage
             - bump_semver 1.2.3 minor
             - bump_semver v1.2.3 minor
             - bump_semver 1.2.3 major
