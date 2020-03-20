@@ -594,7 +594,6 @@ pipelines:
         type: NpmPublish
         configuration:
           nodePool: win-pool-2
-          sourceLocation: .
           repositoryName: example-repo-local
           inputSteps:
             - name: npmBuild
