@@ -538,7 +538,7 @@ pipelines:
           outputResources:
             - name: buildInfo2
           integrations:
-            - name: aidan_artifactory
+            - name: aidan_demoartifactory
           autoPublishBuildInfo: true
           forceXrayScan: false
         execution:
