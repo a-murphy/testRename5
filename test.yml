@@ -183,6 +183,32 @@ resources:
       name: releaseBundle
       version: "10"
       isSigned: false
+  - name: releaseBundle3
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: aidan_distribution
+      name: releaseBundle
+      version: "10"
+      isSigned: false
+  - name: distributionRule
+    type: DistributionRule
+    configuration:
+      sourceDistribution: aidan_distribution
+      serviceName: service
+      siteName: site
+      cityName: city
+      countryCodes:
+        - 1
+        - 2
+  - name: distributionRule2
+    type: DistributionRule
+    configuration:
+      sourceDistribution: aidan_distribution
+      serviceName: service2
+      siteName: site2
+      cityName: city2
+      countryCodes:
+        - 3
   - name: examples_repo
     type: GitRepo
     configuration:
@@ -594,4 +620,16 @@ pipelines:
             - name: releaseBundle
           outputResources:
             - name: releaseBundle2
+      - name: distributeReleaseBundle
+        type: DistributeReleaseBundle
+        configuration:
+          nodePool: win-pool-2
+          dryRun: true
+          inputResources:
+            - name: releaseBundle2
+              trigger: false   
+            - name: distributionRule
+            - name: distributionRule
+          outputResources:
+            - name: releaseBundle3
  
