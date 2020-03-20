@@ -302,7 +302,7 @@ pipelines:
         #    - name: ftpRemoteFile2
         #    - name: vmCluster
          #   - name: dockerImage
-            - name: awsImage
+         #   - name: awsImage
          #   - name: gcloudImage
          #   - name: artifactoryImage
           outputResources:
