@@ -589,6 +589,7 @@ pipelines:
       - name: signReleaseBundle
         type: SignReleaseBundle
         configuration:
+          nodePool: win-pool-2
           inputResources:
             - name: releaseBundle
           outputResources:
