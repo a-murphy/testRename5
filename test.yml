@@ -623,7 +623,7 @@ pipelines:
         type: DistributeReleaseBundle
         configuration:
           nodePool: win-pool-2
-          dryRun: true
+          dryRun: false
           inputResources:
             - name: releaseBundle2
               trigger: false   
