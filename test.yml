@@ -586,6 +586,18 @@ pipelines:
             - name: nodeRepoResourceNoInstall
           inputSteps:
             - name: in_trigger_step
+   #       outputResources:
+   #         - name: buildInfo2
+          integrations:
+            - name: aidan_artifactory
+      - name: npmPublish
+        type: NpmPublish
+        configuration:
+          nodePool: win-pool-2
+          sourceLocation: .
+          repositoryName: example-repo-local
+          inputSteps:
+            - name: npmBuild
           outputResources:
             - name: buildInfo2
           integrations:
