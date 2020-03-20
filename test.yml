@@ -183,6 +183,21 @@ resources:
       gitProvider: aidan_github
       branches:
         include: master
+  - name: aql
+    type: Aql
+    configuration:
+      sourceArtifactory: aidan_artifactory
+      query: 'builds.find({"module.dependency.item.@license":{"$nmatch":"test-*"}})'
+      addedProperties:
+        key1: val1
+        key2: val2
+      mappings:
+        - name: mapping1
+          input: input1 
+          output: output1
+        - name: mapping2
+          input: input2
+          output: output2
 
 pipelines:
   - name: test_pipeline_windows
@@ -548,7 +563,7 @@ pipelines:
         configuration:
           nodePool: win-pool-2
           releaseBundleName:        myReleaseBundle
-          releaseBundleVersion:     "$run_id"
+          releaseBundleVersion:     "${run_id}"
           dryRun:                   true
           sign:                     true
           storeAtSourceArtifactory: "false"
@@ -557,8 +572,9 @@ pipelines:
             syntax:                markdown
             content:               "my release notes"
           inputResources:
-            - name: buildInfo
-            - name: buildInfo2
+            - name: aql
+          #  - name: buildInfo
+          #  - name: buildInfo2
           inputSteps:
             - name: BuildSample
           outputResources:
