@@ -166,7 +166,7 @@ resources:
   - name: buildInfo2
     type: BuildInfo
     configuration:
-      sourceArtifactory: aidan_artifactory
+      sourceArtifactory: aidan_demoartifactory
       buildName:  name2
       buildNumber: 10
   - name: releaseBundle
