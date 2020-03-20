@@ -176,6 +176,13 @@ resources:
       name: releaseBundle
       version: "10"
       isSigned: false
+  - name: releaseBundle2
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: aidan_distribution
+      name: releaseBundle
+      version: "10"
+      isSigned: false
   - name: examples_repo
     type: GitRepo
     configuration:
@@ -564,7 +571,7 @@ pipelines:
           nodePool: win-pool-2
           releaseBundleName:        myReleaseBundle
           releaseBundleVersion:     "${run_number}"
-          dryRun:                   true
+          dryRun:                   false
           sign:                     false
           storeAtSourceArtifactory: "false"
           description:              "my description"
@@ -579,4 +586,11 @@ pipelines:
             - name: BuildSample
           outputResources:
             - name: releaseBundle
+      - name: signReleaseBundle
+        type: SignReleaseBundle
+        configuration:
+          inputResources:
+            - name: releaseBundle
+          outputResources:
+            - name: releaseBundle2
  
