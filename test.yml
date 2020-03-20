@@ -190,9 +190,7 @@ resources:
       query: 'builds.find({"module.dependency.item.@license":{"$nmatch":"test-*"}})'
       addedProperties:
         key1: val1
-        key2:
-         - val21
-         - val22
+        key2: val2
       mappings:
         - name: mapping1
           input: input1 
