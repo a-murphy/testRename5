@@ -572,9 +572,9 @@ pipelines:
             syntax:                markdown
             content:               "my release notes"
           inputResources:
-            - name: aql
-          #  - name: buildInfo
-          #  - name: buildInfo2
+          #  - name: aql
+            - name: buildInfo
+            - name: buildInfo2
           inputSteps:
             - name: BuildSample
           outputResources:
