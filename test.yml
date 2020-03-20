@@ -334,6 +334,21 @@ pipelines:
             - aws sts get-caller-identity
             - replicate_resource nodeRepoResource2 gitlabRepo
             - replicate_resource awsImage dockerImage
+            - bump_semver 1.2.3 minor
+            - bump_semver v1.2.3 minor
+            - bump_semver 1.2.3 major
+            - bump_semver 1.2.3 patch
+            - bump_semver 1.2.3 alpha
+            - bump_semver 1.2.3 beta
+            - bump_semver 1.2.3 rc
+            - bump_semver 1.2.3 final
+            - bump_semver 1.2.3-alpha.1 major
+            - bump_semver 1.2.3-alpha.1 major
+            - bump_semver 1.2.3-alpha.1 patch
+            - bump_semver 1.2.3-alpha.1 alpha
+            - bump_semver 1.2.3-alpha.1 beta
+            - bump_semver 1.2.3-alpha.1 rc
+            - bump_semver 1.2.3-alpha.1 final
         #    - ssh -o StrictHostKeyChecking=no -o NumberOfPasswordPrompts=0 -i $env:USERPROFILE\.ssh\vmCluster root@165.227.59.154 "cat test.txt"
           #  - cat test.txt
             - cat "${res_artifactoryRemoteFile_resourcePath}\testfile.txt"
