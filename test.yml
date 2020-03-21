@@ -46,6 +46,17 @@ resources:
          releaseCreate: true
          tagCreate: true
    #   shallowDepth: 100
+  - name: goRepo
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/go_app
+      buildOn:
+         pullRequestCreate: true
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
+   #   shallowDepth: 100
   - name: gradleRepoResource
     type: GitRepo
     configuration:
@@ -659,4 +670,40 @@ pipelines:
        #     - name: distributionRule2
           outputResources:
             - name: releaseBundle3
+      - name: goBuild
+        type: GoBuild
+        configuration:
+          nodePool: win-pool-2
+          sourceLocation: .
+          outputLocation: output
+          outputFile: goOutput
+          repository: go-test
+          inputResources:
+            - name: goRepo
+      - name: goPublishBinary
+        type: GoBuild
+        configuration:
+          nodePool: win-pool-2
+          forceXrayScan: true
+          autoPublishBuildInfo: true
+          targetRepository: go-test
+          outputResources:
+            - name: buildInfo
+          inputSteps:
+            - name: goBuild
+      - name: goPublishModule
+        type: GoBuild
+        configuration:
+          nodePool: win-pool-2
+          forceXrayScan: true
+          autoPublishBuildInfo: true
+          targetRepository: go-test
+          sourceLocation: .
+          version: 1.1.1
+          self: selfoption
+          outputResources:
+            - name: buildInfo
+          inputSteps:
+            - name: goBuild
+            
  
