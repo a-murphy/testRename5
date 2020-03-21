@@ -681,7 +681,7 @@ pipelines:
           inputResources:
             - name: goRepo
       - name: goPublishBinary
-        type: GoBuild
+        type: GoPublishBinary
         configuration:
           nodePool: win-pool-2
           forceXrayScan: true
@@ -692,7 +692,7 @@ pipelines:
           inputSteps:
             - name: goBuild
       - name: goPublishModule
-        type: GoBuild
+        type: GoPublishModule
         configuration:
           nodePool: win-pool-2
           forceXrayScan: true
