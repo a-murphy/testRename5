@@ -703,7 +703,8 @@ pipelines:
           self: selfoption
           outputResources:
             - name: buildInfo
-          inputSteps:
-            - name: goBuild
+          inputResources:
+            - name: goRepo
+            - name: artifactoryFile
             
  
