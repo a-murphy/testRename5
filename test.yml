@@ -680,6 +680,8 @@ pipelines:
           repository: go-test
           inputResources:
             - name: goRepo
+          integrations:
+            - name: aidan_artifactory
       - name: goPublishBinary
         type: GoPublishBinary
         configuration:
