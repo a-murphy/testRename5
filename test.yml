@@ -275,8 +275,8 @@ pipelines:
             - decrypt_file testencrypted.txt -output testunencrypted.txt -key key.pem
             - cat testunencrypted.txt
             - encrypt_string "encryptme" -key pub.pem
-            - $encryptedstring = (encrypt_string "encryptme" -key pub.pem)
-            - echo "$encryptedstring"
+            - $env:encryptedstring = (encrypt_string "encryptme" -key pub.pem)
+            - echo "$env:encryptedstring"
             - decrypt_string "$encryptedstring" -key key.pem
             - echo "executing task command 1"
             - echo "executing task command 2"
@@ -372,9 +372,9 @@ pipelines:
             - decrypt_file testencrypted.txt -output testunencrypted.txt -key key.pem
             - cat testunencrypted.txt
             - encrypt_string "encryptme" -key pub.pem
-            - $encryptedstring = (encrypt_string "encryptme" -key pub.pem)
+            - $env:encryptedstring = (encrypt_string "encryptme" -key pub.pem)
             - echo "$encryptedstring"
-            - decrypt_string "$encryptedstring" -key key.pem
+            - decrypt_string "$env:encryptedstring" -key key.pem
             - aws sts get-caller-identity
          #   - replicate_resource nodeRepoResource2 gitlabRepo
          #   - replicate_resource awsImage dockerImage
