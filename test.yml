@@ -277,7 +277,7 @@ pipelines:
             - encrypt_string "encryptme" -key pub.pem
             - $env:encryptedstring = (encrypt_string "encryptme" -key pub.pem)
             - echo "$env:encryptedstring"
-            - decrypt_string "$encryptedstring" -key key.pem
+            - decrypt_string "$env:encryptedstring" -key key.pem
             - echo "executing task command 1"
             - echo "executing task command 2"
             - echo $STEP_WORKSPACE_DIR
@@ -373,7 +373,7 @@ pipelines:
             - cat testunencrypted.txt
             - encrypt_string "encryptme" -key pub.pem
             - $env:encryptedstring = (encrypt_string "encryptme" -key pub.pem)
-            - echo "$encryptedstring"
+            - echo "$env:encryptedstring"
             - decrypt_string "$env:encryptedstring" -key key.pem
             - aws sts get-caller-identity
          #   - replicate_resource nodeRepoResource2 gitlabRepo
