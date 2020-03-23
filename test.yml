@@ -259,7 +259,7 @@ pipelines:
      #         trigger: false
           integrations:
             - name: aidan_ssh
-            - name: aidan_docker
+   #         - name: aidan_docker
         execution:
           onExecute:
             - $gitPath = (Get-Command git).Path
