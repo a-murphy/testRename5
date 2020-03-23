@@ -734,7 +734,7 @@ pipelines:
           autoPublishBuildInfo: true
           targetRepository: go-test
           sourceLocation: .
-          version: "111"
+          version: "v1.1.1"
           self: true
           outputResources:
             - name: buildInfo
