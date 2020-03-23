@@ -162,6 +162,12 @@ resources:
       sourceArtifactory: aidan_artifactory
       target:  testfile.txt
       pattern: example-repo-local/testfile.txt
+  - name: artifactoryGoFile
+    type: FileSpec
+    configuration:     
+      sourceArtifactory: aidan_artifactory
+      target:  go-test
+      pattern: go-module
   - name: ftpRemoteFile2
     type: RemoteFile
     configuration:     
@@ -709,7 +715,7 @@ pipelines:
           nodePool: win-pool-2
           sourceLocation: .
           outputLocation: output
-          outputFile: goOutput
+          outputFile: go-module
           repository: go-test
           inputResources:
             - name: goRepo
@@ -741,6 +747,6 @@ pipelines:
             - name: buildInfo
           inputResources:
             - name: goRepo
-            - name: artifactoryFile
+            - name: artifactoryGoFile
             
  
