@@ -570,7 +570,7 @@ pipelines:
             - name: gradle_step
           outputResources:
             - name: buildInfo
-          forceXrayScan: true
+          forceXrayScan: false
           envExclude: "buildinfo.env.PRO*"
           runtime:
             type: image
