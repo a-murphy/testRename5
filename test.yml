@@ -262,14 +262,13 @@ pipelines:
    #         - name: aidan_docker
         execution:
           onExecute:
-            - $gitPath = (Get-Command git).Path
-            - $tempPath = $env:Path
-            - $env:Path = $env:Path + ';' + ($gitPath -replace 'cmd\\git\.exe$','usr\bin')
+            - $env:tempPath = $env:Path
+            - $env:Path = $env:Path + ';' + ((Get-Command git).Path -replace 'cmd\\git\.exe$','usr\bin')
             - openssl genrsa -out key.pem 1024 | Out-Null
             - openssl rsa -in key.pem -text -noout
             - openssl rsa -in key.pem -pubout -out pub.pem
             - openssl rsa -in pub.pem -pubin -text -noout
-            - $env:path = $tempPath
+            - $env:path = $env:tempPath
             - echo "testing encryption" > testfile.txt
             - encrypt_file -output testencrypted.txt testfile.txt -key pub.pem
             - cat testencrypted.txt
@@ -359,19 +358,14 @@ pipelines:
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
-            - (Get-Command git).Path
-            - $gitPath = (Get-Command git).Path
-            - echo $gitPath
-            - $sslPath = ($gitPath -replace 'cmd\\git\.exe$','usr\bin')
-            - echo $sslPath
-            - $tempPath = $env:Path
-            - $env:Path = $env:Path + ';' + $sslPath
+            - $env:tempPath = $env:Path
+            - $env:Path = $env:Path + ';' + ((Get-Command git).Path -replace 'cmd\\git\.exe$','usr\bin')
             - echo $env:Path
             - openssl genrsa -out key.pem 1024 | Out-Null
             - openssl rsa -in key.pem -text -noout
             - openssl rsa -in key.pem -pubout -out pub.pem
             - openssl rsa -in pub.pem -pubin -text -noout
-            - $env:path = $tempPath
+            - $env:path = $env:tempPath
             - echo "testing encryption" > testfile.txt
             - encrypt_file -output testencrypted.txt testfile.txt -key pub.pem
             - cat testencrypted.txt
