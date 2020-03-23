@@ -262,6 +262,23 @@ pipelines:
             - name: aidan_docker
         execution:
           onExecute:
+            - $gitPath = (Get-Command git).Path
+            - $tempPath = $env:Path
+            - $env:Path = $env:Path + ';' + ($gitPath -replace 'cmd\\git\.exe$','usr\bin')
+            - openssl genrsa -out key.pem 1024 | Out-Null
+            - openssl rsa -in key.pem -text -noout
+            - openssl rsa -in key.pem -pubout -out pub.pem
+            - openssl rsa -in pub.pem -pubin -text -noout
+            - $env:path = $tempPath
+            - echo "testing encryption" > testfile.txt
+            - encrypt_file -output testencrypted.txt testfile.txt -key pub.pem
+            - cat testencrypted.txt
+            - decrypt_file testencrypted.txt -output testunencrypted.txt -key key.pem
+            - cat testunencrypted.txt
+            - encrypt_string "encryptme" -key pub.pem
+            - $encryptedstring = (encrypt_string "encryptme" -key pub.pem)
+            - echo "$encryptedstring"
+            - decrypt_string "$encryptedstring" -key key.pem
             - echo "executing task command 1"
             - echo "executing task command 2"
             - echo $STEP_WORKSPACE_DIR
