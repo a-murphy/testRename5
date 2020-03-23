@@ -360,8 +360,10 @@ pipelines:
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
             - $gitPath = (Get-Command git).Path
+            - $sslPath = ($gitPath -replace 'cmd\\git\.exe$','usr\bin')
+            - echo $sslPath
             - $tempPath = $env:Path
-            - $env:Path = $env:Path + ';' + ($gitPath -replace 'cmd\\git\.exe$','usr\bin')
+            - $env:Path = $env:Path + ';' + $sslPath
             - echo $env:Path
             - openssl genrsa -out key.pem 1024 | Out-Null
             - openssl rsa -in key.pem -text -noout
