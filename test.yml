@@ -359,6 +359,7 @@ pipelines:
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
+            - (Get-Command git).Path
             - $gitPath = (Get-Command git).Path
             - echo $gitPath
             - $sslPath = ($gitPath -replace 'cmd\\git\.exe$','usr\bin')
