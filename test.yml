@@ -362,6 +362,7 @@ pipelines:
             - $gitPath = (Get-Command git).Path
             - $tempPath = $env:Path
             - $env:Path = $env:Path + ';' + ($gitPath -replace 'cmd\\git\.exe$','usr\bin')
+            - echo $env:Path
             - openssl genrsa -out key.pem 1024 | Out-Null
             - openssl rsa -in key.pem -text -noout
             - openssl rsa -in key.pem -pubout -out pub.pem
