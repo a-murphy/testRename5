@@ -736,6 +736,7 @@ pipelines:
           sourceLocation: .
           version: "v1.1.1"
           self: true
+          dependencies: ALL
           outputResources:
             - name: buildInfo
           inputResources:
