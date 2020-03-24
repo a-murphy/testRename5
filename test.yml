@@ -166,7 +166,7 @@ resources:
     type: FileSpec
     configuration:     
       sourceArtifactory: aidan_artifactory
-      target:  go-module
+      target:  go-service
       pattern: go-test/go-module
   - name: ftpRemoteFile2
     type: RemoteFile
