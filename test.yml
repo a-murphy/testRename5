@@ -57,6 +57,11 @@ resources:
          releaseCreate: true
          tagCreate: true
    #   shallowDepth: 100
+  - name: goRepo2
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/artifactory-go-example
   - name: gradleRepoResource
     type: GitRepo
     configuration:
@@ -736,7 +741,7 @@ pipelines:
         type: GoPublishModule
         configuration:
           nodePool: win-pool-2
-          forceXrayScan: true
+          forceXrayScan: false
           autoPublishBuildInfo: true
           targetRepository: go-test
           sourceLocation: .
@@ -746,7 +751,6 @@ pipelines:
           outputResources:
             - name: buildInfo
           inputResources:
-            - name: goRepo
-            - name: artifactoryGoFile
+            - name: goRepo2
             
  
