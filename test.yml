@@ -566,13 +566,6 @@ pipelines:
           configFileName: testfile.txt
           autoPublishBuildInfo: false
           forceXrayScan: false
-          runtime:
-            type: image
-            image:
-              custom:
-                name: test/node
-                tag: "10"
-                autoPull: false
       - name: publish_step
         type: PublishBuildInfo
         configuration:
