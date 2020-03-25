@@ -757,7 +757,7 @@ pipelines:
         configuration:
           nodePool: win-pool-2
           chartPath: "my chart"
-          flags: -v
+          flags: -v 5
           autoPublishBuildInfo: true
           inputResources:
             - name: goRepo
