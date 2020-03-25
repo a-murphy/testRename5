@@ -393,7 +393,7 @@ pipelines:
             - $env:encryptedstring = (encrypt_string "encryptme" -key pub.pem)
             - echo "$env:encryptedstring"
             - decrypt_string "$env:encryptedstring" -key key.pem
-            - aws sts get-caller-identity
+         #   - aws sts get-caller-identity
          #   - replicate_resource nodeRepoResource2 gitlabRepo
          #   - replicate_resource awsImage dockerImage
             - bump_semver 1.2.3 minor
@@ -413,33 +413,39 @@ pipelines:
             - bump_semver 1.2.3-alpha.1 final
         #    - ssh -o StrictHostKeyChecking=no -o NumberOfPasswordPrompts=0 -i $env:USERPROFILE\.ssh\vmCluster root@165.227.59.154 "cat test.txt"
           #  - cat test.txt
-            - cat "${res_artifactoryRemoteFile_resourcePath}\testfile.txt"
-            - cat "${res_awsRemoteFile_resourcePath}\testfile.txt"
-            - cat "${res_gcloudRemoteFile_resourcePath}\testfile.txt"
+         #   - cat "${res_artifactoryRemoteFile_resourcePath}\testfile.txt"
+         #   - cat "${res_awsRemoteFile_resourcePath}\testfile.txt"
+          #  - cat "${res_gcloudRemoteFile_resourcePath}\testfile.txt"
          #   - cat "${res_ftpRemoteFile2_resourcePath}\test.txt"
-            - $test = find_step_configuration_value "testing123"
+           # - $test = find_step_configuration_value "testing123"
             #- if [ -z "$test" ]; then echo "empty"; fi
             #- if [ "$test" == "null" ]; then echo "null"; fi
             #- if [ "$test" == "" ]; then echo "empty string"; fi
-            - compare_git nodeRepoResource2
-            - compare_git nodeRepoResource2 -depth 2
+           # - compare_git nodeRepoResource2
+           # - compare_git nodeRepoResource2 -depth 2
             - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..HEAD~4 
             - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..HEAD~4 | Foreach ($file) { Write-Output "counted"} 
             - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..HEAD~4 -depth 2
             - compare_git nodeRepoResource2 -commit-range master..HEAD~4 -directories-only
             - compare_git nodeRepoResource2 -commit-range master..HEAD~4 -directories-only -depth 2
             - cd "$res_nodeRepoResource2_resourcePath"
-            - ls
-            - update_commit_status nodeRepoResource2 -context "testing step $step_id"
             - npm install
-            - cd tests
-            - ../node_modules/.bin/mocha --recursive "**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=../testresults.xml
-            - ../node_modules/.bin/istanbul --include-all-sources cover -root "../routes" ../node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "**/*.spec.js"
-            - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
-            - cd .. 
-            - ls
-            - mkdir (Join-Path $step_workspace_dir "upload/tests/$step_id")
-            - cp testresults.xml (Join-Path $step_workspace_dir "upload/tests/$step_id")
+            - mkdir testresults
+            - mkdir codecoverage
+            - $res_nodeRepoResource2_resourcePath/node_modules/.bin/mocha --recursive "tests/**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=testresults/testresults.xml
+            - $res_nodeRepoResource2_resourcePath/node_modules/.bin/istanbul --include-all-sources cover -root "routes" node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "tests/**/*.spec.js"
+            - $res_nodeRepoResource2_resourcePath/node_modules/.bin/istanbul report cobertura --dir codecoverage
+            - save_tests $res_nodeRepoResource2_resourcePath/testresults/testresults.xml
+#            - update_commit_status nodeRepoResource2 -context "testing step $step_id"
+#            - npm install
+#            - cd tests
+#            - ../node_modules/.bin/mocha --recursive "**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=../testresults.xml
+#            - ../node_modules/.bin/istanbul --include-all-sources cover -root "../routes" ../node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "**/*.spec.js"
+#            - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
+#            - cd .. 
+#            - ls
+#            - mkdir (Join-Path $step_workspace_dir "upload/tests/$step_id")
+#            - cp testresults.xml (Join-Path $step_workspace_dir "upload/tests/$step_id")
             #- save_tests testresults.xml
             
           onSuccess:
