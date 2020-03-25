@@ -756,7 +756,7 @@ pipelines:
         type: HelmPublish
         configuration:
           nodePool: win-pool-2
-          chartPath: "my chart/Chart.yml"
+          chartPath: "./my chart"
           flags: --debug
           autoPublishBuildInfo: true
           inputResources:
