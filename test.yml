@@ -755,6 +755,7 @@ pipelines:
       - name: helmPublish
         type: HelmPublish
         configuration:
+          nodePool: win-pool-2
           chartPath: "my chart"
           flags: -flagone -flagtwo test
           autoPublishBuildInfo: true
