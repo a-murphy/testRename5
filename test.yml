@@ -760,7 +760,7 @@ pipelines:
           flags: --debug
           autoPublishBuildInfo: true
           inputResources:
-            - name: goRepo
+            - name: gitRepoResource
           outputResources:
             - name: helmChart
             - name: buildInfo
