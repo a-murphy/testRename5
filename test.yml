@@ -759,7 +759,7 @@ pipelines:
           flags: -flagone -flagtwo test
           autoPublishBuildInfo: true
           inputResources:
-            - name: GoRepo
+            - name: goRepo
           outputResources:
             - name: helmChart
             - name: buildInfo
