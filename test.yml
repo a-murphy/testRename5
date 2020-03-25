@@ -428,10 +428,10 @@ pipelines:
             - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..HEAD~4 -depth 2
             - compare_git nodeRepoResource2 -commit-range master..HEAD~4 -directories-only
             - compare_git nodeRepoResource2 -commit-range master..HEAD~4 -directories-only -depth 2
-            - cd "$res_nodeRepoResource2_resourcePath"
+            - Push-Location "$res_nodeRepoResource2_resourcePath"
             - npm install
-            - mkdir testresults
-            - mkdir codecoverage
+            - New-Item testresults -Type Directory
+            - New-Item codecoverage -Type Directory
             - .\node_modules\.bin\mocha --recursive "tests/**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=testresults/testresults.xml
             - .\node_modules\.bin\istanbul --include-all-sources cover -root "routes" node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "tests/**/*.spec.js"
             - .\node_modules\.bin\istanbul report cobertura --dir codecoverage
