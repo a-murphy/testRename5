@@ -252,6 +252,13 @@ resources:
         - name: mapping2
           input: input2
           output: output2
+  - name: helmChart
+    type: HelmChart
+    configuration:
+      sourceArtifactory: aidan_artifactory
+      repository: example-repo-local
+      chart: my chart
+      version: v1.1.1
 
 pipelines:
   - name: test_pipeline_windows
@@ -745,5 +752,16 @@ pipelines:
             - name: buildInfo
           inputResources:
             - name: goRepo2
-            
+      - name: helmPublish
+        type: HelmPublish
+        configuration:
+          chartPath: "my chart"
+          flags: -flagone -flagtwo test
+          autoPublishBuildInfo: true
+          inputResources:
+            - name: GoRepo
+          outputResources:
+            - name: helmChart
+            - name: buildInfo
+ 
  
