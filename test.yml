@@ -323,7 +323,8 @@ pipelines:
             - add_run_variables runVariable1=$step_number 'runVariable2="A string with spaces."' runVariable3='A string with $.'
             - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
           #  - docker pull amurphy/test2:latest
-            - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
+            - mkdir test
+            - echo "this is to test $step_id" > test/textFile.txt
             - add_run_files /test testFolder1
             - add_run_files /test/textFile.txt file
             
