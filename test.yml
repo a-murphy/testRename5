@@ -313,7 +313,7 @@ pipelines:
             - echo "testing 1" > $pipeline_workspace_dir\testfile.txt
             - echo "testing 4" > $pipeline_workspace_dir\testfile2.txt
          #   - write_output myImage "imageTag=$run_number" "sha=test"
-         #   - add_run_files *.txt files
+            - add_run_files *.txt files
             - sleep 10
       #      - "[System.Security.Principal.WindowsIdentity]::GetCurrent().Name"
       #      - $global:profileEscaped = "$env:UserProfile" -replace("\\","/")
@@ -323,9 +323,9 @@ pipelines:
             - add_run_variables runVariable1=$step_number 'runVariable2="A string with spaces."' runVariable3='A string with $.'
             - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
           #  - docker pull amurphy/test2:latest
-         #   - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
-         #   - add_run_files /test testFolder1
-         #   - add_run_files /test/textFile.txt file
+            - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
+            - add_run_files /test testFolder1
+            - add_run_files /test/textFile.txt file
             
 
       - name: main_step
@@ -393,6 +393,12 @@ pipelines:
             - $env:encryptedstring = (encrypt_string "encryptme" -key pub.pem)
             - echo "$env:encryptedstring"
             - decrypt_string "$env:encryptedstring" -key key.pem
+            - restore_run_files files test1
+            - ls test1
+            - restore_run_files file test2
+            - ls test2
+            - restore_run_files folder1 test3
+            - ls test3
          #   - aws sts get-caller-identity
          #   - replicate_resource nodeRepoResource2 gitlabRepo
          #   - replicate_resource awsImage dockerImage
