@@ -259,6 +259,10 @@ resources:
       repository: example-repo-local
       chart: my chart
       version: v1.1.1
+  - name: test_trigger
+    type: CronTrigger
+    configuration:
+      interval: '15 15 * * *'
 
 pipelines:
   - name: test_pipeline_windows
@@ -482,6 +486,7 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: bbsRepo
+            - name: test_trigger
           runtime:
             type: host
         execution:
