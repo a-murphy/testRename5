@@ -295,7 +295,7 @@ pipelines:
             - encrypt_string "encryptme" -key pub.pem
             - $env:encryptedstring = (encrypt_string "encryptme" -key pub.pem)
             - echo "$env:encryptedstring"
-            - decrypt_string "$env:encryptedstring" -key key.pem
+            - decrypt_string -key key.pem "$env:encryptedstring"
             - echo "executing task command 1"
             - echo "executing task command 2"
             - echo $STEP_WORKSPACE_DIR
