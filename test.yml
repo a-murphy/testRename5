@@ -437,9 +437,13 @@ pipelines:
             - .\node_modules\.bin\istanbul report cobertura --dir codecoverage
            # - mkdir C:\testresults
            # - mv testresults\testresults.xml C:\testresults\testresults.xml
-            - save_tests (Resolve-Path testresults\testresults.xml)
+           # - save_tests (Resolve-Path testresults\testresults.xml)
             - cd node_modules
             - save_tests ..\testresults\*.xml
+            - cd ../..
+            - save_tests $res_nodeRepoResource2_resourcePath\testresults\*.xml
+            - cd $res_nodeRepoResource2_resourcePath\testresults
+            - save_tests *.xml
 #            - update_commit_status nodeRepoResource2 -context "testing step $step_id"
 #            - npm install
 #            - cd tests
