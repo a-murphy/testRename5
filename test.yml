@@ -325,8 +325,8 @@ pipelines:
           #  - docker pull amurphy/test2:latest
             - mkdir test
             - echo "this is to test $step_id" > test/textFile.txt
-            - add_run_files /test testFolder1
-            - add_run_files /test/textFile.txt file
+            - add_run_files test testFolder1
+            - add_run_files test/textFile.txt file
             
 
       - name: main_step
