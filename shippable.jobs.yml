@@ -1,0 +1,31 @@
+jobs:
+  - name: simple-mani
+    type: manifest
+    steps:
+      - IN: simple-image
+      - IN: simple-opts
+      - IN: simple-params
+      - IN: betaTrigger
+      
+  - name: kube-dep
+    type: deploy
+    deployMethod: upgrade
+    steps:
+      - IN: myKubeCluster
+      - IN: betaParams
+      - IN: betaOpts
+      - IN: betaReplicas
+      - IN: simple-mani
+
+  - name: testRelease
+    type: release
+    steps:
+      - IN: testVer
+      - IN: simple-mani
+      - TASK: managed
+
+  - name: testRelease2
+    type: release
+    steps:
+      - IN: testVer2
+      - IN: simple-mani
