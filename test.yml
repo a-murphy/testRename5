@@ -643,6 +643,7 @@ pipelines:
           nodePool: win-pool-2
           inputResources:
             - name: buildInfo
+            - name: gitlabRepo
           outputResources:
             - name: buildInfo2
           runtime:
