@@ -1,9 +1,4 @@
 resources:
-  - name: gitRepoResource4
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_github
-      path: a-murphy/5testRename5
   - name: gitRepoResource5
     type: GitRepo
     configuration:
