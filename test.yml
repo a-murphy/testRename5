@@ -1,4 +1,14 @@
 resources:
+  - name: gitRepoResource4
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/5testRename5
+  - name: gitRepoResource5
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/5testRename5
   - name: gitRepoResource
     type: GitRepo
     configuration:
@@ -643,7 +653,6 @@ pipelines:
           nodePool: win-pool-2
           inputResources:
             - name: buildInfo
-            - name: gitlabRepo
           outputResources:
             - name: buildInfo2
           runtime:
@@ -792,5 +801,14 @@ pipelines:
           outputResources:
             - name: helmChart
             - name: buildInfo
+      - name: bash
+        type: Bash
+        configuration:
+          inputResources:
+            - name: gitRepoResource4
+            - name: gitRepoResource5
+        execution:
+          onExecute:
+            - echo "testing"
  
  
