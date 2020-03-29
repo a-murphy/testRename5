@@ -276,8 +276,8 @@ resources:
 
 pipelines:
   - name: test_pipeline_windows
-    configuration:
-      nodePool: win-pool-2
+ #   configuration:
+ #     nodePool: win-pool-2
     steps:
       - name: in_trigger_step
         type: PowerShell
