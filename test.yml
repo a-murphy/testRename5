@@ -501,7 +501,7 @@ pipelines:
           #  - echo "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
             - add_run_variables bashVariable1=$run_number
          #   - add_run_variables "bashVariable2='A string with spaces in Bash.'"
-            - add_run_variables 'bashVariable3="A string with spaces in Bash."'
+         #   - add_run_variables 'bashVariable3="A string with spaces in Bash."'
             - add_run_variables 'bashVariable3=A string with spaces in Bash.'
             
       - name: check_bash_variables
