@@ -500,9 +500,12 @@ pipelines:
           #  - ls -alR test3
           #  - echo "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
             - add_run_variables bashVariable1=$run_number
-            - add_run_variables bashVariable2="A string with spaces."
+         #   - add_run_variables bashVariable2="A string with spaces."
          #   - add_run_variables 'bashVariable3="A string with spaces in Bash."'
             - add_run_variables bashVariable3="A string with spaces"
+            - export_run_variables
+            - echo "$bashVariable1 $bashVariable2 $bashVariable3"
+            
             
       - name: check_bash_variables
         type: PowerShell
