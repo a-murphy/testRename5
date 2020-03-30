@@ -494,12 +494,13 @@ pipelines:
         execution:
           onExecute:
             - echo "testing"
-            - restore_pipeline_files file test2
-            - ls -al test2
-            - restore_run_files testFolder1 test3
-            - ls -alR test3
-            - echo "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
-            - add_run_variables bashVariable1=$run_number bashVariable2="A string with spaces in Bash."
+          #  - restore_pipeline_files file test2
+          #  - ls -al test2
+          #  - restore_run_files testFolder1 test3
+          #  - ls -alR test3
+          #  - echo "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
+            - add_run_variables bashVariable1=$run_number
+            - add_run_variables bashVariable2="A string with spaces in Bash."
             
       - name: check_bash_variables
         type: PowerShell
