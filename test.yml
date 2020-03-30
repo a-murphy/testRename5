@@ -500,7 +500,7 @@ pipelines:
           #  - ls -alR test3
           #  - echo "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
             - add_run_variables bashVariable1=$run_number
-         #   - add_run_variables "bashVariable2='A string with spaces in Bash.'"
+            - add_run_variables bashVariable2="A string with spaces."
          #   - add_run_variables 'bashVariable3="A string with spaces in Bash."'
             - add_run_variables bashVariable3="A string with spaces"
             
@@ -518,14 +518,11 @@ pipelines:
                 tag: "10"
                 autoPull: false	
         execution:
-          onStart:
-            - update_commit_status nodeRepoResource2
-            - echo "Prepping build environment"
           onExecute:
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - echo "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
-            - echo "$bashVariable1 $bashVariable2"
+            - echo "$bashVariable1 $bashVariable2 $bashVariable3"
             
      
       - name: bbs_step
