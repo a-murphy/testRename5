@@ -406,9 +406,9 @@ pipelines:
             - echo "$env:encryptedstring"
             - decrypt_string "$env:encryptedstring" -key key.pem
             - restore_pipeline_files file test2
-            - ls test2
+            - ls -al test2
             - restore_run_files testFolder1 test3
-            - ls test3
+            - ls -alR test3
          #   - aws sts get-caller-identity
          #   - replicate_resource nodeRepoResource2 gitlabRepo
          #   - replicate_resource awsImage dockerImage
