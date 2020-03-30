@@ -502,7 +502,7 @@ pipelines:
             - add_run_variables bashVariable1=$run_number
          #   - add_run_variables "bashVariable2='A string with spaces in Bash.'"
          #   - add_run_variables 'bashVariable3="A string with spaces in Bash."'
-            - add_run_variables 'bashVariable3=A string with spaces in Bash.'
+            - add_run_variables bashVariable3="A string with spaces"
             
       - name: check_bash_variables
         type: PowerShell
