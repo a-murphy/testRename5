@@ -499,7 +499,32 @@ pipelines:
             - restore_run_files testFolder1 test3
             - ls -alR test3
             - echo "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
-
+            - add_run_variables bashVariable1=$run_number 'bashVariable2="A string with spaces in Bash."' bashVariable3='A string with $ in Bash.'
+            
+      - name: main_step
+        type: PowerShell
+        configuration:
+          nodePool: win-pool-2
+          inputSteps:
+            - name: bashStep
+          runtime:
+            type: image
+            image:
+              custom:
+                name: test/node
+                tag: "10"
+                autoPull: false	
+        execution:
+          onStart:
+            - update_commit_status nodeRepoResource2
+            - echo "Prepping build environment"
+          onExecute:
+            - 'echo "step_node_name: $step_node_name"'
+            - 'echo "step_node_id: $step_node_id"'
+            - echo "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
+            - echo "$bashVariable1 $bashVariable2 $bashVariable3"
+            
+     
       - name: bbs_step
         type: PowerShell
         configuration:
