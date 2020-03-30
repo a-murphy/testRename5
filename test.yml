@@ -501,7 +501,7 @@ pipelines:
             - echo "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
             - add_run_variables bashVariable1=$run_number 'bashVariable2="A string with spaces in Bash."' bashVariable3='A string with $ in Bash.'
             
-      - name: main_step
+      - name: check_bash_variables
         type: PowerShell
         configuration:
           nodePool: win-pool-2
