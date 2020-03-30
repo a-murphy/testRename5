@@ -482,6 +482,23 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
+            
+      - name: bashStep
+        type: Bash
+        configuration:
+          nodePool: u16-static
+          inputSteps:
+            - name: main_step
+          inputResources:
+            - name: gitRepoResource
+        execution:
+          onExecute:
+            - echo "testing"
+            - restore_pipeline_files file test2
+            - ls test2
+            - restore_run_files testFolder1 test3
+            - ls test3
+            - echo "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
 
       - name: bbs_step
         type: PowerShell
@@ -796,14 +813,5 @@ pipelines:
           outputResources:
             - name: helmChart
             - name: buildInfo
-      - name: bash
-        type: Bash
-        configuration:
-          inputResources:
-            - name: gitRepoResource5
-            - name: gitRepoResource
-        execution:
-          onExecute:
-            - echo "testing"
  
  
