@@ -800,7 +800,6 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: gitRepoResource4
             - name: gitRepoResource5
             - name: gitRepoResource
         execution:
