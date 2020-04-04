@@ -195,7 +195,7 @@ pipelines:
               auto:
                 language: NodeJS
                 versions:
-                  - 10
+                  - "10"
        #       custom:
        #         name: drydock/u16node
        #         tag: master
