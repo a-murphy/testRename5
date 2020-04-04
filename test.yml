@@ -168,6 +168,7 @@ pipelines:
             - cd /test && touch textFile.txt && echo "this is to test $step_id" > textFile.txt && cd ../
             - add_run_files /test testFolder1
             - add_run_files /test/textFile.txt file
+            - add_run_variables test_variable="testing 1 2 3" test_variable2='testing 1 $2 3'
             
 
       - name: main_step
@@ -205,6 +206,7 @@ pipelines:
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
+            - echo $test_variable $test_variable2
             - test=$(find_step_configuration_value "testing123")
             - if [ -z "$test" ]; then echo "empty"; fi
             - if [ "$test" == "null" ]; then echo "null"; fi
