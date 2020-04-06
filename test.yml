@@ -63,6 +63,13 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
+  - name: nodeRepoResource2
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/basic-node
+      buildOn:
+         commit: false
   - name: testRepo
     type: GitRepo
     configuration:
@@ -187,6 +194,8 @@ pipelines:
               trigger: false
             - name: testRepo
             - name: aql
+          outputResources:
+            - name: nodeRepoResource2
          # integrations:
          #   - name: jira
           runtime:
@@ -206,6 +215,7 @@ pipelines:
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
+            - replicate_resource nodeRepoResource nodeRepoResource2 --match-settings
             - echo $test_variable $test_variable2
             - test=$(find_step_configuration_value "testing123")
             - if [ -z "$test" ]; then echo "empty"; fi
