@@ -383,6 +383,12 @@ pipelines:
         execution:
           onExecute:
             - sleep 10
+      - name: step_xray
+        type: XrayScan
+        configuration:
+          waitUntilFinish: true
+          inputSteps:
+            - name: step_5
             
       - name: docker_build
         type: DockerBuild
