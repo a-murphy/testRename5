@@ -491,9 +491,21 @@ pipelines:
 
 
 
-  - name: go_test2
+  - name: go_test3
+    resources:
+      - name: gitRepoResource30
+        type: GitRepo
+        configuration:
+          gitProvider: aidan_github
+          path: a-murphy/5testRename5
+          buildOn:
+            pullRequestClose: false
+            releaseCreate: true
+            tagCreate: true
+          tags:
+            include: include.*
     steps:
-      - name: Go2
+      - name: Go3
         type: GoBuild
         configuration:
           sourceLocation: "."
@@ -501,7 +513,7 @@ pipelines:
           outputLocation: "output"
           outputFile: "file"
           inputResources:
-            - name: gitRepoResource
+            - name: gitRepoResource30
             - name: fileSpec
           outputResources:
             - name: outputBuildInfo
@@ -514,7 +526,7 @@ pipelines:
      #           language: go
      #           versions:
      #             - 1.11.11
-      - name: npmBuild2
+      - name: npmBuild3
         type: NpmBuild
         configuration:
           sourceLocation: "true"
