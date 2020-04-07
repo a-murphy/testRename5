@@ -1,32 +1,32 @@
 resources:
-  - name: multibranch1
+  - name: multibranch2
     type: GitRepo
     configuration:
       gitProvider: aidan_github
       path: a-murphy/5testRename5
  
 pipelines:
-  - name: multibranch1
+  - name: multibranch2
     steps:
-      - name: multibranch1_1
+      - name: multibranch2_1
         type: Bash
         configuration:
           inputResources:
-            - name: multibranch1
+            - name: multibranch2
               trigger: false
         execution:
           onExecute:
             - echo $step_url
 
-      - name: multibranch1_2
+      - name: multibranch2_2
         type: Bash
         configuration:
           inputSteps:
-            - name: multibranch1_1
+            - name: multibranch2_1
           inputResources:
-            - name: multibranch1
+            - name: multibranch2
         execution:
           onStart:
             - echo "Prepping build environment"
           onExecute:
-            - update_commit_status multibranch1
+            - update_commit_status multibranch2
