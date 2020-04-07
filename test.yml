@@ -531,7 +531,7 @@ pipelines:
           sourceLocation: "true"
           repositoryName: test
           inputSteps:
-            - name: Go2
+            - name: Go3
           inputResources:
             - name: gitRepoResource
             - name: fileSpec
