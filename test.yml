@@ -1,4 +1,15 @@
 resources:
+  - name: gitRepoResource30
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/5testRename5
+      buildOn:
+        pullRequestClose: false
+        releaseCreate: true
+        tagCreate: true
+      tags:
+        include: include.*
   - name: gitRepoResource
     type: GitRepo
     configuration:
@@ -492,18 +503,6 @@ pipelines:
 
 
   - name: go_test3
-    resources:
-      - name: gitRepoResource30
-        type: GitRepo
-        configuration:
-          gitProvider: aidan_github
-          path: a-murphy/5testRename5
-          buildOn:
-            pullRequestClose: false
-            releaseCreate: true
-            tagCreate: true
-          tags:
-            include: include.*
     steps:
       - name: Go3
         type: GoBuild
