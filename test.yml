@@ -490,3 +490,43 @@ pipelines:
      #       - name: artifactory
 
 
+
+  - name: go_test2
+    steps:
+      - name: Go2
+        type: GoBuild
+        configuration:
+          sourceLocation: "."
+          repository: repo
+          outputLocation: "output"
+          outputFile: "file"
+          inputResources:
+            - name: gitRepoResource
+            - name: fileSpec
+          outputResources:
+            - name: outputBuildInfo
+     #     integrations:
+     #       - name: artifactory
+          runtime:
+            type: image
+     #       image:
+     #         auto:
+     #           language: go
+     #           versions:
+     #             - 1.11.11
+      - name: npmBuild2
+        type: NpmBuild
+        configuration:
+          sourceLocation: "true"
+          repositoryName: test
+          inputSteps:
+            - name: Go2
+          inputResources:
+            - name: gitRepoResource
+            - name: fileSpec
+          outputResources:
+            - name: outputBuildInfo
+     #     integrations:
+     #       - name: artifactory
+
+
