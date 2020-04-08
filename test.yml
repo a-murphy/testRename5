@@ -485,9 +485,9 @@ pipelines:
      #           language: go
      #           versions:
      #             - 1.11.11
-          execution:
-            onExecute:
-              - echo "test"
+        execution:
+          onExecute:
+            - echo "test"
       - name: npmBuild
         type: NpmBuild
         configuration:
