@@ -471,7 +471,7 @@ pipelines:
   - name: go_test
     steps:
       - name: Go
-        type: GoBuild
+        type: Bash #GoBuild
         configuration:
           sourceLocation: "."
           repository: repo
