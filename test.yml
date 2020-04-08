@@ -467,10 +467,10 @@ pipelines:
       - name: Go
         type: Bash #GoBuild
         configuration:
-          sourceLocation: "."
-          repository: repo
-          outputLocation: "output"
-          outputFile: "file"
+        #  sourceLocation: "."
+        #  repository: repo
+        #  outputLocation: "output"
+        #  outputFile: "file"
           inputResources:
             - name: gitRepoResource
             - name: fileSpec
@@ -485,6 +485,9 @@ pipelines:
      #           language: go
      #           versions:
      #             - 1.11.11
+          execution:
+            onExecute:
+              - echo "test"
       - name: npmBuild
         type: NpmBuild
         configuration:
