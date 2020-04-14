@@ -22,7 +22,7 @@ resources:
          tagCreate: true
       tags:
         include: include.*
-  - name: helmChart
+  - name: helmChart2
     type: HelmChart
     configuration:
       sourceArtifactory: artifactory
@@ -331,7 +331,7 @@ pipelines:
           inputSteps:
             - name: main_step
           inputResources:
-            - name: helmChart
+            - name: helmChart2
         execution:
           onExecute:
             - sleep 10
