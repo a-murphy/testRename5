@@ -566,7 +566,7 @@ pipelines:
             - name: Go3
           inputResources:
             - name: gitRepoResource
-            - name: fileSpec
+       #     - name: fileSpec
           outputResources:
             - name: outputBuildInfo
      #     integrations:
