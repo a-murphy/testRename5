@@ -569,8 +569,8 @@ pipelines:
        #     - name: fileSpec
           outputResources:
             - name: outputBuildInfo
-     #     integrations:
-     #       - name: artifactory
+          integrations:
+            - name: artifactory
         execution:
           onStart:
             - sudo apt-get update
