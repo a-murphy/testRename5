@@ -571,5 +571,8 @@ pipelines:
             - name: outputBuildInfo
      #     integrations:
      #       - name: artifactory
+          execution:
+            onStart:
+              - sudo apt-get update
 
 
