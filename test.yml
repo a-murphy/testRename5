@@ -1,15 +1,16 @@
 resources:
   - name: gitRepoResource30
-    type: GitRepo
+    type: CronTrigger
     configuration:
-      gitProvider: aidan_github
-      path: a-murphy/5testRename5
-      buildOn:
-        pullRequestClose: false
-        releaseCreate: true
-        tagCreate: true
-      tags:
-        include: include.*
+      interval: "0 0 * * *"
+#      gitProvider: aidan_github
+#      path: a-murphy/5testRename5
+#      buildOn:
+#        pullRequestClose: false
+#        releaseCreate: true
+#        tagCreate: true
+#      tags:
+#        include: include.*
   - name: gitRepoResource
     type: GitRepo
     configuration:
