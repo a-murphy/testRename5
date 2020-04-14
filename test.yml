@@ -2,7 +2,7 @@ resources:
   - name: gitRepoResource30
     type: GitRepo
     configuration:
-      interval: "0 0 * * *"
+ #     interval: "0 0 * * *"
       gitProvider: aidan_github
       path: a-murphy/5testRename5
       buildOn:
@@ -472,17 +472,17 @@ pipelines:
       - name: Go
         type: GoBuild
         configuration:
-     #     sourceLocation: "."
-     #     repository: repo
-     #     outputLocation: "output"
-     #     outputFile: "file"
+          sourceLocation: "."
+          repository: repo
+          outputLocation: "output"
+          outputFile: "file"
           inputResources:
             - name: gitRepoResource
             - name: fileSpec
           outputResources:
             - name: outputBuildInfo
-     #     integrations:
-     #       - name: artifactory
+          integrations:
+            - name: artifactory
           runtime:
             type: image
      #       image:
@@ -490,9 +490,9 @@ pipelines:
      #           language: go
      #           versions:
      #             - 1.11.11
-        execution:
-          onExecute:
-            - echo "test"
+     #   execution:
+     #     onExecute:
+     #       - echo "test"
       - name: npmBuild
         type: NpmBuild
         configuration:
