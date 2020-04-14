@@ -1,16 +1,16 @@
 resources:
   - name: gitRepoResource30
-    type: CronTrigger
+    type: GitRepo
     configuration:
       interval: "0 0 * * *"
-#      gitProvider: aidan_github
-#      path: a-murphy/5testRename5
-#      buildOn:
-#        pullRequestClose: false
-#        releaseCreate: true
-#        tagCreate: true
-#      tags:
-#        include: include.*
+      gitProvider: aidan_github
+      path: a-murphy/5testRename5
+      buildOn:
+        pullRequestClose: false
+        releaseCreate: true
+        tagCreate: true
+      tags:
+        include: include.*
   - name: gitRepoResource
     type: GitRepo
     configuration:
@@ -24,6 +24,10 @@ resources:
         include: include.*
     
   - name: cronTrigger
+    type: CronTrigger
+    configuration:
+      interval: "0 0 * * *"
+  - name: cronTrigger2
     type: CronTrigger
     configuration:
       interval: "0 0 * * *"
@@ -466,7 +470,7 @@ pipelines:
   - name: go_test
     steps:
       - name: Go
-        type: Bash #GoBuild
+        type: GoBuild
         configuration:
      #     sourceLocation: "."
      #     repository: repo
@@ -490,6 +494,21 @@ pipelines:
           onExecute:
             - echo "test"
       - name: npmBuild
+        type: NpmBuild
+        configuration:
+          sourceLocation: "true"
+          repositoryName: test
+          inputSteps:
+            - name: Go
+          inputResources:
+            - name: gitRepoResource
+            - name: fileSpec
+          outputResources:
+            - name: outputBuildInfo
+     #     integrations:
+     #       - name: artifactory
+
+      - name: npmBuild2
         type: NpmBuild
         configuration:
           sourceLocation: "true"
