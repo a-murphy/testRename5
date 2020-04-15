@@ -1,4 +1,4 @@
-resouces:
+resources:
   - name: fileSpec
     type: FileSpec
     configuration:
