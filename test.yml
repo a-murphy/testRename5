@@ -9,6 +9,18 @@ resources:
       buildNumber: 100
       flat: ${testBoolean}
       limit: ${testNumber}
+  - name: gitRepoResource30
+    type: GitRepo
+    configuration:
+ #     interval: "0 0 * * *"
+      gitProvider: aidan_github
+      path: a-murphy/5testRename5
+      buildOn:
+        pullRequestClose: false
+        releaseCreate: true
+        tagCreate: true
+      tags:
+        include: include.*
 pipelines:
   - name: test_pipeline_windows
   #  configuration:
@@ -21,7 +33,8 @@ pipelines:
           affinityGroup: groupone
           runtime:            
             type: image
-    #      inputResources:
+          inputResources:
+            - name: gitRepoResource30
     #        - name: fileSpec
         execution:
           onExecute:
