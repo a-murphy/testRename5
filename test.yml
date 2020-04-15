@@ -34,8 +34,8 @@ pipelines:
           runtime:            
             type: image
           inputResources:
-            - name: gitRepoResource30
-    #        - name: fileSpec
+    #        - name: gitRepoResource30
+            - name: fileSpec
         execution:
           onExecute:
             - echo "executing task command 1"
