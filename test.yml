@@ -20,7 +20,7 @@ pipelines:
    #       nodePool: windows
           affinityGroup: groupone
           runtime:            
-            type: image
+            type: host #image
           inputResources:
             - name: fileSpec
         execution:
