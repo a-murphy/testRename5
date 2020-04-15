@@ -21,6 +21,8 @@ pipelines:
           affinityGroup: groupone
           runtime:            
             type: image
+          inputResources:
+            - name: fileSpec
         execution:
           onExecute:
             - echo "executing task command 1"
