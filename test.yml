@@ -21,6 +21,14 @@ resources:
         tagCreate: true
       tags:
         include: include.*
+        
+  - name: helmChart
+    type: HelmChart
+    configuration:
+      sourceArtifactory: artifactory
+      repository: example-repo-local
+      chart: my chart
+      version: v1.1.1
 pipelines:
   - name: test_pipeline_windows
   #  configuration:
@@ -76,3 +84,13 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
+            
+      - name: helmPublish
+        type: HelmPublish
+        configuration:
+          chartPath: "./my chart"
+          flags: --debug
+          inputResources:
+            - name: gitRepoResource30
+          outputResources:
+            - name: helmChart
