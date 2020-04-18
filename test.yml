@@ -9,7 +9,7 @@ resources:
       buildNumber: 100
       flat: ${testBoolean}
       limit: ${testNumber}
-  - name: gitRepoResource30
+  - name: gitRepoResource31
     type: GitRepo
     configuration:
  #     interval: "0 0 * * *"
@@ -91,6 +91,6 @@ pipelines:
           chartPath: "./my chart"
           flags: --debug
           inputResources:
-            - name: gitRepoResource30
+            - name: gitRepoResource31
           outputResources:
             - name: helmChart
