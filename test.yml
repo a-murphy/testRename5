@@ -88,7 +88,7 @@ pipelines:
       - name: helmPublish
         type: HelmPublish
         configuration:
-          chartPath: "./my chart"
+          chartPath: "my chart"
           flags: --debug
           inputResources:
             - name: gitRepoResource32
