@@ -42,7 +42,7 @@ pipelines:
           runtime:            
             type: image
           inputResources:
-            - name: gitRepoResource30
+            - name: gitRepoResource31
     #        - name: fileSpec
         execution:
           onExecute:
