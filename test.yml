@@ -26,7 +26,7 @@ resources:
     type: HelmChart
     configuration:
       sourceArtifactory: artifactory
-      repository: example-repo-local
+      repository: example-repo-local/test
       chart: my chart
       version: v1.1.1
 pipelines:
