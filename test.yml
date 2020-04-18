@@ -9,7 +9,7 @@ resources:
       buildNumber: 100
       flat: ${testBoolean}
       limit: ${testNumber}
-  - name: gitRepoResource31
+  - name: gitRepoResource32
     type: GitRepo
     configuration:
  #     interval: "0 0 * * *"
@@ -19,8 +19,8 @@ resources:
         pullRequestClose: false
         releaseCreate: true
         tagCreate: true
-      tags:
-        include: include.*
+      branches:
+        include: {{gitBranch}}
         
   - name: helmChart
     type: HelmChart
@@ -42,7 +42,7 @@ pipelines:
           runtime:            
             type: image
           inputResources:
-            - name: gitRepoResource31
+            - name: gitRepoResource32
     #        - name: fileSpec
         execution:
           onExecute:
@@ -91,6 +91,6 @@ pipelines:
           chartPath: "./my chart"
           flags: --debug
           inputResources:
-            - name: gitRepoResource31
+            - name: gitRepoResource32
           outputResources:
             - name: helmChart
