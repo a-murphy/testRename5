@@ -48,7 +48,8 @@ pipelines:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-            - cat doesnotexist.txt
+            - echo "hello frog" > test.xml
+            - save_tests $res_repo_pipe_resourcePath/test.xml
 
       - name: main_step
         type: PowerShell
@@ -94,3 +95,17 @@ pipelines:
             - name: gitRepoResource32
           outputResources:
             - name: helmChart
+  - name: test_pipeline_bash
+    steps:
+      - name: bash_step
+        type: Bash
+        configuration:
+          runtime:            
+            type: image
+        execution:
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+            - echo "hello frog" > test.xml
+            - save_tests $res_repo_pipe_resourcePath/test.xml
+
