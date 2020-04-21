@@ -46,6 +46,11 @@ pipelines:
           affinityGroup: groupone
           runtime:            
             type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 10
           inputResources:
             - name: gitRepoResource33
     #        - name: fileSpec
