@@ -21,6 +21,11 @@ resources:
         tagCreate: true
       branches:
         include: {{gitBranch}}
+  - name: gitRepoResource33
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/sample_node
         
   - name: helmChart
     type: HelmChart
@@ -42,15 +47,18 @@ pipelines:
           runtime:            
             type: image
           inputResources:
-            - name: gitRepoResource32
+            - name: gitRepoResource33
     #        - name: fileSpec
         execution:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-            - pushd $res_gitRepoResource32_resourcePath
-            - echo "hello frog" > test.xml
-            - save_tests $res_gitRepoResource32_resourcePath/test.xml
+            - pushd $res_gitRepoResource33_resourcePath
+            - save_tests $res_gitRepoResource33_resourcePath/test.xml
+            - .\node_modules\.bin\mocha --recursive "tests/**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=testresults/testresults.xml
+            - .\node_modules\.bin\istanbul --include-all-sources cover -root "routes" node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "tests/**/*.spec.js"
+            - .\node_modules\.bin\istanbul report cobertura --dir codecoverage
+            - save_tests testresults\*.xml
 
       - name: main_step
         type: PowerShell
