@@ -101,7 +101,7 @@ pipelines:
           chartPath: "my chart"
           flags: --debug
           inputResources:
-            - name: gitRepoResource32
+            - name: gitRepoResource33
           outputResources:
             - name: helmChart
   - name: test_pipeline_bash
