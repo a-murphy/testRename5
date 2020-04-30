@@ -21,6 +21,7 @@ resources:
         tagCreate: true
       branches:
         include: {{gitBranch}}
+        exclude: {{gitBranch2}}
   - name: gitRepoResource33
     type: GitRepo
     configuration:
