@@ -22,7 +22,7 @@ resources:
       branches:
         include: {{gitBranch}}
       tags:
-        include: {{ gitBranch === 'windows2' ? 'testone': 'testtwo' }}
+        include: {{ gitBranch == 'windows2' ? 'testone' : 'testtwo' }}
   - name: gitRepoResource33
     type: GitRepo
     configuration:
