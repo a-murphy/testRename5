@@ -21,7 +21,7 @@ resources:
         tagCreate: true
       branches:
         include: {{gitBranch}}
-        exclude: "{{gitRepo}}"
+        exclude: "{{ gitBranch }}"
       tags:
         include: "{{ gitBranch != 'windows2' ? 'testone' : 'testtwo' }}"
         exclude: "{{ gitRepo == 'windows2' ? 'testone' : 'testtwo' }}"
