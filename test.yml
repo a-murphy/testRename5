@@ -124,6 +124,7 @@ pipelines:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
+            - echo "$res_gitRepoResource32_branches_include_0"
           #  - pushd $res_gitRepoResource32_resourcePath
           #  - echo "hello frog" > test.xml
             - sleep 300
