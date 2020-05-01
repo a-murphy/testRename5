@@ -147,4 +147,19 @@ pipelines:
             - pushd $res_gitRepoResource32_resourcePath
             - echo "hello frog" > test.xml
             - save_tests $res_gitRepoResource32_resourcePath/test.xml
+     
+  - name: test_npm
+    steps:      
+      - name: npm_build
+        type: NpmBuild
+        configuration:
+          repositoryName: example-repo-local
+          sourceLocation: .
+          inputResources:
+            - name: gitRepoResource33
+          integrations:
+            - name: artifactory
+        execution:
+          onSuccess:
+            - send_notification Demo_slack
 
