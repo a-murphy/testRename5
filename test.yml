@@ -30,6 +30,11 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/sample_node
+  - name: gitRepoResource34
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/5testRename5
         
   - name: helmChart
     type: HelmChart
@@ -156,7 +161,7 @@ pipelines:
           repositoryName: example-repo-local
           sourceLocation: .
           inputResources:
-            - name: gitRepoResource32
+            - name: gitRepoResource34
           integrations:
             - name: artifactory
         execution:
