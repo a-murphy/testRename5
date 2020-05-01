@@ -156,7 +156,7 @@ pipelines:
           repositoryName: example-repo-local
           sourceLocation: .
           inputResources:
-            - name: gitRepoResource33
+            - name: gitRepoResource32
           integrations:
             - name: artifactory
         execution:
