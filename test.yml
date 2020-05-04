@@ -19,6 +19,7 @@ pipelines:
         execution:
           onExecute:
             - echo "executing task command 1"
+            - sleep 20
  
       - name: step_2
         type: Bash
