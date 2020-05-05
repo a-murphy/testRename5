@@ -9,6 +9,11 @@ resources:
       buildNumber: 100
       flat: ${testBoolean}
       limit: ${testNumber}
+  - name: propertyBag
+    type: PropertyBag
+    configuration:
+      property1: one
+      property2: 2
   - name: gitRepoResource32
     type: GitRepo
     configuration:
@@ -129,10 +134,13 @@ pipelines:
             type: image
           inputResources:
             - name: gitRepoResource32
+            - name: propertyBag
         execution:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
+            - echo $res_propertyBag_property1
+            - echo $res_propertyBag_property2
             - echo "$res_gitRepoResource32_branches"
             - echo "$res_gitRepoResource32_branchName"
             - echo "$res_gitRepoResource32_branches_include"
