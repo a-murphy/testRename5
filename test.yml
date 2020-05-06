@@ -15,6 +15,8 @@ resources:
       property1: one
       property2: 2
       property3: III
+      5: test
+      'with space': 'test space'
   - name: gitRepoResource32
     type: GitRepo
     configuration:
