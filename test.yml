@@ -85,7 +85,6 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
           inputResources:
-            - name: gitRepoResource32
             - name: propertyBag
           runtime:
             type: image
@@ -100,8 +99,12 @@ pipelines:
           onExecute:
             - echo $res_propertyBag_property1
             - echo $res_propertyBag_property2
-            - echo $property1 $property2 $property3
-            - echo $property4
+            - $property1
+            - $property2
+            - $property3
+            - $env:property1
+            - $env:property2
+            - $env:property3
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
