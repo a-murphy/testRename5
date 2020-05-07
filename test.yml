@@ -105,6 +105,8 @@ pipelines:
             - $env:property1
             - $env:property2
             - $env:property3
+            - $global:property1
+            - $script:property2
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
