@@ -1,14 +1,4 @@
 resources:
-  - name: fileSpec
-    type: FileSpec
-    configuration:
-      sourceArtifactory: artifactory
-      pattern: "$test-${versionTag}-*"
-      recursive: true
-      buildName: myBuildName
-      buildNumber: 100
-      flat: ${testBoolean}
-      limit: ${testNumber}
   - name: propertyBag
     type: PropertyBag
     configuration:
@@ -46,17 +36,17 @@ resources:
       branches:
         include: {{gitBranch}}
         
-  - name: helmChart
-    type: HelmChart
-    configuration:
-      sourceArtifactory: artifactory
-      repository: example-repo-local/test/
-      chart: my chart
-      version: v1.1.1
+ # - name: helmChart
+ #   type: HelmChart
+ #   configuration:
+ #     sourceArtifactory: artifactory
+ #     repository: example-repo-local/test/
+ #     chart: my chart
+ #     version: v1.1.1
 pipelines:
-  - name: test_pipeline_windows
-  #  configuration:
-  #    nodePool: windows
+  - name: aidan_test_pipeline_windows
+    configuration:
+      nodePool: win_2019
     steps:
       - name: in_trigger_step
         type: PowerShell
@@ -128,7 +118,7 @@ pipelines:
             - name: gitRepoResource33
           outputResources:
             - name: helmChart
-  - name: test_pipeline_bash
+  - name: aidan_test_pipeline_bash
     steps:
       - name: bash_step
         type: Bash
@@ -171,18 +161,18 @@ pipelines:
      #       - echo "hello frog" > test.xml
      #       - save_tests $res_gitRepoResource32_resourcePath/test.xml
      
-  - name: test_npm
-    steps:      
-      - name: npm_build
-        type: NpmBuild
-        configuration:
-          repositoryName: example-repo-local
-          sourceLocation: .
-          inputResources:
-            - name: gitRepoResource35
-          integrations:
-            - name: artifactory
-        execution:
-          onSuccess:
-            - send_notification Demo_slack
+#  - name: test_npm
+#    steps:      
+#      - name: npm_build
+#        type: NpmBuild
+#        configuration:
+#          repositoryName: example-repo-local
+#          sourceLocation: .
+#          inputResources:
+#            - name: gitRepoResource35
+#          integrations:
+#            - name: artifactory
+#        execution:
+#          onSuccess:
+#            - send_notification Demo_slack
 
