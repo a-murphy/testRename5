@@ -231,11 +231,11 @@ pipelines:
           inputSteps:
             - name: bash_step_7
           integrations:
-            - name: nointegration2
+            - name: nointegration
         execution:
           onExecute:
             - echo "executing task command 1"
-      - name: bash_step_19
+      - name: bash_step_20
         type: Bash
         configuration:
           affinityGroup: affinity_group2
@@ -244,11 +244,11 @@ pipelines:
         execution:
           onExecute:
             - echo "executing task command 1"
-      - name: bash_step_20
+      - name: bash_step_21
         type: Bash
         configuration:
           inputSteps:
-            - name: bash_step_19
+            - name: bash_step_10
           affinityGroup: affinity_group2
           inputResources:
             - name: gitRepoResource32
