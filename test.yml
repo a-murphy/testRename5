@@ -139,7 +139,7 @@ pipelines:
             type: image
           inputResources:
             - name: gitRepoResource32
-            - name: propertyBag2
+            - name: propertyBag
         execution:
           onExecute:
             - echo "executing task command 1"
@@ -163,12 +163,12 @@ pipelines:
           inputResources:
             - name: gitRepoResource32
           outputResources:
-            - name: propertyBag2
+            - name: propertyBag
         execution:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-            - write_output propertyBag2 property4="one, two, three, four"
+            - write_output propertyBag property4="one, two, three, four"
      #       - pushd $res_gitRepoResource32_resourcePath
      #       - echo "hello frog" > test.xml
      #       - save_tests $res_gitRepoResource32_resourcePath/test.xml
