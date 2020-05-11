@@ -235,7 +235,7 @@ pipelines:
         execution:
           onExecute:
             - echo "executing task command 1"
-      - name: bash_step_20
+      - name: bash_step_22
         type: Bash
         configuration:
           affinityGroup: affinity_group2
@@ -244,11 +244,11 @@ pipelines:
         execution:
           onExecute:
             - echo "executing task command 1"
-      - name: bash_step_21
+      - name: bash_step_23
         type: Bash
         configuration:
           inputSteps:
-            - name: bash_step_20
+            - name: bash_step_22
           affinityGroup: affinity_group2
           inputResources:
             - name: gitRepoResource32
