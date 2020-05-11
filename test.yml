@@ -158,7 +158,7 @@ pipelines:
       - name: bash_step2
         type: Bash
         configuration:
-          affinityGroup: affinity_group
+          affinityGroup: affinity_group2
           runtime:            
             type: image
           inputResources:
@@ -178,7 +178,7 @@ pipelines:
       - name: bash_step_3
         type: Bash
         configuration:
-          affinityGroup: affinity_group
+          affinityGroup: affinity_group2
           inputSteps:
             - name: bash_step2
         execution:
@@ -189,7 +189,7 @@ pipelines:
         configuration:
           inputSteps:
             - name: bash_step_3
-          affinityGroup: affinity_group
+          affinityGroup: affinity_group2
           inputResources:
             - name: gitRepoResource32
         execution:
@@ -198,7 +198,7 @@ pipelines:
       - name: bash_step_5
         type: Bash
         configuration:
-          affinityGroup: affinity_group
+          affinityGroup: affinity_group2
           inputSteps:
             - name: bash_step_4
         execution:
@@ -207,7 +207,7 @@ pipelines:
       - name: bash_step_6
         type: Bash
         configuration:
-          affinityGroup: affinity_group
+          affinityGroup: affinity_group2
           inputSteps:
             - name: bash_step_5
         execution:
@@ -218,7 +218,7 @@ pipelines:
         configuration:
           inputSteps:
             - name: bash_step_6
-          affinityGroup: affinity_group
+          affinityGroup: affinity_group2
           inputResources:
             - name: gitRepoResource32
         execution:
@@ -227,9 +227,38 @@ pipelines:
       - name: bash_step_8
         type: Bash
         configuration:
-          affinityGroup: affinity_group
+          affinityGroup: affinity_group2
           inputSteps:
             - name: bash_step_7
+        execution:
+          onExecute:
+            - echo "executing task command 1"
+      - name: bash_step_9
+        type: Bash
+        configuration:
+          affinityGroup: affinity_group2
+          inputSteps:
+            - name: bash_step_8
+        execution:
+          onExecute:
+            - echo "executing task command 1"
+      - name: bash_step_10
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: bash_step_9
+          affinityGroup: affinity_group2
+          inputResources:
+            - name: gitRepoResource32
+        execution:
+          onExecute:
+            - echo "executing task command 1"
+      - name: bash_step_11
+        type: Bash
+        configuration:
+          affinityGroup: affinity_group2
+          inputSteps:
+            - name: bash_step_10
         execution:
           onExecute:
             - echo "executing task command 1"
