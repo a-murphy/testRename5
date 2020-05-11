@@ -7,7 +7,7 @@ resources:
       property3: III
       'property5': 'test space one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty'
       property6: ""
- - name: propertyBag2
+  - name: propertyBag2
     type: PropertyBag
     configuration:
   - name: gitRepoResource32
