@@ -181,20 +181,29 @@ pipelines:
           affinityGroup: affinity_group
           inputSteps:
             - name: bash_step_2
+        execution:
+          onExecute:
+            - echo "executing task command 1"
       - name: bash_step_4
         type: Bash
         configuration:
           inputSteps:
             - name: bash_step_3
-        affinityGroup: affinity_group
-        inputResources:
-          - name: gitRepoResource32
+          affinityGroup: affinity_group
+          inputResources:
+            - name: gitRepoResource32
+        execution:
+          onExecute:
+            - echo "executing task command 1"
       - name: bash_step_5
-        type: DockerPush
+        type: Bash
         configuration:
           affinityGroup: affinity_group
           inputSteps:
             - name: bash_step_4
+        execution:
+          onExecute:
+            - echo "executing task command 1"
      
 #  - name: test_npm
 #    steps:      
