@@ -175,26 +175,26 @@ pipelines:
      #       - save_tests $res_gitRepoResource32_resourcePath/test.xml
      
      
-  #    - name: bash_step_3
-  #      type: Bash
-  #      configuration:
-  #        affinityGroup: affinity_group
-  #        inputSteps:
-  #          - name: bash_step_2
-  #    - name: bash_step_4
-  #      type: Bash
-  #      configuration:
-  #        inputSteps:
-  #          - name: bash_step_3
-  #      affinityGroup: affinity_group
-  #      inputResources:
-  #        - name: gitRepoResource32
-  #    - name: bash_step_5
-  #      type: DockerPush
-  #      configuration:
-  #        affinityGroup: affinity_group
-  #        inputSteps:
-  #          - name: bash_step_4
+      - name: bash_step_3
+        type: Bash
+        configuration:
+          affinityGroup: affinity_group
+          inputSteps:
+            - name: bash_step_2
+      - name: bash_step_4
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: bash_step_3
+        affinityGroup: affinity_group
+        inputResources:
+          - name: gitRepoResource32
+      - name: bash_step_5
+        type: DockerPush
+        configuration:
+          affinityGroup: affinity_group
+          inputSteps:
+            - name: bash_step_4
      
 #  - name: test_npm
 #    steps:      
