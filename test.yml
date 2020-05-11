@@ -248,7 +248,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: bash_step_10
+            - name: bash_step_20
           affinityGroup: affinity_group2
           inputResources:
             - name: gitRepoResource32
