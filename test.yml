@@ -224,7 +224,7 @@ pipelines:
             - name: bash_step_6
           affinityGroup: affinity_group2
           inputResources:
-            - name: gitRepoResource32
+            - name: remoteFile
         execution:
           onExecute:
             - echo "executing task command 1"
