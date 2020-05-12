@@ -35,6 +35,10 @@ resources:
       path: a-murphy/5testRename5
       branches:
         include: {{gitBranch}}
+  - name: remoteFile
+    type: RemoteFile
+    configuration:
+      source: artifactory
         
  # - name: helmChart
  #   type: HelmChart
