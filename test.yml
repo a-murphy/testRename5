@@ -141,11 +141,6 @@ pipelines:
         configuration:
           runtime:            
             type: image
-            image:
-              custom:
-                name: docker.bintray.io/jfrog/pipelines-u16node
-                tag: 10.18.0
-                options: "--ipv6 --fixed-cidr-v6=2001:db8:1::/64"
           inputResources:
             - name: gitRepoResource32
             - name: propertyBag
