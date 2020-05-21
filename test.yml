@@ -22,7 +22,6 @@ resources:
         exclude: "{{ gitBranch }}"
       tags:
         include: "{{ gitBranch != 'windows2' ? 'testone' : 'testtwo' }}"
-       # exclude: "{{ gitRepo == 'windows2' ? 'testone' : 'testtwo' }}"
   - name: gitRepoResource33
     type: GitRepo
     configuration:
