@@ -1,12 +1,12 @@
 resources:
-  - name: propertyBag
-    type: PropertyBag
-    configuration:
-      property1: one
-      property2: 2
-      property3: III
-      'property5': 'test space one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty'
-      property6: ""
+ # - name: propertyBag
+ #   type: PropertyBag
+ #   configuration:
+ #     property1: one
+ #     property2: 2
+ #     property3: III
+ #     'property5': 'test space one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty'
+ #     property6: ""
   - name: gitRepoResource32
     type: GitRepo
     configuration:
@@ -34,10 +34,10 @@ resources:
       path: a-murphy/5testRename5
       branches:
         include: {{gitBranch}}
-  - name: remoteFile
-    type: RemoteFile
-    configuration:
-      source: artifactory
+#  - name: remoteFile
+#    type: RemoteFile
+#    configuration:
+#      source: artifactory
         
  # - name: helmChart
  #   type: HelmChart
@@ -88,8 +88,8 @@ pipelines:
      #     affinityGroup: groupone
           inputSteps:
             - name: in_trigger_step
-          inputResources:
-            - name: propertyBag
+        #  inputResources:
+        #    - name: propertyBag
           runtime:
             type: image
             image:
@@ -101,16 +101,16 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
-            - echo $res_propertyBag_property1
-            - echo $res_propertyBag_property2
-            - $property1
-            - $property2
-            - $property3
-            - $env:property1
-            - $env:property2
-            - $env:property3
-            - $global:property1
-            - $script:property2
+     #       - echo $res_propertyBag_property1
+     #       - echo $res_propertyBag_property2
+     #       - $property1
+     #       - $property2
+     #       - $property3
+     #       - $env:property1
+     #       - $env:property2
+     #       - $env:property3
+     #       - $global:property1
+     #       - $script:property2
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
@@ -142,15 +142,15 @@ pipelines:
             type: image
           inputResources:
             - name: gitRepoResource32
-            - name: propertyBag
+      #      - name: propertyBag
         execution:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-            - echo $res_propertyBag_property1
-            - echo $res_propertyBag_property2
-            - echo $property1 $property2 $property3
-            - echo $property4
+        #    - echo $res_propertyBag_property1
+        #    - echo $res_propertyBag_property2
+        #    - echo $property1 $property2 $property3
+        #    - echo $property4
             - echo "$res_gitRepoResource32_branches"
             - echo "$res_gitRepoResource32_branchName"
             - echo "$res_gitRepoResource32_branches_include"
@@ -166,13 +166,13 @@ pipelines:
             type: image
           inputResources:
             - name: gitRepoResource32
-          outputResources:
-            - name: propertyBag
+       #   outputResources:
+       #     - name: propertyBag
         execution:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-            - write_output propertyBag property4="one, two, three, four"
+       #     - write_output propertyBag property4="one, two, three, four"
      #       - pushd $res_gitRepoResource32_resourcePath
      #       - echo "hello frog" > test.xml
      #       - save_tests $res_gitRepoResource32_resourcePath/test.xml
@@ -222,8 +222,8 @@ pipelines:
           inputSteps:
             - name: bash_step_6
           affinityGroup: affinity_group2
-          inputResources:
-            - name: remoteFile
+     #     inputResources:
+     #       - name: remoteFile
         execution:
           onExecute:
             - echo "executing task command 1"
@@ -233,8 +233,8 @@ pipelines:
           affinityGroup: affinity_group2
           inputSteps:
             - name: bash_step_7
-          integrations:
-            - name: nointegration
+     #     integrations:
+     #       - name: nointegration
         execution:
           onExecute:
             - echo "executing task command 1"
