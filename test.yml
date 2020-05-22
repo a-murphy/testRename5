@@ -173,7 +173,7 @@ pipelines:
           inputResources:
             - name: gitRepoResource32
           outputResources:
-            - buildInfo
+            - name: buildInfo
        #     - name: propertyBag
         execution:
           onExecute:
