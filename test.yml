@@ -34,6 +34,12 @@ resources:
       path: a-murphy/5testRename5
       branches:
         include: {{gitBranch}}
+  - name: buildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory:    artifactory
+      buildName:  initial
+      buildNumber: 1
 #  - name: remoteFile
 #    type: RemoteFile
 #    configuration:
@@ -166,13 +172,14 @@ pipelines:
             type: image
           inputResources:
             - name: gitRepoResource32
-       #   outputResources:
+          outputResources:
+            - buildInfo
        #     - name: propertyBag
         execution:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-       #     - write_output propertyBag property4="one, two, three, four"
+            - write_output buildInfo buildName="myName" buildNumber=100
      #       - pushd $res_gitRepoResource32_resourcePath
      #       - echo "hello frog" > test.xml
      #       - save_tests $res_gitRepoResource32_resourcePath/test.xml
@@ -282,4 +289,18 @@ pipelines:
 #        execution:
 #          onSuccess:
 #            - send_notification Demo_slack
+
+  - name: aidan_test_pipeline_bash2
+    steps:
+      - name: bash_step_pipeline2
+        type: Bash
+        configuration:
+          runtime:            
+            type: image
+          inputResources:
+            - name: buildInfo
+        execution:
+          onExecute:
+            - echo "$res_buildInfo_buildName"
+            - echo "$res_buildInfo_buildNumber"
 
