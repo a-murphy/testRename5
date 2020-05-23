@@ -306,6 +306,7 @@ pipelines:
           inputResources:
             - name: buildInfo
             - name: fileSpec2
+            - name: gitRepoResource32
         execution:
           onExecute:
             - echo "$res_buildInfo_buildName"
