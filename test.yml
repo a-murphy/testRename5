@@ -40,6 +40,11 @@ resources:
       sourceArtifactory:    artifactory
       buildName:  initial
       buildNumber: 1
+  - name: fileSpec
+    type: FileSpec
+    configuration:
+      sourceArtifactory:    artifactory
+      aql:  "items.find({"name": {"$match" : "*test.*"}})"
 #  - name: remoteFile
 #    type: RemoteFile
 #    configuration:
@@ -299,6 +304,7 @@ pipelines:
             type: image
           inputResources:
             - name: buildInfo
+            - name: fileSpec
         execution:
           onExecute:
             - echo "$res_buildInfo_buildName"
