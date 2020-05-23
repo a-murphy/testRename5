@@ -40,7 +40,7 @@ resources:
       sourceArtifactory:    artifactory
       buildName:  initial
       buildNumber: 1
-  - name: fileSpec
+  - name: fileSpec2
     type: FileSpec
     configuration:
       sourceArtifactory: artifactory
@@ -305,7 +305,7 @@ pipelines:
             type: image
           inputResources:
             - name: buildInfo
-            - name: fileSpec
+            - name: fileSpec2
         execution:
           onExecute:
             - echo "$res_buildInfo_buildName"
