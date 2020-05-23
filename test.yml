@@ -43,8 +43,8 @@ resources:
   - name: fileSpec
     type: FileSpec
     configuration:
-      sourceArtifactory:    artifactory
-      aql:  "items.find({"name": {"$match" : "*test.*"}})"
+      sourceArtifactory: artifactory
+      aql: 'items.find({"name": {"$match" : "*test.*"}})'
 #  - name: remoteFile
 #    type: RemoteFile
 #    configuration:
