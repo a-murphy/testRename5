@@ -300,6 +300,7 @@ pipelines:
       - name: bash_step_pipeline2
         type: Bash
         configuration:
+          priority: 10
           runtime:            
             type: image
           inputResources:
