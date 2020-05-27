@@ -74,7 +74,8 @@ pipelines:
           onExecute:
             - export imageName="testname"
             - export imageTag="testtag"
-          onComplete:
+            - fail
+          onStart:
             - echo "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}" > myFile.txt
             - >-
               set_payload outhook myFile.txt --file 
