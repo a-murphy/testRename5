@@ -77,8 +77,9 @@ pipelines:
           onSuccess:
             - echo "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}" > myFile.txt
             - >-
-              set_payload outhook --file myFile.txt
-          #    "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}"
+              set_payload outhook
+              "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}"
+              --file myFile.txt
             - echo "$outhook_payload_file"
   - name: aidan_test_pipeline_windows
    # configuration:
