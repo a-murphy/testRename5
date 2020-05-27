@@ -74,7 +74,7 @@ pipelines:
           onExecute:
             - export imageName="testname"
             - export imageTag="testtag"
-      onSuccess:
+          onSuccess:
             - >-
               set_payload outhook
               "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}"
