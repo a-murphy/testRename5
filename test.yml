@@ -70,14 +70,15 @@ pipelines:
         configuration:
           outputResources:
             - name: outhook
+          environmentVariables:
+            outhook_payload_file: myFile.txt
         execution:
           onExecute:
             - export imageName="testname"
             - export imageTag="testtag"
-            - fail
           onFailure:
             - echo "failed"
-          onStart:
+          onSuccess:
             - echo "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}" > myFile.txt
             - >-
               set_payload outhook myFile.txt --file 
