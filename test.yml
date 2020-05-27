@@ -71,7 +71,7 @@ pipelines:
           outputResources:
             - name: outhook
           environmentVariables:
-            outhook_payload_file: myFile.txt
+            outhook_payload_file: ${step_tmp_dir}/outhook_payload_file
         execution:
           onExecute:
             - export imageName="testname"
@@ -81,8 +81,8 @@ pipelines:
           onSuccess:
             - echo "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}" > myFile.txt
             - >-
-              set_payload outhook myFile.txt --file 
-           #   "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}"
+              set_payload outhook #myFile.txt --file 
+              "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}"
             - echo "$outhook_payload_file"
   - name: aidan_test_pipeline_windows
    # configuration:
