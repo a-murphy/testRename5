@@ -75,6 +75,8 @@ pipelines:
             - export imageName="testname"
             - export imageTag="testtag"
             - fail
+          onFailure:
+            - echo "failed"
           onStart:
             - echo "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}" > myFile.txt
             - >-
