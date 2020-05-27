@@ -57,7 +57,28 @@ resources:
  #     repository: example-repo-local/test/
  #     chart: my chart
  #     version: v1.1.1
+
+  - name: outhook
+    type: OutgoingWebhook
+    configuration:
+      webhookName: outgoing
 pipelines:
+  - name: webhook_pipeline
+    steps:
+      - name: sendHook
+        type: Bash
+        configuration:
+          outputResources:
+            - name: outhook
+        execution:
+          onExecute:
+            - export imageName="testname"
+            - export imageTag="testtag"
+      onSuccess:
+            - >-
+              set_payload outhook
+              "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}"
+            - echo "$outhook_payload_file"
   - name: aidan_test_pipeline_windows
    # configuration:
    #   nodePool: win_2019
