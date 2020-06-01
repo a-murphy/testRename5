@@ -81,7 +81,7 @@ pipelines:
           onSuccess:
             - echo "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}" > myFile.txt
             - >-
-              set_payload outhook --file myFile.txt
+              set_payload outhook myFile.txt --file myFile.txt
             - cat "$(find_resource_variable "$1" resourcePath)/payload.env"
   - name: aidan_test_pipeline_windows
    # configuration:
