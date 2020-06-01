@@ -70,8 +70,8 @@ pipelines:
         configuration:
           outputResources:
             - name: outhook
-          environmentVariables:
-            outhook_payload_file: ${step_tmp_dir}/outhook_payload_file
+      #    environmentVariables:
+      #      outhook_payload_file: ${step_tmp_dir}/outhook_payload_file
         execution:
           onExecute:
             - export imageName="testname"
