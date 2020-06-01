@@ -62,6 +62,10 @@ resources:
     type: OutgoingWebhook
     configuration:
       webhookName: outgoing
+  - name: inhook
+    type: IncomingWebhook
+    configuration:
+      webhookName: incoming
 pipelines:
   - name: webhook_pipeline
     steps:
@@ -70,6 +74,7 @@ pipelines:
         configuration:
           outputResources:
             - name: outhook
+            - name: inhook
       #    environmentVariables:
       #      outhook_payload_file: ${step_tmp_dir}/outhook_payload_file
         execution:
@@ -82,6 +87,8 @@ pipelines:
             - echo "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}" > myFile.txt
             - >-
               set_payload outhook myFile.txt --file myFile.txt
+            - >-
+              set_payload inhook "{\"test\":\"$run_number\"}"
             - cat "$(find_resource_variable "$1" resourcePath)/payload.env"
   - name: aidan_test_pipeline_windows
    # configuration:
