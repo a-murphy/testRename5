@@ -75,12 +75,15 @@ pipelines:
           outputResources:
             - name: outhook
             - name: inhook
+          integrations:
+            - name: email
       #    environmentVariables:
       #      outhook_payload_file: ${step_tmp_dir}/outhook_payload_file
         execution:
           onExecute:
             - export imageName="testname"
             - export imageTag="testtag"
+            - send_notification email
             - add_pipeline_variables test=true
           onFailure:
             - echo "failed"
