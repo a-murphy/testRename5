@@ -1,10 +1,4 @@
 resources:
-  - name: buildInfo
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: aidan_artifactory
-      buildName:  name
-      buildNumber: 1
   - name: buildInfo2
     type: BuildInfo
     configuration:
