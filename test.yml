@@ -148,6 +148,8 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
+            - echo $test
+            - add_step_variables test=${run_number}
      #       - echo $res_propertyBag_property1
      #       - echo $res_propertyBag_property2
      #       - $property1
