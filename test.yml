@@ -81,7 +81,7 @@ pipelines:
           onExecute:
             - export imageName="testname"
             - export imageTag="testtag"
-            - add_run_variables test=true
+            - add_pipeline_variables test=true
           onFailure:
             - echo "failed"
           onSuccess:
