@@ -83,7 +83,7 @@ pipelines:
           onExecute:
             - export imageName="testname"
             - export imageTag="testtag"
-            - send_notification email
+            - send_notification email --recipients build@shippable.com
             - add_pipeline_variables test=true
           onFailure:
             - echo "failed"
