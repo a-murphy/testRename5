@@ -297,7 +297,7 @@ pipelines:
         execution:
           onExecute:
             - echo "executing task command 1"
-      - name: bash_step_23
+      - name: bash_step_24
         type: Bash
         configuration:
           inputSteps:
