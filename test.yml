@@ -94,6 +94,14 @@ pipelines:
             - >-
               set_payload inhook "{\"test\":\"$run_number\"}"
             - cat "$(find_resource_variable "$1" resourcePath)/payload.env"
+      - name: jenkins
+        type: Jenkins
+        configuration:
+          inputSteps:
+            - name: sendHook
+          integrations:
+            - name: jenkins
+ 
   - name: aidan_test_pipeline_windows
    # configuration:
    #   nodePool: win_2019
