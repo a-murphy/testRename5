@@ -101,6 +101,7 @@ pipelines:
             - name: sendHook
           integrations:
             - name: jenkins
+          jenkinsJobName: jenkinsJob
  
   - name: aidan_test_pipeline_windows
    # configuration:
