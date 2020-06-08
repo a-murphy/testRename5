@@ -110,6 +110,14 @@ pipelines:
           integrations:
             - name: jenkins
           jenkinsJobName: jenkinsJob2
+      - name: jenkins3
+        type: Jenkins
+        configuration:
+          inputSteps:
+            - name: sendHook
+          integrations:
+            - name: newJenkins
+          jenkinsJobName: jenkinsJob
  
   - name: aidan_test_pipeline_windows
    # configuration:
