@@ -100,7 +100,7 @@ pipelines:
           inputSteps:
             - name: sendHook
           integrations:
-            - name: jenkins
+            - name: newJenkins
           jenkinsJobName: jenkinsJob
       - name: jenkins2
         type: Jenkins
@@ -108,7 +108,7 @@ pipelines:
           inputSteps:
             - name: sendHook
           integrations:
-            - name: jenkins
+            - name: newJenkins
           jenkinsJobName: jenkinsJob2
       - name: jenkins3
         type: Jenkins
