@@ -115,9 +115,15 @@ pipelines:
         configuration:
           inputSteps:
             - name: sendHook
+          inputResources:
+            - name: buildInfo
           integrations:
             - name: newJenkins
           jenkinsJobName: jenkinsJob
+          buildParameters:
+            env1: ${res_buildInfo_buildName}
+            env2: ${step_url}
+            env3: "Test ${int_newJenkins_url} ${run_number}"
  
   - name: aidan_test_pipeline_windows
    # configuration:
