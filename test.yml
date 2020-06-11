@@ -125,6 +125,7 @@ pipelines:
             env2: ${step_url}
             env3: "Test ${int_newJenkins_url} ${run_number}"
             runNumber: ${run_number}
+            stepId: ${step_id}
  
   - name: aidan_test_pipeline_windows
    # configuration:
