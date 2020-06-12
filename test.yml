@@ -109,7 +109,7 @@ pipelines:
             - name: sendHook
           integrations:
             - name: newJenkins
-          jenkinsJobName: jenkinsJob2
+          jenkinsJobName: pipelineJob
       - name: jenkins3
         type: Jenkins
         configuration:
