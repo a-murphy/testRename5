@@ -110,6 +110,9 @@ pipelines:
           integrations:
             - name: newJenkins
           jenkinsJobName: pipelineJob
+          buildParameters:
+            runNumber: ${run_number}
+            stepId: ${step_id}
       - name: jenkins3
         type: Jenkins
         configuration:
