@@ -601,7 +601,7 @@ pipelines:
           autoPublishBuildInfo: true
           targetRepository: go-test
           outputResources:
-            - name: buildInfo
+            - name: outputBuildInfo
           inputSteps:
             - name: Go3
       - name: goPublishModule
@@ -615,7 +615,7 @@ pipelines:
           self: true
           deps: ALL
           outputResources:
-            - name: buildInfo
+            - name: outputBuildInfo
           inputResources:
             - name: goRepo
       - name: helmPublish
@@ -628,7 +628,7 @@ pipelines:
             - name: gitRepoResource42
           outputResources:
             - name: helmChart
-            - name: buildInfo
+            - name: outputBuildInfo
  
 
 
