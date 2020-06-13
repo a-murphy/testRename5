@@ -402,9 +402,9 @@ pipelines:
         type: DockerBuild
         configuration:
           dockerFileLocation: .
-          dockerFileName: test${versionTag}
+          dockerFileName: Dockerfile
           dockerImageName: image${versionTag}
-          dockerImageTag: tag${versionTag}
+          dockerImageTag: tag #${versionTag}
           #dockerOptions: "test${versionTag} --test ${testNumber}"
           environmentVariables:
             versionTag: testTag
