@@ -29,6 +29,16 @@ resources:
       repository: repository
       version: version
       chart: chart
+  - name: goRepo
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/go_app
+      buildOn:
+         pullRequestCreate: true
+         pullRequestClose: false
+         releaseCreate: true
+         tagCreate: true
     
   - name: cronTrigger
     type: CronTrigger
@@ -75,6 +85,13 @@ resources:
       registry: docker
       imageName: "amurphy/test"
       imageTag: ${versionTag}
+  - name: helmChart
+    type: HelmChart
+    configuration:
+      sourceArtifactory: aidan_artifactory
+      repository: example-repo-local
+      chart: my chart
+      version: v1.1.1
   - name: nodeRepoResource
     type: GitRepo
     configuration:
