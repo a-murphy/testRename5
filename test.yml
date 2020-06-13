@@ -609,7 +609,7 @@ pipelines:
           autoPublishBuildInfo: true
           targetRepository: go-test
           sourceLocation: .
-          version: "v1.1.1"
+          version: "1.1.1"
           self: true
           deps: ALL
           outputResources:
