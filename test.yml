@@ -1,5 +1,5 @@
 resources:
-  - name: gitRepoResource30
+  - name: gitRepoResource31
     type: GitRepo
     configuration:
  #     interval: "0 0 * * *"
@@ -561,7 +561,7 @@ pipelines:
           outputLocation: "output"
           outputFile: "file"
           inputResources:
-            - name: gitRepoResource30
+            - name: gitRepoResource31
             - name: fileSpec
           outputResources:
             - name: outputBuildInfo
@@ -623,7 +623,7 @@ pipelines:
           flags: --debug
           autoPublishBuildInfo: true
           inputResources:
-            - name: gitRepoResource
+            - name: gitRepoResource31
           outputResources:
             - name: helmChart
             - name: buildInfo
