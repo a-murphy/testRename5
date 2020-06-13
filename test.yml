@@ -44,8 +44,8 @@ resources:
       sourceArtifactory: artifactory
       pattern: "$test-${versionTag}-*"
       recursive: true
-      buildName: myBuildName
-      buildNumber: 100
+      buildName: name
+      buildNumber: 10
       flat: ${testBoolean}
       limit: ${testNumber}
    #   offset: ${testNumber}
