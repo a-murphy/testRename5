@@ -405,7 +405,7 @@ pipelines:
           dockerFileName: test${versionTag}
           dockerImageName: image${versionTag}
           dockerImageTag: tag${versionTag}
-          dockerOptions: "test${versionTag} --test ${testNumber}"
+          #dockerOptions: "test${versionTag} --test ${testNumber}"
           environmentVariables:
             versionTag: testTag
             testNumber: 5
