@@ -403,7 +403,7 @@ pipelines:
         configuration:
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: image${versionTag}
+          dockerImageName: image #${versionTag}
           dockerImageTag: tag #${versionTag}
           #dockerOptions: "test${versionTag} --test ${testNumber}"
           environmentVariables:
