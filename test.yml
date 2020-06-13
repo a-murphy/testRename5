@@ -68,7 +68,7 @@ resources:
       registry: docker
       imageName: "amurphy/test"
       imageTag: ${versionTag}
-      autoPull: false
+      autoPull: true
   - name: dockerImage2
     type: Image
     configuration:
