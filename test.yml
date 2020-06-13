@@ -574,5 +574,42 @@ pipelines:
         execution:
           onStart:
             - sudo apt-get update
+            
+      - name: goPublishBinary
+        type: GoPublishBinary
+        configuration:
+          forceXrayScan: true
+          autoPublishBuildInfo: true
+          targetRepository: go-test
+          outputResources:
+            - name: buildInfo
+          inputSteps:
+            - name: goBuild
+      - name: goPublishModule
+        type: GoPublishModule
+        configuration:
+          forceXrayScan: false
+          autoPublishBuildInfo: true
+          targetRepository: go-test
+          sourceLocation: .
+          version: "v1.1.1"
+          self: true
+          deps: ALL
+          outputResources:
+            - name: buildInfo
+          inputResources:
+            - name: goRepo
+      - name: helmPublish
+        type: HelmPublish
+        configuration:
+          chartPath: "./my chart"
+          flags: --debug
+          autoPublishBuildInfo: true
+          inputResources:
+            - name: gitRepoResource
+          outputResources:
+            - name: helmChart
+            - name: buildInfo
+ 
 
 
