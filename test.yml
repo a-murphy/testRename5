@@ -601,7 +601,7 @@ pipelines:
           outputResources:
             - name: buildInfo
           inputSteps:
-            - name: goBuild
+            - name: Go3
       - name: goPublishModule
         type: GoPublishModule
         configuration:
