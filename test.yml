@@ -88,11 +88,11 @@ pipelines:
           onFailure:
             - echo "failed"
           onSuccess:
-            - echo "{\"imageName\":\"$imageName\",\"imageTag\":\"$imageTag\"}" > myFile.txt
+            - echo "{\"imageName\":\"$imageName\", \"imageTag\":\"$imageTag\"}" > myFile.txt
             - >-
               set_payload outhook myFile.txt --file myFile.txt
             - >-
-              set_payload inhook "{\"test\":\"$run_number\"}"
+              set_payload inhook "{\"test\":\"$run_number\", \"test2\":\"$step_id\"}"
             - cat "$(find_resource_variable "$1" resourcePath)/payload.env"
       - name: jenkins
         type: Jenkins
