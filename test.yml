@@ -30,7 +30,7 @@ resources:
   - name: filespec3
     type: FileSpec
     configuration:
-      sourceArtifactory: nointegration
+      sourceArtifactory: notanintegration
       aql: 'items.find({"name": {"$match": "test.*"}})'
   - name: gitRepoResource35
     type: GitRepo
