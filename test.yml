@@ -27,11 +27,11 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/sample_node
-  - name: gitRepoResource34
-    type: GitRepo
+  - name: filespec3
+    type: FileSpec
     configuration:
-      gitProvider: nointegration
-      path: a-murphy/sample_node
+      sourceArtifactory: nointegration
+      aql: 'items.find({"name": {"$match": "test.*"}})'
   - name: gitRepoResource35
     type: GitRepo
     configuration:
