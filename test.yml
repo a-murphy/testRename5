@@ -27,11 +27,6 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/sample_node
-  - name: filespec3
-    type: FileSpec
-    configuration:
-      sourceArtifactory: notanintegration
-      aql: 'items.find({"name": {"$match": "test.*"}})'
   - name: gitRepoResource35
     type: GitRepo
     configuration:
