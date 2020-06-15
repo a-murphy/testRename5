@@ -27,6 +27,11 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/sample_node
+  - name: gitRepoResource34
+    type: GitRepo
+    configuration:
+      gitProvider: nointegration
+      path: a-murphy/sample_node
   - name: gitRepoResource35
     type: GitRepo
     configuration:
