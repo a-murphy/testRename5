@@ -92,7 +92,7 @@ pipelines:
             - >-
               set_payload outhook myFile.txt --file myFile.txt
             - >-
-              set_payload inhook "{\"test\":\"$run_number\", \"test2\":\"$step_id - test 123 - 1234\"}"
+              set_payload inhook "{\"test\":\"$run_number\", \"test2\":\"$step_id - test 123 - $step_url\"}"
             - cat "$(find_resource_variable "$1" resourcePath)/payload.env"
       - name: jenkins
         type: Jenkins
