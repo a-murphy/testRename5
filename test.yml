@@ -102,6 +102,12 @@ pipelines:
           integrations:
             - name: newJenkins
           jenkinsJobName: jenkinsJob
+          buildParameters:
+            env1: ${res_buildInfo_buildName}
+            env2: ${step_url}
+            env3: "Test ${int_newJenkins_url} ${run_number}"
+            runNumber: ${run_number}
+            stepId: ${step_id}
       - name: jenkins2
         type: Jenkins
         configuration:
