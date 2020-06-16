@@ -14,7 +14,7 @@ resources:
 pipelines:
   - name: test_pipeline_branch_slash
     configuration:
-     environmentVariables:
+      environmentVariables:
        readOnly:
          MY_MESSAGE: "My name is"
       runtime:            
