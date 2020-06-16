@@ -13,12 +13,6 @@ resources:
        
 pipelines:
   - name: test_pipeline_branch_slash
-    configuration:
-      environmentVariables:
-       readOnly:
-         MY_MESSAGE: "My name is"
-      runtime:            
-        type: host
     steps:
       - name: main_step
         type: Bash
