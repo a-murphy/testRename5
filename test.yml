@@ -16,6 +16,8 @@ pipelines:
     steps:
       - name: main_step
         type: Bash
+        configuration:
+          nodePool: static-node-pool
         execution:
           onStart:
             - echo "Prepping build environment"
