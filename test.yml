@@ -154,7 +154,7 @@ pipelines:
             testNumber: 5
             testBoolean: "false"
           inputSteps:
-            - name: main_step
+            - name: sendHook
           inputResources:
          #   - name: fileSpec
             - name: nodeRepoResource
@@ -163,7 +163,7 @@ pipelines:
         configuration:
           targetRepository: test-docker
           forceXrayScan: ${testBoolean}
-          autoPublishBuildInfo: true
+       #   autoPublishBuildInfo: true
           environmentVariables:
             versionTag: testTag
             testNumber: 5
