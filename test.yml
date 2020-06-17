@@ -7,11 +7,6 @@ resources:
  #     property3: III
  #     'property5': 'test space one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty'
  #     property6: ""
-  - name: bitbucketRepoResource2
-    type: GitRepo
-    configuration:
-      gitProvider: bitbucket
-      path: a-murphy/sample_pipelines
   - name: gitRepoResource32
     type: GitRepo
     configuration:
