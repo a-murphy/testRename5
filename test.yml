@@ -27,6 +27,13 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/sample_node
+  - name: nodeRepoResource4
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/sample_node
+      branches:
+        include: master
   - name: gitRepoResource35
     type: GitRepo
     configuration:
@@ -152,7 +159,7 @@ pipelines:
             - name: sendHook
           inputResources:
          #   - name: fileSpec
-            - name: nodeRepoResource
+            - name: nodeRepoResource4
       - name: docker_push
         type: DockerPush
         configuration:
