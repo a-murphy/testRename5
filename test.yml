@@ -141,6 +141,39 @@ pipelines:
             env3: "Test ${int_newJenkins_url} ${run_number}"
             runNumber: ${run_number}
             stepId: ${step_id}
+      - name: docker_build
+        type: DockerBuild
+        configuration:
+          dockerFileLocation: .
+          dockerFileName: Dockerfile
+          dockerImageName: image #${versionTag}
+          dockerImageTag: tag #${versionTag}
+          #dockerOptions: "test${versionTag} --test ${testNumber}"
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: main_step
+          inputResources:
+         #   - name: fileSpec
+            - name: nodeRepoResource
+      - name: docker_push
+        type: DockerPush
+        configuration:
+          targetRepository: test-docker
+          forceXrayScan: ${testBoolean}
+          autoPublishBuildInfo: true
+          environmentVariables:
+            versionTag: testTag
+            testNumber: 5
+            testBoolean: "false"
+          inputSteps:
+            - name: docker_build
+      #    outputResources:
+      #      - name: outputBuildInfo
+          integrations:
+            - name: artifactory
  
   - name: aidan_test_pipeline_windows
    # configuration:
