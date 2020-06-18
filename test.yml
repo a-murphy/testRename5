@@ -27,7 +27,7 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/sample_node
-  - name: bitbucketResource3
+  - name: bitbucketResource4
     type: GitRepo
     configuration:
       gitProvider: bitbucket2
