@@ -22,7 +22,7 @@ resources:
         exclude: "{{ gitBranch }}"
       tags:
         include: "{{ gitBranch != 'windows2' ? 'testone' : 'testtwo' }}"
-  - name: gitRepoResource33
+  - name: gitRepoResource34
     type: GitRepo
     configuration:
       gitProvider: aidan_github
@@ -199,13 +199,13 @@ pipelines:
                 versions:
                   - 10
           inputResources:
-            - name: gitRepoResource33
+            - name: gitRepoResource
     #        - name: fileSpec
         execution:
           onExecute:
             - echo "executing task command 1"
             - echo "executing task command 2"
-            - pushd $res_gitRepoResource33_resourcePath
+            - pushd $res_gitRepoResource_resourcePath
             - npm install
             - .\node_modules\.bin\mocha --recursive "tests/**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=testresults/testresults.xml
             - .\node_modules\.bin\istanbul --include-all-sources cover -root "routes" node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "tests/**/*.spec.js"
@@ -267,7 +267,7 @@ pipelines:
      #     chartPath: "my chart"
      #     flags: --debug
      #     inputResources:
-     #       - name: gitRepoResource33
+     #       - name: gitRepoResource
      #     outputResources:
      #       - name: helmChart
   - name: aidan_test_pipeline_bash
