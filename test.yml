@@ -30,8 +30,13 @@ resources:
   - name: bitbucketResource5
     type: GitRepo
     configuration:
-      gitProvider: bitbucket2
+      gitProvider: bitbucket
       path: a-murphy/sample_pipelines
+  - name: gitlabResource
+    type: GitRepo
+    configuration:
+      gitProvider: gitlab
+      path: a-murphy/testRename5
   - name: nodeRepoResource4
     type: GitRepo
     configuration:
