@@ -96,8 +96,9 @@ pipelines:
             - write_output outhook 2test=invalid
             - write_output outhook test-three=invalid
             - write_output outhook test4= invalid
-            - write_output outhook test 5="invalid test"
+            - write_output outhook "test 5='invalid test'"
             - write_output outhook _test6="valid_test"
+            - write_output outhook t=valid
           onFailure:
             - echo "failed"
           onSuccess:
