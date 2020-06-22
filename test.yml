@@ -92,12 +92,12 @@ pipelines:
             - export imageTag="testtag"
             - send_notification email --recipients build@shippable.com
             - add_pipeline_variables test=true
-            - write_output outHook test_1=valid
-            - write_output outHook 2test=invalid
-            - write_output outHook test-three=invalid
-            - write_output outHook test4= invalid
-            - write_output outHook test 5="invalid test"
-            - write_output outHook _test6="valid_test"
+            - write_output outhook test_1=valid
+            - write_output outhook 2test=invalid
+            - write_output outhook test-three=invalid
+            - write_output outhook test4= invalid
+            - write_output outhook test 5="invalid test"
+            - write_output outhook _test6="valid_test"
           onFailure:
             - echo "failed"
           onSuccess:
