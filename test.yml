@@ -224,7 +224,7 @@ pipelines:
           flags: --debug
           inputResources:
             - name: gitRepoResource
-            - name: promoteBuildInfo
+            - name: promotedBuildInfo
           outputResources:
             - name: helmChart
             - name: helmBuildInfo
@@ -235,7 +235,7 @@ pipelines:
           releaseBundleVersion: ${run_number}
           inputResources:
             - name: helmBuildInfo
-            - name: promoteBuildInfo
+            - name: promotedBuildInfo
           outputResources:
             - name: releaseBundle
  
