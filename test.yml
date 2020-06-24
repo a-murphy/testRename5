@@ -223,7 +223,7 @@ pipelines:
           flags: --debug
           autoPublishBuildInfo: true
           inputResources:
-            - name: gitRepoResource
+            - name: gitRepoResource35
             - name: promotedBuildInfo
           outputResources:
             - name: helmChart
