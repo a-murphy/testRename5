@@ -63,7 +63,6 @@ pipelines:
           autoPublishBuildInfo: true
           inputResources:
             - name: gitRepoResource
-            - name: promotedBuildInfo
           outputResources:
             - name: helmChart2
             - name: helmBuildInfo2
