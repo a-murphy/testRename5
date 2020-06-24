@@ -13,12 +13,6 @@ resources:
       path: a-murphy/5testRename5
       branches:
         include: {{gitBranch}}
-  - name: dockerBuildBuildInfo
-    type: BuildInfo
-    configuration:
-      sourceArtifactory:    artifactory
-      buildName:  initial
-      buildNumber: 1
   - name: promotedBuildInfo
     type: BuildInfo
     configuration:
@@ -26,6 +20,12 @@ resources:
       buildName:  initial
       buildNumber: 1
   - name: helmBuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory:    artifactory
+      buildName:  initial
+      buildNumber: 1
+  - name: helmBuildInfo2
     type: BuildInfo
     configuration:
       sourceArtifactory:    artifactory
@@ -44,48 +44,37 @@ resources:
       repository: example-repo-local/test/
       chart: my chart
       version: v1.1.1
+  - name: helmChart2
+    type: HelmChart
+    configuration:
+      sourceArtifactory: artifactory
+      repository: example-repo-local/test2/
+      chart: my chart
+      version: v1.1.12
 
 pipelines:
   - name: webhook_pipeline
     steps:
-      - name: docker_build
-        type: DockerBuild
+      - name: helmPublish2
+        type: HelmPublish
         configuration:
-          dockerFileLocation: .
-          dockerFileName: Dockerfile
-          dockerImageName: 192.168.50.42:8082/image/test #${versionTag}
-          dockerImageTag: tag #${versionTag}
-          #dockerOptions: "test${versionTag} --test ${testNumber}"
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
+          chartPath: "my chart"
+          flags: --debug
+          autoPublishBuildInfo: true
           inputResources:
-            - name: nodeRepoResource4
-      - name: docker_promote
+            - name: gitRepoResource
+            - name: promotedBuildInfo
+          outputResources:
+            - name: helmChart2
+            - name: helmBuildInfo2
+      - name: promote
         type: PromoteBuild
         configuration:
           targetRepository: promoteRepository
           inputResources:
-            - name: dockerBuildBuildInfo
+            - name: helmBuildInfo2
           outputResources:
             - name: promotedBuildInfo
-      - name: docker_push
-        type: DockerPush
-        configuration:
-          targetRepository: test-docker
-          forceXrayScan: ${testBoolean}
-          autoPublishBuildInfo: true
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: docker_build
-          outputResources:
-            - name: dockerBuildBuildInfo
-          integrations:
-            - name: artifactory
       - name: helmPublish
         type: HelmPublish
         configuration:
