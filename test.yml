@@ -204,7 +204,7 @@ pipelines:
         configuration:
           targetRepository: test-docker
           forceXrayScan: ${testBoolean}
-       #   autoPublishBuildInfo: true
+          autoPublishBuildInfo: true
           environmentVariables:
             versionTag: testTag
             testNumber: 5
@@ -221,6 +221,7 @@ pipelines:
         configuration:
           chartPath: "my chart"
           flags: --debug
+          autoPublishBuildInfo: true
           inputResources:
             - name: gitRepoResource
             - name: promotedBuildInfo
