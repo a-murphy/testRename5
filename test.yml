@@ -132,48 +132,48 @@ pipelines:
             - >-
               set_payload inhook "{\"test\":\"$run_number\", \"test2\":\"$step_id - test 123 - $step_url\"}"
             - cat "$(find_resource_variable "$1" resourcePath)/payload.env"
-      - name: jenkins
-        type: Jenkins
-        configuration:
-          inputSteps:
-            - name: sendHook
-          integrations:
-            - name: newJenkins
-          jenkinsJobName: jenkinsJob
-          buildParameters:
-            env1: ${res_buildInfo_buildName}
-            env2: ${step_url}
-            env3: "Test ${int_newJenkins_url} ${run_number}"
-            runNumber: ${run_number}
-            stepId: ${step_id}
-      - name: jenkins2
-        type: Jenkins
-        configuration:
-          inputSteps:
-            - name: sendHook
-          integrations:
-            - name: newJenkins
-          jenkinsJobName: pipelineJob
-          buildParameters:
-            runNumber: ${run_number}
-            stepId: ${step_id}
-      - name: jenkinsBranch1
-        type: Jenkins
-        configuration:
-          inputSteps:
-            - name: sendHook
-          inputResources:
-            - name: buildInfo
-          integrations:
-            - name: newJenkins
-          jenkinsJobName: branchesJob
-          jenkinsBranchName: master
-          buildParameters:
-            env1: ${res_buildInfo_buildName}
-            env2: ${step_url}
-            env3: "Test ${int_newJenkins_url} ${run_number}"
-            runNumber: ${run_number}
-            stepId: ${step_id}
+    #  - name: jenkins
+    #    type: Jenkins
+    #    configuration:
+    #      inputSteps:
+    #        - name: sendHook
+    #      integrations:
+    #        - name: newJenkins
+    #      jenkinsJobName: jenkinsJob
+    #      buildParameters:
+    #        env1: ${res_buildInfo_buildName}
+    #        env2: ${step_url}
+    #        env3: "Test ${int_newJenkins_url} ${run_number}"
+    #        runNumber: ${run_number}
+    #        stepId: ${step_id}
+    #  - name: jenkins2
+    #    type: Jenkins
+    #    configuration:
+    #      inputSteps:
+    #        - name: sendHook
+    #      integrations:
+    #        - name: newJenkins
+    #      jenkinsJobName: pipelineJob
+    #      buildParameters:
+    #        runNumber: ${run_number}
+    #        stepId: ${step_id}
+    #  - name: jenkinsBranch1
+    #    type: Jenkins
+    #    configuration:
+    #      inputSteps:
+    #        - name: sendHook
+    #      inputResources:
+    #        - name: buildInfo
+    #      integrations:
+    #        - name: newJenkins
+    #      jenkinsJobName: branchesJob
+    #      jenkinsBranchName: master
+    #      buildParameters:
+    #        env1: ${res_buildInfo_buildName}
+    #        env2: ${step_url}
+    #        env3: "Test ${int_newJenkins_url} ${run_number}"
+    #        runNumber: ${run_number}
+    #        stepId: ${step_id}
       - name: docker_build
         type: DockerBuild
         configuration:
