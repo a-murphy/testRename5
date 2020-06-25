@@ -224,7 +224,6 @@ pipelines:
           flags: --debug
           autoPublishBuildInfo: true
           forceXrayScan: true
-          failOnScan: false
           inputResources:
             - name: gitRepoResource35
             - name: promotedBuildInfo
