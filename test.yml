@@ -203,7 +203,6 @@ pipelines:
         type: DockerPush
         configuration:
           targetRepository: test-docker
-          forceXrayScan: ${testBoolean}
           autoPublishBuildInfo: true
           forceXrayScan: true
           failOnScan: false
