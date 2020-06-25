@@ -53,6 +53,12 @@ resources:
       sourceArtifactory:    artifactory
       buildName:  initial
       buildNumber: 1
+  - name: mavenBuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory:    artifactory
+      buildName:  initial
+      buildNumber: 1
   - name: promotedBuildInfo
     type: BuildInfo
     configuration:
@@ -230,6 +236,24 @@ pipelines:
           outputResources:
             - name: helmChart
             - name: helmBuildInfo
+      - name: maven2
+        type: MvnBuild
+        configuration:
+          sourceLocation: artifactory-maven-plugin-example
+          configFileLocation: .
+          configFileName: config
+          mvnCommand: "install"
+          autoPublishBuildInfo: true
+          forceXrayScan: true
+          inputResources:
+            - name: maven_example_repo
+          integrations:
+            - name: artifactory
+          outputResources:
+            - name: mavenBuildInfo
+        execution:
+          onStart:
+            - update-ca-certificates -f
       - name: createReleaseBundle
         type: CreateReleaseBundle
         configuration:
@@ -238,6 +262,7 @@ pipelines:
           releaseBundleVersion: ${run_number}
           inputResources:
             - name: helmBuildInfo
+            - name: mavenBuildInfo
             - name: promotedBuildInfo
           outputResources:
             - name: releaseBundle
