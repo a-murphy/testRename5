@@ -245,11 +245,21 @@ pipelines:
           mvnCommand: "install"
           autoPublishBuildInfo: true
           forceXrayScan: true
+          failOnScan: false
           inputResources:
             - name: maven_example_repo
           integrations:
             - name: artifactory
           outputResources:
+            - name: mavenBuildInfo
+        execution:
+          onStart:
+            - update-ca-certificates -f
+      - name: xray
+        type: XrayScan
+        configuration:
+          failOnScan: false
+          inputResources:
             - name: mavenBuildInfo
         execution:
           onStart:
