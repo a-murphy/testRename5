@@ -244,8 +244,8 @@ pipelines:
           configFileName: config
           mvnCommand: "install"
           autoPublishBuildInfo: true
-          forceXrayScan: true
-          failOnScan: false
+         # forceXrayScan: true
+         # failOnScan: false
           inputResources:
             - name: maven_example_repo
           integrations:
