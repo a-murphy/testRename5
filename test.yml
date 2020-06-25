@@ -242,7 +242,7 @@ pipelines:
           sourceLocation: artifactory-maven-plugin-example
           configFileLocation: .
           configFileName: config
-          mvnCommand: "install"
+          mvnCommand: "install --debug"
           autoPublishBuildInfo: true
          # forceXrayScan: true
          # failOnScan: false
