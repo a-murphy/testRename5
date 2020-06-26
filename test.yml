@@ -37,12 +37,12 @@ resources:
     type: RemoteFile
     configuration:
       source: artifactory
-      fileLocation: location2
+      fileLocation: location
   - name: remoteFileNoLocation
     type: RemoteFile
     configuration:
       source: artifactory
-      fileName: name2
+      fileName: name
  # - name: remoteFileNeither
  #   type: RemoteFile
  #   configuration:
