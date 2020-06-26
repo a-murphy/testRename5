@@ -36,6 +36,7 @@ resources:
   - name: remoteFileNoName
     type: RemoteFile
     configuration:
+      test: test
   #    source: artifactory
   #    fileName: name
   #    fileLocation: location
