@@ -37,16 +37,16 @@ resources:
     type: RemoteFile
     configuration:
       source: artifactory
-      fileLocation: location
+      fileLocation: location2
   - name: remoteFileNoLocation
     type: RemoteFile
     configuration:
       source: artifactory
-      fileName: name
-  - name: remoteFileNeither
-    type: RemoteFile
-    configuration:
-      source: artifactory
+      fileName: name2
+ # - name: remoteFileNeither
+ #   type: RemoteFile
+ #   configuration:
+ #     source: artifactory
   - name: nodeRepoResource4
     type: GitRepo
     configuration:
