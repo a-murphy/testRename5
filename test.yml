@@ -27,6 +27,26 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/sample_node
+  - name: remoteFileAll
+    type: RemoteFile
+    configuration:
+      source: artifactory
+      fileLocation: location
+      fileName: name
+  - name: remoteFileNoName
+    type: RemoteFile
+    configuration:
+      source: artifactory
+      fileLocation: location
+  - name: remoteFileNoLocation
+    type: RemoteFile
+    configuration:
+      source: artifactory
+      fileName: name
+  - name: remoteFileNeither
+    type: RemoteFile
+    configuration:
+      source: artifactory
   - name: nodeRepoResource4
     type: GitRepo
     configuration:
