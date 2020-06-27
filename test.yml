@@ -37,9 +37,9 @@ resources:
     type: RemoteFile
     configuration:
       test: test
-  #    source: artifactory
+      source: artifactory
   #    fileName: name
-  #    fileLocation: location
+      fileLocation: location
   - name: remoteFileNoLocation
     type: RemoteFile
     configuration:
