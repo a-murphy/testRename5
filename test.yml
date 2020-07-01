@@ -94,11 +94,11 @@ resources:
       repository: example-repo-local
       chart: my chart
       version: v1.1.1
-  - name: nodeRepoResource3
+  - name: nodeRepoResource4
     type: GitRepo
     configuration:
       gitProvider: aidan_github
-      path: a-murphy/basic-node
+      path: a-murphy/sample_node
       buildOn:
          commit: true
          pullRequestCreate: true
