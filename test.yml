@@ -294,8 +294,8 @@ pipelines:
                 tag: tag
                 registry: artifactory
                 sourceRepository: test-docker
-          inputResources:
-            - name: gitRepoResource
+    #      inputResources:
+    #        - name: gitRepoResource
     #        - name: fileSpec
         execution:
           onExecute:
