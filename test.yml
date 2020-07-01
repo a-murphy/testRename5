@@ -94,12 +94,12 @@ resources:
  #     repository: example-repo-local/test/
  #     chart: my chart
  #     version: v1.1.1
-  - name: image
+  - name: image2
     type: Image
     configuration:
       registry: artifactory
       sourceRepository: test-docker
-      imageName:           <imageRepo/imageName>
+      imageName: 54.187.73.59:8082/test-docker/image/test
       imageTag: tag
       autoPull: true
   - name: outhook
@@ -297,7 +297,7 @@ pipelines:
             type: image
             image:
               custom:
-                name: 54.187.73.59:8082/image/test
+                name: 54.187.73.59:8082/test-docker/image/test
                 tag: tag
                 registry: artifactory
                 sourceRepository: test-docker
@@ -327,7 +327,7 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
           inputResources:
-            - name: image
+            - name: image2
         #    - name: propertyBag
           runtime:
             type: image
