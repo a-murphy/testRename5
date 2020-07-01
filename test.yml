@@ -196,7 +196,7 @@ pipelines:
             - name: sendHook
           inputResources:
          #   - name: fileSpec
-            - name: nodeRepoResource5
+            - name: gitRepoResource35
       - name: docker_promote
         type: PromoteBuild
         configuration:
