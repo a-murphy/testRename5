@@ -384,6 +384,10 @@ pipelines:
       #      - name: outputBuildInfo
           inputResources:
             - name: goRepo2
+          inputSteps:
+            - name: main_step
+          integrations:
+            - name: artifactory
    #   - name: helmPublish
    #     type: HelmPublish
    #     configuration:
