@@ -112,15 +112,15 @@ pipelines:
           outputResources:
             - name: outhook
             - name: inhook
-          integrations:
-            - name: email
+      #    integrations:
+      #      - name: email
       #    environmentVariables:
       #      outhook_payload_file: ${step_tmp_dir}/outhook_payload_file
         execution:
           onExecute:
             - export imageName="testname"
             - export imageTag="testtag"
-            - send_notification email --recipients build@shippable.com
+      #      - send_notification email --recipients build@shippable.com
             - add_pipeline_variables test=true
             - write_output outhook test_1=valid
             - write_output outhook 2test=invalid
@@ -236,25 +236,25 @@ pipelines:
    #       outputResources:
    #         - name: helmChart
    #         - name: helmBuildInfo
-      - name: maven2
-        type: MvnBuild
-        configuration:
-          sourceLocation: artifactory-maven-plugin-example
-          configFileLocation: .
-          configFileName: config
-          mvnCommand: "install --debug"
-          autoPublishBuildInfo: true
-         # forceXrayScan: true
-         # failOnScan: false
-          inputResources:
-            - name: maven_example_repo
-          integrations:
-            - name: artifactory
-          outputResources:
-            - name: mavenBuildInfo
-        execution:
-          onStart:
-            - update-ca-certificates -f
+   #   - name: maven2
+   #     type: MvnBuild
+   #     configuration:
+   #       sourceLocation: artifactory-maven-plugin-example
+   #       configFileLocation: .
+   #       configFileName: config
+   #       mvnCommand: "install --debug"
+   #       autoPublishBuildInfo: true
+   #      # forceXrayScan: true
+   #      # failOnScan: false
+   #       inputResources:
+   #         - name: maven_example_repo
+   #       integrations:
+   #         - name: artifactory
+   #       outputResources:
+   #         - name: mavenBuildInfo
+   #     execution:
+   #       onStart:
+   #         - update-ca-certificates -f
       - name: xray
         type: XrayScan
         configuration:
