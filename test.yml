@@ -373,6 +373,11 @@ pipelines:
         configuration:
           runtime:            
             type: image
+            custom:
+              name: 192.168.50.42:8082/image/test
+              tag: tag
+              registry: artifactory
+              sourceRepository: test-docker
           inputResources:
             - name: gitRepoResource32
       #      - name: propertyBag
