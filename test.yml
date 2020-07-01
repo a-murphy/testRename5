@@ -94,7 +94,14 @@ resources:
  #     repository: example-repo-local/test/
  #     chart: my chart
  #     version: v1.1.1
-
+  - name: image
+    type: Image
+    configuration:
+      registry: artifactory
+      sourceRepository: test-docker
+      imageName:           <imageRepo/imageName>
+      imageTag: tag
+      autoPull: true
   - name: outhook
     type: OutgoingWebhook
     configuration:
@@ -208,7 +215,7 @@ pipelines:
       - name: docker_push
         type: DockerPush
         configuration:
-          targetRepository: test-docker
+          targetRepository: docker-local
           autoPublishBuildInfo: true
           forceXrayScan: true
           failOnScan: false
@@ -319,7 +326,8 @@ pipelines:
      #     affinityGroup: groupone
           inputSteps:
             - name: in_trigger_step
-        #  inputResources:
+          inputResources:
+            - name: image
         #    - name: propertyBag
           runtime:
             type: image
