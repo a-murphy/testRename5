@@ -255,15 +255,15 @@ pipelines:
    #     execution:
    #       onStart:
    #         - update-ca-certificates -f
-      - name: xray
-        type: XrayScan
-        configuration:
-          failOnScan: false
-          inputResources:
-            - name: mavenBuildInfo
-        execution:
-          onStart:
-            - update-ca-certificates -f
+   #   - name: xray
+   #     type: XrayScan
+   #     configuration:
+   #       failOnScan: false
+   #       inputResources:
+   #         - name: mavenBuildInfo
+   #     execution:
+   #       onStart:
+   #         - update-ca-certificates -f
    #   - name: createReleaseBundle
    #     type: CreateReleaseBundle
    #     configuration:
