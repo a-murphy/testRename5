@@ -71,12 +71,12 @@ resources:
       sourceArtifactory:    artifactory
       buildName:  initial
       buildNumber: 1
-  - name: releaseBundle
-    type: ReleaseBundle
-    configuration:
-      sourceDistribution:    distribution
-      name: myRelease
-      version: ${run_number}
+#  - name: releaseBundle
+#    type: ReleaseBundle
+#    configuration:
+#      sourceDistribution:    distribution
+#      name: myRelease
+#      version: ${run_number}
   - name: fileSpec2
     type: FileSpec
     configuration:
@@ -223,19 +223,19 @@ pipelines:
       #      - name: outputBuildInfo
           integrations:
             - name: artifactory
-      - name: helmPublish
-        type: HelmPublish
-        configuration:
-          chartPath: "my chart"
-          flags: --debug
-          autoPublishBuildInfo: true
-          forceXrayScan: true
-          inputResources:
-            - name: gitRepoResource35
-            - name: promotedBuildInfo
-          outputResources:
-            - name: helmChart
-            - name: helmBuildInfo
+   #   - name: helmPublish
+   #     type: HelmPublish
+   #     configuration:
+   #       chartPath: "my chart"
+   #       flags: --debug
+   #       autoPublishBuildInfo: true
+   #       forceXrayScan: true
+   #       inputResources:
+   #         - name: gitRepoResource35
+   #         - name: promotedBuildInfo
+   #       outputResources:
+   #         - name: helmChart
+   #         - name: helmBuildInfo
       - name: maven2
         type: MvnBuild
         configuration:
@@ -264,18 +264,18 @@ pipelines:
         execution:
           onStart:
             - update-ca-certificates -f
-      - name: createReleaseBundle
-        type: CreateReleaseBundle
-        configuration:
-          dryRun: false
-          releaseBundleName: myReleaseBundle
-          releaseBundleVersion: ${run_number}
-          inputResources:
-            - name: helmBuildInfo
-            - name: mavenBuildInfo
-            - name: promotedBuildInfo
-          outputResources:
-            - name: releaseBundle
+   #   - name: createReleaseBundle
+   #     type: CreateReleaseBundle
+   #     configuration:
+   #       dryRun: false
+   #       releaseBundleName: myReleaseBundle
+   #       releaseBundleVersion: ${run_number}
+   #       inputResources:
+   #         - name: helmBuildInfo
+   #         - name: mavenBuildInfo
+   #         - name: promotedBuildInfo
+   #       outputResources:
+   #         - name: releaseBundle
  
   - name: aidan_test_pipeline_windows
    # configuration:
@@ -289,10 +289,11 @@ pipelines:
           runtime:            
             type: image
             image:
-              auto:
-                language: node
-                versions:
-                  - 10
+              custom:
+                name: 54.187.73.59:8082/image/test
+                tag: tag
+                registry: artifactory
+                sourceRepository: test-docker
           inputResources:
             - name: gitRepoResource
     #        - name: fileSpec
