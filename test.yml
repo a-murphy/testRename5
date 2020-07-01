@@ -7,6 +7,11 @@ resources:
  #     property3: III
  #     'property5': 'test space one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty'
  #     property6: ""
+  - name: goRepo2
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/go_app
   - name: gitRepoResource32
     type: GitRepo
     configuration:
@@ -192,7 +197,7 @@ pipelines:
         configuration:
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: 54.187.73.59:8082/image/test #${versionTag}
+          dockerImageName: 54.187.73.59:8082/test-docker/image/test #${versionTag}
           dockerImageTag: tag #${versionTag}
           #dockerOptions: "test${versionTag} --test ${testNumber}"
           environmentVariables:
@@ -215,7 +220,7 @@ pipelines:
       - name: docker_push
         type: DockerPush
         configuration:
-          targetRepository: docker-local
+          targetRepository: test-docker
           autoPublishBuildInfo: true
           forceXrayScan: true
           failOnScan: false
@@ -365,6 +370,20 @@ pipelines:
           onCancel:
             - echo "Someone cancelled the job"
             
+      - name: goPublishModule
+        type: GoPublishModule
+        configuration:
+          forceXrayScan: false
+          autoPublishBuildInfo: false
+          targetRepository: go-test
+          sourceLocation: .
+          version: "v0.0.1"
+          self: true
+          deps: ALL
+      #    outputResources:
+      #      - name: outputBuildInfo
+          inputResources:
+            - name: goRepo2
    #   - name: helmPublish
    #     type: HelmPublish
    #     configuration:
