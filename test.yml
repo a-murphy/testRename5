@@ -107,7 +107,7 @@ resources:
       imageName: 54.187.73.59:8082/test-docker/image/test
       imageTag: tag
       autoPull: true
-  - name: image
+  - name: image3
     type: Image
     configuration:
       registry: artifactory
@@ -422,7 +422,7 @@ pipelines:
           inputResources:
             - name: gitRepoResource32
       #      - name: propertyBag
-            - name: image
+            - name: image3
         execution:
           onExecute:
             - echo "executing task command 1"
