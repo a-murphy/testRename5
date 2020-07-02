@@ -112,7 +112,7 @@ resources:
     configuration:
       registry: artifactory
       sourceRepository: test-docker
-      imageName: 192.168.50.42:8082/test-docker/image/test
+      imageName: 192.168.50.42:8082/image/test
       imageTag: tag
       autoPull: true
   - name: outhook
