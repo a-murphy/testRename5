@@ -465,6 +465,8 @@ pipelines:
           affinityGroup: affinity_group2
           inputSteps:
             - name: bash_step2
+          inputResources:
+            - name: cron
         execution:
           onExecute:
             - echo "executing task command 1"
@@ -475,6 +477,7 @@ pipelines:
             - name: bash_step_3
           affinityGroup: affinity_group2
           inputResources:
+            - name: cron
             - name: gitRepoResource32
         execution:
           onExecute:
@@ -485,6 +488,8 @@ pipelines:
           affinityGroup: affinity_group2
           inputSteps:
             - name: bash_step_4
+          inputResources:
+            - name: cron
         execution:
           onExecute:
             - echo "executing task command 1"
@@ -494,6 +499,8 @@ pipelines:
           affinityGroup: affinity_group2
           inputSteps:
             - name: bash_step_5
+          inputResources:
+            - name: cron
         execution:
           onExecute:
             - echo "executing task command 1"
@@ -502,6 +509,8 @@ pipelines:
         configuration:
           inputSteps:
             - name: bash_step_6
+          inputResources:
+            - name: cron
           affinityGroup: affinity_group2
      #     inputResources:
      #       - name: remoteFile
