@@ -134,7 +134,7 @@ resources:
       sourceArtifactory: artifactory
       buildName: test
       buildNumber: 1
-  - name: mavenBuildInfo
+  - name: mavenBuildInfo2
     type: BuildInfo
     configuration:
       sourceArtifactory: artifactory
@@ -170,7 +170,7 @@ pipelines:
         inputResources:
           - name: examples_repo
         outputResources:
-          - name: mavenBuildInfo
+          - name: mavenBuildInfo2
         integrations:
           - name: artifactory
         autoPublishBuildInfo: true
