@@ -143,13 +143,13 @@ resources:
         propertyOne: 1
         propertyTwo: two
 
-  #- name: examples_repo
-  #  type: GitRepo
-  #  configuration:
-  #    path: ~aidanm/project-examples
-  #    gitProvider: aidan_bbs
-  #    branches:
-  #      include: master
+  - name: examples_repo
+    type: GitRepo
+    configuration:
+      path: ~aidanm/project-examples
+      gitProvider: aidan_bbs
+      branches:
+        include: master
 
 pipelines:
   - name: MavenStuff
@@ -235,7 +235,7 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
           inputResources:
-            - name: nodeRepoResource3
+            - name: nodeRepoResource4
               trigger: false
             - name: testRepo
             - name: aql
@@ -260,7 +260,7 @@ pipelines:
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
-            - replicate_resource nodeRepoResource3 nodeRepoResource2 --match-settings
+            - replicate_resource nodeRepoResource4 nodeRepoResource2 --match-settings
             - echo $test_variable $test_variable2
             - test=$(find_step_configuration_value "testing123")
             - if [ -z "$test" ]; then echo "empty"; fi
@@ -281,8 +281,8 @@ pipelines:
           #  - restore_run_files testFolder1 /test1
           #  - ls -R /test1
           #  - add_cache_files /test testFolder
-            - compare_git --resource nodeRepoResource3
-            - cd "$res_nodeRepoResource3_resourcePath"
+            - compare_git --resource nodeRepoResource4
+            - cd "$res_nodeRepoResource4_resourcePath"
           #  - switch_env nodejs 0.12
             - npm install
             - cd tests
@@ -436,7 +436,7 @@ pipelines:
             - name: main_step
           inputResources:
          #   - name: fileSpec
-            - name: nodeRepoResource3
+            - name: nodeRepoResource4
       - name: docker_push
         type: DockerPush
         configuration:
