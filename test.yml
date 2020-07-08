@@ -134,6 +134,12 @@ resources:
       sourceArtifactory: artifactory
       buildName: test
       buildNumber: 1
+  - name: mavenBuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: artifactory
+      buildName: test
+      buildNumber: 1
   - name: aql
     type: Aql
     configuration:
@@ -163,6 +169,8 @@ pipelines:
         mvnCommand: "install"
         inputResources:
           - name: examples_repo
+        outputResources:
+          - name: mavenBuildInfo
         integrations:
           - name: artifactory
         autoPublishBuildInfo: true
