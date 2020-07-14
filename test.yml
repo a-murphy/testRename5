@@ -125,10 +125,13 @@ resources:
       webhookName: incoming
 pipelines:
   - name: webhook_pipeline
+    configuration:
+      chronological: true
     steps:
       - name: sendHook
         type: Bash
         configuration:
+          priority: 1
           outputResources:
             - name: outhook
             - name: inhook
