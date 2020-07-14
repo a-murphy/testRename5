@@ -126,7 +126,7 @@ resources:
 pipelines:
   - name: webhook_pipeline
     configuration:
-      chronological: true
+      chronological: "false"
     steps:
       - name: sendHook
         type: Bash
