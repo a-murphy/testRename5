@@ -127,6 +127,10 @@ pipelines:
   - name: webhook_pipeline
     configuration:
       chronological: true
+      dependencyMode:
+        waitForCompletion: true
+        waitOnParentComplete: false
+        waitOnChildComplete: "always"
     steps:
       - name: sendHook
         type: Bash
