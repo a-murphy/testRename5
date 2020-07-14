@@ -130,7 +130,7 @@ pipelines:
       dependencyMode:
         waitForCompletion: true
         waitOnParentComplete: false
-        waitOnChildComplete: "always"
+        waitOnChildComplete: true
     steps:
       - name: sendHook
         type: Bash
