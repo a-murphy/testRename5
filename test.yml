@@ -1,5 +1,5 @@
 resources:
-  - name: cron2
+  - name: cron
     type: CronTrigger
     configuration:
       interval: "*/2 * * * *"
@@ -10,7 +10,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: cron2
+            - name: cron
         execution:
           onExecute:
             - sleep 2
