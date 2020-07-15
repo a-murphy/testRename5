@@ -378,16 +378,16 @@ pipelines:
           onExecute:
             - sleep 10
             - write_output dockerImage "imageTag=$run_number" "sha=test"
-      - name: step_6
-        type: Bash
-        configuration:
-          affinityGroup: grouptwo
-          priority: 5
-          inputResources:
-            - name: dockerImage
-        execution:
-          onExecute:
-            - sleep 10
+     # - name: step_6
+     #   type: Bash
+     #   configuration:
+     #     affinityGroup: grouptwo
+     #     priority: 5
+     #     inputResources:
+     #       - name: dockerImage
+     #   execution:
+     #     onExecute:
+     #       - sleep 10
       - name: step_7
         type: Bash
         configuration:
