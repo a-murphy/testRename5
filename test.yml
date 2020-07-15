@@ -464,6 +464,9 @@ pipelines:
 
 
   - name: test_pipeline_11
+    configuration:
+      dependencyMode:
+        waitOnParentComplete: true
     steps:
       - name: triggered_by_resource
         type: Bash
