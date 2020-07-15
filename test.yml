@@ -2,7 +2,7 @@ resources:
   - name: cron
     type: CronTrigger
     configuration:
-      interval: "* */2 * * *"
+      interval: "0 */2 * * *"
 pipelines:
   - name: cron_pipeline
     steps:
