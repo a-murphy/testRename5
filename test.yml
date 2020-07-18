@@ -461,6 +461,7 @@ pipelines:
             - echo "executing task command 1"
             - echo "executing task command 2"
             - write_output buildInfo buildName="myName" buildNumber=100
+            - sleep 300
      #       - pushd $res_gitRepoResource32_resourcePath
      #       - echo "hello frog" > test.xml
      #       - save_tests $res_gitRepoResource32_resourcePath/test.xml
