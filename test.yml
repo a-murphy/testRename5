@@ -370,8 +370,6 @@ pipelines:
       - name: step_5
         type: Bash
         configuration:
-          dependencyMode:
-            waitForChildComplete: true
           affinityGroup: grouptwo
           priority: 10
           inputSteps:
