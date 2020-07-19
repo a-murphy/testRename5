@@ -468,8 +468,8 @@ pipelines:
   - name: test_pipeline_11
     configuration:
       dependencyMode:
-        waitOnParentSuccess: true
-        waitOnChildComplete: "true"
+        waitOnParentComplete: true
+   #     waitOnChildComplete: "true"
     steps:
       - name: triggered_by_resource
         type: Bash
