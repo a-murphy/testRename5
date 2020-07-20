@@ -466,9 +466,9 @@ pipelines:
 
 
   - name: test_pipeline_11
-    configuration:
-      dependencyMode:
-        chronological: true
+    configuration:   
+      chronological: true
+  #    dependencyMode:
    #     waitOnParentComplete: true
    #     waitOnChildComplete: "true"
     steps:
