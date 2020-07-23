@@ -181,8 +181,8 @@ pipelines:
   - name: test_pipeline_10
     configuration:
    #   nodePool: Ubuntu16
-    #  dependencyMode:
-    #    waitOnChildComplete: "true"
+      dependencyMode:
+        waitOnChildComplete: "true"
       runtime:            
         type: image
         image:
@@ -469,7 +469,7 @@ pipelines:
     configuration:   
    #   chronological: true
       dependencyMode:
-        waitOnParentComplete: true
+        waitOnParentComplete: "true"
    #     waitOnChildComplete: "true"
     steps:
       - name: triggered_by_resource
