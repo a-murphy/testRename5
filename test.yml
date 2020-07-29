@@ -164,7 +164,7 @@ pipelines:
       type: Bash
       configuration:
         inputResources:
-          - name: cronTrigger
+          - name: dockerImage
             trigger: true
         chronological: true
       execution:
@@ -174,7 +174,7 @@ pipelines:
       type: Bash
       configuration:
         inputResources:
-          - name: cronTrigger
+          - name: dockerImage
             trigger: true
         chronological: true
         inputSteps:
@@ -402,7 +402,7 @@ pipelines:
             - name: dockerImage
         execution:
           onExecute:
-            - sleep 10
+        #    - sleep 10
             - write_output dockerImage "imageTag=$run_number" "sha=test"
      # - name: step_6
      #   type: Bash
@@ -505,7 +505,7 @@ pipelines:
             - name: dockerImage2
         execution:
           onExecute:
-            - sleep 10
+            - sleep 1
       - name: following_step
         type: Bash
         configuration:
@@ -513,7 +513,7 @@ pipelines:
             - name: dockerImage2
         execution:
           onExecute:
-            - sleep 10
+            - sleep 1
             
   - name: pipeline_test
     steps:
