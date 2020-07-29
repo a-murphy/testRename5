@@ -158,6 +158,30 @@ resources:
         include: master
 
 pipelines:
+  - name: DoubleTrigger
+    steps:
+    - name: stepOne
+      type: Bash
+      configuration:
+        inputResources:
+          - name: cronTrigger
+            trigger: true
+        chronological: true
+      execution:
+        onStart:
+          - sleep 2
+    - name: stepOne
+      type: Bash
+      configuration:
+        inputResources:
+          - name: cronTrigger
+            trigger: true
+        chronological: true
+        inputSteps:
+          - name: stepOne
+      execution:
+        onStart:
+          - sleep 2
   - name: MavenStuff
     steps:
     - name: BuildSample
