@@ -170,7 +170,7 @@ pipelines:
       execution:
         onStart:
           - sleep 2
-    - name: stepOne
+    - name: stepTwo
       type: Bash
       configuration:
         inputResources:
@@ -206,7 +206,7 @@ pipelines:
     configuration:
    #   nodePool: Ubuntu16
       dependencyMode:
-        waitOnChildComplete: "true"
+        waitOnChildComplete: true
       runtime:            
         type: image
         image:
@@ -493,7 +493,7 @@ pipelines:
     configuration:   
    #   chronological: true
       dependencyMode:
-        waitOnParentComplete: "true"
+        waitOnParentComplete: true
    #     waitOnChildComplete: "true"
     steps:
       - name: triggered_by_resource
