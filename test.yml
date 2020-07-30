@@ -148,6 +148,10 @@ resources:
       addedProperties:
         propertyOne: 1
         propertyTwo: two
+  - name: properties
+    type: PropertyBag
+    configuration:
+      propertyOne: 1
 
   - name: examples_repo
     type: GitRepo
@@ -165,7 +169,7 @@ pipelines:
       configuration:
         priority: 1
         inputResources:
-          - name: dockerImage
+          - name: properties
             trigger: true
         chronological: true
       execution:
@@ -183,7 +187,7 @@ pipelines:
       type: Bash
       configuration:
         inputResources:
-          - name: dockerImage
+          - name: properties
             trigger: true
         chronological: true
         inputSteps:
@@ -383,12 +387,15 @@ pipelines:
       - name: step_3
         type: Bash
         configuration:
+          outputResources:
+            - name: properties
           affinityGroup: grouptwo
           inputSteps:
             - name: main_step
         execution:
           onExecute:
-            - sleep 10
+            - sleep 1
+            - write_output properties property=${run_number}
       - name: step_4
         type: Bash
         configuration:
