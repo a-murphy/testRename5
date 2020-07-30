@@ -195,6 +195,39 @@ pipelines:
       execution:
         onStart:
           - sleep 2
+  - name: DoubleTrigger2
+    steps:
+    - name: stepOne
+      type: Bash
+      configuration:
+        priority: 1
+        inputResources:
+          - name: properties
+            trigger: true
+        chronological: true
+      execution:
+        onStart:
+          - sleep 2
+    - name: stepThree
+      type: Bash
+      configuration:
+        inputSteps:
+          - name: stepOne
+      execution:
+        onStart:
+          - sleep 2
+    - name: stepTwo
+      type: Bash
+      configuration:
+        inputResources:
+          - name: properties
+            trigger: true
+        chronological: true
+        inputSteps:
+          - name: stepThree
+      execution:
+        onStart:
+          - sleep 2
   - name: MavenStuff
     steps:
     - name: BuildSample
