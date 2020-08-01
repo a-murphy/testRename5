@@ -540,7 +540,7 @@ pipelines:
 
   - name: test_pipeline_11
     configuration:   
-   #   chronological: true
+      chronological: true
       dependencyMode:
         waitOnParentComplete: true
    #     waitOnChildComplete: "true"
