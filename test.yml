@@ -131,6 +131,14 @@ pipelines:
         waitOnParentComplete: false
         waitOnChildComplete: true
     steps:
+      - name: other
+        type: Bash
+        configuration:
+          outputResources:
+            - name: outhook
+        execution:
+          onExecute:
+            - echo "test"
       - name: sendHook
         type: Bash
         configuration:
@@ -164,6 +172,17 @@ pipelines:
             - >-
               set_payload inhook "{\"test\":\"$run_number\", \"test2\":\"$step_id - test 123 - $step_url\"}"
             - cat "$(find_resource_variable "$1" resourcePath)/payload.env"
+      - name: inputHook
+        type: Bash
+        configuration:
+          inputResources:
+            - name: outhook
+              newVersionOnly: true
+            - name: inhook
+              newVersionOnly: true
+        execution:
+          onExecute:
+            - echo $res_outhook_payload
     #  - name: jenkins
     #    type: Jenkins
     #    configuration:
