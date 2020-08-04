@@ -144,7 +144,7 @@ pipelines:
         configuration:
           priority: 1
           outputResources:
-            - name: outhook
+       #     - name: outhook
             - name: inhook
       #    integrations:
       #      - name: email
@@ -162,7 +162,7 @@ pipelines:
             - write_output outhook test4= invalid
             - write_output outhook "test 5='invalid test'"
             - write_output outhook _test6="valid_test"
-            - write_output outhook t=valid
+            - write_output outhook t=${run_number}
           onFailure:
             - echo "failed"
           onSuccess:
