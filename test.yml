@@ -135,7 +135,7 @@ pipelines:
         type: Bash
         configuration:
           outputResources:
-            - name: outhook
+            - name: inhook
         execution:
           onExecute:
             - echo "test"
@@ -144,7 +144,7 @@ pipelines:
         configuration:
           priority: 1
           outputResources:
-       #     - name: outhook
+            - name: outhook
             - name: inhook
       #    integrations:
       #      - name: email
