@@ -228,6 +228,7 @@ pipelines:
       - name: docker_build
         type: DockerBuild
         configuration:
+          allowFailure: true
           dockerFileLocation: .
           dockerFileName: Dockerfile
           dockerImageName: 54.187.73.59:8082/test-docker/image/test #${versionTag}
