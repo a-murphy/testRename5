@@ -143,6 +143,7 @@ pipelines:
         type: Bash
         configuration:
           priority: 1
+          allowFailure: true
           outputResources:
             - name: outhook
             - name: inhook
@@ -175,6 +176,7 @@ pipelines:
       - name: inputHook
         type: Bash
         configuration:
+          allowFailure: true
           inputResources:
             - name: outhook
               newVersionOnly: true
@@ -246,6 +248,7 @@ pipelines:
       - name: docker_promote
         type: PromoteBuild
         configuration:
+          allowFailure: true
           targetRepository: promoteRepository
           inputResources:
             - name: dockerBuildBuildInfo
@@ -254,6 +257,7 @@ pipelines:
       - name: docker_push
         type: DockerPush
         configuration:
+          allowFailure: true
           targetRepository: test-docker
           autoPublishBuildInfo: true
           forceXrayScan: true
