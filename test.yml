@@ -3,7 +3,7 @@ resources:
     type: FileSpec
     configuration:
       sourceArtifactory: artifactory
-      aql: "items.find"({"path":{"$match":"org/jfrog/test/"},{"name":{"$match":"maven-metadata.xml"}}})"
+      aql: '"items.find"({"path":{"$match":"org/jfrog/test/"},{"name":{"$match":"maven-metadata.xml"}}})'
       recursive: false
   - name: gitRepoResource42
     type: GitRepo
