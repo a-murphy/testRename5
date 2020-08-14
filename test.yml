@@ -1,4 +1,10 @@
 resources:
+  - name: execTemplatesAQL
+    type: FileSpec
+    configuration:
+      sourceArtifactory: artifactory
+      aql: 'items.find({"path": {"$match":"org/jfrog/test/*"},{"$or": [{"name": {"$match": "maven-metadata.xml"}},{"name": {"$match": "*-metadata.*"}}]}})'
+      recursive: false
   - name: gitRepoResource42
     type: GitRepo
     configuration:
@@ -171,6 +177,7 @@ pipelines:
         inputResources:
           - name: properties
             trigger: true
+          - name: execTemplatesAQL
         chronological: true
       execution:
         onStart:
