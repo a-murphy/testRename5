@@ -15,7 +15,7 @@ resources:
    #     include: nointegrations
       buildOn:
         pullRequestClose: true
-        pullRequest: true
+        pullRequestCreate: true
         releaseCreate: true
         tagCreate: true
       cancelPendingRunsOn:
