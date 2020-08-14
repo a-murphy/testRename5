@@ -11,8 +11,8 @@ resources:
  #     interval: "0 0 * * *"
       gitProvider: aidan_github
       path: a-murphy/5testRename5
-      branches:
-        include: nointegrations
+   # branches:
+   #     include: nointegrations
       buildOn:
         pullRequestClose: false
         releaseCreate: true
