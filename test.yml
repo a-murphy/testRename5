@@ -21,8 +21,8 @@ resources:
       cancelPendingRunsOn:
         newCommit: true
         pullRequestUpdate: true
-      tags:
-        include: include.*
+     # tags:
+     #   include: include.*
   - name: gitRepoResource
     type: GitRepo
     configuration:
