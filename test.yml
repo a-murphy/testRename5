@@ -17,6 +17,9 @@ resources:
         pullRequestClose: false
         releaseCreate: true
         tagCreate: true
+      cancelPendingRunsOn:
+        newCommit: true
+        pullRequestUpdate: true
       tags:
         include: include.*
   - name: gitRepoResource
@@ -653,6 +656,14 @@ pipelines:
 
   - name: go_test3
     steps:
+      - name: triggerCancel
+        type: Bash
+        configuration:
+          inputResources:
+            - name: gitRepoResource42
+        execution:
+          onExecute:
+            - sleep 30
       - name: Go3
         type: GoBuild
         configuration:
@@ -660,6 +671,8 @@ pipelines:
           repository: repo
           outputLocation: "output"
           outputFile: "file"
+          inputSteps:
+            - name: triggerCancel
           inputResources:
             - name: gitRepoResource42
             - name: fileSpec
