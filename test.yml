@@ -163,13 +163,13 @@ resources:
     configuration:
       propertyOne: 1
 
-  - name: examples_repo
-    type: GitRepo
-    configuration:
-      path: ~aidanm/project-examples
-      gitProvider: aidan_bbs
-      branches:
-        include: master
+#  - name: examples_repo
+#    type: GitRepo
+#    configuration:
+#      path: ~aidanm/project-examples
+#      gitProvider: aidan_bbs
+#      branches:
+#        include: master
 
 pipelines:
   - name: DoubleTrigger
