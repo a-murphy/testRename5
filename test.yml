@@ -239,25 +239,25 @@ pipelines:
       execution:
         onStart:
           - sleep 2
-  - name: MavenStuff
-    steps:
-    - name: BuildSample
-      type: MvnBuild
-      configuration:
-        sourceLocation: artifactory-maven-plugin-example
-        configFileLocation: .
-        configFileName: config
-        mvnCommand: "install"
-        inputResources:
-          - name: examples_repo
-        outputResources:
-          - name: mavenBuildInfo2
-        integrations:
-          - name: artifactory
-        autoPublishBuildInfo: true
-      execution:
-        onStart:
-          - update-ca-certificates -f
+ # - name: MavenStuff
+ #   steps:
+ #   - name: BuildSample
+ #     type: MvnBuild
+ #     configuration:
+ #       sourceLocation: artifactory-maven-plugin-example
+ #       configFileLocation: .
+ #       configFileName: config
+ #       mvnCommand: "install"
+ #       inputResources:
+ #         - name: examples_repo
+ #       outputResources:
+ #         - name: mavenBuildInfo2
+ #       integrations:
+ #         - name: artifactory
+ #       autoPublishBuildInfo: true
+ #     execution:
+ #       onStart:
+ #         - update-ca-certificates -f
   
   - name: test_pipeline_10
     configuration:
