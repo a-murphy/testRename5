@@ -23,6 +23,24 @@ resources:
         pullRequestUpdate: true
      # tags:
      #   include: include.*
+  - name: bbsRepoResource
+    type: GitRepo
+    configuration:
+ #     interval: "0 0 * * *"
+      gitProvider: aidan_bbs
+      path: ~aidan/test
+   # branches:
+   #     include: nointegrations
+      buildOn:
+        pullRequestClose: true
+        pullRequestCreate: true
+        releaseCreate: true
+        tagCreate: true
+      cancelPendingRunsOn:
+        newCommit: true
+        pullRequestUpdate: true
+     # tags:
+     #   include: include.*
   - name: gitRepoResource
     type: GitRepo
     configuration:
@@ -182,6 +200,7 @@ pipelines:
           - name: properties
             trigger: true
           - name: execTemplatesAQL
+          - name: bbsRepoResource
         chronological: true
       execution:
         onStart:
