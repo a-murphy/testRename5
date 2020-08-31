@@ -270,12 +270,12 @@ pipelines:
       execution:
         onStart:
           - sleep 2
-    - name: stepThree
+    - name: stepFour
       type: Bash
       configuration:
         inputResources:
           - name: test_resource_one
-          - name: test_resourvce_two
+          - name: test_resource_two
             trigger: true
       execution:
         onStart:
