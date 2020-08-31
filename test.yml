@@ -247,14 +247,18 @@ pipelines:
       execution:
         onStart:
           - sleep 2
+          - add_run_variable test1=$step_id
     - name: stepThree
       type: Bash
       configuration:
         inputSteps:
           - name: stepOne
+        outputResources:
+          - name: test_resource_two
       execution:
         onStart:
           - sleep 2
+          - add_run_variable test3=$step_id
     - name: stepTwo
       type: Bash
       configuration:
@@ -266,10 +270,10 @@ pipelines:
           - name: stepThree
         outputResources:
           - name: test_resource_one
-          - name: test_resource_two
       execution:
         onStart:
           - sleep 2
+          - add_run_variable test2=$step_id
     - name: stepFour
       type: Bash
       configuration:
