@@ -1,4 +1,13 @@
 resources:
+  - name: test_resource_one
+    type: PropertyBag
+    configuration:
+      test: test
+  - name: test_resource_two
+    type: PropertyBag
+    configuration:
+      test: test
+  
   - name: execTemplatesAQL
     type: FileSpec
     configuration:
@@ -255,6 +264,19 @@ pipelines:
         chronological: true
         inputSteps:
           - name: stepThree
+        outputResources:
+          - name: test_resource_one
+          - name: test_resource_two
+      execution:
+        onStart:
+          - sleep 2
+    - name: stepThree
+      type: Bash
+      configuration:
+        inputResources:
+          - name: test_resource_one
+          - name: test_resourvce_two
+            trigger: true
       execution:
         onStart:
           - sleep 2
