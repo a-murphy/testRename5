@@ -709,7 +709,7 @@ pipelines:
       - name: triggerCancel
         type: Bash
         configuration:
-          affinityGroup: GoTest
+          affinityGroup: GoTest2
           inputResources:
             - name: gitRepoResource42
         execution:
@@ -718,7 +718,7 @@ pipelines:
       - name: Go3
         type: GoBuild
         configuration:
-          affinityGroup: GoTest
+          affinityGroup: GoTest2
           sourceLocation: "."
           repository: repo
           outputLocation: "output"
@@ -742,7 +742,7 @@ pipelines:
       - name: npmBuild3
         type: NpmBuild
         configuration:
-          affinityGroup: GoTest
+          affinityGroup: GoTest2
           sourceLocation: "true"
           repositoryName: test
           inputSteps:
@@ -761,7 +761,7 @@ pipelines:
       - name: goPublishBinary
         type: GoPublishBinary
         configuration:
-          affinityGroup: GoTest
+          affinityGroup: GoTest2
           forceXrayScan: true
           autoPublishBuildInfo: true
           targetRepository: go-test
@@ -772,7 +772,7 @@ pipelines:
       - name: goPublishModule
         type: GoPublishModule
         configuration:
-          affinityGroup: GoTest
+          affinityGroup: GoTest2
           forceXrayScan: false
           autoPublishBuildInfo: true
           targetRepository: go-test
@@ -787,7 +787,7 @@ pipelines:
       - name: helmPublish
         type: HelmPublish
         configuration:
-          affinityGroup: GoTest
+          affinityGroup: GoTest2
           chartPath: "./my chart"
           flags: --debug
           autoPublishBuildInfo: true
