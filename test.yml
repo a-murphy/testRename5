@@ -239,6 +239,7 @@ pipelines:
     - name: stepOne
       type: Bash
       configuration:
+        affinityGroup: DoubleTrigger2
         priority: 1
         inputResources:
           - name: properties
@@ -251,6 +252,7 @@ pipelines:
     - name: stepThree
       type: Bash
       configuration:
+        affinityGroup: DoubleTrigger2
         inputSteps:
           - name: stepOne
         outputResources:
@@ -262,6 +264,7 @@ pipelines:
     - name: stepTwo
       type: Bash
       configuration:
+        affinityGroup: DoubleTrigger2
         inputResources:
           - name: properties
             trigger: true
@@ -277,6 +280,7 @@ pipelines:
     - name: stepFour
       type: Bash
       configuration:
+        affinityGroup: DoubleTrigger2
         inputResources:
           - name: test_resource_one
           - name: test_resource_two
