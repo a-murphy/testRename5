@@ -575,6 +575,7 @@ pipelines:
             versionTag: testTag
             testNumber: 5
             testBoolean: "false"
+            JFROG_CLI_BUILD_NAME: dockerBuild
           inputSteps:
             - name: main_step
           inputResources:
