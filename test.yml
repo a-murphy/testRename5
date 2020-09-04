@@ -568,7 +568,7 @@ pipelines:
         configuration:
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: dockerRepo/image #${versionTag}
+          dockerImageName: dockerrepo/image #${versionTag}
           dockerImageTag: tag #${versionTag}
           #dockerOptions: "test${versionTag} --test ${testNumber}"
           environmentVariables:
@@ -583,7 +583,7 @@ pipelines:
       - name: docker_push
         type: DockerPush
         configuration:
-          targetRepository: dockerRepo
+          targetRepository: dockerrepo
           forceXrayScan: ${testBoolean}
           autoPublishBuildInfo: true
           environmentVariables:
