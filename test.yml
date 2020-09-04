@@ -568,7 +568,7 @@ pipelines:
         configuration:
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: http://192.168.50.43/dockerrepo/image #${versionTag}
+          dockerImageName: 192.168.50.43/dockerrepo/image #${versionTag}
           dockerImageTag: tag #${versionTag}
           #dockerOptions: "test${versionTag} --test ${testNumber}"
           environmentVariables:
