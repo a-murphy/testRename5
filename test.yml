@@ -293,6 +293,9 @@ pipelines:
     - name: BuildSample
       type: MvnBuild
       configuration:
+        environmentVariables:
+          JFROG_CLI_BUILD_NAME: Maven
+          JFROG_CLI_BUILD_NUMBER: $run_number
         sourceLocation: artifactory-maven-plugin-example
         configFileLocation: .
         configFileName: config
