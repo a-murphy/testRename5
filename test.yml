@@ -778,7 +778,7 @@ pipelines:
           autoPublishBuildInfo: true
           targetRepository: go-test
           sourceLocation: .
-          version: "v0.0.1"
+          version: "v0"
           self: true
           deps: ALL
           outputResources:
