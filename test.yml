@@ -1,5 +1,5 @@
 resources:
-  - name: gitRepoResource5
+  - name: gitRepoResource5_win2
     type: GitRepo
     configuration:
       gitProvider: aidan_github
@@ -67,7 +67,7 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/artifactory-go-example
-  - name: gradleRepoResource
+  - name: gradleRepoResource_win2
     type: GitRepo
     configuration:
       gitProvider: aidan_github
@@ -78,7 +78,7 @@ resources:
          releaseCreate: true
          tagCreate: true
    #   shallowDepth: 100
-  - name: bitbucketRepo2
+  - name: bitbucketRepo2_win2
     type: GitRepo
     configuration:
       gitProvider: aidan_bitbucket
@@ -89,16 +89,16 @@ resources:
          releaseCreate: true
          tagCreate: true
     #  shallowDepth: 1
-  - name: bbsRepo
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_bbs
-      path: ~aidan/test
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
+#  - name: bbsRepo
+#    type: GitRepo
+#    configuration:
+#      gitProvider: aidan_bbs
+#      path: ~aidan/test
+#      buildOn:
+#         pullRequestCreate: true
+#         pullRequestClose: false
+#         releaseCreate: true
+#         tagCreate: true
 #  - name: gitlabRepo
 #    type: GitRepo
 #    configuration:
@@ -112,7 +112,7 @@ resources:
 #      branches:
 #        exclude: master
    #   shallowDepth: 100
-  - name: dockerImage
+  - name: dockerImage_win2
     type: Image
     configuration:
        registry: aidan_docker
@@ -184,33 +184,33 @@ resources:
 #      source: aidan_ftp
 #      fileLocation: files
 #      fileName: test.txt
-  - name: buildInfo
+  - name: buildInfo_win2
     type: BuildInfo
     configuration:
       sourceArtifactory: aidan_artifactory
       buildName:  name
       buildNumber: 1
-  - name: buildInfo2
+  - name: buildInfo2_win2
     type: BuildInfo
     configuration:
       sourceArtifactory: aidan_demoartifactory
       buildName:  name2
       buildNumber: 10
-  - name: releaseBundle
+  - name: releaseBundle_win2
     type: ReleaseBundle
     configuration:
       sourceDistribution: aidan_distribution
       name: releaseBundle
       version: "10"
       isSigned: false
-  - name: releaseBundle2
+  - name: releaseBundle2_win2
     type: ReleaseBundle
     configuration:
       sourceDistribution: aidan_distribution
       name: releaseBundle
       version: "10"
       isSigned: false
-  - name: releaseBundle3
+  - name: releaseBundle3_win2
     type: ReleaseBundle
     configuration:
       sourceDistribution: aidan_distribution
@@ -235,14 +235,14 @@ resources:
       cityName: city2
       countryCodes:
         - "3"
-  - name: examples_repo
+  - name: examples_repo_win2
     type: GitRepo
     configuration:
       path: a-murphy/project-examples
       gitProvider: aidan_github
       branches:
         include: master
-  - name: aql
+  - name: aql_win2
     type: Aql
     configuration:
       sourceArtifactory: aidan_artifactory
@@ -257,7 +257,7 @@ resources:
         - name: mapping2
           input: input2
           output: output2
-  - name: helmChart
+  - name: helmChart_win2
     type: HelmChart
     configuration:
       sourceArtifactory: aidan_artifactory
@@ -358,13 +358,13 @@ pipelines:
     #        - name: gcloudRemoteFile
         #    - name: ftpRemoteFile2
         #    - name: vmCluster
-         #   - name: dockerImage
+         #   - name: dockerImage_win2
          #   - name: awsImage
          #   - name: gcloudImage
          #   - name: artifactoryImage
           outputResources:
       #      - name: gitlabRepo
-            - name: dockerImage
+            - name: dockerImage_win2
       #    integrations:
       #      - name: aidan_aws
        #   runtime:
@@ -411,7 +411,7 @@ pipelines:
             - ls test3
          #   - aws sts get-caller-identity
          #   - replicate_resource nodeRepoResource2_win2 gitlabRepo
-         #   - replicate_resource awsImage dockerImage
+         #   - replicate_resource awsImage dockerImage_win2
             - bump_semver 1.2.3 minor
             - bump_semver v1.2.3 minor
             - bump_semver 1.2.3 major
@@ -535,7 +535,7 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
           inputResources:
-            - name: bbsRepo
+    #        - name: bbsRepo
             - name: test_trigger
           runtime:
             type: host
@@ -546,18 +546,18 @@ pipelines:
             - 'echo "step_node_name: $env:step_node_name"'
             - 'echo "step_node_id: $env:step_node_id"'
             - 'echo "step_node_pool_name: $env:step_node_pool_name"'
-            - update_commit_status bbsRepo -context "Windows" -message "testing step $step_id" -status failure
+     #       - update_commit_status bbsRepo -context "Windows" -message "testing step $step_id" -status failure
             - export_run_variables
             - Write-Output "$pipelineVariable1 $pipelineVariable2 $runVariable1 $runVariable2 $runVariable3"
             - Write-Output "$env:pipelineVariable1 $env:pipelineVariable2 $env:runVariable1 $env:runVariable2 $env:runVariable3"
-            - cd "$env:res_bbsRepo_resourcePath"
+     #       - cd "$env:res_bbsRepo_resourcePath"
             - sleep 15
             - sleep 15
             - sleep 15
             - ls
           onSuccess:
             - echo "Job well done!"
-            - update_commit_status bbsRepo -context "Windows"
+      #      - update_commit_status bbsRepo -context "Windows"
           onFailure:
             - echo "uh oh, something went wrong"
           onComplete: #always
@@ -616,16 +616,16 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
           inputResources:
-            - name: bitbucketRepo2
+            - name: bitbucketRepo2_win2
         execution:
           onStart:
             - echo "Prepping build environment"
           onExecute:
-            - update_commit_status bitbucketRepo2 -context "Windows" -message "testing step $step_id" -status failure
+            - update_commit_status bitbucketRepo2_win2 -context "Windows" -message "testing step $step_id" -status failure
             - sleep 15
           onSuccess:
             - echo "Job well done!"
-            - update_commit_status bitbucketRepo2 -context "Windows"
+            - update_commit_status bitbucketRepo2_win2 -context "Windows"
           onFailure:
             - echo "uh oh, something went wrong"
           onComplete: #always
@@ -640,7 +640,7 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
           inputResources:
-            - name: gradleRepoResource
+            - name: gradleRepoResource_win2
             - name: artifactoryFile
           integrations:
             - name: aidan_artifactory
@@ -657,7 +657,7 @@ pipelines:
           inputSteps:
             - name: gradle_step
           outputResources:
-            - name: buildInfo
+            - name: buildInfo_win2
           forceXrayScan: false
           envExclude: "buildinfo.env.PRO*"
           runtime:
@@ -672,9 +672,9 @@ pipelines:
         configuration:
      #     nodePool: win-pool-2
           inputResources:
-            - name: buildInfo
+            - name: buildInfo_win2
           outputResources:
-            - name: buildInfo2
+            - name: buildInfo2_win2
           targetRepository: example-repo-local
           includeDependencies: false
           status: test
@@ -692,9 +692,9 @@ pipelines:
         configuration:
     #      nodePool: win-pool-2
           inputResources:
-            - name: buildInfo
+            - name: buildInfo_win2
           outputResources:
-            - name: buildInfo2
+            - name: buildInfo2_win2
           runtime:
             type: image
             image:
@@ -711,11 +711,11 @@ pipelines:
           configFileName: config
           mvnCommand: "install -P release"
           inputResources:
-            - name: examples_repo
+            - name: examples_repo_win2
           inputSteps:
             - name: in_trigger_step
           outputResources:
-            - name: buildInfo2
+            - name: buildInfo2_win2
           integrations:
             - name: aidan_demoartifactory
           autoPublishBuildInfo: true
@@ -734,7 +734,7 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
    #       outputResources:
-   #         - name: buildInfo2
+   #         - name: buildInfo2_win2
           integrations:
             - name: aidan_artifactory
       - name: npmPublish
@@ -747,7 +747,7 @@ pipelines:
           inputSteps:
             - name: npmBuild
           outputResources:
-            - name: buildInfo2
+            - name: buildInfo2_win2
           integrations:
             - name: aidan_artifactory
       - name: createReleaseBundle
@@ -764,33 +764,33 @@ pipelines:
             syntax:                markdown
             content:               "my release notes"
           inputResources:
-          #  - name: aql
-          #  - name: buildInfo
-            - name: buildInfo2
+          #  - name: aql_win2
+          #  - name: buildInfo_win2
+            - name: buildInfo2_win2
           inputSteps:
             - name: BuildSample
           outputResources:
-            - name: releaseBundle
+            - name: releaseBundle_win2
       - name: signReleaseBundle
         type: SignReleaseBundle
         configuration:
   #        nodePool: win-pool-2
           inputResources:
-            - name: releaseBundle
+            - name: releaseBundle_win2
           outputResources:
-            - name: releaseBundle2
+            - name: releaseBundle2_win2
       - name: distributeReleaseBundle
         type: DistributeReleaseBundle
         configuration:
    #       nodePool: win-pool-2
           dryRun: false
           inputResources:
-            - name: releaseBundle2
+            - name: releaseBundle2_win2
               trigger: false   
             - name: distributionRule
        #     - name: distributionRule2
           outputResources:
-            - name: releaseBundle3
+            - name: releaseBundle3_win2
       - name: goBuild
         type: GoBuild
         configuration:
@@ -811,7 +811,7 @@ pipelines:
           autoPublishBuildInfo: true
           targetRepository: go-test
           outputResources:
-            - name: buildInfo
+            - name: buildInfo_win2
           inputSteps:
             - name: goBuild
       - name: goPublishModule
@@ -826,7 +826,7 @@ pipelines:
           self: true
           deps: ALL
           outputResources:
-            - name: buildInfo
+            - name: buildInfo_win2
           inputResources:
             - name: goRepo2_win2
       - name: helmPublish
@@ -839,7 +839,7 @@ pipelines:
           inputResources:
             - name: gitRepoResource_win2
           outputResources:
-            - name: helmChart
-            - name: buildInfo
+            - name: helmChart_win2
+            - name: buildInfo_win2
  
  
