@@ -78,16 +78,16 @@ resources:
          releaseCreate: true
          tagCreate: true
    #   shallowDepth: 100
-  - name: bitbucketRepo2_win2
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_bitbucket
-      path: a-murphy/sample_pipelines
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
+#  - name: bitbucketRepo2_win2
+#    type: GitRepo
+#    configuration:
+#      gitProvider: aidan_bitbucket
+#      path: a-murphy/sample_pipelines
+#      buildOn:
+#         pullRequestCreate: true
+#         pullRequestClose: false
+#         releaseCreate: true
+#         tagCreate: true
     #  shallowDepth: 1
 #  - name: bbsRepo
 #    type: GitRepo
@@ -615,17 +615,17 @@ pipelines:
           nodePool: win-pool-2
           inputSteps:
             - name: in_trigger_step
-          inputResources:
-            - name: bitbucketRepo2_win2
+    #      inputResources:
+    #        - name: bitbucketRepo2_win2
         execution:
           onStart:
             - echo "Prepping build environment"
           onExecute:
-            - update_commit_status bitbucketRepo2_win2 -context "Windows" -message "testing step $step_id" -status failure
+     #       - update_commit_status bitbucketRepo2_win2 -context "Windows" -message "testing step $step_id" -status failure
             - sleep 15
           onSuccess:
             - echo "Job well done!"
-            - update_commit_status bitbucketRepo2_win2 -context "Windows"
+     #       - update_commit_status bitbucketRepo2_win2 -context "Windows"
           onFailure:
             - echo "uh oh, something went wrong"
           onComplete: #always
