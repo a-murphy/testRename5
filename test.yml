@@ -4,7 +4,7 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/5testRename5
-  - name: gitRepoResource
+  - name: gitRepoResource_win2
     type: GitRepo
     configuration:
       gitProvider: aidan_github
@@ -16,7 +16,7 @@ resources:
          tagCreate: true
       tags:
         include: include.*
-  - name: nodeRepoResource
+  - name: nodeRepoResource_win2
     type: GitRepo
     configuration:
       gitProvider: aidan_github
@@ -27,7 +27,7 @@ resources:
          releaseCreate: true
          tagCreate: true
    #   shallowDepth: 100
-  - name: nodeRepoResourceNoInstall
+  - name: nodeRepoResourceNoInstall_win2
     type: GitRepo
     configuration:
       gitProvider: aidan_github
@@ -40,7 +40,7 @@ resources:
       branches:
         include: "install-nothing"
    #   shallowDepth: 100
-  - name: nodeRepoResource2
+  - name: nodeRepoResource2_win2
     type: GitRepo
     configuration:
       gitProvider: aidan_github
@@ -51,7 +51,7 @@ resources:
          releaseCreate: true
          tagCreate: true
    #   shallowDepth: 100
-  - name: goRepo
+  - name: goRepo_win2
     type: GitRepo
     configuration:
       gitProvider: aidan_github
@@ -62,7 +62,7 @@ resources:
          releaseCreate: true
          tagCreate: true
    #   shallowDepth: 100
-  - name: goRepo2
+  - name: goRepo2_win2
     type: GitRepo
     configuration:
       gitProvider: aidan_github
@@ -282,7 +282,7 @@ pipelines:
           runtime:            
             type: host
      #     inputResources:
-     #       - name: gitRepoResource
+     #       - name: gitRepoResource_win2
      #         trigger: false
    #       integrations:
    #         - name: aidan_ssh
@@ -352,7 +352,7 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
           inputResources:
-            - name: nodeRepoResource2
+            - name: nodeRepoResource2_win2
     #        - name: awsRemoteFile
             - name: artifactoryRemoteFile
     #        - name: gcloudRemoteFile
@@ -382,7 +382,7 @@ pipelines:
       #          registry: aidan_gcloud
         execution:
           onStart:
-            - update_commit_status nodeRepoResource2
+            - update_commit_status nodeRepoResource2_win2
             - echo "Prepping build environment"
           onExecute:
             - 'echo "step_node_name: $step_node_name"'
@@ -410,7 +410,7 @@ pipelines:
             - restore_run_files testFolder1 test3
             - ls test3
          #   - aws sts get-caller-identity
-         #   - replicate_resource nodeRepoResource2 gitlabRepo
+         #   - replicate_resource nodeRepoResource2_win2 gitlabRepo
          #   - replicate_resource awsImage dockerImage
             - bump_semver 1.2.3 minor
             - bump_semver v1.2.3 minor
@@ -437,14 +437,14 @@ pipelines:
             #- if [ -z "$test" ]; then echo "empty"; fi
             #- if [ "$test" == "null" ]; then echo "null"; fi
             #- if [ "$test" == "" ]; then echo "empty string"; fi
-           # - compare_git nodeRepoResource2
-           # - compare_git nodeRepoResource2 -depth 2
-            - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..HEAD~4 
-            - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..HEAD~4 | Foreach ($file) { Write-Output "counted"} 
-            - compare_git -Path "$res_nodeRepoResource2_resourcePath" -commit-range master..HEAD~4 -depth 2
-            - compare_git nodeRepoResource2 -commit-range master..HEAD~4 -directories-only
-            - compare_git nodeRepoResource2 -commit-range master..HEAD~4 -directories-only -depth 2
-            - Push-Location "$res_nodeRepoResource2_resourcePath"
+           # - compare_git nodeRepoResource2_win2
+           # - compare_git nodeRepoResource2_win2 -depth 2
+            - compare_git -Path "$res_nodeRepoResource2_win2_resourcePath" -commit-range master..HEAD~4 
+            - compare_git -Path "$res_nodeRepoResource2_win2_resourcePath" -commit-range master..HEAD~4 | Foreach ($file) { Write-Output "counted"} 
+            - compare_git -Path "$res_nodeRepoResource2_win2_resourcePath" -commit-range master..HEAD~4 -depth 2
+            - compare_git nodeRepoResource2_win2 -commit-range master..HEAD~4 -directories-only
+            - compare_git nodeRepoResource2_win2 -commit-range master..HEAD~4 -directories-only -depth 2
+            - Push-Location "$res_nodeRepoResource2_win2_resourcePath"
             - npm install
             - New-Item testresults -Type Directory
             - New-Item codecoverage -Type Directory
@@ -457,10 +457,10 @@ pipelines:
             - cd node_modules
             - save_tests ..\testresults\*.xml
             - cd ../..
-            - save_tests $res_nodeRepoResource2_resourcePath\testresults\*.xml
-            - cd $res_nodeRepoResource2_resourcePath\testresults
+            - save_tests $res_nodeRepoResource2_win2_resourcePath\testresults\*.xml
+            - cd $res_nodeRepoResource2_win2_resourcePath\testresults
             - save_tests *.xml
-#            - update_commit_status nodeRepoResource2 -context "testing step $step_id"
+#            - update_commit_status nodeRepoResource2_win2 -context "testing step $step_id"
 #            - npm install
 #            - cd tests
 #            - ../node_modules/.bin/mocha --recursive "**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=../testresults.xml
@@ -473,10 +473,10 @@ pipelines:
             #- save_tests testresults.xml
             
           onSuccess:
-            - update_commit_status nodeRepoResource2
+            - update_commit_status nodeRepoResource2_win2
             - echo "Job well done!"
           onFailure:
-            - update_commit_status nodeRepoResource2 -status success
+            - update_commit_status nodeRepoResource2_win2 -status success
             - echo "uh oh, something went wrong"
           onComplete: #always
             - echo "Cleaning up some stuff"
@@ -490,7 +490,7 @@ pipelines:
           inputSteps:
             - name: main_step
           inputResources:
-            - name: gitRepoResource
+            - name: gitRepoResource_win2
         execution:
           onExecute:
             - echo "testing"
@@ -730,7 +730,7 @@ pipelines:
           sourceLocation: .
           repositoryName: example-repo-local
           inputResources:
-            - name: nodeRepoResourceNoInstall
+            - name: nodeRepoResourceNoInstall_win2
           inputSteps:
             - name: in_trigger_step
    #       outputResources:
@@ -800,7 +800,7 @@ pipelines:
           outputFile: go-module
           repository: go-test
           inputResources:
-            - name: goRepo
+            - name: goRepo_win2
           integrations:
             - name: aidan_artifactory
       - name: goPublishBinary
@@ -828,7 +828,7 @@ pipelines:
           outputResources:
             - name: buildInfo
           inputResources:
-            - name: goRepo2
+            - name: goRepo2_win2
       - name: helmPublish
         type: HelmPublish
         configuration:
@@ -837,7 +837,7 @@ pipelines:
           flags: --debug
           autoPublishBuildInfo: true
           inputResources:
-            - name: gitRepoResource
+            - name: gitRepoResource_win2
           outputResources:
             - name: helmChart
             - name: buildInfo
