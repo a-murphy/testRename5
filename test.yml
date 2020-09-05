@@ -119,21 +119,21 @@ resources:
        imageName: amurphy/test2
        imageTag: "increment.1"
        autoPull: false
-  - name: awsImage
-    type: Image
-    configuration:
-       registry: aidan_aws
-       region: "us-west-2"
-       imageName: 544102397216.dkr.ecr.us-west-2.amazonaws.com/test/repository
-       imageTag: "latest"
-       autoPull: false
-  - name: gcloudImage
-    type: Image
-    configuration:
-       registry: aidan_gcloud
-       imageName: gcr.io/molten-method-94423/test3
-       imageTag: "a.1"
-       autoPull: false
+#  - name: awsImage
+#    type: Image
+#    configuration:
+#       registry: aidan_aws
+#       region: "us-west-2"
+#       imageName: 544102397216.dkr.ecr.us-west-2.amazonaws.com/test/repository
+#       imageTag: "latest"
+#       autoPull: false
+#  - name: gcloudImage
+#    type: Image
+#    configuration:
+#       registry: aidan_gcloud
+#       imageName: gcr.io/molten-method-94423/test3
+#       imageTag: "a.1"
+#       autoPull: false
   - name: artifactoryImage
     type: Image
     configuration:
@@ -148,18 +148,18 @@ resources:
       sshKey: aidan_ssh
       targets:
         - 165.227.59.154
-  - name: awsRemoteFile
-    type: RemoteFile
-    configuration:     
-      source: aidan_aws
-      fileLocation: s3://jfrog-shippable-aidan
-      fileName: testfile.txt
-  - name: gcloudRemoteFile
-    type: RemoteFile
-    configuration:     
-      source: aidan_gcloud
-      fileLocation: gs://aidan-jfrog-bucket
-      fileName: testfile.txt
+#  - name: awsRemoteFile
+#    type: RemoteFile
+#    configuration:     
+#      source: aidan_aws
+#      fileLocation: s3://jfrog-shippable-aidan
+#      fileName: testfile.txt
+#  - name: gcloudRemoteFile
+#    type: RemoteFile
+#    configuration:     
+#      source: aidan_gcloud
+#      fileLocation: gs://aidan-jfrog-bucket
+#      fileName: testfile.txt
   - name: artifactoryRemoteFile
     type: RemoteFile
     configuration:     
@@ -353,9 +353,9 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: nodeRepoResource2
-            - name: awsRemoteFile
+    #        - name: awsRemoteFile
             - name: artifactoryRemoteFile
-            - name: gcloudRemoteFile
+    #        - name: gcloudRemoteFile
         #    - name: ftpRemoteFile2
         #    - name: vmCluster
          #   - name: dockerImage
@@ -365,21 +365,21 @@ pipelines:
           outputResources:
             - name: gitlabRepo
             - name: dockerImage
-          integrations:
-            - name: aidan_aws
-          runtime:
+      #    integrations:
+      #      - name: aidan_aws
+       #   runtime:
             #type: host
-            type: image
-            image:
+       #     type: image
+       #     image:
             #  auto:
             #    language: NodeJS
             #    versions:
             #      - 10
-              custom:
-                name: test/node
-                tag: "10"
-                autoPull: false	
-                registry: aidan_gcloud
+      #        custom:
+      #          name: test/node
+      #          tag: "10"
+      #          autoPull: false	
+      #          registry: aidan_gcloud
         execution:
           onStart:
             - update_commit_status nodeRepoResource2
