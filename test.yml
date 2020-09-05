@@ -91,7 +91,7 @@ resources:
     type: FileSpec
     configuration:
       sourceArtifactory: artifactory
-      pattern: "$test-${versionTag}-*"
+      pattern: "maven-metadata.xml"
       recursive: true
       buildName: name
       buildNumber: 10
@@ -658,7 +658,7 @@ pipelines:
           outputFile: "file"
           inputResources:
             - name: gitRepoResource
-      #      - name: fileSpec
+            - name: fileSpec
           outputResources:
             - name: outputBuildInfo
           integrations:
