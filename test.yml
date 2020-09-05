@@ -805,6 +805,9 @@ pipelines:
         type: GoBuild
         configuration:
    #       nodePool: win-pool-2
+          environmentVariables:
+            JFROG_CLI_BUILD_NAME: GoBuild
+            JFROG_CLI_BUILD_NUMBER: $run_number
           sourceLocation: .
           outputLocation: output
           outputFile: go-module
@@ -845,6 +848,9 @@ pipelines:
         type: HelmPublish
         configuration:
    #       nodePool: win-pool-2
+          environmentVariables:
+            JFROG_CLI_BUILD_NAME: HelmPublish
+            JFROG_CLI_BUILD_NUMBER: $run_number
           chartPath: "./my chart"
           flags: --debug
           autoPublishBuildInfo: true
