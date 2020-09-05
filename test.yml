@@ -639,6 +639,9 @@ pipelines:
         type: GradleBuild
         configuration:
     #      nodePool: win-pool-2
+          environmentVariables:
+            JFROG_CLI_BUILD_NAME: GradleBuild
+            JFROG_CLI_BUILD_NUMBER: 1
           inputSteps:
             - name: in_trigger_step
           inputResources:
@@ -822,6 +825,8 @@ pipelines:
       - name: goPublishModule
         type: GoPublishModule
         configuration:
+          environmentVariables:
+            JFROG_CLI_BUILD_NAME: GoModule
     #      nodePool: win-pool-2
           forceXrayScan: false
           autoPublishBuildInfo: true
