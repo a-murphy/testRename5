@@ -72,6 +72,8 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/sample_java_postgresql
+      branches:
+        include: "March-2020"
       buildOn:
          pullRequestCreate: true
          pullRequestClose: false
