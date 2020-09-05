@@ -727,7 +727,7 @@ pipelines:
           inputSteps:
             - name: triggerCancel
           inputResources:
-            - name: gitRepoResource42
+            - name: goRepo
             - name: fileSpec
           outputResources:
             - name: outputBuildInfo
