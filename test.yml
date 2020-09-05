@@ -142,12 +142,12 @@ resources:
        imageName: docker-image
        imageTag: "tag"
        autoPull: false
-  - name: vmCluster
-    type: VmCluster
-    configuration:
-      sshKey: aidan_ssh
-      targets:
-        - 165.227.59.154
+#  - name: vmCluster
+#    type: VmCluster
+#    configuration:
+#      sshKey: aidan_ssh
+#      targets:
+#        - 165.227.59.154
 #  - name: awsRemoteFile
 #    type: RemoteFile
 #    configuration:     
@@ -178,12 +178,12 @@ resources:
       sourceArtifactory: aidan_artifactory
       target:  go-service
       pattern: go-test/go-module
-  - name: ftpRemoteFile2
-    type: RemoteFile
-    configuration:     
-      source: aidan_ftp
-      fileLocation: files
-      fileName: test.txt
+#  - name: ftpRemoteFile2
+#    type: RemoteFile
+#    configuration:     
+#      source: aidan_ftp
+#      fileLocation: files
+#      fileName: test.txt
   - name: buildInfo
     type: BuildInfo
     configuration:
@@ -285,7 +285,7 @@ pipelines:
      #       - name: gitRepoResource
      #         trigger: false
           integrations:
-            - name: aidan_ssh
+   #         - name: aidan_ssh
    #         - name: aidan_docker
         execution:
           onExecute:
