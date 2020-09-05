@@ -647,6 +647,8 @@ pipelines:
           inputResources:
             - name: gradleRepoResource_win2
             - name: artifactoryFile
+          outputResources:
+            - name: buildInfo_win2
           integrations:
             - name: aidan_artifactory
           sourceLocation: .
