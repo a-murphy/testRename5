@@ -99,18 +99,18 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
-  - name: gitlabRepo
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_gitlab
-      path: a-murphy/testRename5
-      buildOn:
-         pullRequestCreate: true
-         pullRequestClose: false
-         releaseCreate: true
-         tagCreate: true
-      branches:
-        exclude: master
+#  - name: gitlabRepo
+#    type: GitRepo
+#    configuration:
+#      gitProvider: aidan_gitlab
+#      path: a-murphy/testRename5
+#      buildOn:
+#         pullRequestCreate: true
+#         pullRequestClose: false
+#         releaseCreate: true
+#         tagCreate: true
+#      branches:
+#        exclude: master
    #   shallowDepth: 100
   - name: dockerImage
     type: Image
@@ -284,7 +284,7 @@ pipelines:
      #     inputResources:
      #       - name: gitRepoResource
      #         trigger: false
-          integrations:
+   #       integrations:
    #         - name: aidan_ssh
    #         - name: aidan_docker
         execution:
@@ -363,7 +363,7 @@ pipelines:
          #   - name: gcloudImage
          #   - name: artifactoryImage
           outputResources:
-            - name: gitlabRepo
+      #      - name: gitlabRepo
             - name: dockerImage
       #    integrations:
       #      - name: aidan_aws
@@ -564,50 +564,50 @@ pipelines:
             - echo "Cleaning up some stuff"
           onCancel:
             - echo "Someone cancelled the job"
-      - name: gitlab_step
-        type: PowerShell
-        configuration:
-          nodePool: win-pool-2
-          inputSteps:
-            - name: in_trigger_step
-          inputResources:
-            - name: gitlabRepo
-          integrations:
-            - name: aidan_slack
-            - name: aidan_email
-            - name: aidan_jira
-          runtime:
-            type: host
-        execution:
-          onStart:
-            - echo "Prepping build environment"
+   #   - name: gitlab_step
+   #     type: PowerShell
+   #     configuration:
+   #       nodePool: win-pool-2
+   #       inputSteps:
+   #         - name: in_trigger_step
+   #       inputResources:
+   #         - name: gitlabRepo
+   #       integrations:
+   #         - name: aidan_slack
+   #         - name: aidan_email
+   #         - name: aidan_jira
+   #       runtime:
+   #         type: host
+   #     execution:
+   #       onStart:
+   #         - echo "Prepping build environment"
         #    - send_notification aidan_slack
         #    - send_notification aidan_email -recipients @("aidan@shippable.com")
         #    - send_notification aidan_email -recipients @("aidan@shippable.com") -attach-logs -show-failing-commands
-          onExecute:
-            - 'echo "step_node_name: $step_node_name"'
-            - 'echo "step_node_id: $step_node_id"'
-            - 'echo "step_node_pool_name: $step_node_pool_name"'
-            - cd "$res_gitlabRepo_resourcePath"
-            - Set-Content -Path "testPayload.json" -Value "{'username':'Test','attachments':[{'pretext':'This is','text':'to test','color':'#5183a0'}],'icon_url':'${opt_icon_url}'}"
-            - send_notification aidan_slack -payload "testPayload.json"
-            - send_notification aidan_jira -project-id "TES" -type "Task" -summary "Testing $step_id" -attach-file "shippable.yml"
-            - ls
+   #       onExecute:
+   #         - 'echo "step_node_name: $step_node_name"'
+   #         - 'echo "step_node_id: $step_node_id"'
+   #         - 'echo "step_node_pool_name: $step_node_pool_name"'
+   #         - cd "$res_gitlabRepo_resourcePath"
+   #         - Set-Content -Path "testPayload.json" -Value "{'username':'Test','attachments':[{'pretext':'This is','text':'to test','color':'#5183a0'}],'icon_url':'${opt_icon_url}'}"
+   #         - send_notification aidan_slack -payload "testPayload.json"
+   #         - send_notification aidan_jira -project-id "TES" -type "Task" -summary "Testing $step_id" -attach-file "shippable.yml"
+   #         - ls
             
        #     - send_notification aidan_email -recipients @("aidan@shippable.com") -attachments @("shippable.yml","shippable.resources.yml")
-          onSuccess:
-            - echo "Job well done!"
+   #       onSuccess:
+   #         - echo "Job well done!"
        #     - $global:NOTIFY_COLOR = "#5183a0"
        #     - Write-Output $NOTIFY_COLOR
-            - send_notification aidan_slack -text "This is my string."
-          onFailure:
-            - echo "uh oh, something went wrong"
-            - send_notification aidan_slack
-          onComplete: #always
-            - echo "Cleaning up some stuff"
-            - send_notification aidan_slack
-          onCancel:
-            - echo "Someone cancelled the job"
+   #         - send_notification aidan_slack -text "This is my string."
+   #       onFailure:
+   #         - echo "uh oh, something went wrong"
+   #         - send_notification aidan_slack
+   #       onComplete: #always
+   #         - echo "Cleaning up some stuff"
+   #         - send_notification aidan_slack
+   #       onCancel:
+   #         - echo "Someone cancelled the job"
             
       - name: bitbucket_step
         type: PowerShell
