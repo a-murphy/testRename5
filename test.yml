@@ -727,9 +727,9 @@ pipelines:
             - name: aidan_demoartifactory
           autoPublishBuildInfo: true
           forceXrayScan: false
-        execution:
-          onStart:
-            - '$env:testing = "testing1234"'
+    #    execution:
+    #      onStart:
+    #        - '$env:testing = "testing1234"'
       - name: npmBuild
         type: NpmBuild
         configuration:
