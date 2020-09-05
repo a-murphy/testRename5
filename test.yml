@@ -653,7 +653,7 @@ pipelines:
           gradleCommand: build
           configFileLocation: .
           configFileName: testfile.txt
-          autoPublishBuildInfo: false
+          autoPublishBuildInfo: true
           forceXrayScan: false
       - name: publish_step
         type: PublishBuildInfo
