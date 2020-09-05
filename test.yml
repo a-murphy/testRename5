@@ -727,6 +727,9 @@ pipelines:
         type: NpmBuild
         configuration:
    #       nodePool: win-pool-2
+          environment:
+            JFROG_CLI_BUILD_NAME: NpmBuild
+            JFROG_CLI_BUILD_NUMBER: 1
           sourceLocation: .
           repositoryName: example-repo-local
           inputResources:
