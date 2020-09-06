@@ -14,6 +14,8 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
+      branches:
+        include: "{{gitBranch}}"
       tags:
         include: include.*
   - name: nodeRepoResource_win2
