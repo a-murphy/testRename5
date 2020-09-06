@@ -198,6 +198,12 @@ resources:
       sourceArtifactory: aidan_demoartifactory
       buildName:  name2
       buildNumber: 10
+  - name: buildInfoOverride_win2
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: aidan_artifactory
+      buildName:  testing
+      buildNumber: ${run_id}
   - name: releaseBundle_win2
     type: ReleaseBundle
     configuration:
@@ -719,6 +725,7 @@ pipelines:
           mvnCommand: "install -P release"
           inputResources:
             - name: examples_repo_win2
+            - name: buildInfoOverride_win2
           inputSteps:
             - name: in_trigger_step
           outputResources:
