@@ -194,13 +194,13 @@ resources:
     configuration:
       propertyOne: 1
 
-  - name: examples_repo
-    type: GitRepo
-    configuration:
-      path: ~aidanm/project-examples
-      gitProvider: aidan_bbs
-      branches:
-        include: master
+ # - name: examples_repo
+ #   type: GitRepo
+ #   configuration:
+ #     path: ~aidanm/project-examples
+ #     gitProvider: aidan_bbs
+ #     branches:
+ #       include: master
 
 pipelines:
   - name: DoubleTrigger
@@ -213,7 +213,7 @@ pipelines:
           - name: properties
             trigger: true
           - name: execTemplatesAQL
-          - name: examples_repo
+     #     - name: examples_repo
         chronological: true
       execution:
         onStart:
@@ -292,28 +292,28 @@ pipelines:
       execution:
         onStart:
           - sleep 2
-  - name: MavenStuff
-    steps:
-    - name: BuildSample
-      type: MvnBuild
-      configuration:
-        environmentVariables:
-          JFROG_CLI_BUILD_NAME: Maven
-          JFROG_CLI_BUILD_NUMBER: $run_number
-        sourceLocation: artifactory-maven-plugin-example
-        configFileLocation: .
-        configFileName: config
-        mvnCommand: "install"
-        inputResources:
-          - name: examples_repo
-        outputResources:
-          - name: mavenBuildInfo2
-        integrations:
-          - name: artifactory
-        autoPublishBuildInfo: true
-      execution:
-        onStart:
-          - update-ca-certificates -f
+ # - name: MavenStuff
+ #   steps:
+ #   - name: BuildSample
+ #     type: MvnBuild
+ #     configuration:
+ #       environmentVariables:
+ #         JFROG_CLI_BUILD_NAME: Maven
+ #         JFROG_CLI_BUILD_NUMBER: $run_number
+ #       sourceLocation: artifactory-maven-plugin-example
+ #       configFileLocation: .
+ #       configFileName: config
+ #       mvnCommand: "install"
+ #       inputResources:
+ #         - name: examples_repo
+ #       outputResources:
+ #         - name: mavenBuildInfo2
+ #       integrations:
+ #         - name: artifactory
+ #       autoPublishBuildInfo: true
+ #     execution:
+ #       onStart:
+ #         - update-ca-certificates -f
   
   - name: test_pipeline_10
     configuration:
