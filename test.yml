@@ -171,10 +171,10 @@ resources:
       sourceArtifactory: artifactory
       buildName: test
       buildNumber: 1
-  - name: emptyBuildInfo
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: artifactory
+ # - name: emptyBuildInfo
+ #   type: BuildInfo
+ #   configuration:
+ #     sourceArtifactory: artifactory
   - name: mavenBuildInfo2
     type: BuildInfo
     configuration:
@@ -607,10 +607,10 @@ pipelines:
 
 
   - name: test_pipeline_11
-    configuration:   
-      chronological: true
-      dependencyMode:
-        waitOnParentComplete: true
+   # configuration:   
+   #   chronological: true
+   #   dependencyMode:
+   #     waitOnParentComplete: true
    #     waitOnChildComplete: "true"
     steps:
       - name: triggered_by_resource
@@ -803,7 +803,7 @@ pipelines:
             - name: gitRepoResource42
           outputResources:
             - name: helmChart
-            - name: emptyBuildInfo
+        #    - name: emptyBuildInfo
  
 
 
