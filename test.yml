@@ -814,9 +814,9 @@ pipelines:
         type: GoBuild
         configuration:
    #       nodePool: win-pool-2
-          environmentVariables:
-            JFROG_CLI_BUILD_NAME: GoBuild
-            JFROG_CLI_BUILD_NUMBER: $run_number
+       #   environmentVariables:
+       #     JFROG_CLI_BUILD_NAME: GoBuild
+       #     JFROG_CLI_BUILD_NUMBER: $run_number
           sourceLocation: .
           outputLocation: output
           outputFile: go-module
