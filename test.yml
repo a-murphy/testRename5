@@ -176,8 +176,8 @@ resources:
       sourceArtifactory: aidan_artifactory
       target:  testfile.txt
       pattern: example-repo-local/testfile.txt
-      buildName: test
-      buildNumber: 100
+      buildName: GradleBuild
+      buildNumber: 1
   - name: artifactoryGoFile
     type: FileSpec
     configuration:     
