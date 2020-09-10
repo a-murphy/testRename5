@@ -142,8 +142,8 @@ resources:
     type: Image
     configuration:
        registry: aidan_artifactory
-       sourceRepository: http://192.168.50.43:8082/artifactory/docker-image
-       imageName: docker-image
+       sourceRepository: dockerrepo
+       imageName: image
        imageTag: "tag"
        autoPull: true
 #  - name: vmCluster
