@@ -759,7 +759,8 @@ pipelines:
             - name: aidan_demoartifactory
           autoPublishBuildInfo: true
           forceXrayScan: false
-          runtime: host
+          runtime:
+            type: host
     #    execution:
     #      onStart:
     #        - '$env:testing = "testing1234"'
