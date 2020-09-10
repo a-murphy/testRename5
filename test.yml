@@ -724,13 +724,13 @@ pipelines:
             - name: emptyBuildInfo_win2
           outputResources:
             - name: buildInfo2_win2
-          runtime:
-            type: image
-            image:
-              custom:
-                name: test/node
-                tag: "10"
-                autoPull: false
+     #     runtime:
+     #       type: image
+     #       image:
+     #         custom:
+     #           name: test/node
+     #           tag: "10"
+     #           autoPull: false
       - name: BuildSample
         type: MvnBuild
         configuration:
