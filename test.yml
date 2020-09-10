@@ -686,13 +686,13 @@ pipelines:
             - name: buildInfo_win2
           forceXrayScan: false
           envExclude: "buildinfo.env.PRO*"
-          runtime:
-            type: image
-            image:
-              custom:
-                name: test/node
-                tag: "10"
-                autoPull: false
+       #   runtime:
+       #     type: image
+       #     image:
+       #       custom:
+       #         name: test/node
+       #         tag: "10"
+       #         autoPull: false
       - name: promote_step
         type: PromoteBuild
         configuration:
