@@ -664,7 +664,7 @@ pipelines:
           inputResources:
             - name: gradleRepoResource_win2
             - name: artifactoryFile
-            - name: artifactoryImage5
+   #         - name: artifactoryImage5
             - name: artifactoryRemoteFile
           outputResources:
             - name: buildInfo_win2
