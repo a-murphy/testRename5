@@ -708,13 +708,13 @@ pipelines:
           status: test
           comment: testing1234
           copy: false
-          runtime:
-            type: image
-            image:
-              custom:
-                name: test/node
-                tag: "10"
-                autoPull: false
+     #     runtime:
+     #       type: image
+     #       image:
+     #         custom:
+     #           name: test/node
+     #           tag: "10"
+     #           autoPull: false
       - name: xrayScan
         type: XrayScan
         configuration:
