@@ -138,12 +138,12 @@ resources:
 #       imageName: gcr.io/molten-method-94423/test3
 #       imageTag: "a.1"
 #       autoPull: false
-  - name: artifactoryImage2
+  - name: artifactoryImage
     type: Image
     configuration:
        registry: aidan_artifactory
        sourceRepository: dockerrepo
-       imageName: image
+       imageName: 192.168.50.43/dockerrepo/image
        imageTag: "tag"
        autoPull: true
 #  - name: vmCluster
@@ -371,7 +371,7 @@ pipelines:
          #   - name: dockerImage_win2
          #   - name: awsImage
          #   - name: gcloudImage
-         #   - name: artifactoryImage2
+         #   - name: artifactoryImage
           outputResources:
       #      - name: gitlabRepo
             - name: dockerImage_win2
@@ -655,7 +655,7 @@ pipelines:
           inputResources:
             - name: gradleRepoResource_win2
             - name: artifactoryFile
-            - name: artifactoryImage2
+            - name: artifactoryImage
             - name: artifactoryRemoteFile
           outputResources:
             - name: buildInfo_win2
