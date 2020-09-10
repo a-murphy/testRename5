@@ -181,7 +181,7 @@ resources:
     configuration:     
       sourceArtifactory: aidan_artifactory
       target:  testfile.txt
-      pattern: example-repo-local/testfile.txt
+      pattern: example-repo-local/my chart-v1.0.0.tgz
       buildName: HelmPublish
       buildNumber: $run_number
   - name: artifactoryGoFile
