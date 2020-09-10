@@ -194,15 +194,15 @@ resources:
       sourceArtifactory: aidan_artifactory
       buildName:  name
       buildNumber: 1
-  - name: emptyBuildInfo_win2
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: aidan_artifactory
-  - name: nameOnlyBuildInfo_win2
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: aidan_artifactory
-      buildName: nameOnly
+#  - name: emptyBuildInfo_win2
+#    type: BuildInfo
+#    configuration:
+#      sourceArtifactory: aidan_artifactory
+#  - name: nameOnlyBuildInfo_win2
+#    type: BuildInfo
+#    configuration:
+#      sourceArtifactory: aidan_artifactory
+#      buildName: nameOnly
   - name: buildInfo2_win2
     type: BuildInfo
     configuration:
@@ -698,8 +698,8 @@ pipelines:
         configuration:
      #     nodePool: win-pool-2
           inputResources:
-         #   - name: buildInfo_win2
-            - name: emptyBuildInfo_win2
+            - name: buildInfo_win2
+        #    - name: emptyBuildInfo_win2
          #   - name: nameOnlyBuildInfo_win2
           outputResources:
             - name: buildInfo2_win2
@@ -720,8 +720,8 @@ pipelines:
         configuration:
     #      nodePool: win-pool-2
           inputResources:
-      #      - name: buildInfo_win2
-            - name: emptyBuildInfo_win2
+            - name: buildInfo_win2
+      #      - name: emptyBuildInfo_win2
           outputResources:
             - name: buildInfo2_win2
      #     runtime:
@@ -800,7 +800,7 @@ pipelines:
           #  - name: aql_win2
           #  - name: buildInfo_win2
             - name: buildInfo2_win2
-            - name: emptyBuildInfo_win2
+          #  - name: emptyBuildInfo_win2
           inputSteps:
             - name: BuildSample
           outputResources:
