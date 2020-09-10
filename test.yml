@@ -698,9 +698,9 @@ pipelines:
         configuration:
      #     nodePool: win-pool-2
           inputResources:
-            - name: buildInfo_win2
+         #   - name: buildInfo_win2
             - name: emptyBuildInfo_win2
-            - name: nameOnlyBuildInfo_win2
+         #   - name: nameOnlyBuildInfo_win2
           outputResources:
             - name: buildInfo2_win2
           targetRepository: example-repo-local
