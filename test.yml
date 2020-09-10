@@ -176,8 +176,14 @@ resources:
       sourceArtifactory: aidan_artifactory
       target:  testfile.txt
       pattern: example-repo-local/testfile.txt
-      buildName: GradleBuild
-      buildNumber: 1
+  - name: artifactoryFile2
+    type: FileSpec
+    configuration:     
+      sourceArtifactory: aidan_artifactory
+      target:  testfile.txt
+      pattern: example-repo-local/testfile.txt
+      buildName: HelmPublish
+      buildNumber: $run_number
   - name: artifactoryGoFile
     type: FileSpec
     configuration:     
@@ -668,6 +674,7 @@ pipelines:
             - name: artifactoryFile
    #         - name: artifactoryImage5
             - name: artifactoryRemoteFile
+            - name: artifactoryFile2
           outputResources:
             - name: buildInfo_win2
           integrations:
