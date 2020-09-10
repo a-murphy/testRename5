@@ -183,7 +183,6 @@ resources:
       target:  testfile.txt
       pattern: example-repo-local/my chart-v1.0.0.tgz
       buildName: HelmPublish
-      buildNumber: $run_number
   - name: artifactoryGoFile
     type: FileSpec
     configuration:     
