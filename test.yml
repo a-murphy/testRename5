@@ -5,7 +5,7 @@ resources:
       gitProvider: aidan_github
       path: a-murphy/5testRename5
   - name: gitRepoResource_win2
-    type: GitRepo
+    type: GitRepo 
     configuration:
       gitProvider: aidan_github
       path: a-murphy/5testRename5
@@ -138,12 +138,12 @@ resources:
 #       imageName: gcr.io/molten-method-94423/test3
 #       imageTag: "a.1"
 #       autoPull: false
-  - name: artifactoryImage4
+  - name: artifactoryImage5
     type: Image
     configuration:
        registry: aidan_artifactory
        sourceRepository: dockerrepo
-       imageName: dockerrepo/image
+       imageName: 192.168.50.43:8082/dockerrepo/image
        imageTag: "tag"
        autoPull: true
 #  - name: vmCluster
@@ -371,7 +371,7 @@ pipelines:
          #   - name: dockerImage_win2
          #   - name: awsImage
          #   - name: gcloudImage
-         #   - name: artifactoryImage4
+         #   - name: artifactoryImage5
           outputResources:
       #      - name: gitlabRepo
             - name: dockerImage_win2
@@ -655,7 +655,7 @@ pipelines:
           inputResources:
             - name: gradleRepoResource_win2
             - name: artifactoryFile
-            - name: artifactoryImage4
+            - name: artifactoryImage5
             - name: artifactoryRemoteFile
           outputResources:
             - name: buildInfo_win2
