@@ -671,9 +671,9 @@ pipelines:
             - name: in_trigger_step
           inputResources:
             - name: gradleRepoResource_win2
-            - name: artifactoryFile
+   #         - name: artifactoryFile
    #         - name: artifactoryImage5
-            - name: artifactoryRemoteFile
+   #         - name: artifactoryRemoteFile
             - name: artifactoryFile2
           outputResources:
             - name: buildInfo_win2
