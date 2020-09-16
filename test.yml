@@ -732,6 +732,7 @@ pipelines:
           repository: repo
           outputLocation: "output"
           outputFile: "file"
+          goCommand: "build -insecure -o ${outputLocation}/${outputFile}"
           inputSteps:
             - name: triggerCancel
           inputResources:
