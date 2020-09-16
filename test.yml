@@ -744,12 +744,12 @@ pipelines:
             - name: artifactory
           runtime:
             type: image
-         execution:
-           onStart:
-             - "buildDir=$(find_resource_variable "$inputGitRepoResourceName" resourcePath)"
-             - "pushd $buildDir"
-             - "go get -insecure"
-             - popd
+        execution:
+          onStart:
+            - "buildDir=$(find_resource_variable "$inputGitRepoResourceName" resourcePath)"
+            - "pushd $buildDir"
+            - "go get -insecure"
+            - popd
      #       image:
      #         auto:
      #           language: go
