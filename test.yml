@@ -746,7 +746,7 @@ pipelines:
             type: image
         execution:
           onStart:
-            - "buildDir=$(find_resource_variable "$inputGitRepoResourceName" resourcePath)"
+            - "buildDir=$(find_resource_variable $inputGitRepoResourceName resourcePath)"
             - "pushd $buildDir"
             - "go get -insecure"
             - popd
