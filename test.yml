@@ -666,7 +666,7 @@ pipelines:
           outputFile: "file"
           inputResources:
             - name: gitRepoResource
-            - name: fileSpec
+        #    - name: fileSpec
           outputResources:
             - name: outputBuildInfo
           integrations:
@@ -736,7 +736,7 @@ pipelines:
             - name: triggerCancel
           inputResources:
             - name: goRepo
-            - name: fileSpec
+      #      - name: fileSpec
           outputResources:
             - name: outputBuildInfo
      #     integrations:
