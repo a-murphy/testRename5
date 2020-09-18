@@ -27,6 +27,8 @@ resources:
       repository: example-repo-local
       chart: my chart
       version: v1.1.1
+  - name: buildInfo_file_spec
+    type: BuildInfo
 
 
 pipelines:
@@ -40,10 +42,12 @@ pipelines:
             JFROG_CLI_BUILD_NUMBER: $run_number
           chartPath: "./my chart"
           flags: --debug
+          autoPublishBuildInfo: true
           inputResources:
             - name: gitRepoResource_file_spec
           outputResources:
             - name: helmChart_file_spec
+            - name: buildInfo_file_spec
       - name: inFileSpec
         type: PowerShell
         configuration:
