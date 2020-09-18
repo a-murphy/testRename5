@@ -63,5 +63,15 @@ pipelines:
         execution:
           onExecute:
             - echo "test"
+      - name: inFileSpecBash
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: helmPublishFileSpec
+          inputResources:
+            - name: file_spec
+        execution:
+          onExecute:
+            - echo "test"
  
  
