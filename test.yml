@@ -30,6 +30,7 @@ resources:
   - name: buildInfo_file_spec
     type: BuildInfo
     configuration:
+      sourceArtifactory: aidan_artifactory
       buildName: name
       buildNumber: number
 
