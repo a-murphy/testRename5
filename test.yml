@@ -20,7 +20,7 @@ resources:
       target:  testfile.txt
       pattern: 'example-repo-local/*' #example-repo-local/my chart-v1.0.0.tgz
       buildName: HelmPublish #test_pipeline_file_spec
-    #  buildNumber: 11
+      buildNumber: 2
   - name: helmChart_file_spec
     type: HelmChart
     configuration:
