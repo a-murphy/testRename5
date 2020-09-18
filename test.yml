@@ -29,6 +29,9 @@ resources:
       version: v1.1.1
   - name: buildInfo_file_spec
     type: BuildInfo
+    configuration:
+      buildName: name
+      buildNumber: number
 
 
 pipelines:
