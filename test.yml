@@ -19,7 +19,8 @@ resources:
       sourceArtifactory: aidan_artifactory
       target:  testfile.txt
       pattern: example-repo-local/my chart-v1.0.0.tgz
-      buildName: test_pipeline_file_spec
+    #  buildName: test_pipeline_file_spec
+      buildNumber: 11
   - name: helmChart_file_spec
     type: HelmChart
     configuration:
