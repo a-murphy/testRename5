@@ -7,7 +7,7 @@ pipelines:
         type: Bash
         configuration:
           environmentVariables:
-            test: {{gitBranch.replace(\/\g, '%2F')}}
+            test: {{gitBranch.replace(/\//g, '%2F')}}
         execution:
           onExecute:
             - echo $test
