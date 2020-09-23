@@ -17,7 +17,9 @@ pipelines:
       - name: main_step
         type: Bash
         configuration:
-          nodePool: static-node-pool
+    #      nodePool: static-node-pool
+          environmentVariables:
+            test: {{gitBranch.replace('/', '%2F)}}
         execution:
           onStart:
             - echo "Prepping build environment"
