@@ -888,6 +888,8 @@ pipelines:
           chartPath: "./my chart"
           flags: --debug
           autoPublishBuildInfo: true
+          integrations:
+            - name: aidan_artifactory
           inputResources:
             - name: gitRepoResource_win2
           outputResources:
