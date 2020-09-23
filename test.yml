@@ -1,48 +1,13 @@
 resources:      
- # - name: nodeRepoResource
- #   type: GitRepo
- #   configuration:
- #     gitProvider: aidan_github
- #     path: a-murphy/basic-node
- #     buildOn:
- #        commit: true
- #        pullRequestCreate: true
- #        pullRequestClose: false
- #        releaseCreate: true
- #        tagCreate: true
        
 pipelines:
-  - name: test_pipeline_branch_slash
+  - name: two_slashes
     steps:
       - name: main_step
         type: Bash
         configuration:
-    #      nodePool: static-node-pool
           environmentVariables:
             test: {{gitBranch.replace('/', '%2F')}}
         execution:
-          onStart:
-            - echo "Prepping build environment"
           onExecute:
-            - echo "executing task command 1"
-            - echo "executing task command 2"
-        #    - compare_git --resource nodeRepoResource
-        #    - cd "$res_nodeRepoResource_resourcePath"
-            - echo $step_url
-        #    - switch_env nodejs 0.12
-        #    - npm install
-        #    - cd tests
-        #    - ../node_modules/.bin/mocha --recursive "**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=../testresults.xml
-        #    - ../node_modules/.bin/istanbul --include-all-sources cover -root "../routes" ../node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "**/*.spec.js"
-        #    - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
-        #    - cd .. && ls
-        #    - save_tests testresults.xml
-            
-          onSuccess:
-            - echo "Job well done!"
-          onFailure:
-            - echo "uh oh, something went wrong"
-          onComplete: #always
-            - echo "Cleaning up some stuff"
-          onCancel:
-            - echo "Someone cancelled the job"
+            - echo $test
