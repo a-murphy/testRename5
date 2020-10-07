@@ -1,0 +1,10 @@
+pipelines:
+  - name: Jenkins_pipeline
+
+    steps:
+    - name: jenkins
+      type: Jenkins
+      configuration:
+        jenkinsJobName: invalid_job
+        integrations:
+          - name: aidan_jenkins
