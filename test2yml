@@ -5,7 +5,7 @@ resources:
     path: a-murphy/5testRename5
     gitProvider: aidan_github
 pipelines:
-- name: packagingTest
+- name: packagingTest2
   steps:
     - name: bump_version
       type: Bash
