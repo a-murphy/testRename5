@@ -26,4 +26,4 @@ pipelines:
           [[ -n "${appVersion}" ]] && options="-a ${appVersion}"
         - scripts/bump.sh ${options}
         - echo "Creating new version for ${chart} using ${appVersion}"
-        - popd
+   #     - popd
