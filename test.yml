@@ -607,7 +607,7 @@ pipelines:
             - name: artifactory
         execution:
           onStart:
-            - jfrog rt c show
+            - jfrog rt c show artifactory
 
 
   - name: test_pipeline_11
