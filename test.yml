@@ -605,6 +605,9 @@ pipelines:
             - name: outputBuildInfo
           integrations:
             - name: artifactory
+        execution:
+          onStart:
+            - jfrog rt c show
 
 
   - name: test_pipeline_11
