@@ -2,4 +2,4 @@
 resources:
   - name:             name
     type:             notification
-    integration:      none
+    integration:      integration
