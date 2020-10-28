@@ -811,6 +811,8 @@ pipelines:
           forceXrayScan: true
           autoPublishBuildInfo: false
           targetRepository: go-test
+          integrations:
+            - name: artifactory
           outputResources:
             - name: outputBuildInfo
           inputSteps:
