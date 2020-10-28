@@ -874,7 +874,7 @@ pipelines:
       - name: publishBuildInfo
         type: PublishBuildInfo
         configuration:
-          inputStep:
+          inputSteps:
             - name: helmPublish
           inputResources:
             - name: outputBuildInfo
