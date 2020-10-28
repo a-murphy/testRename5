@@ -809,7 +809,7 @@ pipelines:
         configuration:
           affinityGroup: GoTest2
           forceXrayScan: true
-          autoPublishBuildInfo: true
+          autoPublishBuildInfo: false
           targetRepository: go-test
           outputResources:
             - name: outputBuildInfo
@@ -875,7 +875,7 @@ pipelines:
         type: PublishBuildInfo
         configuration:
           inputSteps:
-            - name: helmPublish
+            - name: goPublishBinary
           inputResources:
             - name: outputBuildInfo
             - name: gitRepoResource42
