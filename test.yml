@@ -84,14 +84,14 @@ resources:
     configuration:
       sourceDistribution:   aidan_distribution
       name: release
-      version: 1
+      version: '1'
       isSigned: false
   - name: releaseBundle2
     type: ReleaseBundle
     configuration:
       sourceDistribution:   aidan_distribution
       name: release
-      version: 1
+      version: '1'
       isSigned: false
     
   - name: cronTrigger
@@ -874,18 +874,20 @@ pipelines:
       - name: publishBuildInfo
         type: PublishBuildInfo
         configuration:
+          inputStep:
+            - name: helmPublish
           inputResources:
             - name: outputBuildInfo
-            - name: helmPublish
+            - name: gitRepoResource42
           outputResources:
             - name: outputBuildInfo2
             - name: fileSpec
-      - name: xray
-        type: PublishBuildInfo
+      - name: xrayScan
+        type: XrayScan
         configuration:
           inputResources:
             - name: outputBuildInfo2
-            - name: helmPublish
+            - name: gitRepoResource42
           outputResources:
             - name: outputBuildInfo3
             - name: fileSpec
