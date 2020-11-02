@@ -25,3 +25,4 @@ pipelines:
          - echo "test" >> test.txt
          - add_cache_files $PWD/test.txt jfrog_pipe
          - restore_cache_files jfrog_pipe $PWD/test.txt
+         - add_pipeline_variables test=test
