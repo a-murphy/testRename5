@@ -20,10 +20,8 @@ pipelines:
           trigger: false
       execution:
         onExecute:
-        - pushd $res_repo_resourcePath
-        - options="-c ${chart} -s ${segment} "
-        - |
-          [[ -n "${appVersion}" ]] && options="-a ${appVersion}"
-        - scripts/bump.sh ${options}
-        - echo "Creating new version for ${chart} using ${appVersion}"
-        - popd
+         - restore_cache_files jfrog_pipe $PWD/file.txt
+         - ls
+         - echo "test" >> test.txt
+         - add_cache_files $PWD/test.txt jfrog_pipe
+         - restore_cache_files jfrog_pipe $PWD/test.txt
