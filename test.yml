@@ -122,12 +122,6 @@ resources:
   #    sourceArtifactory: artifactory
   #    buildName: test
   #    buildNumber: 1
-  #- name: outputBuildInfo3
-  #  type: BuildInfo
-  #  configuration:
-  #    sourceArtifactory: artifactory
-  #    buildName: test
-  #    buildNumber: 1
   - name: properties
     type: PropertyBag
     configuration:
@@ -357,40 +351,6 @@ pipelines:
           onCancel:
             - echo "Someone cancelled the job"
             
-   #   - name: powershell_step
-   #     type: Powershell
-   #     configuration:
-      #    nodePool: pool
-   #       inputSteps:
-   #         - name: in_trigger_step
-   #       inputResources:
-   #         - name: nodeRepoResource
-   #           trigger: false
-   #       runtime:
-   #         type: image
-   #         image:
-   #           auto:
-   #             language: node
-   #             versions:
-   #               - 10
-   #    #       custom:
-   #    #         name: drydock/u16node
-   #    #         tag: master
-   #     execution:
-   #       onStart:
-   #         - echo "Prepping build environment"
-   #       onExecute:
-   #         - 'echo "step_node_name: $step_node_name"'
-   #         - 'echo "step_node_id: $step_node_id"'
-   #         - 'echo "step_node_pool_name: $step_node_pool_name"'
-   #       onSuccess:
-   #         - echo "Job well done!"
-   #       onFailure:
-   #         - echo "uh oh, something went wrong"
-   #       onComplete: #always
-   #         - echo "Cleaning up some stuff"
-   #       onCancel:
-   #         - echo "Someone cancelled the job"
       - name: step_3
         type: Bash
         configuration:
@@ -575,36 +535,7 @@ pipelines:
             - name: gitRepoResource42
         execution:
           onExecute:
-            - sleep 30
-      - name: goPublishBinary
-        type: GoPublishBinary
-        configuration:
-          affinityGroup: GoTest2
-          forceXrayScan: true
-          autoPublishBuildInfo: false
-          targetRepository: go-test
-       #   integrations:
-       #     - name: artifactory
-       #   outputResources:
-       #     - name: outputBuildInfo
-          inputSteps:
-            - name: Go3
-      - name: goPublishModule
-        type: GoPublishModule
-        configuration:
-          affinityGroup: GoTest2
-          forceXrayScan: false
-          autoPublishBuildInfo: true
-          targetRepository: go-test
-          sourceLocation: .
-          version: "v0"
-          self: true
-          deps: ALL
-       #   outputResources:
-       #     - name: outputBuildInfo
-          inputResources:
-            - name: goRepo
-            
+            - sleep 30      
       - name: publishBuildInfo
         type: PublishBuildInfo
         configuration:
