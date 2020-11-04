@@ -565,64 +565,6 @@ pipelines:
           onExecute:
             - php --version
 
-  - name: go_test
-    steps:
-      - name: Go
-        type: GoBuild
-        configuration:
-          sourceLocation: "."
-          repository: repo
-          outputLocation: "output"
-          outputFile: "file"
-          inputResources:
-            - name: gitRepoResource
-        #    - name: fileSpec
-        #  outputResources:
-        #    - name: outputBuildInfo
-        #  integrations:
-        #    - name: artifactory
-          runtime:
-            type: image
-     #       image:
-     #         auto:
-     #           language: go
-     #           versions:
-     #             - 1.11.11
-     #   execution:
-     #     onExecute:
-     #       - echo "test"
-      - name: npmBuild
-        type: NpmBuild
-        configuration:
-          sourceLocation: "true"
-          repositoryName: test
-          inputSteps:
-            - name: Go
-          inputResources:
-            - name: gitRepoResource
-        #    - name: fileSpec
-        #  outputResources:
-        #    - name: outputBuildInfo
-     #     integrations:
-     #       - name: artifactory
-
-      - name: npmBuild2
-        type: NpmBuild
-        configuration:
-          sourceLocation: "true"
-          repositoryName: test
-          inputSteps:
-            - name: Go
-          inputResources:
-            - name: gitRepoResource
-      #      - name: fileSpec
-       #   outputResources:
-       #     - name: outputBuildInfo
-     #     integrations:
-     #       - name: artifactory
-
-
-
   - name: go_test3
     steps:
       - name: triggerCancel
@@ -634,51 +576,6 @@ pipelines:
         execution:
           onExecute:
             - sleep 30
-      - name: Go3
-        type: GoBuild
-        configuration:
-          affinityGroup: GoTest2
-          sourceLocation: "."
-          repository: repo
-          outputLocation: "output"
-          outputFile: "file"
-         # goCommand: "build -insecure -o ${outputLocation}/${outputFile}"
-          inputSteps:
-            - name: triggerCancel
-          inputResources:
-            - name: goRepo
-      #      - name: fileSpec
-       #   outputResources:
-       #     - name: outputBuildInfo
-       #   integrations:
-       #     - name: artifactory
-          runtime:
-            type: image
-        execution:
-          onStart:
-            - "buildDir=$(find_resource_variable $inputGitRepoResourceName resourcePath)"
-            - "pushd $buildDir"
-            - "go get -insecure"
-            - popd
-      - name: npmBuild3
-        type: NpmBuild
-        configuration:
-          affinityGroup: GoTest2
-          sourceLocation: "true"
-          repositoryName: test
-          inputSteps:
-            - name: Go3
-          inputResources:
-            - name: gitRepoResource
-       #     - name: fileSpec
-       #   outputResources:
-       #     - name: outputBuildInfo
-        #  integrations:
-        #    - name: artifactory
-        execution:
-          onStart:
-            - sudo apt-get update
-            
       - name: goPublishBinary
         type: GoPublishBinary
         configuration:
@@ -718,13 +615,5 @@ pipelines:
             - name: gitRepoResource42
         #  outputResources:
         #    - name: outputBuildInfo2
-      - name: xrayScan
-        type: XrayScan
-        configuration:
-          inputResources:
-          #  - name: outputBuildInfo2
-            - name: gitRepoResource42
-         # outputResources:
-         #   - name: outputBuildInfo3
  
 
