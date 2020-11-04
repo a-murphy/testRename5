@@ -456,26 +456,6 @@ pipelines:
          #   - name: fileSpec
             - name: gitRepoResource42
           #  - name: nodeRepoResource4
-      - name: docker_push
-        type: DockerPush
-        configuration:
-          targetRepository: dockerrepo
-          forceXrayScan: ${testBoolean}
-          autoPublishBuildInfo: false
-          environmentVariables:
-            versionTag: testTag
-            testNumber: 5
-            testBoolean: "false"
-          inputSteps:
-            - name: docker_build
-       #   outputResources:
-       #     - name: outputBuildInfo
-       #   integrations:
-       #     - name: artifactory
-       # execution:
-       #   onStart:
-       #     - jfrog rt c show artifactory
-
 
   - name: test_pipeline_11
    # configuration:   
@@ -523,28 +503,5 @@ pipelines:
                 autoPull: false
         execution:
           onExecute:
-            - php --version
-
-  - name: go_test3
-    steps:
-      - name: triggerCancel
-        type: Bash
-        configuration:
-          affinityGroup: GoTest2
-          inputResources:
-            - name: gitRepoResource42
-        execution:
-          onExecute:
-            - sleep 30      
-      - name: publishBuildInfo
-        type: PublishBuildInfo
-        configuration:
-          inputSteps:
-            - name: goPublishBinary
-          inputResources:
-         #   - name: outputBuildInfo
-            - name: gitRepoResource42
-        #  outputResources:
-        #    - name: outputBuildInfo2
- 
+            - php --version 
 
