@@ -44,6 +44,23 @@ resources:
         include: master
 
 pipelines:
+  - name: matrix
+    steps:
+      - name: matrix_step
+        type: Matrix
+        stepMode: Bash
+        configuration:
+          multiNode: false
+        stepletMultipliers:
+          environmentVariables:
+            - variable: one
+            - variable: two
+            - variable: three
+        execution:
+          onExecute:
+            - echo "Executed matrix steplet - ${steplet_id} on node id - ${step_node_id}"
+            - echo "value --> $variable"
+            - sleep 10
   - name: test_pipeline_windows
     steps:  
       - name: BuildSampleWithAReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyLongName
