@@ -45,6 +45,8 @@ resources:
 
 pipelines:
   - name: matrix
+    configuration:
+      nodePool: dynamicOne
     steps:
       - name: matrix_step
         type: Matrix
