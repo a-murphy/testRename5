@@ -78,7 +78,9 @@ pipelines:
         execution:
           onExecute:
             - echo $res_this_repo_shaData
-            - echo $res_this_repo_shaData_headCommitRef
+            - echo $res_this_repo_shaData | jq ".headCommitRef"
+            - headCommitRef=$(echo $res_this_repo_shaData | jq ".headCommitRef")
+            - echo $headCommitRef
       - name: BuildSampleWithAReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyLongName
         type: MvnBuild
         configuration:
