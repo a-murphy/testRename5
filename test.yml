@@ -72,8 +72,9 @@ pipelines:
     steps:  
       - name: bash_step
         type: Bash
-        inputResources:
-          - name: this_repo
+        configuration:
+          inputResources:
+            - name: this_repo
         execution:
           onExecute:
             - echo $res_this_repo_shaData
