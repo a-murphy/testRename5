@@ -42,6 +42,13 @@ resources:
       gitProvider: aidan_github
       branches:
         include: master
+  - name: this_repo
+    type: GitRepo
+    configuration:
+      path: a-murphy/5testRename5
+      gitProvider: aidan_github
+      buildOn:
+        pullRequestCreate: true
 
 pipelines:
   - name: matrix
@@ -53,6 +60,8 @@ pipelines:
         stepMode: Bash
         configuration:
           multiNode: false
+        inputResources:
+          - name: this_repo
         stepletMultipliers:
           environmentVariables:
             - variable: one
@@ -63,6 +72,8 @@ pipelines:
             - echo "Executed matrix steplet - ${steplet_id} on node id - ${step_node_id}"
             - echo "value --> $variable"
             - sleep 10
+            - echo $res_this_repo_shaData
+            - echo $res_this_repo_shaData_headCommitRef
   - name: test_pipeline_windows
     steps:  
       - name: BuildSampleWithAReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyLongName
