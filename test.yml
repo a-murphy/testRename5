@@ -58,8 +58,6 @@ pipelines:
         stepMode: Bash
         configuration:
           multiNode: false
-        inputResources:
-          - name: this_repo
         stepletMultipliers:
           environmentVariables:
             - variable: one
@@ -70,10 +68,16 @@ pipelines:
             - echo "Executed matrix steplet - ${steplet_id} on node id - ${step_node_id}"
             - echo "value --> $variable"
             - sleep 10
-            - echo $res_this_repo_shaData
-            - echo $res_this_repo_shaData_headCommitRef
   - name: test_pipeline_windows
     steps:  
+      - name: bash_step
+        type: Bash
+        inputResources:
+          - name: this_repo
+        execution:
+          onExecute:
+            - echo $res_this_repo_shaData
+            - echo $res_this_repo_shaData_headCommitRef
       - name: BuildSampleWithAReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyLongName
         type: MvnBuild
         configuration:
@@ -126,6 +130,7 @@ pipelines:
             - name: buildInfo2
           inputSteps:
             - name: BuildSample
+            - name: bash_step
           outputResources:
             - name: releaseBundle
       - name: signReleaseBundle
@@ -139,6 +144,8 @@ pipelines:
         type: DistributeReleaseBundle
         configuration:
           dryRun: false
+          inputSteps:
+            - name: bash_step
           inputResources:
             - name: releaseBundle2
               trigger: false   
