@@ -75,6 +75,7 @@ pipelines:
         configuration:
           inputResources:
             - name: this_repo
+            - name: examples_repo
         execution:
           onExecute:
             - echo $res_this_repo_shaData
