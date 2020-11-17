@@ -2416,12 +2416,11 @@ pipelines:
           integrations:
             - name: aidan_github
           outputResources:
-            - name: 
-              - write_output resource_3 test="$step_name"
+            - name: resource_3
         execution:
           onExecute:
             - write_output resource_3 test="$step_name"
-            - echo "test"
+
       - name: step_192
         type: Bash
         configuration:
@@ -2435,7 +2434,7 @@ pipelines:
         execution:
           onExecute:
             - write_output resource_4 test="$step_name"
-            - echo "test"
+
       - name: step_193
         type: Bash
         configuration:
@@ -2484,6 +2483,7 @@ pipelines:
             - name: resource_3
         execution:
           onExecute:
+            - write_output resource_3 test="$step_name"
             
       - name: step_197
         type: Bash
