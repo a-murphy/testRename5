@@ -65,6 +65,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -78,6 +80,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -91,6 +95,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -102,6 +108,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -125,6 +133,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -136,6 +146,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -147,6 +159,7 @@ pipelines:
           affinityGroup: groupone
           inputResources:
             - name: repo_resource
+            - name: resource_3
           integrations:
             - name: aidan_github
           outputResources:
@@ -162,6 +175,8 @@ pipelines:
             - name: repo_resource
           integrations:
             - name: aidan_github
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -173,6 +188,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_1
         execution:
@@ -184,6 +201,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -196,6 +215,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -208,6 +229,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -219,6 +242,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -242,6 +267,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -253,6 +280,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -264,6 +293,7 @@ pipelines:
           affinityGroup: groupone
           inputResources:
             - name: repo_resource
+            - name: resource_3
           integrations:
             - name: aidan_github
           outputResources:
@@ -277,6 +307,7 @@ pipelines:
           affinityGroup: groupone
           inputResources:
             - name: repo_resource
+            - name: resource_4
           integrations:
             - name: aidan_github
           outputResources:
@@ -301,6 +332,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -313,6 +346,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -325,6 +360,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -336,6 +373,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -360,6 +399,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -372,6 +413,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -384,6 +427,7 @@ pipelines:
           affinityGroup: groupone
           inputResources:
             - name: repo_resource
+            - name: resource_3
           integrations:
             - name: aidan_github
           outputResources:
@@ -424,6 +468,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -437,6 +483,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -450,6 +498,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -462,6 +512,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -487,6 +539,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -499,6 +553,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -511,6 +567,7 @@ pipelines:
           affinityGroup: groupone
           inputResources:
             - name: repo_resource
+            - name: resource_3
           integrations:
             - name: aidan_github
           outputResources:
@@ -551,6 +608,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -564,6 +623,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -577,6 +638,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -589,6 +652,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -614,6 +679,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -626,6 +693,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -638,6 +707,7 @@ pipelines:
           affinityGroup: groupone
           inputResources:
             - name: repo_resource
+            - name: resource_3
           outputResources:
             - name: resource_4
           integrations:
@@ -678,6 +748,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -691,6 +763,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -704,6 +778,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -716,6 +792,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -741,6 +819,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -753,6 +833,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -765,6 +847,7 @@ pipelines:
           affinityGroup: groupone
           inputResources:
             - name: repo_resource
+            - name: resource_3
           integrations:
             - name: aidan_github
           outputResources:
@@ -805,6 +888,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -818,6 +903,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -831,6 +918,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -843,6 +932,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -868,6 +959,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -880,6 +973,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -892,6 +987,7 @@ pipelines:
           affinityGroup: groupone
           inputResources:
             - name: repo_resource
+            - name: resource_3
           integrations:
             - name: aidan_github
           outputResources:
@@ -932,6 +1028,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -945,6 +1043,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -958,6 +1058,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -970,6 +1072,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -995,6 +1099,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1007,6 +1113,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1019,6 +1127,7 @@ pipelines:
           affinityGroup: groupone
           inputResources:
             - name: repo_resource
+            - name: resource_3
           integrations:
             - name: aidan_github
           outputResources:
@@ -1059,6 +1168,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1072,6 +1183,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1085,6 +1198,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -1097,6 +1212,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -1122,6 +1239,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1134,6 +1253,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1146,6 +1267,7 @@ pipelines:
           affinityGroup: groupone
           inputResources:
             - name: repo_resource
+            - name: resource_3
           integrations:
             - name: aidan_github
           outputResources:
@@ -1186,6 +1308,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1199,6 +1323,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1212,6 +1338,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -1224,6 +1352,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -1249,6 +1379,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1261,6 +1393,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1313,6 +1447,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1326,6 +1462,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1339,6 +1477,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -1351,6 +1491,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -1376,6 +1518,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1388,6 +1532,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1428,6 +1574,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1440,6 +1588,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1453,6 +1603,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -1466,6 +1618,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -1490,6 +1644,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1503,6 +1659,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1515,6 +1673,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -1555,6 +1715,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1567,6 +1729,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1580,6 +1744,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -1593,6 +1759,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -1617,6 +1785,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1630,6 +1800,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1642,6 +1814,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -1682,6 +1856,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1694,6 +1870,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1707,6 +1885,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -1720,6 +1900,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -1744,6 +1926,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1757,6 +1941,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1769,6 +1955,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -1809,6 +1997,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1821,6 +2011,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1834,6 +2026,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1847,6 +2041,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -1859,6 +2055,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -1884,6 +2082,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1896,6 +2096,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1933,6 +2135,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -1958,6 +2162,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -1971,6 +2177,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -1983,6 +2191,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -1995,6 +2205,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -2020,6 +2232,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -2034,6 +2248,8 @@ pipelines:
             - name: repo_resource
           integrations:
             - name: aidan_github
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -2060,6 +2276,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -2085,6 +2303,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -2098,6 +2318,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -2110,6 +2332,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -2122,6 +2346,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -2147,6 +2373,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -2161,6 +2389,8 @@ pipelines:
             - name: repo_resource
           integrations:
             - name: aidan_github
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -2187,6 +2417,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -2212,6 +2444,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -2225,6 +2459,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -2237,6 +2473,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -2249,6 +2487,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -2274,6 +2514,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -2288,6 +2530,8 @@ pipelines:
             - name: repo_resource
           integrations:
             - name: aidan_github
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -2302,6 +2546,8 @@ pipelines:
             - name: repo_resource
           integrations:
             - name: aidan_github
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -2314,6 +2560,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -2339,6 +2587,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -2352,6 +2602,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -2364,6 +2616,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -2376,6 +2630,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -2401,6 +2657,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -2411,10 +2669,10 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: groupone
-          inputResources:
-            - name: repo_resource
           integrations:
             - name: aidan_github
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -2441,6 +2699,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -2466,6 +2726,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -2479,6 +2741,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -2491,6 +2755,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -2503,6 +2769,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -2528,6 +2796,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -2540,6 +2810,7 @@ pipelines:
           affinityGroup: groupone
           inputResources:
             - name: repo_resource
+            - name: resource_2
           integrations:
             - name: aidan_github
           outputResources:
@@ -2568,6 +2839,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
@@ -2593,6 +2866,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_1
           outputResources:
             - name: resource_2
         execution:
@@ -2606,6 +2881,8 @@ pipelines:
           priority: 5
           inputSteps:
             - name: step_5
+          inputResources:
+            - name: resource_2
           outputResources:
             - name: resource_3
         execution:
@@ -2618,6 +2895,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_3
           outputResources:
             - name: resource_4
         execution:
@@ -2630,6 +2909,8 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
