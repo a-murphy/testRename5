@@ -19,6 +19,11 @@ resources:
     type: PropertyBag
     configuration:
       test: five
+  - name: repo_resource
+    type: GitRepo
+    configuration:
+      path: a-murphy/5testRename5
+      gitProvider: aidan_github
 pipelines:
   - name: test_pipeline
     steps:
@@ -27,7 +32,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
         execution:
           onExecute:
             - echo "test"
@@ -36,7 +41,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
         execution:
@@ -141,7 +146,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -154,7 +159,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -258,7 +263,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -271,7 +276,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -378,7 +383,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -392,7 +397,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -505,7 +510,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -519,7 +524,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -632,7 +637,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           outputResources:
             - name: resource_4
           integrations:
@@ -646,7 +651,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           outputResources:
             - name: resource_5
           integrations:
@@ -759,7 +764,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -773,7 +778,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -886,7 +891,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -900,7 +905,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1013,7 +1018,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1027,7 +1032,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1140,7 +1145,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1154,7 +1159,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1267,7 +1272,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1281,7 +1286,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1394,7 +1399,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1408,7 +1413,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1521,7 +1526,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1535,7 +1540,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1648,7 +1653,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1662,7 +1667,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1775,7 +1780,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1789,7 +1794,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1902,7 +1907,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -1916,7 +1921,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
         execution:
@@ -2026,7 +2031,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -2040,7 +2045,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -2153,7 +2158,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -2167,7 +2172,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -2280,7 +2285,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -2294,7 +2299,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -2407,7 +2412,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -2422,7 +2427,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -2534,7 +2539,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
@@ -2548,7 +2553,7 @@ pipelines:
         configuration:
           affinityGroup: groupone
           inputResources:
-            - name: repo
+            - name: repo_resource
           integrations:
             - name: aidan_github
           outputResources:
