@@ -173,10 +173,9 @@ pipelines:
           affinityGroup: groupone
           inputResources:
             - name: repo_resource
+              - name: resource_4
           integrations:
             - name: aidan_github
-          inputResources:
-            - name: resource_4
           outputResources:
             - name: resource_5
         execution:
