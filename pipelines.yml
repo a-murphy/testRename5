@@ -30,7 +30,6 @@ pipelines:
       - name: step_1
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
         execution:
@@ -49,7 +48,6 @@ pipelines:
       - name: step_3
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputSteps:
             - name: step_1
           outputResources:
@@ -61,7 +59,6 @@ pipelines:
       - name: step_4
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: resource_1
           outputResources:
