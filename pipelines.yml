@@ -39,7 +39,6 @@ pipelines:
       - name: step_2
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -50,7 +49,6 @@ pipelines:
       - name: step_3
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -62,7 +60,6 @@ pipelines:
       - name: step_4
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -74,7 +71,6 @@ pipelines:
       - name: step_5
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_2
@@ -87,7 +83,6 @@ pipelines:
       - name: step_6
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_3
@@ -99,7 +94,6 @@ pipelines:
       - name: step_7
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -110,7 +104,6 @@ pipelines:
       - name: step_8
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -121,7 +114,6 @@ pipelines:
       - name: step_9
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_1
@@ -158,7 +150,6 @@ pipelines:
       - name: step_12
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
             - name: resource_4
@@ -172,7 +163,6 @@ pipelines:
       - name: step_13
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -183,7 +173,6 @@ pipelines:
       - name: step_14
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -194,7 +183,6 @@ pipelines:
       - name: step_15
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_2
@@ -206,7 +194,6 @@ pipelines:
       - name: step_16
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_3
@@ -218,7 +205,6 @@ pipelines:
       - name: step_17
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -229,7 +215,6 @@ pipelines:
       - name: step_18
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -240,7 +225,6 @@ pipelines:
       - name: step_19
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_1
@@ -337,7 +321,6 @@ pipelines:
       - name: step_27
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -348,7 +331,6 @@ pipelines:
       - name: step_28
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -360,7 +342,6 @@ pipelines:
       - name: step_29
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_1
@@ -438,7 +419,6 @@ pipelines:
       - name: step_35
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_2
@@ -451,7 +431,6 @@ pipelines:
       - name: step_36
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_3
@@ -464,7 +443,6 @@ pipelines:
       - name: step_37
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -476,7 +454,6 @@ pipelines:
       - name: step_38
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -488,7 +465,6 @@ pipelines:
       - name: step_39
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_1
@@ -513,7 +489,6 @@ pipelines:
       - name: step_41
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
             - name: resource_3
@@ -528,7 +503,6 @@ pipelines:
       - name: step_42
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -542,7 +516,6 @@ pipelines:
       - name: step_43
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -554,7 +527,6 @@ pipelines:
       - name: step_44
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -566,7 +538,6 @@ pipelines:
       - name: step_45
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_2
@@ -579,7 +550,6 @@ pipelines:
       - name: step_46
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_3
@@ -592,7 +562,6 @@ pipelines:
       - name: step_47
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -604,7 +573,6 @@ pipelines:
       - name: step_48
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -616,7 +584,6 @@ pipelines:
       - name: step_49
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_1
@@ -641,7 +608,6 @@ pipelines:
       - name: step_51
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
             - name: resource_3
@@ -656,7 +622,6 @@ pipelines:
       - name: step_52
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           outputResources:
@@ -670,7 +635,6 @@ pipelines:
       - name: step_53
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -682,7 +646,6 @@ pipelines:
       - name: step_54
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -694,7 +657,6 @@ pipelines:
       - name: step_55
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_2
@@ -707,7 +669,6 @@ pipelines:
       - name: step_56
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_3
@@ -720,7 +681,6 @@ pipelines:
       - name: step_57
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -732,7 +692,6 @@ pipelines:
       - name: step_58
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -744,7 +703,6 @@ pipelines:
       - name: step_59
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_1
@@ -769,7 +727,6 @@ pipelines:
       - name: step_61
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
             - name: resource_3
@@ -784,7 +741,6 @@ pipelines:
       - name: step_62
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -798,7 +754,6 @@ pipelines:
       - name: step_63
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -810,7 +765,6 @@ pipelines:
       - name: step_64
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -822,7 +776,6 @@ pipelines:
       - name: step_65
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_2
@@ -835,7 +788,6 @@ pipelines:
       - name: step_66
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_3
@@ -848,7 +800,6 @@ pipelines:
       - name: step_67
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -860,7 +811,6 @@ pipelines:
       - name: step_68
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -872,7 +822,6 @@ pipelines:
       - name: step_69
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_1
@@ -897,7 +846,6 @@ pipelines:
       - name: step_71
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
             - name: resource_3
@@ -912,7 +860,6 @@ pipelines:
       - name: step_72
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -922,11 +869,9 @@ pipelines:
         execution:
           onExecute:
             - write_output resource_5 test="$step_name"
-            - echo "test"
       - name: step_73
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -938,7 +883,6 @@ pipelines:
       - name: step_74
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -950,7 +894,6 @@ pipelines:
       - name: step_75
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_2
@@ -963,7 +906,6 @@ pipelines:
       - name: step_76
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_3
@@ -976,7 +918,6 @@ pipelines:
       - name: step_77
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -988,7 +929,6 @@ pipelines:
       - name: step_78
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -1000,7 +940,6 @@ pipelines:
       - name: step_79
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_1
@@ -1025,7 +964,6 @@ pipelines:
       - name: step_81
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
             - name: resource_3
@@ -1040,7 +978,6 @@ pipelines:
       - name: step_82
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1054,7 +991,6 @@ pipelines:
       - name: step_83
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -1066,7 +1002,6 @@ pipelines:
       - name: step_84
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -1078,7 +1013,6 @@ pipelines:
       - name: step_85
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_2
@@ -1091,7 +1025,6 @@ pipelines:
       - name: step_86
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_3
@@ -1104,7 +1037,6 @@ pipelines:
       - name: step_87
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -1116,7 +1048,6 @@ pipelines:
       - name: step_88
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -1128,7 +1059,6 @@ pipelines:
       - name: step_89
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_1
@@ -1153,7 +1083,6 @@ pipelines:
       - name: step_91
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
             - name: resource_3
@@ -1168,7 +1097,6 @@ pipelines:
       - name: step_92
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1182,7 +1110,6 @@ pipelines:
       - name: step_93
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -1194,7 +1121,6 @@ pipelines:
       - name: step_94
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -1206,7 +1132,6 @@ pipelines:
       - name: step_95
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_2
@@ -1219,7 +1144,6 @@ pipelines:
       - name: step_96
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_3
@@ -1232,7 +1156,6 @@ pipelines:
       - name: step_97
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -1244,7 +1167,6 @@ pipelines:
       - name: step_98
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -1256,7 +1178,6 @@ pipelines:
       - name: step_99
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_1
@@ -1281,7 +1202,6 @@ pipelines:
       - name: step_101
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1295,7 +1215,6 @@ pipelines:
       - name: step_102
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1309,7 +1228,6 @@ pipelines:
       - name: step_103
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -1321,7 +1239,6 @@ pipelines:
       - name: step_104
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -1333,7 +1250,6 @@ pipelines:
       - name: step_105
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_2
@@ -1346,7 +1262,6 @@ pipelines:
       - name: step_106
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_3
@@ -1359,7 +1274,6 @@ pipelines:
       - name: step_107
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -1371,7 +1285,6 @@ pipelines:
       - name: step_108
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -1383,7 +1296,6 @@ pipelines:
       - name: step_109
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_1
@@ -1408,7 +1320,6 @@ pipelines:
       - name: step_111
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1422,7 +1333,6 @@ pipelines:
       - name: step_112
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1436,7 +1346,6 @@ pipelines:
       - name: step_113
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -1448,7 +1357,6 @@ pipelines:
       - name: step_114
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_2
           outputResources:
@@ -1460,7 +1368,6 @@ pipelines:
       - name: step_115
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_3
@@ -1473,7 +1380,6 @@ pipelines:
       - name: step_116
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_4
@@ -1486,7 +1392,6 @@ pipelines:
       - name: step_117
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -1498,7 +1403,6 @@ pipelines:
       - name: step_118
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_1
           outputResources:
@@ -1510,7 +1414,6 @@ pipelines:
       - name: step_119
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_2
@@ -1535,7 +1438,6 @@ pipelines:
       - name: step_121
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1549,7 +1451,6 @@ pipelines:
       - name: step_122
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1563,7 +1464,6 @@ pipelines:
       - name: step_123
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -1575,7 +1475,6 @@ pipelines:
       - name: step_124
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_2
           outputResources:
@@ -1587,7 +1486,6 @@ pipelines:
       - name: step_125
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_3
@@ -1600,7 +1498,6 @@ pipelines:
       - name: step_126
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_4
@@ -1613,7 +1510,6 @@ pipelines:
       - name: step_127
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -1625,7 +1521,6 @@ pipelines:
       - name: step_128
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_1
           outputResources:
@@ -1637,7 +1532,6 @@ pipelines:
       - name: step_129
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_2
@@ -1662,7 +1556,6 @@ pipelines:
       - name: step_131
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1676,7 +1569,6 @@ pipelines:
       - name: step_132
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1690,7 +1582,6 @@ pipelines:
       - name: step_133
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -1702,7 +1593,6 @@ pipelines:
       - name: step_134
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_2
           outputResources:
@@ -1714,7 +1604,6 @@ pipelines:
       - name: step_135
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_3
@@ -1727,7 +1616,6 @@ pipelines:
       - name: step_136
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_4
@@ -1740,7 +1628,6 @@ pipelines:
       - name: step_137
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -1752,7 +1639,6 @@ pipelines:
       - name: step_138
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_1
           outputResources:
@@ -1764,7 +1650,6 @@ pipelines:
       - name: step_139
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_2
@@ -1789,7 +1674,6 @@ pipelines:
       - name: step_141
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1803,7 +1687,6 @@ pipelines:
       - name: step_142
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1817,7 +1700,6 @@ pipelines:
       - name: step_143
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -1829,7 +1711,6 @@ pipelines:
       - name: step_144
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_1
           outputResources:
@@ -1841,7 +1722,6 @@ pipelines:
       - name: step_145
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_2
@@ -1854,7 +1734,6 @@ pipelines:
       - name: step_146
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_3
@@ -1867,7 +1746,6 @@ pipelines:
       - name: step_147
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -1879,7 +1757,6 @@ pipelines:
       - name: step_148
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputSteps:
             - name: step_1
           outputResources:
@@ -1891,7 +1768,6 @@ pipelines:
       - name: step_149
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputResources:
             - name: resource_1
@@ -1916,7 +1792,6 @@ pipelines:
       - name: step_151
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1930,7 +1805,6 @@ pipelines:
       - name: step_152
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -1941,7 +1815,6 @@ pipelines:
       - name: step_153
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_4
           outputResources:
@@ -1953,7 +1826,6 @@ pipelines:
       - name: step_154
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -1965,7 +1837,6 @@ pipelines:
       - name: step_155
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_1
@@ -1978,7 +1849,6 @@ pipelines:
       - name: step_156
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_2
@@ -1991,7 +1861,6 @@ pipelines:
       - name: step_157
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_3
           outputResources:
@@ -2003,7 +1872,6 @@ pipelines:
       - name: step_158
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -2015,7 +1883,6 @@ pipelines:
       - name: step_159
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputSteps:
             - name: step_1
@@ -2040,7 +1907,6 @@ pipelines:
       - name: step_161
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
             - name: resource_2
@@ -2055,7 +1921,6 @@ pipelines:
       - name: step_162
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -2069,7 +1934,6 @@ pipelines:
       - name: step_163
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_4
           outputResources:
@@ -2081,7 +1945,6 @@ pipelines:
       - name: step_164
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -2093,7 +1956,6 @@ pipelines:
       - name: step_165
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_1
@@ -2106,7 +1968,6 @@ pipelines:
       - name: step_166
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_2
@@ -2119,7 +1980,6 @@ pipelines:
       - name: step_167
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_3
           outputResources:
@@ -2131,7 +1991,6 @@ pipelines:
       - name: step_168
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -2143,7 +2002,6 @@ pipelines:
       - name: step_169
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputSteps:
             - name: step_1
@@ -2168,7 +2026,6 @@ pipelines:
       - name: step_171
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
             - name: resource_2
@@ -2183,7 +2040,6 @@ pipelines:
       - name: step_172
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -2197,7 +2053,6 @@ pipelines:
       - name: step_173
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_4
           outputResources:
@@ -2209,7 +2064,6 @@ pipelines:
       - name: step_174
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -2221,7 +2075,6 @@ pipelines:
       - name: step_175
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_1
@@ -2234,7 +2087,6 @@ pipelines:
       - name: step_176
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_2
@@ -2247,7 +2099,6 @@ pipelines:
       - name: step_177
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_3
           outputResources:
@@ -2259,7 +2110,6 @@ pipelines:
       - name: step_178
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -2271,7 +2121,6 @@ pipelines:
       - name: step_179
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputSteps:
             - name: step_1
@@ -2296,7 +2145,6 @@ pipelines:
       - name: step_181
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
             - name: resource_2
@@ -2311,7 +2159,6 @@ pipelines:
       - name: step_182
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
             - name: resource_3
@@ -2326,7 +2173,6 @@ pipelines:
       - name: step_183
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_4
           outputResources:
@@ -2338,7 +2184,6 @@ pipelines:
       - name: step_184
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -2350,7 +2195,6 @@ pipelines:
       - name: step_185
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_1
@@ -2363,7 +2207,6 @@ pipelines:
       - name: step_186
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_2
@@ -2376,7 +2219,6 @@ pipelines:
       - name: step_187
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_3
           outputResources:
@@ -2388,7 +2230,6 @@ pipelines:
       - name: step_188
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -2400,7 +2241,6 @@ pipelines:
       - name: step_189
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           inputSteps:
             - name: step_1
@@ -2425,7 +2265,6 @@ pipelines:
       - name: step_191
         type: Bash
         configuration:
-          affinityGroup: groupone
           integrations:
             - name: aidan_github
           inputResources:
@@ -2439,7 +2278,6 @@ pipelines:
       - name: step_192
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -2453,7 +2291,6 @@ pipelines:
       - name: step_193
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_4
           outputResources:
@@ -2465,7 +2302,6 @@ pipelines:
       - name: step_194
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -2477,7 +2313,6 @@ pipelines:
       - name: step_195
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_1
@@ -2490,7 +2325,6 @@ pipelines:
       - name: step_196
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_2
@@ -2503,7 +2337,6 @@ pipelines:
       - name: step_197
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_3
           outputResources:
@@ -2515,7 +2348,6 @@ pipelines:
       - name: step_198
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -2527,7 +2359,6 @@ pipelines:
       - name: step_199
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           outputResources:
             - name: resource_1
@@ -2550,7 +2381,6 @@ pipelines:
       - name: step_201
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
             - name: resource_2
@@ -2565,7 +2395,6 @@ pipelines:
       - name: step_202
         type: Bash
         configuration:
-          affinityGroup: groupone
           inputResources:
             - name: repo_resource
           integrations:
@@ -2579,7 +2408,6 @@ pipelines:
       - name: step_203
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputResources:
             - name: resource_4
           outputResources:
@@ -2591,7 +2419,6 @@ pipelines:
       - name: step_204
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           inputSteps:
             - name: step_1
           outputResources:
@@ -2603,7 +2430,6 @@ pipelines:
       - name: step_205
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 10
           inputResources:
             - name: resource_1
@@ -2616,7 +2442,6 @@ pipelines:
       - name: step_206
         type: Bash
         configuration:
-          affinityGroup: grouptwo
           priority: 5
           inputResources:
             - name: resource_2
@@ -2629,7 +2454,6 @@ pipelines:
       - name: step_207
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_3
           outputResources:
@@ -2641,7 +2465,6 @@ pipelines:
       - name: step_208
         type: Bash
         configuration:
-          affinityGroup: groupthree
           inputResources:
             - name: resource_4
           outputResources:
@@ -2653,7 +2476,6 @@ pipelines:
       - name: step_209
         type: Bash
         configuration:
-          affinityGroup: groupfour
           priority: 10
           outputResources:
             - name: resource_1
