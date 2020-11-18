@@ -45,7 +45,7 @@ resources:
       path: a-murphy/5testRename5
       gitProvider: aidan_github
 pipelines:
-  - name: test_pipeline
+  - name: test_pipeline3
     steps:
       - name: step_1
         type: Bash
