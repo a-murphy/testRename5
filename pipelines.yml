@@ -81,7 +81,7 @@ resources:
       path: a-murphy/5testRename5
       gitProvider: aidan_github
 pipelines:
-  - name: test_pipeline
+  - name: test_pipeline4
     steps:
       - name: step_1
         type: Bash
@@ -409,244 +409,244 @@ pipelines:
           onExecute:
             - write_output resource_8 test="$step_name"
             
-      - name: step_31
-        type: Bash
-        configuration:
-          inputResources:
-            - name: repo_resource
-            - name: resource_8
-          integrations:
-            - name: aidan_github
-          outputResources:
-            - name: resource_9
-        execution:
-          onExecute:
-            - write_output resource_9 test="$step_name"
-            - echo "test"
-      - name: step_32
-        type: Bash
-        configuration:
-          inputResources:
-            - name: repo_resource
-          integrations:
-            - name: aidan_github
-          outputResources:
-            - name: resource_10
-        execution:
-          onExecute:
-            - write_output resource_10 test="$step_name"
-            - echo "test"
-      - name: step_33
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: step_1
-          outputResources:
-            - name: resource_11
-        execution:
-          onExecute:
-            - write_output resource_11 test="$step_name"
-            
-      - name: step_34
-        type: Bash
-        configuration:
-          inputResources:
-            - name: resource_11
-          outputResources:
-            - name: resource_12
-        execution:
-          onExecute:
-            - write_output resource_12 test="$step_name"
-            
-      - name: step_35
-        type: Bash
-        configuration:
-          priority: 10
-          inputResources:
-            - name: resource_12
-          outputResources:
-            - name: resource_13
-        execution:
-          onExecute:
-            - write_output resource_13 test="$step_name"
-            
-      - name: step_36
-        type: Bash
-        configuration:
-          priority: 5
-          inputResources:
-            - name: resource_13
-          outputResources:
-            - name: resource_14
-        execution:
-          onExecute:
-            - write_output resource_14 test="$step_name"
-            
-      - name: step_37
-        type: Bash
-        configuration:
-          inputResources:
-            - name: resource_14
-          outputResources:
-            - name: resource_15
-        execution:
-          onExecute:
-            - write_output resource_15 test="$step_name"
-            
-      - name: step_38
-        type: Bash
-        configuration:
-          inputResources:
-            - name: resource_15
-          outputResources:
-            - name: resource_16
-        execution:
-          onExecute:
-            - write_output resource_16 test="$step_name"
-            
-      - name: step_39
-        type: Bash
-        configuration:
-          priority: 10
-          inputResources:
-            - name: resource_16
-          outputResources:
-            - name: resource_17
-        execution:
-          onExecute:
-            - write_output resource_17 test="$step_name"
-            
-      - name: step_40
-        type: Bash
-        configuration:
-          priority: 5
-          inputResources:
-            - name: resource_17
-          outputResources:
-            - name: resource_18
-        execution:
-          onExecute:
-            - write_output resource_18 test="$step_name"
-            
-      - name: step_41
-        type: Bash
-        configuration:
-          inputResources:
-            - name: repo_resource
-            - name: resource_18
-          integrations:
-            - name: aidan_github
-          outputResources:
-            - name: resource_19
-        execution:
-          onExecute:
-            - write_output resource_19 test="$step_name"
-            - echo "test"
-      - name: step_42
-        type: Bash
-        configuration:
-          inputResources:
-            - name: repo_resource
-          integrations:
-            - name: aidan_github
-          outputResources:
-            - name: resource_10
-        execution:
-          onExecute:
-            - write_output resource_10 test="$step_name"
-            - echo "test"
-      - name: step_43
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: step_1
-          outputResources:
-            - name: resource_1
-        execution:
-          onExecute:
-            - write_output resource_1 test="$step_name"
-            
-      - name: step_44
-        type: Bash
-        configuration:
-          inputResources:
-            - name: resource_1
-          outputResources:
-            - name: resource_2
-        execution:
-          onExecute:
-            - write_output resource_2 test="$step_name"
-            
-      - name: step_45
-        type: Bash
-        configuration:
-          priority: 10
-          inputResources:
-            - name: resource_2
-          outputResources:
-            - name: resource_3
-        execution:
-          onExecute:
-            - write_output resource_3 test="$step_name"
-            
-      - name: step_46
-        type: Bash
-        configuration:
-          priority: 5
-          inputResources:
-            - name: resource_3
-          outputResources:
-            - name: resource_4
-        execution:
-          onExecute:
-            - write_output resource_4 test="$step_name"
-            
-      - name: step_47
-        type: Bash
-        configuration:
-          inputResources:
-            - name: resource_4
-          outputResources:
-            - name: resource_5
-        execution:
-          onExecute:
-            - write_output resource_5 test="$step_name"
-            
-      - name: step_48
-        type: Bash
-        configuration:
-          inputResources:
-            - name: resource_5
-          outputResources:
-            - name: resource_6
-        execution:
-          onExecute:
-            - write_output resource_6 test="$step_name"
-            
-      - name: step_49
-        type: Bash
-        configuration:
-          priority: 10
-          inputResources:
-            - name: resource_6
-          outputResources:
-            - name: resource_7
-        execution:
-          onExecute:
-            - write_output resource_7 test="$step_name"
-            
-      - name: step_50
-        type: Bash
-        configuration:
-          priority: 5
-          inputResources:
-            - name: resource_7
-          outputResources:
-            - name: resource_8
-        execution:
-          onExecute:
-            - write_output resource_8 test="$step_name"
-            
+#      - name: step_31
+#        type: Bash
+#        configuration:
+#          inputResources:
+#            - name: repo_resource
+#            - name: resource_8
+#          integrations:
+#            - name: aidan_github
+#          outputResources:
+#            - name: resource_9
+#        execution:
+#          onExecute:
+#            - write_output resource_9 test="$step_name"
+#            - echo "test"
+#      - name: step_32
+#        type: Bash
+#        configuration:
+#          inputResources:
+#            - name: repo_resource
+#          integrations:
+#            - name: aidan_github
+#          outputResources:
+#            - name: resource_10
+#        execution:
+#          onExecute:
+#            - write_output resource_10 test="$step_name"
+#            - echo "test"
+#      - name: step_33
+#        type: Bash
+#        configuration:
+#          inputSteps:
+#            - name: step_1
+#          outputResources:
+#            - name: resource_11
+#        execution:
+#          onExecute:
+#            - write_output resource_11 test="$step_name"
+#            
+#      - name: step_34
+#        type: Bash
+#        configuration:
+#          inputResources:
+#            - name: resource_11
+#          outputResources:
+#            - name: resource_12
+#        execution:
+#          onExecute:
+#            - write_output resource_12 test="$step_name"
+#            
+#      - name: step_35
+#        type: Bash
+#        configuration:
+#          priority: 10
+#          inputResources:
+#            - name: resource_12
+#          outputResources:
+#            - name: resource_13
+#        execution:
+#          onExecute:
+#            - write_output resource_13 test="$step_name"
+#            
+#      - name: step_36
+#        type: Bash
+#        configuration:
+#          priority: 5
+#          inputResources:
+#            - name: resource_13
+#          outputResources:
+#            - name: resource_14
+#        execution:
+#          onExecute:
+#            - write_output resource_14 test="$step_name"
+#            
+#      - name: step_37
+#        type: Bash
+#        configuration:
+#          inputResources:
+#            - name: resource_14
+#          outputResources:
+#            - name: resource_15
+#        execution:
+#          onExecute:
+#            - write_output resource_15 test="$step_name"
+#            
+#      - name: step_38
+#        type: Bash
+#        configuration:
+#          inputResources:
+#            - name: resource_15
+#          outputResources:
+#            - name: resource_16
+#        execution:
+#          onExecute:
+#            - write_output resource_16 test="$step_name"
+#            
+#      - name: step_39
+#        type: Bash
+#        configuration:
+#          priority: 10
+#          inputResources:
+#            - name: resource_16
+#          outputResources:
+#            - name: resource_17
+#        execution:
+#          onExecute:
+#            - write_output resource_17 test="$step_name"
+#            
+#      - name: step_40
+#        type: Bash
+#        configuration:
+#          priority: 5
+#          inputResources:
+#            - name: resource_17
+#          outputResources:
+#            - name: resource_18
+#        execution:
+#          onExecute:
+#            - write_output resource_18 test="$step_name"
+#            
+#      - name: step_41
+#        type: Bash
+#        configuration:
+#          inputResources:
+#            - name: repo_resource
+#            - name: resource_18
+#          integrations:
+#            - name: aidan_github
+#          outputResources:
+#            - name: resource_19
+#        execution:
+#          onExecute:
+#            - write_output resource_19 test="$step_name"
+#            - echo "test"
+#      - name: step_42
+#        type: Bash
+#        configuration:
+#          inputResources:
+#            - name: repo_resource
+#          integrations:
+#            - name: aidan_github
+#          outputResources:
+#            - name: resource_10
+#        execution:
+#          onExecute:
+#            - write_output resource_10 test="$step_name"
+#            - echo "test"
+#      - name: step_43
+#        type: Bash
+#        configuration:
+#          inputSteps:
+#            - name: step_1
+#          outputResources:
+#            - name: resource_1
+#        execution:
+#          onExecute:
+#            - write_output resource_1 test="$step_name"
+#            
+#      - name: step_44
+#        type: Bash
+#        configuration:
+#          inputResources:
+#            - name: resource_1
+#          outputResources:
+#            - name: resource_2
+#        execution:
+#          onExecute:
+#            - write_output resource_2 test="$step_name"
+#            
+#      - name: step_45
+#        type: Bash
+#        configuration:
+#          priority: 10
+#          inputResources:
+#            - name: resource_2
+#          outputResources:
+#            - name: resource_3
+#        execution:
+#          onExecute:
+#            - write_output resource_3 test="$step_name"
+#            
+#      - name: step_46
+#        type: Bash
+#        configuration:
+#          priority: 5
+#          inputResources:
+#            - name: resource_3
+#          outputResources:
+#            - name: resource_4
+#        execution:
+#          onExecute:
+#            - write_output resource_4 test="$step_name"
+#            
+#      - name: step_47
+#        type: Bash
+#        configuration:
+#          inputResources:
+#            - name: resource_4
+#          outputResources:
+#            - name: resource_5
+#        execution:
+#          onExecute:
+#            - write_output resource_5 test="$step_name"
+#            
+#      - name: step_48
+#        type: Bash
+#        configuration:
+#          inputResources:
+#            - name: resource_5
+#          outputResources:
+#            - name: resource_6
+#        execution:
+#          onExecute:
+#            - write_output resource_6 test="$step_name"
+#            
+#      - name: step_49
+#        type: Bash
+#        configuration:
+#          priority: 10
+#          inputResources:
+#            - name: resource_6
+#          outputResources:
+#            - name: resource_7
+#        execution:
+#          onExecute:
+#            - write_output resource_7 test="$step_name"
+#            
+#      - name: step_50
+#        type: Bash
+#        configuration:
+#          priority: 5
+#          inputResources:
+#            - name: resource_7
+#          outputResources:
+#            - name: resource_8
+#        execution:
+#          onExecute:
+#            - write_output resource_8 test="$step_name"
+#            
 #      - name: step_51
 #        type: Bash
 #        configuration:
