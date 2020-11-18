@@ -56,46 +56,46 @@ resources:
   - name: folder3
     type: GitRepo
     configuration:
-      path: Khazinawaz/pipelines_run_1
+      path: a-murphy/5testRename5
       branches:
-        include: ^repro1$
-      gitProvider: nawaz_gh
+        include: ^{{gitBranch}}$
+      gitProvider: aidan_github
       files:
         include: \bfolder3\/.+\b
   - name: mgit
     type: GitRepo
     configuration:
-      path: Khazinawaz/pipelines_run_1
+      path: a-murphy/5testRename5
       branches:
-        include: ^repro1$
-      gitProvider: nawaz_gh
+        include: ^{{gitBranch}}$
+      gitProvider: aidan_github
       files:
         include: \bmicro\/.+\b
   - name: folder2
     type: GitRepo
     configuration:
-      path: Khazinawaz/pipelines_run_1
+      path: a-murphy/5testRename5
       branches:
-        include: ^repro1$
-      gitProvider: nawaz_gh
+        include: ^{{gitBranch}}$
+      gitProvider: aidan_github
       files:
         include: \bfolder2\/.+\b
   - name: folder1
     type: GitRepo
     configuration:
-      path: Khazinawaz/pipelines_run_1
+      path: a-murphy/5testRename5
       branches:
-        include: ^repro1$
-      gitProvider: nawaz_gh
+        include: ^{{gitBranch}}$
+      gitProvider: aidan_github
       files:
         include: \bfolder1\/.+\b
   - name: tgit
     type: GitRepo
     configuration:
-      path: Khazinawaz/pipelines_run_1
+      path: a-murphy/5testRename5
       branches:
-        include: ^repro1$
-      gitProvider: nawaz_gh
+        include: ^{{gitBranch}}$
+      gitProvider: aidan_github
       files:
         include: \btemplate\/.+\b
 pipelines:
