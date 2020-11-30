@@ -56,8 +56,8 @@ pipelines:
       - name: matrix_step
         type: Matrix
         stepMode: Bash
-        configuration:
-          multiNode: false
+    #    configuration:
+    #      multiNode: false
         stepletMultipliers:
           environmentVariables:
             - variable: one
