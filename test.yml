@@ -82,7 +82,7 @@ pipelines:
             - echo $res_this_repo_shaData | jq ".headCommitRef"
             - headCommitRef=$(echo $res_this_repo_shaData | jq ".headCommitRef")
             - echo $headCommitRef
-            - echo $project_name $project_id $project_key $JFROG_BUILD_PROJECT
+            - echo $project_name $project_id $project_key $JFROG_CLI_PROJECT
       - name: BuildSampleWithAReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyLongName
         type: MvnBuild
         configuration:
