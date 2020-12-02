@@ -98,9 +98,6 @@ pipelines:
             - name: aidan_artifactory
           autoPublishBuildInfo: true
           forceXrayScan: false
-        execution:
-          onStart:
-            - '$env:testing = "testing1234"'
       - name: BuildSample
         type: MvnBuild
         configuration:
@@ -116,9 +113,6 @@ pipelines:
             - name: aidan_artifactory
           autoPublishBuildInfo: true
           forceXrayScan: false
-        execution:
-          onStart:
-            - '$env:testing = "testing1234"'
     #  - name: createReleaseBundle
     #    type: CreateReleaseBundle
     #    configuration:
