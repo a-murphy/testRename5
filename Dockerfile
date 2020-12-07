@@ -1,1 +1,1 @@
-FROM docker.bintray.io/jfrog/pipelines-w19node:12.18.2
+FROM docker.bintray.io/jfrog/pipelines-w19node:10.18.0
