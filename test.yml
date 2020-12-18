@@ -113,6 +113,30 @@ pipelines:
             - name: aidan_artifactory
           autoPublishBuildInfo: true
           forceXrayScan: false
+      - name: MvnNoConfigFileName
+        type: MvnBuild
+        configuration:
+          sourceLocation: artifactory-maven-plugin-example
+          configFileLocation: .
+          mvnCommand: "install -P release"
+          inputResources:
+            - name: examples_repo
+          outputResources:
+            - name: buildInfo2
+          integrations:
+            - name: aidan_artifactory
+          autoPublishBuildInfo: true
+          forceXrayScan: false
+      - name: MvnNoConfigFile
+        type: MvnBuild
+        configuration:
+          sourceLocation: artifactory-maven-plugin-example
+          inputResources:
+            - name: examples_repo
+          outputResources:
+            - name: buildInfo2
+          integrations:
+            - name: aidan_artifactory
     #  - name: createReleaseBundle
     #    type: CreateReleaseBundle
     #    configuration:
