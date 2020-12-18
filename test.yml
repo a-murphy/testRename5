@@ -118,6 +118,7 @@ pipelines:
         configuration:
           sourceLocation: artifactory-maven-plugin-example
           configFileLocation: .
+          deployerSnapshotRepo: "test"
           mvnCommand: "install -P release"
           inputResources:
             - name: examples_repo
@@ -131,6 +132,17 @@ pipelines:
         type: MvnBuild
         configuration:
           sourceLocation: artifactory-maven-plugin-example
+          inputResources:
+            - name: examples_repo
+          outputResources:
+            - name: buildInfo2
+          integrations:
+            - name: aidan_artifactory
+      - name: MvnDeployerSnapshot
+        type: MvnBuild
+        configuration:
+          sourceLocation: artifactory-maven-plugin-example
+          deployerSnapshotRepo: "test"
           inputResources:
             - name: examples_repo
           outputResources:
