@@ -107,12 +107,13 @@ pipelines:
           mvnCommand: "install -P release"
           inputResources:
             - name: examples_repo
+            - name: test_run_state_resource
           outputResources:
             - name: buildInfo2
           integrations:
             - name: aidan_artifactory
           autoPublishBuildInfo: true
-          forceXrayScan: false
+          forceXrayScan: true
       - name: MvnNoConfigFileName
         type: MvnBuild
         configuration:
