@@ -5,36 +5,6 @@ resources:
       sourceArtifactory: aidan_artifactory
       buildName:  name2
       buildNumber: 10
-#  - name: releaseBundle
-#    type: ReleaseBundle
-#    configuration:
-#      sourceDistribution: aidan_distribution
-#      name: releaseBundle
-#      version: "10"
-#      isSigned: false
-#  - name: releaseBundle2
-#    type: ReleaseBundle
-#    configuration:
-#      sourceDistribution: aidan_distribution
-#      name: releaseBundle
-#      version: "10"
-#      isSigned: false
-#  - name: releaseBundle3
-#    type: ReleaseBundle
-#    configuration:
-#      sourceDistribution: aidan_distribution
-#      name: releaseBundle
-#      version: "10"
-#      isSigned: false
-#  - name: distributionRule
-#    type: DistributionRule
-#    configuration:
-#      sourceDistribution: aidan_distribution
-#      serviceName: "*"
-#      siteName: "*"
-#      cityName: "*"
-#      countryCodes:
-#        - "*"
   - name: examples_repo
     type: GitRepo
     configuration:
@@ -49,40 +19,15 @@ resources:
       gitProvider: aidan_github
       buildOn:
         pullRequestCreate: true
+  - name: fileSpec
+    type: FileSpec
+    configuration:
+      sourceArtifactory: aidan_artifactory
+      pattern: test/*.txt
 
 pipelines:
-  - name: matrix
-    steps:
-      - name: matrix_step
-        type: Matrix
-        stepMode: Bash
-    #    configuration:
-    #      multiNode: false
-        stepletMultipliers:
-          environmentVariables:
-            - variable: one
-            - variable: two
-            - variable: three
-        execution:
-          onExecute:
-            - echo "Executed matrix steplet - ${steplet_id} on node id - ${step_node_id}"
-            - echo "value --> $variable"
-            - sleep 10
-  - name: test_pipeline_windows
+  - name: test_pipeline_windows4
     steps:  
-      - name: bash_step
-        type: Bash
-        configuration:
-          inputResources:
-            - name: this_repo
-            - name: examples_repo
-        execution:
-          onExecute:
-            - echo $res_this_repo_shaData
-            - echo $res_this_repo_shaData | jq ".headCommitRef"
-            - headCommitRef=$(echo $res_this_repo_shaData | jq ".headCommitRef")
-            - echo $headCommitRef
-            - echo $project_name $project_id $project_key $JFROG_CLI_PROJECT
       - name: BuildSampleWithAReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyReallyLongName
         type: MvnBuild
         configuration:
@@ -107,88 +52,47 @@ pipelines:
           mvnCommand: "install -P release"
           inputResources:
             - name: examples_repo
-            - name: test_run_state_resource
+            - name: fileSpec
           outputResources:
             - name: buildInfo2
           integrations:
             - name: aidan_artifactory
           autoPublishBuildInfo: true
           forceXrayScan: true
-      - name: MvnNoConfigFileName
-        type: MvnBuild
-        configuration:
-          sourceLocation: artifactory-maven-plugin-example
+  #    - name: MvnNoConfigFileName
+  #      type: MvnBuild
+  #      configuration:
+  #        sourceLocation: artifactory-maven-plugin-example
       #    configFileLocation: .
-          deployerSnapshotRepo: "test"
-          mvnCommand: "install -P release"
-          inputResources:
-            - name: examples_repo
-          outputResources:
-            - name: buildInfo2
-          integrations:
-            - name: aidan_artifactory
-          autoPublishBuildInfo: true
-          forceXrayScan: false
-      - name: MvnNoConfigFile
-        type: MvnBuild
-        configuration:
-          sourceLocation: artifactory-maven-plugin-example
-          inputResources:
-            - name: examples_repo
-          outputResources:
-            - name: buildInfo2
-          integrations:
-            - name: aidan_artifactory
-      - name: MvnDeployerSnapshot
-        type: MvnBuild
-        configuration:
-          sourceLocation: artifactory-maven-plugin-example
-          deployerSnapshotRepo: "test"
-          inputResources:
-            - name: examples_repo
-          outputResources:
-            - name: buildInfo2
-          integrations:
-            - name: aidan_artifactory
-    #  - name: createReleaseBundle
-    #    type: CreateReleaseBundle
-    #    configuration:
-    #      releaseBundleName:        myReleaseBundle
-    #      releaseBundleVersion:     "${run_number}"
-    #      dryRun:                   false
-    #      sign:                     false
-    #      storeAtSourceArtifactory: "false"
-    #      description:              "my description"
-    #      releaseNotes:                         
-    #        syntax:                markdown
-    #        content:               "my release notes"
-    #      inputResources:
-    #        - name: buildInfo2
-    #      inputSteps:
-    #        - name: BuildSample
-    #        - name: bash_step
-    #      outputResources:
-    #        - name: releaseBundle
-    #  - name: signReleaseBundle
-    #    type: SignReleaseBundle
-    #    configuration:
-    #      inputResources:
-    #        - name: releaseBundle
-    #      outputResources:
-    #        - name: releaseBundle2
-    #  - name: distributeReleaseBundle
-    #    type: DistributeReleaseBundle
-    #    configuration:
-    #      dryRun: false
-    #      inputSteps:
-    #        - name: bash_step
-    #      inputResources:
-    #        - name: releaseBundle2
-    #          trigger: false   
-    #        - name: distributionRule
-    #      outputResources:
-    #        - name: releaseBundle3
-
-
- 
+  #        deployerSnapshotRepo: "test"
+  #        mvnCommand: "install -P release"
+  #        inputResources:
+  #          - name: examples_repo
+  #        outputResources:
+  #          - name: buildInfo2
+  #        integrations:
+  #          - name: aidan_artifactory
+  #        autoPublishBuildInfo: true
+  #        forceXrayScan: false
+  #    - name: MvnNoConfigFile
+  #      type: MvnBuild
+  #      configuration:
+  #        sourceLocation: artifactory-maven-plugin-example
+  #        inputResources:
+  #          - name: examples_repo
+  #        outputResources:
+  #          - name: buildInfo2
+  #        integrations:
+  #          - name: aidan_artifactory
+  #    - name: MvnDeployerSnapshot
+  #      type: MvnBuild
+  #      configuration:
+  #        sourceLocation: artifactory-maven-plugin-example
+  #        deployerSnapshotRepo: "test"
+  #        inputResources:
+  #          - name: examples_repo
+  #        outputResources:
+  #          - name: buildInfo2
+  #        integrations:
+  #          - name: aidan_artifactory
  
