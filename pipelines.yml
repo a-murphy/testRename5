@@ -5,6 +5,6 @@ pipelines:
     - name: jenkins
       type: Jenkins
       configuration:
-        jenkinsJobName: invalid_job
+        jenkinsJobName: test
         integrations:
           - name: aidan_jenkins
