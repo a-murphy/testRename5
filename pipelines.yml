@@ -8,3 +8,8 @@ pipelines:
         jenkinsJobName: test
         integrations:
           - name: aidan_jenkins
+        buildParameters:
+          project_name: "${project_name}"
+          project_id: "${project_id}"
+          project_key: "${project_key}"
+          step_url: "${step_url}"
