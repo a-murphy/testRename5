@@ -102,7 +102,7 @@ resources:
     type: CronTrigger
     configuration:
       interval: "0 0 * * *"
-  - name: fileSpec
+  - name: fileSpecFile
     type: FileSpec
     configuration:
       sourceArtifactory: artifactory
@@ -720,7 +720,7 @@ pipelines:
             - name: Go
           inputResources:
             - name: nodeRepoResource4
-            - name: fileSpec
+            - name: fileSpecFile
           outputResources:
             - name: outputBuildInfo
      #     integrations:
@@ -740,7 +740,7 @@ pipelines:
       - name: npmPublish2
         type: NpmPublish
         configuration:
-          deployerRepo: test-npm
+          repositoryName: test-npm
           integrations:
             - name: artifactory
           inputSteps:
@@ -877,7 +877,7 @@ pipelines:
             - name: helmChart
           outputResources:
             - name: releaseBundle2
-            - name: fileSpec
+            - name: fileSpecFile
       - name: publishBuildInfo
         type: PublishBuildInfo
         configuration:
@@ -888,7 +888,7 @@ pipelines:
             - name: gitRepoResource42
           outputResources:
             - name: outputBuildInfo2
-            - name: fileSpec
+            - name: fileSpecFile
       - name: xrayScan
         type: XrayScan
         configuration:
@@ -897,7 +897,7 @@ pipelines:
             - name: gitRepoResource42
           outputResources:
             - name: outputBuildInfo3
-            - name: fileSpec
+            - name: fileSpecFile
  
 
 
