@@ -730,18 +730,19 @@ pipelines:
         type: NpmBuild
         configuration:
           sourceLocation: .
-          repositoryName: test-npm
+          repositoryName: remote-npm
           inputSteps:
             - name: Go
           inputResources:
             - name: nodeRepoResource4
-            - name: fileSpec
+      - name: npmPublish2
+        type: NpmPublish
+        configuration:
+          deployRepo: test-npm
+          inputSteps:
+            - name: npmBuild2
           outputResources:
             - name: outputBuildInfo
-     #     integrations:
-     #       - name: artifactory
-
-
 
   - name: go_test3
     steps:
