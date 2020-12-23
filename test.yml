@@ -106,12 +106,12 @@ resources:
     type: FileSpec
     configuration:
       sourceArtifactory: artifactory
-      pattern: "maven-metadata.xml"
+      pattern: "test.txt"
       recursive: true
       buildName: name
       buildNumber: 10
-      flat: ${testBoolean}
-      limit: ${testNumber}
+   #   flat: ${testBoolean}
+   #   limit: ${testNumber}
    #   offset: ${testNumber}
   - name: gitRepoResource2
     type: GitRepo
@@ -714,12 +714,12 @@ pipelines:
       - name: npmBuild
         type: NpmBuild
         configuration:
-          sourceLocation: "true"
+          sourceLocation: .
           repositoryName: test
           inputSteps:
             - name: Go
           inputResources:
-            - name: gitRepoResource
+            - name: gitRepoResource42
             - name: fileSpec
           outputResources:
             - name: outputBuildInfo
@@ -729,12 +729,12 @@ pipelines:
       - name: npmBuild2
         type: NpmBuild
         configuration:
-          sourceLocation: "true"
+          sourceLocation: .
           repositoryName: test
           inputSteps:
             - name: Go
           inputResources:
-            - name: gitRepoResource
+            - name: gitRepoResource42
             - name: fileSpec
           outputResources:
             - name: outputBuildInfo
@@ -789,12 +789,12 @@ pipelines:
         type: NpmBuild
         configuration:
           affinityGroup: GoTest2
-          sourceLocation: "true"
+          sourceLocation: .
           repositoryName: test
           inputSteps:
             - name: Go3
           inputResources:
-            - name: gitRepoResource
+            - name: gitRepoResource42
        #     - name: fileSpec
           outputResources:
             - name: outputBuildInfo
