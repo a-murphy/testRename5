@@ -715,7 +715,7 @@ pipelines:
         type: NpmBuild
         configuration:
           sourceLocation: .
-          repositoryName: test-npm
+          repositoryName: remote-npm
           inputSteps:
             - name: Go
           inputResources:
