@@ -716,6 +716,7 @@ pipelines:
         configuration:
           sourceLocation: .
           repositoryName: remote-npm
+          resolverRepo: remote-npm
           inputSteps:
             - name: Go
           inputResources:
@@ -731,6 +732,7 @@ pipelines:
         configuration:
           sourceLocation: .
           repositoryName: remote-npm
+          resolverRepo: remote-npm
           inputSteps:
             - name: Go
           inputResources:
@@ -741,6 +743,7 @@ pipelines:
         type: NpmPublish
         configuration:
           repositoryName: test-npm
+          deployerRepo: test-npm
           forceXrayScan: true
           autoPublishBuildInfo: true
           integrations:
