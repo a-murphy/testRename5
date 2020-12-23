@@ -719,7 +719,7 @@ pipelines:
           inputSteps:
             - name: Go
           inputResources:
-            - name: gitRepoResource42
+            - name: nodeRepoResource4
             - name: fileSpec
           outputResources:
             - name: outputBuildInfo
@@ -734,7 +734,7 @@ pipelines:
           inputSteps:
             - name: Go
           inputResources:
-            - name: gitRepoResource42
+            - name: nodeRepoResource4
             - name: fileSpec
           outputResources:
             - name: outputBuildInfo
@@ -794,7 +794,7 @@ pipelines:
           inputSteps:
             - name: Go3
           inputResources:
-            - name: gitRepoResource42
+            - name: nodeRepoResource4
        #     - name: fileSpec
           outputResources:
             - name: outputBuildInfo
