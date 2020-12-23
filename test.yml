@@ -735,10 +735,14 @@ pipelines:
             - name: Go
           inputResources:
             - name: nodeRepoResource4
+          integrations:
+            - name: artifactory
       - name: npmPublish2
         type: NpmPublish
         configuration:
-          deployRepo: test-npm
+          deployerRepo: test-npm
+          integrations:
+            - name: artifactory
           inputSteps:
             - name: npmBuild2
           outputResources:
