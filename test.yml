@@ -741,6 +741,8 @@ pipelines:
         type: NpmPublish
         configuration:
           repositoryName: test-npm
+          forceXrayScan: true
+          autoPublishBuildInfo: true
           integrations:
             - name: artifactory
           inputSteps:
