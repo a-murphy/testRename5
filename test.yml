@@ -106,7 +106,7 @@ resources:
     type: FileSpec
     configuration:
       sourceArtifactory: artifactory
-      pattern: "test.txt"
+      pattern: "test/test.txt"
       recursive: true
       buildName: name
       buildNumber: 10
@@ -715,7 +715,7 @@ pipelines:
         type: NpmBuild
         configuration:
           sourceLocation: .
-          repositoryName: test
+          repositoryName: test-npm
           inputSteps:
             - name: Go
           inputResources:
@@ -730,7 +730,7 @@ pipelines:
         type: NpmBuild
         configuration:
           sourceLocation: .
-          repositoryName: test
+          repositoryName: test-npm
           inputSteps:
             - name: Go
           inputResources:
@@ -790,7 +790,7 @@ pipelines:
         configuration:
           affinityGroup: GoTest2
           sourceLocation: .
-          repositoryName: test
+          repositoryName: test-npm
           inputSteps:
             - name: Go3
           inputResources:
