@@ -108,8 +108,8 @@ resources:
       sourceArtifactory: artifactory
       pattern: "test/test.txt"
       recursive: true
-      buildName: name
-      buildNumber: 10
+  #    buildName: name
+  #    buildNumber: 10
    #   flat: ${testBoolean}
    #   limit: ${testNumber}
    #   offset: ${testNumber}
