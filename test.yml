@@ -78,6 +78,11 @@ resources:
          pullRequestClose: false
          releaseCreate: true
          tagCreate: true
+  - name: goRepo2
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/go-service
          
   - name: releaseBundle
     type: ReleaseBundle
@@ -844,7 +849,7 @@ pipelines:
           outputResources:
             - name: outputBuildInfo
           inputResources:
-            - name: goRepo
+            - name: goRepo2
       - name: helmPublish
         type: HelmPublish
         configuration:
