@@ -166,6 +166,13 @@ resources:
       path: a-murphy/basic-node
       buildOn:
          commit: false
+  - name: nodeRepoResource3
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/vue-frontend
+      buildOn:
+         commit: false
   - name: testRepo
     type: GitRepo
     configuration:
@@ -734,7 +741,7 @@ pipelines:
           inputSteps:
             - name: Go
           inputResources:
-            - name: nodeRepoResource4
+            - name: nodeRepoResource3
           integrations:
             - name: artifactory
       - name: npmPublish2
