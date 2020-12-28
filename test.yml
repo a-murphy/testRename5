@@ -107,7 +107,7 @@ pipelines:
           mvnCommand: "install -P release"
           inputResources:
             - name: examples_repo
-            - name: test_run_state_resource
+        #    - name: test_run_state_resource
           outputResources:
             - name: buildInfo2
           integrations:
@@ -136,6 +136,7 @@ pipelines:
           sourceLocation: artifactory-maven-plugin-example
           configFileLocation: .
           configFileName: config
+          mvnCommand: "install -P release"
           inputResources:
             - name: examples_repo
           outputResources:
@@ -149,6 +150,7 @@ pipelines:
      #     deployerSnapshotRepo: "test"
           configFileLocation: .
           configFileName: config
+          mvnCommand: "install -P release"
           inputResources:
             - name: examples_repo
           outputResources:
