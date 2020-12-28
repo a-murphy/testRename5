@@ -625,7 +625,7 @@ pipelines:
           inputSteps:
             - name: main_step
           inputResources:
-            - name: fileSpec
+            - name: fileSpecFile
             - name: gitRepoResource42
           #  - name: nodeRepoResource4
       - name: docker_push
