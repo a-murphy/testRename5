@@ -786,7 +786,7 @@ pipelines:
             - name: triggerCancel
           inputResources:
             - name: goRepo
-            - name: fileSpecFile
+            - name: artifactoryFile2
           outputResources:
             - name: outputBuildInfo
           integrations:
