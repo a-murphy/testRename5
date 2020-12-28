@@ -182,7 +182,7 @@ resources:
       sourceArtifactory: aidan_artifactory
       target:  testfile.txt
       pattern: example-repo-local/my chart-v1.0.0.tgz
-      buildName: HelmPublish
+  #    buildName: HelmPublish
   - name: artifactoryGoFile
     type: FileSpec
     configuration:     
