@@ -786,7 +786,7 @@ pipelines:
             - name: triggerCancel
           inputResources:
             - name: goRepo
-            - name: fileSpec
+            - name: fileSpecFile
           outputResources:
             - name: outputBuildInfo
           integrations:
