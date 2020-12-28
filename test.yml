@@ -680,7 +680,7 @@ pipelines:
             - name: aidan_artifactory
           sourceLocation: .
           gradleCommand: build
-     #     configFileLocation: .
+          configFileLocation: .
           configFileName: testfile.txt
           autoPublishBuildInfo: true
           forceXrayScan: false
