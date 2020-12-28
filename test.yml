@@ -296,7 +296,7 @@ resources:
       interval: '15 15 * * *'
 
 pipelines:
-  - name: test_pipeline_windows
+  - name: test_pipeline_windows1
  #   configuration:
  #     nodePool: winpool2
     steps:
