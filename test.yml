@@ -855,6 +855,19 @@ pipelines:
             - name: outputBuildInfo
           inputResources:
             - name: goRepoModule
+      - name: goPublishModuleNoOutput
+        type: GoPublishModule
+        configuration:
+          forceXrayScan: true
+          targetRepository: go-test
+          sourceLocation: .
+          version: "v0.0.0"
+          self: true
+          deps: ALL
+          integrations:
+            - name: aidan_artifactory
+          inputResources:
+            - name: goRepoModule
       - name: helmPublish
         type: HelmPublish
         configuration:
