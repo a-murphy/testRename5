@@ -868,6 +868,7 @@ pipelines:
             - name: aidan_artifactory
           inputResources:
             - name: goRepoModule
+            - name: artifactoryFile2
       - name: helmPublish
         type: HelmPublish
         configuration:
