@@ -769,7 +769,7 @@ pipelines:
    #       nodePool: winpool2
           environmentVariables:
             JFROG_CLI_BUILD_NAME: NpmBuild
-            JFROG_CLI_BUILD_NUMBER: 1
+            JFROG_CLI_BUILD_NUMBER: ${step_id}
           sourceLocation: .
           repositoryName: example-repo-local
           inputResources:
