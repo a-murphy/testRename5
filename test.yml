@@ -83,6 +83,11 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/go-service
+  - name: goRepoModule
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/artifactory-go-example-1
          
   - name: releaseBundle
     type: ReleaseBundle
@@ -849,7 +854,7 @@ pipelines:
           outputResources:
             - name: outputBuildInfo
           inputResources:
-            - name: goRepo2
+            - name: goRepoModule
       - name: helmPublish
         type: HelmPublish
         configuration:
