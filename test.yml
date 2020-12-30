@@ -727,6 +727,7 @@ pipelines:
         type: XrayScan
         configuration:
     #      nodePool: winpool2
+          failOnScan: false
           inputResources:
             - name: buildInfo_win2
       #      - name: emptyBuildInfo_win2
