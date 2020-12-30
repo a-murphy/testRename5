@@ -925,5 +925,24 @@ pipelines:
           outputResources:
             - name: helmChart_win2
             - name: buildInfo_win2
+      - name: helmDeploy
+        type: HelmDeploy
+        configuration:
+          helmVersion: 2
+          flags: --debug
+          valueFilePaths:
+            - "test"
+          releaseName: release
+          chartPath: "./my chart"
+          dryRun: true
+          lint: true
+          lintFlags: “--strict”
+          test: true
+          testFlags: “--parallel”
+          integrations:
+            - name: kubernetes
+          inputResources:
+            - name: helmChart_win2
+ 
  
  
