@@ -936,9 +936,9 @@ pipelines:
           chartPath: "./my chart"
           dryRun: true
           lint: true
-          lintFlags: “--strict”
+          lintFlags: "--strict --strict"
           test: true
-          testFlags: “--parallel”
+          testFlags: "--parallel"
           integrations:
             - name: kubernetes
           inputResources:
