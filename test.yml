@@ -978,6 +978,42 @@ pipelines:
             - name: kubernetes
           inputResources:
             - name: helmChart_win2
+      - name: helmDeploy2Repo
+        type: HelmDeploy
+        configuration:
+          helmVersion: 2
+          flags: --debug
+          valueFilePaths:
+            - "test"
+          releaseName: release
+          chartPath: "./my chart"
+          dryRun: true
+          lint: true
+         # lintFlags: "--strict"
+          test: true
+        #  testFlags: "--parallel"
+          integrations:
+            - name: kubernetes
+          inputResources:
+            - name: gitRepoResource_win2
+      - name: helmDeploy3Repo
+        type: HelmDeploy
+        configuration:
+          helmVersion: 3
+          flags: --debug
+          valueFilePaths:
+            - "test"
+          releaseName: release
+          chartPath: "./my chart"
+          dryRun: true
+          lint: true
+         # lintFlags: "--strict"
+          test: true
+         # testFlags: "--parallel"
+          integrations:
+            - name: kubernetes
+          inputResources:
+            - name: gitRepoResource_win2
  
  
  
