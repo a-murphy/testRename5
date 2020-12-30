@@ -928,6 +928,23 @@ pipelines:
       - name: helmDeploy
         type: HelmDeploy
         configuration:
+          flags: --debug
+          valueFilePaths:
+            - "test"
+          releaseName: release
+          chartPath: "./my chart"
+          dryRun: true
+          lint: true
+         # lintFlags: "--strict"
+          test: true
+          testFlags: "--parallel"
+          integrations:
+            - name: kubernetes
+          inputResources:
+            - name: helmChart_win2
+      - name: helmDeploy2
+        type: HelmDeploy
+        configuration:
           helmVersion: 2
           flags: --debug
           valueFilePaths:
@@ -936,7 +953,25 @@ pipelines:
           chartPath: "./my chart"
           dryRun: true
           lint: true
-          lintFlags: "--strict --strict"
+         # lintFlags: "--strict"
+          test: true
+          testFlags: "--parallel"
+          integrations:
+            - name: kubernetes
+          inputResources:
+            - name: helmChart_win2
+      - name: helmDeploy3
+        type: HelmDeploy
+        configuration:
+          helmVersion: 3
+          flags: --debug
+          valueFilePaths:
+            - "test"
+          releaseName: release
+          chartPath: "./my chart"
+          dryRun: true
+          lint: true
+         # lintFlags: "--strict"
           test: true
           testFlags: "--parallel"
           integrations:
