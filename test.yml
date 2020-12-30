@@ -287,7 +287,7 @@ resources:
     type: HelmChart
     configuration:
       sourceArtifactory: aidan_artifactory
-      repository: example-repo-local
+      repository: helm-repo-local
       chart: my chart
       version: v1.1.1
   - name: test_trigger
