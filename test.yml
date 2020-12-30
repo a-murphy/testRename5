@@ -885,9 +885,39 @@ pipelines:
           environmentVariables:
             JFROG_CLI_BUILD_NAME: HelmPublish
             JFROG_CLI_BUILD_NUMBER: $run_number
-          chartPath: "./my chart"
+            MY_CHART_PATH: "./my chart"
+          chartPath: $MY_CHART_PATH
           flags: --debug
           autoPublishBuildInfo: true
+          integrations:
+            - name: aidan_artifactory
+          inputResources:
+            - name: gitRepoResource_win2
+          outputResources:
+            - name: helmChart_win2
+            - name: buildInfo_win2
+      - name: helmPublish2
+        type: HelmPublish
+        configuration:
+          chartPath: "./my chart"
+          flags: --debug
+          lint: true
+          helmVersion: 2
+          integrations:
+            - name: aidan_artifactory
+          inputResources:
+            - name: gitRepoResource_win2
+          outputResources:
+            - name: helmChart_win2
+            - name: buildInfo_win2
+      - name: helmPublish3
+        type: HelmPublish
+        configuration:
+          chartPath: "./my chart"
+          flags: --debug
+          helmVersion: 3
+          lint: true
+          lintFlags: --test
           integrations:
             - name: aidan_artifactory
           inputResources:
