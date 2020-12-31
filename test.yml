@@ -692,7 +692,7 @@ pipelines:
             - name: gradle_step
           outputResources:
             - name: buildInfo_win2
-          forceXrayScan: true
+      #    forceXrayScan: true
           envExclude: "buildinfo.env.PRO*"
        #   runtime:
        #     type: image
