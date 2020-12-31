@@ -692,7 +692,7 @@ pipelines:
             - name: gradle_step
           outputResources:
             - name: buildInfo_win2
-          forceXrayScan: false
+          forceXrayScan: true
           envExclude: "buildinfo.env.PRO*"
        #   runtime:
        #     type: image
@@ -701,15 +701,6 @@ pipelines:
        #         name: test/node
        #         tag: "10"
        #         autoPull: false
-      - name: publish_step2
-        type: PublishBuildInfo
-        configuration:
-     #     nodePool: winpool2
-          inputSteps:
-            - name: gradle_step
-          outputResources:
-            - name: buildInfo_win2
-          forceXrayScan: true
       - name: promote_step
         type: PromoteBuild
         configuration:
