@@ -674,15 +674,15 @@ pipelines:
    #         - name: artifactoryImage5
    #         - name: artifactoryRemoteFile
             - name: artifactoryFile2
-          outputResources:
-            - name: buildInfo_win2
+        #  outputResources:
+        #    - name: buildInfo_win2
           integrations:
             - name: aidan_artifactory
           sourceLocation: .
           gradleCommand: build
           configFileLocation: .
           configFileName: testfile.txt
-          autoPublishBuildInfo: true
+       #   autoPublishBuildInfo: true
           forceXrayScan: false
       - name: publish_step
         type: PublishBuildInfo
@@ -701,6 +701,15 @@ pipelines:
        #         name: test/node
        #         tag: "10"
        #         autoPull: false
+      - name: publish_step2
+        type: PublishBuildInfo
+        configuration:
+     #     nodePool: winpool2
+          inputSteps:
+            - name: gradle_step
+          outputResources:
+            - name: buildInfo_win2
+          forceXrayScan: true
       - name: promote_step
         type: PromoteBuild
         configuration:
