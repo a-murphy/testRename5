@@ -714,7 +714,7 @@ pipelines:
           targetRepository: example-repo-local
           includeDependencies: false
           status: test
-          comment: testing1234
+          comment: "testing 1234"
           copy: false
      #     runtime:
      #       type: image
