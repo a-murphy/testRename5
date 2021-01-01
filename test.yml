@@ -929,7 +929,7 @@ pipelines:
             - name: gitRepoResource42
           outputResources:
             - name: outputBuildInfo3
-            - name: fileSpecFile
+        #    - name: fileSpecFile
  
 
 
