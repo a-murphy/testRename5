@@ -846,7 +846,7 @@ pipelines:
           affinityGroup: GoTest2
           forceXrayScan: false
           autoPublishBuildInfo: true
-          targetRepository: go-test
+          targetRepository: test/go-test
           sourceLocation: .
           version: "v0.0.0"
           self: true
