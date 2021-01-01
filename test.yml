@@ -791,7 +791,7 @@ pipelines:
             - name: triggerCancel
           inputResources:
             - name: goRepo
-            - name: artifactoryFile2
+            - name: fileSpecFile
           outputResources:
             - name: outputBuildInfo
           integrations:
@@ -868,7 +868,7 @@ pipelines:
             - name: aidan_artifactory
           inputResources:
             - name: goRepoModule
-            - name: artifactoryFile2
+            - name: fileSpecFile
       - name: helmPublish
         type: HelmPublish
         configuration:
