@@ -920,7 +920,7 @@ pipelines:
             - name: gitRepoResource42
           outputResources:
             - name: outputBuildInfo2
-            - name: fileSpecFile
+      #      - name: fileSpecFile
       - name: xrayScan
         type: XrayScan
         configuration:
