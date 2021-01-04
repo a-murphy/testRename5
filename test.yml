@@ -800,7 +800,7 @@ pipelines:
             type: image
         execution:
           onStart:
-            - "pushd (find_resource_variable $inputGitRepoResourceName resourcePath)"
+            - "pushd $(find_resource_variable $inputGitRepoResourceName resourcePath)"
             - "go get -insecure"
             - popd
      #       image:
