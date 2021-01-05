@@ -666,10 +666,17 @@ pipelines:
           environmentVariables:
             JFROG_CLI_BUILD_NAME: GradleBuild
             JFROG_CLI_BUILD_NUMBER: 1
+            
+          sourceLocation: gradle-examples/gradle-example-minimal
+          configFileLocation: .
+          configFileName: gradle-art-config
+          gradleCommand: clean artifactoryPublish -b build.gradle
+          
           inputSteps:
             - name: in_trigger_step
           inputResources:
-            - name: gradleRepoResource_win2
+         #   - name: gradleRepoResource_win2
+            - name: examples_repo_win2
    #         - name: artifactoryFile
    #         - name: artifactoryImage5
    #         - name: artifactoryRemoteFile
@@ -678,10 +685,10 @@ pipelines:
         #    - name: buildInfo_win2
           integrations:
             - name: aidan_artifactory
-          sourceLocation: .
-          gradleCommand: build
-          configFileLocation: .
-          configFileName: testfile.txt
+       #   sourceLocation: .
+       #   gradleCommand: build
+       #   configFileLocation: .
+       #   configFileName: testfile.txt
        #   autoPublishBuildInfo: true
           forceXrayScan: false
       - name: publish_step
