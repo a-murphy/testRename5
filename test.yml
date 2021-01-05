@@ -620,8 +620,8 @@ pipelines:
       - name: docker_build
         type: DockerBuild
         configuration:
-          dockerFileLocation: .
-          dockerFileName: Dockerfile
+ #         dockerFileLocation: .
+ #         dockerFileName: Dockerfile
           dockerImageName: 52.10.74.62:8082/dockerrepo/image #${versionTag}
           dockerImageTag: tag #${versionTag}
       #    dockerOptions: "test${step_name} --test ${testNumber}"
