@@ -364,9 +364,9 @@ pipelines:
    #   nodePool: Ubuntu16
     #  dependencyMode:
     #    waitOnChildComplete: true
-      retentionPolicy:
-        minRuns: 5
-        maxAgeDays: 10
+  #    retentionPolicy:
+  #      minRuns: 5
+  #      maxAgeDays: 10
       runtime:            
         type: image
         image:
