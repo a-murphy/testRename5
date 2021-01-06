@@ -764,7 +764,7 @@ pipelines:
           configFileLocation: .
           configFileName: mvn-art-config
           inputResources:
-            - name: mavenRepo2
+            - name: mavenRepoResource2
           inputSteps:
             - name: in_trigger_step
           integrations:
@@ -774,10 +774,10 @@ pipelines:
         configuration:
           mvnCommand: clean install
           sourceLocation: artifactory-maven-plugin-example
-          configFileLocation: ${res_mavenRepo2_resourcePath}/artifactory-maven-plugin-example
+          configFileLocation: ${res_mavenRepoResource2_resourcePath}/artifactory-maven-plugin-example
           configFileName: mvn-art-config
           inputResources:
-            - name: mavenRepo2
+            - name: mavenRepoResource2
           inputSteps:
             - name: in_trigger_step
           integrations:
