@@ -768,7 +768,7 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
           integrations:
-            - name: aidan_artifactory
+            - name: art_v
       - name: BuildSampleMaven2_2
         type: MvnBuild
         configuration:
@@ -781,7 +781,7 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
           integrations:
-            - name: aidan_artifactory
+            - name: art_v
       - name: BuildSample
         type: MvnBuild
         configuration:
