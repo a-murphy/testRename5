@@ -788,6 +788,8 @@ pipelines:
           sourceLocation: "."
           repository: repo
           outputLocation: "output"
+          noRegistry: true
+          publishDeps: true
       #    outputFile: "file"
          # goCommand: "build -insecure -o ${outputLocation}/${outputFile}"
           inputSteps:
