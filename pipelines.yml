@@ -24,6 +24,13 @@ resources:
          tagCreate: true
       tags:
         include: include.*
+  - name: examples_repo
+    type: GitRepo
+    configuration:
+      path: a-murphy/project-examples
+      gitProvider: aidan_github
+      branches:
+        include: master
   - name: goRepo
     type: GitRepo
     configuration:
@@ -215,6 +222,26 @@ pipelines:
             - name: aidan_artifactory
           runtime:
             type: image
+            
+      - name: gradle_step
+        type: GradleBuild
+        configuration:
+          environmentVariables:
+            JFROG_CLI_BUILD_NAME: GradleBuild
+            JFROG_CLI_BUILD_NUMBER: 1
+          sourceLocation: gradle-example-minimal
+       #   sourceLocation: gradle-jcenter-resolve
+          gradleCommand: artifactoryPublish clean -b build.gradle
+          deployerRepo: gradle-local
+          resolverRepo: jcenter
+          usesPlugin: true
+          useWrapper: true
+          inputSteps:
+            - name: Go
+          inputResources:
+            - name: examples_repo
+          integrations:
+            - name: aidan_artifactory
 
       - name: npmBuild
         type: NpmBuild
