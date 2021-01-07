@@ -675,8 +675,6 @@ pipelines:
           environmentVariables:
             JFROG_CLI_BUILD_NAME: GradleBuild
             JFROG_CLI_BUILD_NUMBER: 1
-            booleanVariable: true
-            
           sourceLocation: gradle-jcenter-resolve
        #   configFileLocation: .
        #   configFileName: gradle-art-config
@@ -705,6 +703,9 @@ pipelines:
        #   configFileName: testfile.txt
        #   autoPublishBuildInfo: true
           forceXrayScan: false
+        execution:
+          onStart:
+            - booleanVariable=true
       - name: publish_step
         type: PublishBuildInfo
         configuration:
