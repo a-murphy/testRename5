@@ -679,9 +679,10 @@ pipelines:
           sourceLocation: gradle-jcenter-resolve
        #   configFileLocation: .
        #   configFileName: gradle-art-config
-          gradleCommand: clean -b build.gradle
+          gradleCommand: artifactoryPublish clean -b build.gradle
           deployerRepo: gradle-local
-          
+          resolverRepo: jcenter
+
           inputSteps:
             - name: in_trigger_step
           inputResources:
