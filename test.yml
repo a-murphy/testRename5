@@ -675,6 +675,7 @@ pipelines:
           environmentVariables:
             JFROG_CLI_BUILD_NAME: GradleBuild
             JFROG_CLI_BUILD_NUMBER: 1
+            booleanVariable: true
             
           sourceLocation: gradle-jcenter-resolve
        #   configFileLocation: .
@@ -682,6 +683,8 @@ pipelines:
           gradleCommand: artifactoryPublish clean -b build.gradle
           deployerRepo: gradle-local
           resolverRepo: jcenter
+          usesPlugin: true
+          useWrapper: ${booleanVariable}
 
           inputSteps:
             - name: in_trigger_step
