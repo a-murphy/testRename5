@@ -663,7 +663,7 @@ pipelines:
         type: Bash
         execution:
           onExecute:
-            - add_run_variables buildName=publishBuildInfo_pipeline buildNumber=${run_number}
+            - add_run_variables buildName=publishBuildInfo buildNumber=${run_number}
             - jfrog rt build-collect-env $buildName $buildNumber
             - add_run_files /tmp/jfrog/. jfrog
       - name: publishBuildInfo
