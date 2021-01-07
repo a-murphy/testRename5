@@ -11,7 +11,7 @@ resources:
   - name: execTemplatesAQL
     type: FileSpec
     configuration:
-      sourceArtifactory: artifactory
+      sourceArtifactory: aidan_artifactory
       aql: "path:{'$match':\"org/jfrog/test/\"},{name:{'$match':'maven-metadata.xml'}}"
       recursive: false
   - name: gitRepoResource42
@@ -64,7 +64,7 @@ resources:
   - name: helmChart2
     type: HelmChart
     configuration:
-      sourceArtifactory: artifactory
+      sourceArtifactory: aidan_artifactory
       repository: repository
       version: version
       chart: chart
@@ -115,7 +115,7 @@ resources:
   - name: fileSpecFile
     type: FileSpec
     configuration:
-      sourceArtifactory: artifactory
+      sourceArtifactory: aidan_artifactory
       pattern: "test/test.txt"
       recursive: true
   #    buildName: name
@@ -200,19 +200,19 @@ resources:
   - name: outputBuildInfo
     type: BuildInfo
     configuration:
-      sourceArtifactory: artifactory
+      sourceArtifactory: aidan_artifactory
       buildName: test
       buildNumber: 1
   - name: outputBuildInfo2
     type: BuildInfo
     configuration:
-      sourceArtifactory: artifactory
+      sourceArtifactory: aidan_artifactory
       buildName: test
       buildNumber: 1
   - name: outputBuildInfo3
     type: BuildInfo
     configuration:
-      sourceArtifactory: artifactory
+      sourceArtifactory: aidan_artifactory
       buildName: test
       buildNumber: 1
  # - name: emptyBuildInfo
@@ -222,13 +222,13 @@ resources:
   - name: mavenBuildInfo2
     type: BuildInfo
     configuration:
-      sourceArtifactory: artifactory
+      sourceArtifactory: aidan_artifactory
       buildName: test
       buildNumber: 1
   - name: aql
     type: Aql
     configuration:
-      sourceArtifactory: artifactory
+      sourceArtifactory: aidan_artifactory
       query: "test: query"
       addedProperties:
         propertyOne: 1
@@ -651,10 +651,10 @@ pipelines:
           outputResources:
             - name: outputBuildInfo
           integrations:
-            - name: artifactory
+            - name: aidan_artifactory
         execution:
           onStart:
-            - jfrog rt c show artifactory
+            - jfrog rt c show aidan_artifactory
 
 
   - name: test_pipeline_11
@@ -720,7 +720,7 @@ pipelines:
           outputResources:
             - name: outputBuildInfo
           integrations:
-            - name: artifactory
+            - name: aidan_artifactory
           runtime:
             type: image
      #       image:
@@ -756,7 +756,7 @@ pipelines:
           inputResources:
             - name: nodeRepoResource3
           integrations:
-            - name: artifactory
+            - name: aidan_artifactory
       - name: npmPublish2
         type: NpmPublish
         configuration:
@@ -764,7 +764,7 @@ pipelines:
           forceXrayScan: true
           autoPublishBuildInfo: true
           integrations:
-            - name: artifactory
+            - name: aidan_artifactory
           inputSteps:
             - name: npmBuild2
           outputResources:
@@ -800,7 +800,7 @@ pipelines:
           outputResources:
             - name: outputBuildInfo
           integrations:
-            - name: artifactory
+            - name: aidan_artifactory
           runtime:
             type: image
         execution:
@@ -827,7 +827,7 @@ pipelines:
           outputResources:
             - name: outputBuildInfo
           integrations:
-            - name: artifactory
+            - name: aidan_artifactory
         execution:
           onStart:
             - sudo apt-get update
@@ -840,7 +840,7 @@ pipelines:
           autoPublishBuildInfo: false
           targetRepository: go-test
           integrations:
-            - name: artifactory
+            - name: aidan_artifactory
           outputResources:
             - name: outputBuildInfo
           inputSteps:
