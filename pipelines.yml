@@ -399,7 +399,7 @@ pipelines:
             - name: helmChart
           outputResources:
             - name: releaseBundle2
-            - name: fileSpecFile
+   #         - name: fileSpecFile
       - name: publishBuildInfo
         type: PublishBuildInfo
         configuration:
