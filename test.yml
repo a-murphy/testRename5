@@ -676,7 +676,7 @@ pipelines:
             JFROG_CLI_BUILD_NAME: GradleBuild
             JFROG_CLI_BUILD_NUMBER: 1
             
-          sourceLocation: gradle-examples/gradle-example-minimal
+          sourceLocation: gradle-example-minimal
           configFileLocation: .
           configFileName: gradle-art-config
           gradleCommand: clean artifactoryPublish -b build.gradle
