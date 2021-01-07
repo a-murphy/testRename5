@@ -675,7 +675,8 @@ pipelines:
           environmentVariables:
             JFROG_CLI_BUILD_NAME: GradleBuild
             JFROG_CLI_BUILD_NUMBER: 1
-          sourceLocation: gradle-jcenter-resolve
+          sourceLocation: gradle-example-minimal
+       #   sourceLocation: gradle-jcenter-resolve
        #   configFileLocation: .
        #   configFileName: gradle-art-config
           gradleCommand: artifactoryPublish clean -b build.gradle
