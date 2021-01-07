@@ -680,6 +680,7 @@ pipelines:
        #   configFileLocation: .
        #   configFileName: gradle-art-config
           gradleCommand: clean artifactoryPublish -b build.gradle
+          deployerRepo: gradle-local
           
           inputSteps:
             - name: in_trigger_step
