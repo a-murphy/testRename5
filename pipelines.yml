@@ -29,7 +29,8 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/hello-helm
-      branch: master
+      branches: 
+        include: master
   - name: examples_repo
     type: GitRepo
     configuration:
