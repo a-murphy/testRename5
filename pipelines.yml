@@ -449,4 +449,28 @@ pipelines:
         #    - name: fileSpecFile
  
 
-
+  - name: aidan_test_helm
+    steps:
+      - name: HelmDeploy
+        type: HelmDeploy
+        configuration:
+          helmVersion: 3
+          flags: '--namespace pipe-master-pool'
+          releaseName: test1
+          chartPath: chart/hello
+          dryRun: true
+          lint: true
+          lintFlags: '--help'
+          test: true
+          testFlags: '--parallel'
+          integrations:
+            - name: aidan_kubernetes
+          inputResources:
+            - name: gitRepo
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 12.18.2
