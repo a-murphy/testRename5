@@ -24,6 +24,12 @@ resources:
          tagCreate: true
       tags:
         include: include.*
+  - name: helloHelm
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_github
+      path: a-murphy/hello-helm
+      branch: master
   - name: examples_repo
     type: GitRepo
     configuration:
@@ -466,7 +472,7 @@ pipelines:
           integrations:
             - name: aidan_kubernetes
           inputResources:
-            - name: gitRepo
+            - name: helloHelm
           runtime:
             type: image
             image:
