@@ -942,8 +942,8 @@ pipelines:
               trigger: false   
             - name: distributionRule
        #     - name: distributionRule2
-          outputResources:
-            - name: releaseBundle3_win2
+     #     outputResources:
+     #       - name: releaseBundle3_win2
       - name: goBuild
         type: GoBuild
         configuration:
