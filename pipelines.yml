@@ -460,7 +460,134 @@ pipelines:
 
   - name: aidan_test_helm
     steps:
-      - name: HelmDeploy
+      - name: trigger_all_helm
+        type: Bash
+        execution:
+          onExecute:
+            - echo "test"
+      - name: HelmDeploy_1
+        type: HelmDeploy
+        configuration:
+          helmVersion: 3
+          flags: '--namespace pipe-master-pool'
+          releaseName: test1
+          chartPath: chart/hello
+          integrations:
+            - name: aidan_kubernetes
+          inputResources:
+            - name: helloHelm
+          inputSteps:
+            - name: trigger_all_helm
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 12.18.2
+      - name: HelmDeploy_2
+        type: HelmDeploy
+        configuration:
+          helmVersion: 3
+          flags: '--namespace pipe-master-pool'
+          releaseName: test1
+          chartPath: chart/hello
+          integrations:
+            - name: aidan_kubernetes
+          inputResources:
+            - name: helmChart
+          inputSteps:
+            - name: trigger_all_helm
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 12.18.2
+      - name: HelmDeploy_3
+        type: HelmDeploy
+        configuration:
+          helmVersion: 2
+          flags: '--namespace pipe-master-pool'
+          releaseName: test1
+          chartPath: chart/hello
+          integrations:
+            - name: aidan_kubernetes
+          inputResources:
+            - name: helmChart
+          inputSteps:
+            - name: trigger_all_helm
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 12.18.2
+      - name: HelmDeploy_4
+        type: HelmDeploy
+        configuration:
+          helmVersion: 3
+          flags: '--namespace pipe-master-pool'
+          releaseName: test1
+          chartPath: chart/hello
+          integrations:
+            - name: aidan_kubernetes
+          inputResources:
+            - name: helmChart
+          inputSteps:
+            - name: trigger_all_helm
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 12.18.2
+      - name: HelmDeploy_5
+        type: HelmDeploy
+        configuration:
+          flags: '--namespace pipe-master-pool'
+          releaseName: test1
+          chartPath: chart/hello
+          integrations:
+            - name: aidan_kubernetes
+          inputResources:
+            - name: helmChart
+          inputSteps:
+            - name: trigger_all_helm
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 12.18.2
+      - name: HelmDeploy_6
+        type: HelmDeploy
+        configuration:
+          helmVersion: 3
+          flags: '--namespace pipe-master-pool'
+          releaseName: test1
+          chartPath: chart/hello
+          dryRun: true
+          test: true
+          testFlags: '--parallel'
+          integrations:
+            - name: aidan_kubernetes
+          inputResources:
+            - name: helloHelm
+          inputSteps:
+            - name: trigger_all_helm
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 12.18.2
+      - name: HelmDeploy_7
         type: HelmDeploy
         configuration:
           helmVersion: 3
@@ -470,12 +597,55 @@ pipelines:
           dryRun: true
           lint: true
           lintFlags: '--help'
+          integrations:
+            - name: aidan_kubernetes
+          inputResources:
+            - name: helloHelm
+          inputSteps:
+            - name: trigger_all_helm
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 12.18.2
+      - name: HelmDeploy_8
+        type: HelmDeploy
+        configuration:
+          helmVersion: 3
+          flags: '--namespace pipe-master-pool'
+          releaseName: test1
+          chartPath: chart/hello
+          dryRun: true
+          integrations:
+            - name: aidan_kubernetes
+          inputResources:
+            - name: helloHelm
+          inputSteps:
+            - name: trigger_all_helm
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - 12.18.2
+      - name: HelmDeploy_10
+        type: HelmDeploy
+        configuration:
+          helmVersion: 3
+          flags: '--namespace pipe-master-pool'
+          releaseName: test1
+          chartPath: chart/hello
           test: true
           testFlags: '--parallel'
           integrations:
             - name: aidan_kubernetes
           inputResources:
             - name: helloHelm
+          inputSteps:
+            - name: trigger_all_helm
           runtime:
             type: image
             image:
