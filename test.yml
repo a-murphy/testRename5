@@ -952,6 +952,73 @@ pipelines:
           outputResources:
             - name: outputBuildInfo3
         #    - name: fileSpecFile
- 
+        
+        
+  - name: bash_only
+    steps:
+      - name: bash_host_step
+        type: Bash
+        configuration:
+     #     nodePool: Windows
+          inputSteps:
+            - name: in_trigger_step
+          inputResources:
+            - name: nodeRepoResource2
+              trigger: false
+            - name: testRepo
+          outputResources:
+            - name: nodeRepoResource4
+          runtime:
+            type: host
+        execution:
+          onStart:
+            - echo "Prepping build environment"
+          onExecute:
+            - 'echo "step_node_name: $step_node_name"'
+            - 'echo "step_node_id: $step_node_id"'
+            - 'echo "step_node_pool_name: $step_node_pool_name"'
+            - replicate_resource nodeRepoResource2 nodeRepoResource4 --match-settings
+            - echo $test_variable $test_variable2
+            - test=$(find_step_configuration_value "testing123")
+            - if [ -z "$test" ]; then echo "empty"; fi
+            - if [ "$test" == "null" ]; then echo "null"; fi
+            - if [ "$test" == "" ]; then echo "empty string"; fi
+        #    - send_notification jira --project-id "TES" --type "Task" --summary "test bug" --description "test bug description" 
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+         #   - printenv
+          #  - restore_pipeline_files testFolder /testRestore
+          #  - ls -R /testRestore
+          #  - mkdir /test
+          #  - cd /test && touch textFile.txt && echo "this is to test $run_number" > textFile.txt && cd ../
+          #  - add_pipeline_files /test testFolder
+          #  - cp -r /var/opt/jfrog/pipelines /tmp/test
+          #  - add_pipeline_files /tmp/test testBigFolder
+          #  - add_run_files /test testFolder
+          #  - restore_run_files testFolder1 /test1
+          #  - ls -R /test1
+          #  - add_cache_files /test testFolder
+            - compare_git --resource nodeRepoResource2
+            - cd "$res_nodeRepoResource2_resourcePath"
+          #  - switch_env nodejs 0.12
+            - npm install
+            - cd tests
+            - ../node_modules/.bin/mocha --recursive "**/*.spec.js" -R mocha-junit-reporter --reporter-options mochaFile=../testresults.xml
+            - ../node_modules/.bin/istanbul --include-all-sources cover -root "../routes" ../node_modules/mocha/bin/_mocha -- -R spec-xunit-file --recursive "**/*.spec.js"
+            - ../node_modules/.bin/istanbul report cobertura --dir ../coverageReport
+            - cd .. && ls
+         #   - fallocate -l 9M largefile
+         #   - save_tests largefile
+            - save_tests testresults.xml
+            
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete: #always
+            - echo "Cleaning up some stuff"
+          onCancel:
+            - echo "Someone cancelled the job"
+         
 
 
