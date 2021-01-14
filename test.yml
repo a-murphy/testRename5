@@ -960,8 +960,6 @@ pipelines:
         type: Bash
         configuration:
      #     nodePool: Windows
-          inputSteps:
-            - name: in_trigger_step
           inputResources:
             - name: nodeRepoResource2
               trigger: false
