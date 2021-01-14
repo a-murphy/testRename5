@@ -139,14 +139,14 @@ resources:
   - name: dockerImage
     type: Image
     configuration:
-      registry: docker
+      registry: aidan_docker
       imageName: "amurphy/test"
       imageTag: ${versionTag}
       autoPull: true
   - name: dockerImage2
     type: Image
     configuration:
-      registry: docker
+      registry: aidan_docker
       imageName: "amurphy/test"
       imageTag: ${versionTag}
   - name: helmChart
