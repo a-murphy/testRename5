@@ -134,8 +134,6 @@ pipelines:
         type: MvnBuild
         configuration:
           sourceLocation: artifactory-maven-plugin-example
-          configFileLocation: .
-          configFileName: config
           mvnCommand: "install -P release"
           inputResources:
             - name: examples_repo
