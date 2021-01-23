@@ -975,6 +975,8 @@ pipelines:
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
+            - which jq
+            - echo $PATH
             - replicate_resource nodeRepoResource2 nodeRepoResource4 --match-settings
             - echo $test_variable $test_variable2
             - test=$(find_step_configuration_value "testing123")
