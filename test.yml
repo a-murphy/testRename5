@@ -635,6 +635,7 @@ pipelines:
           inputResources:
             - name: fileSpecFile
             - name: gitRepoResource42
+              trigger: false
           #  - name: nodeRepoResource4
       - name: docker_push
         type: DockerPush
@@ -711,6 +712,7 @@ pipelines:
             segment: patch
           inputResources:
             - name: gitRepoResource
+              trigger: false
           runtime:
             type: image
             image:
@@ -733,6 +735,7 @@ pipelines:
           outputFile: "file"
           inputResources:
             - name: gitRepoResource
+              trigger: false
         #    - name: fileSpec
           outputResources:
             - name: outputBuildInfo
@@ -757,6 +760,7 @@ pipelines:
             - name: Go
           inputResources:
             - name: nodeRepoResource4
+              trigger: false
             - name: fileSpecFile
           outputResources:
             - name: outputBuildInfo
@@ -772,6 +776,7 @@ pipelines:
             - name: Go
           inputResources:
             - name: nodeRepoResource3
+              trigger: false
           integrations:
             - name: aidan_artifactory
       - name: npmPublish2
@@ -795,6 +800,7 @@ pipelines:
           affinityGroup: GoTest2
           inputResources:
             - name: gitRepoResource42
+              trigger: false
         execution:
           onExecute:
             - sleep 30
@@ -813,6 +819,7 @@ pipelines:
             - name: triggerCancel
           inputResources:
             - name: goRepo
+              trigger: false
             - name: fileSpecFile
           outputResources:
             - name: outputBuildInfo
@@ -840,6 +847,7 @@ pipelines:
             - name: Go3
           inputResources:
             - name: nodeRepoResource4
+              trigger: false
        #     - name: fileSpec
           outputResources:
             - name: outputBuildInfo
@@ -900,6 +908,7 @@ pipelines:
           autoPublishBuildInfo: true
           inputResources:
             - name: gitRepoResource42
+              trigger: false
           outputResources:
             - name: helmChart
             - name: outputBuildInfo
@@ -940,6 +949,7 @@ pipelines:
           inputResources:
             - name: outputBuildInfo
             - name: gitRepoResource42
+              trigger: false
           outputResources:
             - name: outputBuildInfo2
       #      - name: fileSpecFile
@@ -949,6 +959,7 @@ pipelines:
           inputResources:
             - name: outputBuildInfo2
             - name: gitRepoResource42
+              trigger: false
           outputResources:
             - name: outputBuildInfo3
         #    - name: fileSpecFile
@@ -964,6 +975,7 @@ pipelines:
             - name: nodeRepoResource2
               trigger: false
             - name: testRepo
+              trigger: false
           outputResources:
             - name: nodeRepoResource4
           runtime:
@@ -975,8 +987,8 @@ pipelines:
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
-            - which jq
             - echo $PATH
+            - which jq
             - replicate_resource nodeRepoResource2 nodeRepoResource4 --match-settings
             - echo $test_variable $test_variable2
             - test=$(find_step_configuration_value "testing123")
