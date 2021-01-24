@@ -797,6 +797,7 @@ pipelines:
       - name: triggerCancel
         type: Bash
         configuration:
+          nodePool: my_pool
           affinityGroup: GoTest2
           inputResources:
             - name: gitRepoResource42
@@ -956,6 +957,7 @@ pipelines:
       - name: xrayScan
         type: XrayScan
         configuration:
+          nodePool: my_pool
           inputResources:
             - name: outputBuildInfo2
             - name: gitRepoResource42
@@ -970,7 +972,7 @@ pipelines:
       - name: bash_host_step
         type: Bash
         configuration:
-     #     nodePool: Windows
+          nodePool: my_pool
           inputResources:
             - name: nodeRepoResource2
               trigger: false
