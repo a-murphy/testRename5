@@ -367,7 +367,6 @@ pipelines:
   #    retentionPolicy:
   #      minRuns: 5
   #      maxAgeDays: 10
-      nodePool: my_pool
       runtime:            
         type: image
         image:
@@ -794,8 +793,6 @@ pipelines:
             - name: outputBuildInfo
 
   - name: go_test3
-    configuration:
-      nodePool: my_pool
     steps:
       - name: triggerCancel
         type: Bash
@@ -982,8 +979,8 @@ pipelines:
               trigger: false
           outputResources:
             - name: nodeRepoResource4
-          runtime:
-            type: host
+      #    runtime:
+      #      type: host
         execution:
           onStart:
             - echo "Prepping build environment"
