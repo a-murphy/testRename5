@@ -367,6 +367,7 @@ pipelines:
   #    retentionPolicy:
   #      minRuns: 5
   #      maxAgeDays: 10
+      nodePool: my_pool
       runtime:            
         type: image
         image:
@@ -793,11 +794,12 @@ pipelines:
             - name: outputBuildInfo
 
   - name: go_test3
+    configuration:
+      nodePool: my_pool
     steps:
       - name: triggerCancel
         type: Bash
         configuration:
-          nodePool: my_pool
           affinityGroup: GoTest2
           inputResources:
             - name: gitRepoResource42
@@ -957,7 +959,6 @@ pipelines:
       - name: xrayScan
         type: XrayScan
         configuration:
-          nodePool: my_pool
           inputResources:
             - name: outputBuildInfo2
             - name: gitRepoResource42
@@ -968,11 +969,12 @@ pipelines:
         
         
   - name: bash_only
+    configuration:
+      nodePool: my_pool
     steps:
       - name: bash_host_step
         type: Bash
         configuration:
-          nodePool: my_pool
           inputResources:
             - name: nodeRepoResource2
               trigger: false
