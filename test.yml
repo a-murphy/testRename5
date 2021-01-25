@@ -967,7 +967,6 @@ pipelines:
         
   - name: bash_only
     configuration:
-      nodePool: my_pool
       runtime:
         type: host
     steps:
