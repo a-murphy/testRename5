@@ -1050,7 +1050,6 @@ pipelines:
             - ls testPipeline
             - restore_run_files testFolder testRun
             - ls testRun
-            - compare_git --resource nodeRepoResource2
           onSuccess:
             - echo "Job well done!"
           onFailure:
