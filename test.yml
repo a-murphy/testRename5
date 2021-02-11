@@ -428,6 +428,8 @@ pipelines:
      #     nodePool: Windows
           inputSteps:
             - name: in_trigger_step
+              runOnSuccess: true
+              runOnFailure: false
           inputResources:
             - name: nodeRepoResource2
               trigger: false
@@ -539,6 +541,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: main_step
+              runOnSuccess: true
+              runOnFailure: false
         execution:
           onExecute:
             - sleep 1
@@ -549,6 +553,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: main_step
+              runOnSuccess: false
+              runOnFailure: false
           inputResources:
             - name: helmChart2
         execution:
@@ -561,6 +567,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: main_step
+              runOnSuccess: true
+              runOnFailure: true
           outputResources:
             - name: dockerImage
         execution:
@@ -583,6 +591,7 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: main_step
+              runOnSuccess: false
         execution:
           onExecute:
             - sleep 10
