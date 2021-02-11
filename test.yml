@@ -420,6 +420,7 @@ pipelines:
       - name: main_step
         type: Bash
         configuration:
+          allowFailure: true
           environmentVariables:
             versionTag: testTag
             testNumber: 5
@@ -453,6 +454,7 @@ pipelines:
           onStart:
             - echo "Prepping build environment"
           onExecute:
+            - return 1
             - 'echo "step_node_name: $step_node_name"'
             - 'echo "step_node_id: $step_node_id"'
             - 'echo "step_node_pool_name: $step_node_pool_name"'
