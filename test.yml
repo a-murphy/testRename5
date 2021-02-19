@@ -949,10 +949,10 @@ pipelines:
         configuration:
           inputResources:
             - name: releaseBundle
-            - name: helmChart
+        #    - name: helmChart
           outputResources:
             - name: releaseBundle2
-            - name: fileSpecFile
+         #   - name: fileSpecFile
       - name: publishBuildInfo
         type: PublishBuildInfo
         configuration:
