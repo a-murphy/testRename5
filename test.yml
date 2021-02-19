@@ -420,7 +420,7 @@ pipelines:
       - name: main_step
         type: Bash
         configuration:
-          allowFailure: true
+         # allowFailure: true
           environmentVariables:
             versionTag: testTag
             testNumber: 5
@@ -631,7 +631,7 @@ pipelines:
       - name: docker_build
         type: DockerBuild
         configuration:
-          allowFailure: true
+     #     allowFailure: true
  #         dockerFileLocation: .
  #         dockerFileName: Dockerfile
           dockerImageName: 52.10.74.62:8082/dockerrepo/image #${versionTag}
