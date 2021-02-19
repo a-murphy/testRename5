@@ -963,6 +963,16 @@ pipelines:
           outputResources:
             - name: releaseBundle2
          #   - name: fileSpecFile
+         
+      - name: distributeReleaseBundle
+        type: DistributeReleaseBundle
+        configuration:
+          dryRun: false
+          inputResources:
+            - name: releaseBundle 
+            - name: distributionRule
+          outputResources:
+            - name: releaseBundle2
       - name: publishBuildInfo
         type: PublishBuildInfo
         configuration:
