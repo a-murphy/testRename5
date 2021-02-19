@@ -948,7 +948,7 @@ pipelines:
         type: SignReleaseBundle
         configuration:
           inputResources:
-           - name: releaseBundle
+            - name: releaseBundle
             - name: helmChart
           outputResources:
             - name: releaseBundle2
