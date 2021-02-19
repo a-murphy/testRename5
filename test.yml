@@ -939,11 +939,11 @@ pipelines:
             content:               "my release notes"
           inputResources:
             - name: outputBuildInfo
-          inputSteps:
-            - name: helmPublish
+      #    inputSteps:
+      #      - name: helmPublish
           outputResources:
             - name: releaseBundle
-            - name: helmChart
+         #   - name: helmChart
       - name: signReleaseBundle
         type: SignReleaseBundle
         configuration:
