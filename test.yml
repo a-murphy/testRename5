@@ -7,6 +7,16 @@ resources:
     type: PropertyBag
     configuration:
       test: test
+      
+  - name: distributionRule
+    type: DistributionRule
+    configuration:
+      sourceDistribution: aidan_distribution
+      serviceName: "*"
+      siteName: "*"
+      cityName: "*"
+      countryCodes:
+        - "*"
   
   - name: execTemplatesAQL
     type: FileSpec
