@@ -89,20 +89,20 @@ resources:
       gitProvider: aidan_github
       path: a-murphy/artifactory-go-example-1
          
- # - name: releaseBundle
- #   type: ReleaseBundle
- #   configuration:
- #     sourceDistribution:   aidan_distribution
- #     name: release
- #     version: '1'
- #     isSigned: false
- # - name: releaseBundle2
- #   type: ReleaseBundle
- #   configuration:
- #     sourceDistribution:   aidan_distribution
- #     name: release
- #     version: '1'
- #     isSigned: false
+  - name: releaseBundle
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution:   aidan_distribution
+      name: release
+      version: '1'
+      isSigned: false
+  - name: releaseBundle2
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution:   aidan_distribution
+      name: release
+      version: '1'
+      isSigned: false
     
   - name: cronTrigger
     type: CronTrigger
@@ -429,8 +429,8 @@ pipelines:
      #     nodePool: Windows
           inputSteps:
             - name: in_trigger_step
-              runOnSuccess: true
-              runOnFailure: false
+     #         runOnSuccess: true
+     #         runOnFailure: false
           inputResources:
             - name: nodeRepoResource2
               trigger: false
@@ -543,8 +543,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: main_step
-              runOnSuccess: true
-              runOnFailure: false
+     #         runOnSuccess: true
+     #         runOnFailure: false
         execution:
           onExecute:
             - sleep 1
@@ -555,8 +555,8 @@ pipelines:
           affinityGroup: grouptwo
           inputSteps:
             - name: main_step
-              runOnSuccess: false
-              runOnFailure: false
+      #        runOnSuccess: false
+      #        runOnFailure: false
           inputResources:
             - name: helmChart2
         execution:
@@ -569,8 +569,8 @@ pipelines:
           priority: 10
           inputSteps:
             - name: main_step
-              runOnSuccess: true
-              runOnFailure: true
+       #       runOnSuccess: true
+       #       runOnFailure: true
           outputResources:
             - name: dockerImage
         execution:
@@ -593,7 +593,7 @@ pipelines:
           affinityGroup: groupthree
           inputSteps:
             - name: main_step
-              runOnSuccess: false
+     #         runOnSuccess: false
         execution:
           onExecute:
             - sleep 10
@@ -925,34 +925,34 @@ pipelines:
             - name: helmChart
             - name: outputBuildInfo
             
-  #    - name: createReleaseBundle
-  #      type: CreateReleaseBundle
-  #      configuration:
-  #        releaseBundleName:        myReleaseBundle
-  #        releaseBundleVersion:     "${run_number}"
-  #        dryRun:                   false
-  #        sign:                     false
-  #        storeAtSourceArtifactory: "false"
-  #        description:              "my description"
-  #        releaseNotes:                         
-  #          syntax:                markdown
-  #          content:               "my release notes"
-  #        inputResources:
-  #          - name: outputBuildInfo
-  #        inputSteps:
-  #          - name: helmPublish
-  #        outputResources:
-  #          - name: releaseBundle
-  #          - name: helmChart
-  #    - name: signReleaseBundle
-  #      type: SignReleaseBundle
-  #      configuration:
-  #        inputResources:
-  #          - name: releaseBundle
-  #          - name: helmChart
-  #        outputResources:
-  #          - name: releaseBundle2
-  #          - name: fileSpecFile
+      - name: createReleaseBundle
+        type: CreateReleaseBundle
+        configuration:
+          releaseBundleName:        myReleaseBundle
+          releaseBundleVersion:     "${run_number}"
+          dryRun:                   false
+          sign:                     false
+          storeAtSourceArtifactory: "false"
+          description:              "my description"
+          releaseNotes:                         
+            syntax:                markdown
+            content:               "my release notes"
+          inputResources:
+            - name: outputBuildInfo
+          inputSteps:
+            - name: helmPublish
+          outputResources:
+            - name: releaseBundle
+            - name: helmChart
+      - name: signReleaseBundle
+        type: SignReleaseBundle
+        configuration:
+          inputResources:
+           - name: releaseBundle
+            - name: helmChart
+          outputResources:
+            - name: releaseBundle2
+            - name: fileSpecFile
       - name: publishBuildInfo
         type: PublishBuildInfo
         configuration:
