@@ -113,6 +113,13 @@ resources:
       name: release
       version: '1'
       isSigned: false
+  - name: releaseBundle3
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution:   aidan_distribution
+      name: release
+      version: '1'
+      isSigned: false
     
   - name: cronTrigger
     type: CronTrigger
@@ -969,10 +976,10 @@ pipelines:
         configuration:
           dryRun: false
           inputResources:
-            - name: releaseBundle 
+            - name: releaseBundle2 
             - name: distributionRule
           outputResources:
-            - name: releaseBundle2
+            - name: releaseBundle3
       - name: publishBuildInfo
         type: PublishBuildInfo
         configuration:
