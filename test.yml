@@ -463,6 +463,7 @@ pipelines:
      #     affinityGroup: groupone
      #     nodePool: Windows
           inputSteps:
+            - name: test_step
             - name: in_trigger_step
      #         runOnSuccess: true
      #         runOnFailure: false
