@@ -392,6 +392,11 @@ pipelines:
             versions:
               - 10.18.0
     steps:
+      - name: test_step
+        type: test/UploadArtifact
+        configuration:
+          xrayScan: true
+          failOnScan: ${test}
       - name: in_trigger_step
         type: Bash
         configuration:
