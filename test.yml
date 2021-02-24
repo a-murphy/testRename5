@@ -5,12 +5,12 @@ resources:
       sourceArtifactory: aidan_artifactory
       repositoryPath: example-repo-local
       artifactName: test.txt
-  - name: test_extension_resource_wildcards
-    type: test/Artifact
-    configuration:
-      sourceArtifactory: aidan_artifactory
-      repositoryPath: "test/"
-      artifactName: "test.yml"
+  #- name: test_extension_resource_wildcards
+  #  type: test/Artifact
+  #  configuration:
+  #    sourceArtifactory: aidan_artifactory
+  #    repositoryPath: "test/"
+  #    artifactName: "test.yml"
   - name: test_resource_one
     type: PropertyBag
     configuration:
