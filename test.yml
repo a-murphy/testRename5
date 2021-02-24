@@ -1,4 +1,16 @@
 resources:
+  - name: test_extension_resource
+    type: Artifact
+    configuration:
+      sourceArtifactory: aidan_artifactory
+      repositoryPath: example-repo-local
+      artifactName: test.txt
+  - name: test_extension_resource_wildcards
+    type: Artifact
+    configuration:
+      sourceArtifactory: aidan_artifactory
+      repositoryPath: test-*
+      artifactName: *.yml
   - name: test_resource_one
     type: PropertyBag
     configuration:
@@ -291,6 +303,7 @@ pipelines:
       type: Bash
       configuration:
         inputResources:
+          - name: test_extension_resource
           - name: properties
             trigger: true
         chronological: true
