@@ -1,12 +1,12 @@
 resources:
   - name: test_extension_resource
-    type: Artifact
+    type: test/Artifact
     configuration:
       sourceArtifactory: aidan_artifactory
       repositoryPath: example-repo-local
       artifactName: test.txt
   - name: test_extension_resource_wildcards
-    type: Artifact
+    type: test/Artifact
     configuration:
       sourceArtifactory: aidan_artifactory
       repositoryPath: "test-*"
