@@ -9,8 +9,8 @@ resources:
     type: test/Artifact
     configuration:
       sourceArtifactory: aidan_artifactory
-      repositoryPath: "test-*"
-      artifactName: "*.yml"
+      repositoryPath: "test/"
+      artifactName: "test.yml"
   - name: test_resource_one
     type: PropertyBag
     configuration:
