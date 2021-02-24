@@ -408,8 +408,8 @@ pipelines:
       - name: test_step
         type: test/UploadArtifact
         configuration:
-          xrayScan: true
-       #   failOnScan: ${test}
+       #   xrayScan: true
+          failOnScan: ${test}
       - name: in_trigger_step
         type: Bash
         configuration:
