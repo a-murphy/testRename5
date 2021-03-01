@@ -410,6 +410,8 @@ pipelines:
         configuration:
           xrayScan: true
        #   failOnScan: ${test}
+          integrations:
+           - name: aidan_artifactory
           inputResources:
             - name: gitRepoResource
               trigger: false
