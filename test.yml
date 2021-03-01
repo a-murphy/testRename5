@@ -410,6 +410,7 @@ pipelines:
         configuration:
           xrayScan: true
        #   failOnScan: ${test}
+          targetPath: "example-repo-local/test"
           integrations:
            - name: aidan_artifactory
           inputResources:
