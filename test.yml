@@ -397,13 +397,13 @@ pipelines:
   #    retentionPolicy:
   #      minRuns: 5
   #      maxAgeDays: 10
-      runtime:            
-        type: image
-        image:
-          auto:
-            language: node
-            versions:
-              - 10.18.0
+   #   runtime:            
+   #     type: image
+   #     image:
+   #       auto:
+   #         language: node
+   #         versions:
+   #           - 10.18.0
     steps:
       - name: test_upload_step
         type: UploadArtifact
