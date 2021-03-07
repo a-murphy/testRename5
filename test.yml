@@ -441,6 +441,17 @@ pipelines:
               trigger: false
           inputSteps:
             - name: test_upload_step
+      - name: test_upload_step4
+        type: UploadArtifact
+        configuration:
+          targetPath: "example-repo-local/test"
+          integrations:
+           - name: aidan_artifactory
+          inputResources:
+            - name: gitRepoResource
+              trigger: false
+          inputSteps:
+            - name: test_upload_step
       - name: in_trigger_step
         type: Bash
         configuration:
