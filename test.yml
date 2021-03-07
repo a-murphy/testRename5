@@ -390,7 +390,7 @@ pipelines:
  #         - update-ca-certificates -f
   
   - name: test_pipeline_10
-    configuration:
+   # configuration:
    #   nodePool: Ubuntu16
     #  dependencyMode:
     #    waitOnChildComplete: true
