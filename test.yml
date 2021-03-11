@@ -1,10 +1,10 @@
 resources:
-  - name: test_extension_resource
-    type: test/Artifact
-    configuration:
-      sourceArtifactory: aidan_artifactory
-      repositoryPath: example-repo-local
-      artifactName: test.txt
+ # - name: test_extension_resource
+ #   type: test/Artifact
+ #   configuration:
+ #     sourceArtifactory: aidan_artifactory
+ #     repositoryPath: example-repo-local
+ #      artifactName: test.txt
   #- name: test_extension_resource_wildcards
   #  type: test/Artifact
   #  configuration:
@@ -405,53 +405,53 @@ pipelines:
    #         versions:
    #           - 10.18.0
     steps:
-      - name: test_upload_step
-        type: UploadArtifact
-        configuration:
-          forceXrayScan: true
-          failOnScan: true
-          targetPath: "example-repo-local/test"
-          integrations:
-           - name: aidan_artifactory
-          inputResources:
-            - name: gitRepoResource
-              trigger: false
-      - name: test_upload_step2
-        type: UploadArtifact
-        configuration:
-          forceXrayScan: true
-          failOnScan: false
-          targetPath: "example-repo-local/test"
-          integrations:
-           - name: aidan_artifactory
-          inputResources:
-            - name: gitRepoResource
-              trigger: false
-          inputSteps:
-            - name: test_upload_step
-      - name: test_upload_step3
-        type: UploadArtifact
-        configuration:
-          forceXrayScan: true
-          targetPath: "example-repo-local/test"
-          integrations:
-           - name: aidan_artifactory
-          inputResources:
-            - name: gitRepoResource
-              trigger: false
-          inputSteps:
-            - name: test_upload_step
-      - name: test_upload_step4
-        type: UploadArtifact
-        configuration:
-          targetPath: "example-repo-local/test"
-          integrations:
-           - name: aidan_artifactory
-          inputResources:
-            - name: gitRepoResource
-              trigger: false
-          inputSteps:
-            - name: test_upload_step
+   #   - name: test_upload_step
+   #     type: UploadArtifact
+   #     configuration:
+   #       forceXrayScan: true
+   #       failOnScan: true
+   #       targetPath: "example-repo-local/test"
+   #       integrations:
+   #        - name: aidan_artifactory
+   #       inputResources:
+   #         - name: gitRepoResource
+   #           trigger: false
+   #   - name: test_upload_step2
+   #     type: UploadArtifact
+   #     configuration:
+   #       forceXrayScan: true
+   #       failOnScan: false
+   #       targetPath: "example-repo-local/test"
+   #       integrations:
+   #        - name: aidan_artifactory
+   #       inputResources:
+   #         - name: gitRepoResource
+   #           trigger: false
+   #       inputSteps:
+   #         - name: test_upload_step
+   #   - name: test_upload_step3
+   #     type: UploadArtifact
+   #     configuration:
+   #       forceXrayScan: true
+   #       targetPath: "example-repo-local/test"
+   #       integrations:
+   #        - name: aidan_artifactory
+   #       inputResources:
+   #         - name: gitRepoResource
+   #           trigger: false
+   #       inputSteps:
+   #         - name: test_upload_step
+   #   - name: test_upload_step4
+   #     type: UploadArtifact
+   #     configuration:
+   #       targetPath: "example-repo-local/test"
+   #       integrations:
+   #        - name: aidan_artifactory
+   #       inputResources:
+   #         - name: gitRepoResource
+   #           trigger: false
+   #       inputSteps:
+   #         - name: test_upload_step
       - name: in_trigger_step
         type: Bash
         configuration:
