@@ -408,7 +408,7 @@ pipelines:
       - name: test_upload_step
         type: UploadArtifact
         configuration:
-          xrayScan: true
+          forceXrayScan: true
           failOnScan: true
           targetPath: "example-repo-local/test"
           integrations:
@@ -419,7 +419,7 @@ pipelines:
       - name: test_upload_step2
         type: UploadArtifact
         configuration:
-          xrayScan: true
+          forceXrayScan: true
           failOnScan: false
           targetPath: "example-repo-local/test"
           integrations:
@@ -432,7 +432,7 @@ pipelines:
       - name: test_upload_step3
         type: UploadArtifact
         configuration:
-          xrayScan: true
+          forceXrayScan: true
           targetPath: "example-repo-local/test"
           integrations:
            - name: aidan_artifactory
