@@ -303,7 +303,7 @@ pipelines:
       type: Bash
       configuration:
         inputResources:
-          - name: test_extension_resource
+     #     - name: test_extension_resource
           - name: properties
             trigger: true
         chronological: true
@@ -505,7 +505,7 @@ pipelines:
      #     affinityGroup: groupone
      #     nodePool: Windows
           inputSteps:
-            - name: test_upload_step
+      #      - name: test_upload_step
             - name: in_trigger_step
      #         runOnSuccess: true
      #         runOnFailure: false
