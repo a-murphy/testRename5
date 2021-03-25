@@ -42,7 +42,7 @@ resources:
  #     interval: "0 0 * * *"
       gitProvider: aidan_github
       path: a-murphy/5testRename5
-      shallowDepth: 1
+      shallowDepth: 10
       branches:
         include: nointegrations
       buildOn:
@@ -78,7 +78,7 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/5testRename5
-      shallowDepth: 1
+      shallowDepth: 10
       buildOn:
          pullRequestClose: true
          pullRequestCreate: true
