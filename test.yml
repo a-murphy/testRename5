@@ -85,7 +85,7 @@ resources:
          releaseCreate: true
          tagCreate: true
       tags:
-        include: include.*
+        include: 0.0.*
   - name: helmChart2
     type: HelmChart
     configuration:
