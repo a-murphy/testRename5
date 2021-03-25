@@ -55,6 +55,16 @@ resources:
    #     pullRequestUpdate: true
      # tags:
      #   include: include.*
+  - name: gitlabRepoResource
+    type: GitRepo
+    configuration:
+      gitProvider: aidan_gitlab
+      path: a-murphy/sample_ubuntu1204_go
+      buildOn:
+        pullRequestClose: true
+        pullRequestCreate: true
+        releaseCreate: true
+        tagCreate: true
   - name: bbsRepoResource
     type: GitRepo
     configuration:
@@ -468,7 +478,7 @@ pipelines:
           runtime:            
             type: host
           inputResources:
-            - name: bbsRepoResource
+            - name: gitlabRepoResource
          #     trigger: false
           outputResources:
             - name: gitRepoResource2
