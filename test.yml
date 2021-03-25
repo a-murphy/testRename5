@@ -42,7 +42,7 @@ resources:
  #     interval: "0 0 * * *"
       gitProvider: aidan_github
       path: a-murphy/5testRename5
-      shallowDepth: true
+      shallowDepth: 1
       branches:
         include: nointegrations
       buildOn:
@@ -78,7 +78,7 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/5testRename5
-      shallowDepth: true
+      shallowDepth: 1
       buildOn:
          pullRequestClose: false
          releaseCreate: true
@@ -97,7 +97,7 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/go_app
-      shallowDepth: true
+      shallowDepth: 1
       buildOn:
          pullRequestCreate: true
          pullRequestClose: false
@@ -108,13 +108,13 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/go-service
-      shallowDepth: true
+      shallowDepth: 1
   - name: goRepoModule
     type: GitRepo
     configuration:
       gitProvider: aidan_github
       path: a-murphy/artifactory-go-example-1
-      shallowDepth: true
+      shallowDepth: 1
          
   - name: releaseBundle
     type: ReleaseBundle
@@ -195,7 +195,7 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/sample_node
-      shallowDepth: true
+      shallowDepth: 1
       buildOn:
          commit: true
          pullRequestCreate: true
@@ -209,7 +209,7 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/basic-node
-      shallowDepth: true
+      shallowDepth: 1
       buildOn:
          commit: false
   - name: nodeRepoResource3
@@ -217,7 +217,7 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/vue-frontend
-      shallowDepth: true
+      shallowDepth: 1
       buildOn:
          commit: false
   - name: testRepo
