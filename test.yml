@@ -80,7 +80,8 @@ resources:
       path: a-murphy/5testRename5
       shallowDepth: 1
       buildOn:
-         pullRequestClose: false
+         pullRequestClose: true
+         pullRequestCreate: true
          releaseCreate: true
          tagCreate: true
       tags:
@@ -470,7 +471,7 @@ pipelines:
             type: host
           inputResources:
             - name: gitRepoResource
-              trigger: false
+         #     trigger: false
           outputResources:
             - name: gitRepoResource2
         execution:
