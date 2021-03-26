@@ -67,6 +67,9 @@ pipelines:
     steps:
       - name: in_trigger_step
         type: Bash
+        configuration:
+          integrations:
+            - name: aidan_artifactory
         execution:
           onExecute:
             - echo "executing task command 1"
@@ -129,6 +132,8 @@ pipelines:
       - name: githubStep
         type: PowerShell
         configuration:
+          integrations:
+            - name: aidan_artifactory
           inputSteps:
             - name: in_trigger_step
           inputResources:
