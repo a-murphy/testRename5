@@ -115,7 +115,9 @@ pipelines:
         execution:
           onExecute:
             - echo "executing task command 1"
- - name: test_powershell_repos
+  - name: test_powershell_repos
+    configuration:
+      nodePool: w2019
     steps:
       - name: in_trigger_step
         type: PowerShell
