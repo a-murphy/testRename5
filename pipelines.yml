@@ -109,7 +109,7 @@ pipelines:
           inputSteps:
             - name: in_trigger_step
           inputResources:
-            - name: bbsResource
+            - name: bbsRepoResource
         execution:
           onExecute:
             - echo "executing task command 1"
