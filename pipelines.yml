@@ -115,3 +115,55 @@ pipelines:
         execution:
           onExecute:
             - echo "executing task command 1"
+ - name: test_powershell_repos
+    steps:
+      - name: in_trigger_step
+        type: PowerShell
+        execution:
+          onExecute:
+            - echo "executing task command 1"
+            - echo "executing task command 2"
+
+      - name: githubStep
+        type: PowerShell
+        configuration:
+          inputSteps:
+            - name: in_trigger_step
+          inputResources:
+            - name: gitHubRepoResource
+        execution:
+          onExecute:
+            - echo "executing task command 1"
+            
+      - name: gitlabStep
+        type: PowerShell
+        configuration:
+          inputSteps:
+            - name: in_trigger_step
+          inputResources:
+            - name: gitLabRepoResource
+        execution:
+          onExecute:
+            - echo "executing task command 1"
+
+      - name: bitbucketStep
+        type: PowerShell
+        configuration:
+          inputSteps:
+            - name: in_trigger_step
+          inputResources:
+            - name: bitbucketRepoResource
+        execution:
+          onExecute:
+            - echo "executing task command 1"
+
+      - name: bitbucketServerStep
+        type: PowerShell
+        configuration:
+          inputSteps:
+            - name: in_trigger_step
+          inputResources:
+            - name: bbsRepoResource
+        execution:
+          onExecute:
+            - echo "executing task command 1"
