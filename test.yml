@@ -65,17 +65,17 @@ resources:
 #        pullRequestCreate: true
 #        releaseCreate: true
 #        tagCreate: true
-  - name: bitbucketRepoResource
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_bitbucket
-      path: a-murphy/sample_pipelines
-      shallowDepth: 10
-      buildOn:
-        pullRequestClose: true
-        pullRequestCreate: true
-        releaseCreate: true
-        tagCreate: true
+#  - name: bitbucketRepoResource
+#    type: GitRepo
+#    configuration:
+#      gitProvider: aidan_bitbucket
+#      path: a-murphy/sample_pipelines
+#      shallowDepth: 10
+#      buildOn:
+#        pullRequestClose: true
+#        pullRequestCreate: true
+#        releaseCreate: true
+#        tagCreate: true
 #  - name: bbsRepoResource
 #    type: GitRepo
 #    configuration:
@@ -488,8 +488,8 @@ pipelines:
        #     - name: docker
           runtime:            
             type: host
-          inputResources:
-            - name: bitbucketRepoResource
+       #   inputResources:
+       #     - name: bitbucketRepoResource
          #     trigger: false
           outputResources:
             - name: gitRepoResource2
