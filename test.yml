@@ -938,7 +938,7 @@ pipelines:
           inputResources:
             - name: goRepo
               trigger: false
-            - name: fileSpecFile
+       #     - name: fileSpecFile
           outputResources:
             - name: outputBuildInfo
           integrations:
