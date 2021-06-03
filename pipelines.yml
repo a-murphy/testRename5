@@ -4,50 +4,50 @@ resources:
     configuration:
       gitProvider: aidan_github
       path: a-murphy/5testRename5
-      shallowDepth: 10
-      buildOn:
-        pullRequestClose: true
-        pullRequestCreate: true
-        releaseCreate: true
-        tagCreate: true
+#      shallowDepth: 10
+#      buildOn:
+#        pullRequestClose: true
+#        pullRequestCreate: true
+#        releaseCreate: true
+#        tagCreate: true
    #   cancelPendingRunsOn:
    #     newCommit: true
    #     pullRequestUpdate: true
      # tags:
      #   include: include.*
-  - name: gitLabRepoResource
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_gitlab
-      path: a-murphy/sample_ubuntu1204_go
-      shallowDepth: 10
-      buildOn:
-        pullRequestClose: true
-        pullRequestCreate: true
-        releaseCreate: true
-        tagCreate: true
-  - name: bitbucketRepoResource
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_bitbucket
-      path: a-murphy/sample_pipelines
-      shallowDepth: 10
-      buildOn:
-        pullRequestClose: true
-        pullRequestCreate: true
-        releaseCreate: true
-        tagCreate: true
-  - name: bbsRepoResource
-    type: GitRepo
-    configuration:
-      gitProvider: aidan_bbs
-      path: ~aidan/test
-      shallowDepth: 10
-      buildOn:
-        pullRequestClose: true
-        pullRequestCreate: true
-        releaseCreate: true
-        tagCreate: true
+#  - name: gitLabRepoResource
+#    type: GitRepo
+#    configuration:
+#      gitProvider: aidan_gitlab
+#      path: a-murphy/sample_ubuntu1204_go
+#      shallowDepth: 10
+#      buildOn:
+#        pullRequestClose: true
+#        pullRequestCreate: true
+#        releaseCreate: true
+#        tagCreate: true
+#  - name: bitbucketRepoResource
+#    type: GitRepo
+#    configuration:
+#      gitProvider: aidan_bitbucket
+#      path: a-murphy/sample_pipelines
+#      shallowDepth: 10
+#      buildOn:
+#        pullRequestClose: true
+#        pullRequestCreate: true
+#        releaseCreate: true
+#        tagCreate: true
+#  - name: bbsRepoResource
+#    type: GitRepo
+#    configuration:
+#      gitProvider: aidan_bbs
+#      path: ~aidan/test
+#      shallowDepth: 10
+#      buildOn:
+#        pullRequestClose: true
+#        pullRequestCreate: true
+#        releaseCreate: true
+#        tagCreate: true
  #     cancelPendingRunsOn:
  #       newCommit: true
  #       pullRequestUpdate: true
@@ -86,91 +86,91 @@ pipelines:
           onExecute:
             - echo "executing task command 1"
             
-      - name: gitlabStep
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: in_trigger_step
-          inputResources:
-            - name: gitLabRepoResource
-        execution:
-          onExecute:
-            - echo "executing task command 1"
+  #    - name: gitlabStep
+  #      type: Bash
+  #      configuration:
+  #        inputSteps:
+  #          - name: in_trigger_step
+  #        inputResources:
+  #          - name: gitLabRepoResource
+  #      execution:
+  #        onExecute:
+  #          - echo "executing task command 1"
 
-      - name: bitbucketStep
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: in_trigger_step
-          inputResources:
-            - name: bitbucketRepoResource
-        execution:
-          onExecute:
-            - echo "executing task command 1"
+  #    - name: bitbucketStep
+  #      type: Bash
+  #      configuration:
+  #        inputSteps:
+  #          - name: in_trigger_step
+  #        inputResources:
+  #          - name: bitbucketRepoResource
+  #      execution:
+  #        onExecute:
+  #          - echo "executing task command 1"
 
-      - name: bitbucketServerStep
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: in_trigger_step
-          inputResources:
-            - name: bbsRepoResource
-        execution:
-          onExecute:
-            - echo "executing task command 1"
-  - name: test_powershell_repos
-    configuration:
-      nodePool: w2019
-    steps:
-      - name: in_trigger_step
-        type: PowerShell
-        execution:
-          onExecute:
-            - echo "executing task command 1"
-            - echo "executing task command 2"
+  #    - name: bitbucketServerStep
+  #      type: Bash
+  #      configuration:
+  #        inputSteps:
+  #          - name: in_trigger_step
+  #        inputResources:
+  #          - name: bbsRepoResource
+  #      execution:
+  #        onExecute:
+  #          - echo "executing task command 1"
+ # - name: test_powershell_repos
+ #   configuration:
+ #     nodePool: w2019
+ #   steps:
+ #     - name: in_trigger_step
+ #       type: PowerShell
+ #       execution:
+ #         onExecute:
+ #           - echo "executing task command 1"
+ #           - echo "executing task command 2"
 
-      - name: githubStep
-        type: PowerShell
-        configuration:
-          integrations:
-            - name: aidan_artifactory
-          inputSteps:
-            - name: in_trigger_step
-          inputResources:
-            - name: gitHubRepoResource
-        execution:
-          onExecute:
-            - echo "executing task command 1"
+ #     - name: githubStep
+ #       type: PowerShell
+ #       configuration:
+ #         integrations:
+ #           - name: aidan_artifactory
+ #         inputSteps:
+ #           - name: in_trigger_step
+ #         inputResources:
+ #           - name: gitHubRepoResource
+ #       execution:
+ #         onExecute:
+ #           - echo "executing task command 1"
             
-      - name: gitlabStep
-        type: PowerShell
-        configuration:
-          inputSteps:
-            - name: in_trigger_step
-          inputResources:
-            - name: gitLabRepoResource
-        execution:
-          onExecute:
-            - echo "executing task command 1"
+ #     - name: gitlabStep
+ #       type: PowerShell
+ #       configuration:
+ #         inputSteps:
+ #           - name: in_trigger_step
+ #         inputResources:
+ #           - name: gitLabRepoResource
+ #       execution:
+ #         onExecute:
+ #           - echo "executing task command 1"
 
-      - name: bitbucketStep
-        type: PowerShell
-        configuration:
-          inputSteps:
-            - name: in_trigger_step
-          inputResources:
-            - name: bitbucketRepoResource
-        execution:
-          onExecute:
-            - echo "executing task command 1"
+ #     - name: bitbucketStep
+ #       type: PowerShell
+ #       configuration:
+ #         inputSteps:
+ #           - name: in_trigger_step
+ #         inputResources:
+ #           - name: bitbucketRepoResource
+ #       execution:
+ #         onExecute:
+ #           - echo "executing task command 1"
 
-      - name: bitbucketServerStep
-        type: PowerShell
-        configuration:
-          inputSteps:
-            - name: in_trigger_step
-          inputResources:
-            - name: bbsRepoResource
-        execution:
-          onExecute:
-            - echo "executing task command 1"
+ #     - name: bitbucketServerStep
+ #       type: PowerShell
+ #       configuration:
+ #         inputSteps:
+ #           - name: in_trigger_step
+ #         inputResources:
+ #           - name: bbsRepoResource
+ #       execution:
+ #         onExecute:
+ #           - echo "executing task command 1"
