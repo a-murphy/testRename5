@@ -149,7 +149,7 @@ resources:
       sourceDistribution:   aidan_distribution
       name: release
       version: '1'
-      isSigned: false
+  #    isSigned: false
   - name: releaseBundle3
     type: ReleaseBundle
     configuration:
