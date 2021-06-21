@@ -1,0 +1,22 @@
+
+pipelines:
+  - name: pipeline_affinityGroup_example
+    steps:
+      - name: ag_step_1
+        type: Bash
+        configuration:
+          affinityGroup: together
+        execution:
+          onExecute:
+            - echo "Running " $pipeline_name "|" $step_name > $shared_workspace/myoutput.txt
+            - cat $shared_workspace/myoutput.txt
+
+      - name: ag_step_2
+        type: Bash
+        configuration:
+          affinityGroup: together
+          inputSteps:
+             - name: ag_step_1
+        execution:
+          onExecute:
+            - cat $shared_workspace/myoutput.txt
