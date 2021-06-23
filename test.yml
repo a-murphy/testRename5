@@ -9,7 +9,8 @@ resources:
       test: test
 pipelines:
   - name: affinityGroup
-    configuration: myAffinityGroup
+    configuration:
+      affinityGroup: myAffinityGroup
     steps:
     - name: stepOne
       type: Bash
